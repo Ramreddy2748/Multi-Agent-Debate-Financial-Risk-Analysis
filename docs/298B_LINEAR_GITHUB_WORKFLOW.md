@@ -3,6 +3,15 @@
 This project uses Linear as the planning and ownership record, and GitHub as
 the implementation, review, and merge record.
 
+## Current Project Records
+
+- Linear workspace: `298b-financial-risk-multi-agent`
+- Linear team: `298B - Financial Risk Multi-Agent Project`
+- Linear issue prefix: `298-*`
+- Course workflow issue: `298-5 Finalize Linear and GitHub course workflow`
+- GitHub repository: `Ramreddy2748/Data298A--Masters-Project`
+- Local repository path: `/Users/varunreddyseelam/Documents/Data298A--Masters-Project`
+
 ## Required Setup
 
 1. Create one shared Linear workspace for the team.
@@ -34,14 +43,15 @@ Done
 7. Add labels:
 
 ```text
-frontend
+agents
 backend
 data
-ML/AI
-agents
-testing
 documentation
 evaluation
+frontend
+ML/AI
+project-management
+testing
 deployment
 ```
 
@@ -66,15 +76,15 @@ Use the exact Linear issue ID in the branch, commit, and PR.
 Example:
 
 ```bash
-git checkout -b FR-12-fastapi-risk-api
-git commit -m "FR-12 add FastAPI risk app backend"
-git push origin FR-12-fastapi-risk-api
+git checkout -b 298-5-finalize-linear-github-workflow
+git commit -m "298-5 finalize Linear GitHub workflow docs"
+git push origin 298-5-finalize-linear-github-workflow
 ```
 
 PR title:
 
 ```text
-FR-12 Add FastAPI risk app backend
+298-5 Finalize Linear GitHub workflow docs
 ```
 
 PR body should include:
@@ -82,7 +92,31 @@ PR body should include:
 - what changed
 - why it changed
 - how it was validated
-- Linear issue link or `Closes FR-12`
+- Linear issue link or `Closes 298-5`
+
+## Current 298-5 Scope
+
+Issue `298-5` is complete when the repository contains the workflow evidence
+needed for Project 298B:
+
+- this workflow document
+- the Linear backlog seed CSV at `docs/linear_backlog_seed.csv`
+- the GitHub pull request template at `.github/pull_request_template.md`
+- `.gitignore` entries for local-only generated artifacts such as `.venv/`,
+  `mlruns/`, `mlflow.db`, and `data/gold/_mlflow_artifacts/`
+
+Validation for `298-5`:
+
+```bash
+python3 - <<'PY'
+import csv
+from pathlib import Path
+rows = list(csv.DictReader(Path("docs/linear_backlog_seed.csv").open()))
+assert rows
+assert {"Title", "Description", "Status", "Labels", "Priority"} <= set(rows[0])
+print(f"Linear backlog CSV valid: {len(rows)} issues")
+PY
+```
 
 ## Issue Template
 
@@ -123,3 +157,14 @@ List any upstream work, credentials, data, or review dependencies.
 - Do not self-approve PRs.
 - Keep Linear status current while work is happening.
 - Each student should own clear issues with testable acceptance criteria.
+
+## 298B PR Checklist
+
+Before merging a Project 298B PR:
+
+- [ ] The branch name contains the Linear issue ID, for example `298-5-*`.
+- [ ] The PR title starts with the Linear issue ID.
+- [ ] The PR body includes `Closes 298-5` or the relevant issue ID.
+- [ ] The PR lists validation commands or other evidence.
+- [ ] Another teammate reviews and approves the PR.
+- [ ] The Linear issue moves to `Done` only after acceptance criteria are met.
