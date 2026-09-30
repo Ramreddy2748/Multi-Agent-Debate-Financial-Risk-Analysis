@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Financial Risk Console</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">FR</div>
+          <div>
+            <h1>Risk Console</h1>
+            <p>Multi-agent stock verdicts</p>
+          </div>
+        </div>
+
+        <label class="search-box">
+          <span>Search ticker or sector</span>
+          <input id="searchInput" type="search" placeholder="AAPL, Energy, HIGH">
+        </label>
+
+        <div class="segmented" role="group" aria-label="Risk filter">
+          <button class="active" data-filter="ALL">All</button>
+          <button data-filter="HIGH">High</button>
+          <button data-filter="MODERATE">Mod</button>
+          <button data-filter="LOW">Low</button>
+        </div>
+
+        <div class="summary-strip">
+          <div>
+            <span id="companyCount">0</span>
+            <small>Companies</small>
+          </div>
+          <div>
+            <span id="highCount">0</span>
+            <small>High risk</small>
+          </div>
+        </div>
+
+        <div id="tickerList" class="ticker-list" aria-label="Ticker list"></div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Auditable stock risk application</p>
+            <h2 id="selectedTitle">Loading</h2>
+          </div>
+          <div class="actions">
+            <a id="jsonLink" class="icon-button" href="#" target="_blank" rel="noreferrer" title="Open JSON verdict" aria-label="Open JSON verdict">JSON</a>
+            <a id="pdfLink" class="icon-button" href="#" target="_blank" rel="noreferrer" title="Open PDF verdict" aria-label="Open PDF verdict">PDF</a>
+          </div>
+        </header>
+
+        <section class="ask-panel" aria-label="Investment question">
+          <div class="ask-copy">
+            <h3>Ask an investment question</h3>
+            <p>Answers use the project risk score, agent verdicts, confidence, and evidence trail.</p>
+          </div>
+          <form id="askForm" class="ask-form">
+            <input id="askInput" type="search" placeholder='Ask: "Can I invest in Apple?" or "Should I buy AAPL?"'>
+            <button type="submit">Ask</button>
+          </form>
+          <div id="advisorAnswer" class="advisor-answer">
+            <strong>Select a company or ask a question.</strong>
+            <p>This tool gives project-model risk guidance for research, not personal financial advice.</p>
+          </div>
+          <div class="ask-actions">
+            <button id="generateVerdictButton" class="secondary-action" type="button">Generate full agent verdict</button>
+            <button id="runDebateButton" class="secondary-action" type="button">Run debate review</button>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Risk metrics">
+          <div class="metric">
+            <span>Composite risk</span>
+            <strong id="compositeRisk">-</strong>
+            <small id="riskLabel">-</small>
+          </div>
+          <div class="metric">
+            <span>Annual volatility</span>
+            <strong id="volatility">-</strong>
+            <small>30/60 day context below</small>
+          </div>
+          <div class="metric">
+            <span>Drawdown</span>
+            <strong id="drawdown">-</strong>
+            <small>Max period drawdown</small>
+          </div>
+          <div class="metric">
+            <span>Confidence</span>
+            <strong id="confidence">-</strong>
+            <small id="reviewFlag">-</small>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel price-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Price And Risk Trace</h3>
+                <p id="priceSubtitle">Daily close with normalized sparkline</p>
+              </div>
+              <span id="asOfDate" class="status-pill">-</span>
+            </div>
+            <svg id="priceChart" viewBox="0 0 720 220" role="img" aria-label="Price chart"></svg>
+          </div>
+
+          <div class="panel verdict-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Final Verdict</h3>
+                <p id="criticType">Critic output</p>
+              </div>
+              <span id="disagreementBadge" class="status-pill">-</span>
+            </div>
+            <p id="finalDecision" class="decision"></p>
+            <div id="riskDrivers" class="driver-list"></div>
+          </div>
+
+          <div class="panel wide">
+            <div class="panel-head">
+              <div>
+                <h3>Agent Scorecards</h3>
+                <p>Specialist claims and evidence</p>
+              </div>
+            </div>
+            <div id="agentGrid" class="agent-grid"></div>
+          </div>
+
+          <div class="panel wide">
+            <div class="panel-head">
+              <div>
+                <h3>Company Compare</h3>
+                <p>Selected ticker against common alternatives</p>
+              </div>
+            </div>
+            <div id="compareGrid" class="compare-grid"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>Policy A-H</h3>
+                <p>Evidence trail</p>
+              </div>
+            </div>
+            <div id="policyTrail" class="policy-list"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>Contradictions</h3>
+                <p>Debate/revision state</p>
+              </div>
+            </div>
+            <div id="contradictions" class="contradiction-list"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>Monitoring</h3>
+                <p>Lineage records</p>
+              </div>
+            </div>
+            <div id="monitoring" class="monitor-list"></div>
+          </div>
+
+          <div class="panel report-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Portfolio Reports</h3>
+                <p>Generated charts from the pipeline</p>
+              </div>
+            </div>
+            <div class="report-grid">
+              <img src="../data/reports/05_risk_scores.png" alt="Risk scores chart">
+              <img src="../data/reports/08_class_balance.png" alt="Class balance chart">
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="tickerItemTemplate">
+      <button class="ticker-item">
+        <span class="ticker-symbol"></span>
+        <span class="ticker-sector"></span>
+        <strong class="ticker-score"></strong>
+      </button>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -10,3 +10,4 @@ __pycache__/
 mlruns/
 mlflow.db
 data/gold/_mlflow_artifacts/
+data/gold/vector_store/

@@ -35,7 +35,9 @@ Data298A--Masters-Project/
 ├── data/
 │   ├── bronze/                # Raw data as collected (CSV)
 │   ├── silver/                # Cleaned and feature-engineered data (CSV)
-│   ├── gold/                  # Risk scores and splits (CSV)
+│   ├── silver_parquet/        # Cleaned and feature-engineered data (Parquet)
+│   ├── gold/                  # Risk scores, splits, verdict JSON outputs
+│   ├── verdicts/              # Auditable PDF/JSON risk verdict scorecards
 │   └── reports/               # Generated visualisation charts (PNG)
 └── GCP_SETUP.md               # Google Cloud setup instructions
 ```
@@ -102,6 +104,9 @@ Expected output:
 - `data/bronze/fred_macro_*.csv` — macroeconomic indicators
 - `data/bronze/newsapi_headlines_raw.csv` — news headlines
 
+FRED macro coverage includes fed funds, CPI, 10Y Treasury, unemployment, GDP
+growth, 10Y-2Y yield spread, VIX, and WTI oil.
+
 To run for specific tickers:
 ```bash
 python3 ingest.py AAPL MSFT TSLA NVDA JPM
@@ -119,6 +124,7 @@ Expected output:
 - `data/silver/silver_edgar_TICKER.csv` — cleaned financial statements
 - `data/silver/silver_macro.csv` — cleaned macroeconomic data
 - `data/silver/silver_news_sentiment.csv` — VADER sentiment scores
+- `data/silver_parquet/*.parquet` — parquet copies for analytics and BigQuery-ready workflows
 
 ### Step 3 — EDA and risk scoring (Gold layer)
 
@@ -147,6 +153,44 @@ Expected output:
 - `data/gold/split_test.csv` — 19 companies
 - `data/reports/08_class_balance.png` — class balance chart
 - `data/reports/09_sector_distribution.png` — sector distribution chart
+
+### Step 5 — Agent critic verdict and PDF scorecard
+
+Runs the fundamental, market/sentiment, macro, and critic layers for one ticker,
+then saves an auditable JSON verdict and PDF scorecard with Policy A-H evidence.
+```bash
+python3 agents/verdict_report.py AAPL --company "Apple Inc." --sector "Information Technology"
+```
+
+Expected output:
+- `data/verdicts/AAPL_risk_verdict.json` — full agent/critic response
+- `data/verdicts/AAPL_risk_verdict.pdf` — PDF scorecard and Policy A-H evidence trail
+
+To log lineage and monitoring metadata to MLflow when available, or to
+`data/gold/monitoring_runs.jsonl` otherwise:
+```bash
+python3 agents/verdict_report.py AAPL \
+  --company "Apple Inc." \
+  --sector "Information Technology" \
+  --log-monitoring
+```
+
+### Step 6 — Explicit debate state machine
+
+Runs the same specialist agents through an enforced protocol:
+collect evidence, critique contradictions, revise positions, then synthesize a
+final verdict. Uses LangGraph when installed and a local state-machine fallback
+otherwise.
+```bash
+python3 agents/debate_state_machine.py AAPL \
+  --company "Apple Inc." \
+  --sector "Information Technology" \
+  --out data/verdicts/AAPL_debate_verdict.json \
+  --log-monitoring
+```
+
+The debate output includes contradiction records, revision notes, human-review
+flags, confidence, and the same Policy A-H evidence trail.
 
 ---
 
@@ -187,6 +231,48 @@ jupyter notebook demo_pipeline.ipynb
 ```
 
 Or open `demo_pipeline.ipynb` directly in VS Code with the Jupyter extension installed.
+
+---
+
+## Running the Stock Risk App
+
+The project now includes a production-style FastAPI layer plus a browser
+dashboard. The API reads the Gold/Silver data artifacts, serves saved JSON/PDF
+verdicts, generates new critic/debate verdicts on demand, and exposes monitoring
+lineage records to the frontend.
+
+Install the API server dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Run the app:
+```bash
+uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
+```
+
+Compatibility launcher:
+
+```bash
+python3 frontend/server.py 8766
+```
+
+Then open:
+```text
+http://127.0.0.1:8766
+```
+
+The app includes ticker search, risk filters, investment Q&A, direct verdict
+generation, debate review, company comparison, price traces, agent scorecards,
+Policy A-H evidence, contradiction/revision status, monitoring records, and
+links to generated JSON/PDF artifacts.
+
+Useful API endpoints:
+- `GET /api/health` — app/data readiness
+- `GET /api/companies` — Gold risk universe
+- `GET /api/verdicts/AAPL` — saved verdict plus fallback risk answer
+- `POST /api/verdict` — generate a critic or debate verdict
+- `GET /api/monitoring?ticker=AAPL` — lineage records
 
 ---
 
@@ -257,5 +343,3 @@ Risk labels: HIGH (above 6.0) · MODERATE (3.5 to 6.0) · LOW (below 3.5)
 - Test set: 19 companies
 
 ---
-
-

@@ -4,6 +4,8 @@ pandas>=2.0.0
 numpy>=1.26.0
 scipy>=1.12.0
 requests>=2.31.0
+scikit-learn>=1.4.0
+pyarrow>=15.0.0
 
 # ─── NLP / Sentiment ─────────────────────────────────────────────────────────
 vaderSentiment>=3.3.2
@@ -12,8 +14,18 @@ vaderSentiment>=3.3.2
 matplotlib>=3.8.0
 seaborn>=0.13.0
 
+# ─── Orchestration / Monitoring ───────────────────────────────────────────────
+langgraph>=1.0.0
+mlflow>=3.0.0
+
+# ─── API / App Server ─────────────────────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn>=0.30.0
+
+# ─── Retrieval (RAG) ──────────────────────────────────────────────────────────
+chromadb>=1.0.0
+
 # ─── GCP (install when ready to deploy) ──────────────────────────────────────
 # google-cloud-storage>=2.14.0
 # google-cloud-bigquery>=3.17.0
 # google-cloud-bigquery-storage>=2.24.0
-# pyarrow>=15.0.0         # needed for BQ DataFrame uploads
