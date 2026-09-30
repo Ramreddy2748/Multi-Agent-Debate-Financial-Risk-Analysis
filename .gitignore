@@ -1,7 +1,12 @@
 data/bronze/
 data/silver/
 venv/
+.venv/
 __pycache__/
 *.pyc
 .env
 *.log
+.DS_Store
+mlruns/
+mlflow.db
+data/gold/_mlflow_artifacts/
