@@ -51,18 +51,50 @@
           </div>
           <div class="actions">
             <a id="jsonLink" class="icon-button" href="#" target="_blank" rel="noreferrer" title="Open JSON verdict" aria-label="Open JSON verdict">JSON</a>
-            <a id="pdfLink" class="icon-button" href="#" target="_blank" rel="noreferrer" title="Open PDF verdict" aria-label="Open PDF verdict">PDF</a>
+            <a id="pdfLink" class="icon-button primary-export" href="#" target="_blank" rel="noreferrer" title="Open PDF verdict" aria-label="Open PDF verdict">PDF</a>
           </div>
         </header>
+
+        <section class="decision-hero" aria-label="Investment decision summary">
+          <div class="decision-main">
+            <span id="recommendationBadge" class="recommendation-badge">Loading</span>
+            <h3 id="heroSummary">Preparing risk decision</h3>
+            <p id="heroRationale">The dashboard will summarize the project verdict, confidence, and evidence trail.</p>
+            <div class="hero-evidence">
+              <div>
+                <span>Risk drivers</span>
+                <ul id="heroDrivers"></ul>
+              </div>
+              <div>
+                <span>Offsets</span>
+                <ul id="heroOffsets"></ul>
+              </div>
+            </div>
+          </div>
+          <div class="decision-scorecard">
+            <div>
+              <span>Risk score</span>
+              <strong id="heroScore">-</strong>
+            </div>
+            <div>
+              <span>Confidence</span>
+              <strong id="heroConfidence">-</strong>
+            </div>
+            <div>
+              <span>Review state</span>
+              <strong id="heroReview">-</strong>
+            </div>
+          </div>
+        </section>
 
         <section class="ask-panel" aria-label="Investment question">
           <div class="ask-copy">
             <h3>Ask an investment question</h3>
-            <p>Answers use the project risk score, agent verdicts, confidence, and evidence trail.</p>
+            <p>Get a decision-style answer grounded in risk score, specialist agents, confidence, and audit evidence.</p>
           </div>
           <form id="askForm" class="ask-form">
             <input id="askInput" type="search" placeholder='Ask: "Can I invest in Apple?" or "Should I buy AAPL?"'>
-            <button type="submit">Ask</button>
+            <button id="askButton" type="submit">Ask</button>
           </form>
           <div id="advisorAnswer" class="advisor-answer">
             <strong>Select a company or ask a question.</strong>
@@ -71,6 +103,7 @@
           <div class="ask-actions">
             <button id="generateVerdictButton" class="secondary-action" type="button">Generate full agent verdict</button>
             <button id="runDebateButton" class="secondary-action" type="button">Run debate review</button>
+            <span id="artifactStatus" class="artifact-status">Audit package loading</span>
           </div>
         </section>
 
@@ -135,9 +168,16 @@
             <div class="panel-head">
               <div>
                 <h3>Company Compare</h3>
-                <p>Selected ticker against common alternatives</p>
+                <p>Compare two companies head-to-head</p>
               </div>
             </div>
+            <form id="compareForm" class="compare-picker">
+              <input id="compareInputA" type="text" list="compareOptions" placeholder="Company A" autocomplete="off" />
+              <span class="compare-vs">vs</span>
+              <input id="compareInputB" type="text" list="compareOptions" placeholder="Company B" autocomplete="off" />
+              <datalist id="compareOptions"></datalist>
+              <button type="submit" class="secondary-action">Compare</button>
+            </form>
             <div id="compareGrid" class="compare-grid"></div>
           </div>
 

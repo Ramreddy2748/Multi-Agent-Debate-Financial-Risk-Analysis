@@ -4,6 +4,7 @@ const api = {
   verdict: (ticker) => `/api/verdicts/${ticker}`,
   prices: (ticker) => `/api/companies/${ticker}/prices`,
   generateVerdict: "/api/verdict",
+  compare: (tickers) => `/api/compare?tickers=${encodeURIComponent(tickers.join(","))}`,
   pdf: (ticker) => `/api/artifacts/${ticker}/pdf`,
 };
 
@@ -14,7 +15,9 @@ const state = {
   activeFilter: "ALL",
   current: null,
   monitoring: [],
-  compareTickers: ["AAPL", "ADM"],
+  comparePair: null,
+  comparePayload: null,
+  generating: false,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -71,7 +74,7 @@ function applyFilters() {
     .filter((row) => state.activeFilter === "ALL" || row.risk_label === state.activeFilter)
     .filter((row) => {
       if (!query) return true;
-      return [row.ticker, row.sector, row.risk_label].some((value) => String(value || "").toLowerCase().includes(query));
+      return [row.ticker, row.company, row.sector, row.risk_label].some((value) => String(value || "").toLowerCase().includes(query));
     })
     .sort((a, b) => number(b.composite_risk, 0) - number(a.composite_risk, 0));
   renderTickerList();
@@ -87,7 +90,10 @@ function renderTickerList() {
     item.dataset.ticker = row.ticker;
     item.classList.toggle("active", row.ticker === state.selectedTicker);
     item.querySelector(".ticker-symbol").textContent = row.ticker;
-    item.querySelector(".ticker-sector").textContent = row.sector || "Unknown sector";
+    item.querySelector(".ticker-sector").textContent = row.company && row.company !== row.ticker
+      ? `${row.company} · ${row.sector || "Unknown sector"}`
+      : row.sector || "Unknown sector";
+    item.title = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
     item.querySelector(".ticker-score").textContent = fmt(row.composite_risk, 1);
     item.addEventListener("click", () => selectTicker(row.ticker));
     list.appendChild(item);
@@ -144,7 +150,7 @@ function recommendationFrom(finalOutput, fallback) {
 
   if (label === "HIGH" || score > 6 || humanReview) {
     return {
-      stance: "Avoid or require review",
+      stance: "Require review",
       className: "risk-high",
       action: fallback ? "Generate a full agent verdict before any investment consideration." : "Require senior review before investment consideration.",
     };
@@ -152,7 +158,7 @@ function recommendationFrom(finalOutput, fallback) {
 
   if (label === "LOW" && score <= 3.5 && !disagreement) {
     return {
-      stance: "Investigate further",
+      stance: "Research candidate",
       className: "risk-low",
       action: "Suitable for deeper investment research under this project model.",
     };
@@ -179,6 +185,8 @@ function buildInvestmentAnswer(row, finalOutput, question, fallback) {
       ...(drivers.slice(0, 2).map((item) => `Risk driver: ${item}`)),
       ...(offsets.slice(0, 1).map((item) => `Offset: ${item}`)),
     ],
+    drivers,
+    offsets,
   };
 }
 
@@ -186,16 +194,87 @@ function renderAdvisorAnswer(answer) {
   const box = $("advisorAnswer");
   box.className = `advisor-answer ${answer.className || ""}`;
   box.innerHTML = `
-    <strong>${answer.stance}</strong>
+    <div class="answer-title">
+      <strong>${answer.stance}</strong>
+      <span>Research guidance, not personal financial advice</span>
+    </div>
     <p>${answer.body}</p>
-    <ul></ul>
+    <ul class="answer-bullets"></ul>
   `;
-  const list = box.querySelector("ul");
+  const list = box.querySelector(".answer-bullets");
   answer.bullets.forEach((item) => {
     const li = document.createElement("li");
     li.textContent = item;
     list.appendChild(li);
   });
+}
+
+function renderRunError(error) {
+  renderAdvisorAnswer({
+    stance: "Run failed",
+    className: "risk-high",
+    body: "The backend could not generate the verdict. Check the message below, then retry after fixing the server issue.",
+    bullets: [error?.message || String(error || "Unknown error")],
+    drivers: [],
+    offsets: [],
+  });
+}
+
+function setGenerateBusy(isBusy, mode = "critic") {
+  state.generating = isBusy;
+  const generateButton = $("generateVerdictButton");
+  const debateButton = $("runDebateButton");
+  const askButton = $("askButton");
+  if (askButton) {
+    askButton.disabled = isBusy;
+    askButton.textContent = isBusy ? "Running..." : "Ask";
+  }
+  if (generateButton) {
+    generateButton.disabled = isBusy;
+    generateButton.textContent = isBusy && mode !== "debate" ? "Generating..." : "Generate full agent verdict";
+  }
+  if (debateButton) {
+    debateButton.disabled = isBusy;
+    debateButton.textContent = isBusy && mode === "debate" ? "Running debate..." : "Run debate review";
+  }
+}
+
+function setTextList(id, items, emptyText) {
+  const list = $(id);
+  list.textContent = "";
+  const visibleItems = (items || []).filter(Boolean).slice(0, 3);
+  if (!visibleItems.length) {
+    const li = document.createElement("li");
+    li.textContent = emptyText;
+    list.appendChild(li);
+    return;
+  }
+  visibleItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+}
+
+function renderDecisionHero(row, finalOutput, verdictPayload, answer) {
+  const score = finalOutput.final_risk_score ?? row.composite_risk;
+  const label = finalOutput.final_risk_label ?? row.risk_label ?? "-";
+  const mode = verdictPayload.active_verdict_type === "debate" ? "debate verdict" : verdictPayload.active_verdict_type === "critic" ? "critic verdict" : "gold fallback";
+  const confidence = finalOutput.confidence === null || finalOutput.confidence === undefined ? "-" : fmt(finalOutput.confidence, 2);
+  const reviewState = finalOutput.requires_human_review ? "Human review" : finalOutput.disagreement_detected ? "Review disagreement" : "Auto review";
+
+  $("recommendationBadge").textContent = answer.stance;
+  $("recommendationBadge").className = `recommendation-badge ${answer.className || ""}`;
+  $("heroSummary").textContent = `${row.ticker} is ${label} risk under the current ${mode}.`;
+  $("heroRationale").textContent = answer.body;
+  $("heroScore").textContent = fmt(score, 2);
+  $("heroConfidence").textContent = confidence;
+  $("heroReview").textContent = reviewState;
+  setTextList("heroDrivers", finalOutput.main_risk_drivers, "No generated risk drivers yet.");
+  setTextList("heroOffsets", finalOutput.risk_offsets, "No material offsets captured.");
+  $("artifactStatus").textContent = verdictPayload.fallback
+    ? "Gold fallback active - generate verdict for full audit package"
+    : `${mode} loaded with ${finalOutput.policy_evidence_trail?.length || 0} policy checks`;
 }
 
 function drawPriceChart(rows, ticker) {
@@ -366,47 +445,110 @@ function renderDrivers(finalOutput) {
   });
 }
 
+function populateCompareOptions() {
+  const datalist = $("compareOptions");
+  if (!datalist) return;
+  datalist.textContent = "";
+  state.rows
+    .slice()
+    .sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)))
+    .forEach((row) => {
+      const option = document.createElement("option");
+      option.value = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
+      datalist.appendChild(option);
+    });
+}
+
+function resolveCompareTicker(query) {
+  const trimmed = String(query || "").trim();
+  if (!trimmed) return null;
+
+  const upper = trimmed.toUpperCase();
+  const exactTicker = state.rows.find((row) => row.ticker === upper);
+  if (exactTicker) return exactTicker.ticker;
+
+  // "Company Name (TICKER)" picked from the datalist
+  const parenMatch = trimmed.match(/\(([A-Za-z.\-]+)\)\s*$/);
+  if (parenMatch) {
+    const row = state.rows.find((r) => r.ticker === parenMatch[1].toUpperCase());
+    if (row) return row.ticker;
+  }
+
+  const lower = trimmed.toLowerCase();
+  const exactCompany = state.rows.find((row) => (row.company || "").toLowerCase() === lower);
+  if (exactCompany) return exactCompany.ticker;
+
+  const partial = state.rows.find((row) => (row.company || "").toLowerCase().includes(lower) || row.ticker.toLowerCase().includes(lower));
+  return partial ? partial.ticker : null;
+}
+
+function compareInputLabel(row) {
+  return row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
+}
+
 function renderCompare() {
   const container = $("compareGrid");
   if (!container) return;
   container.textContent = "";
-  const selected = state.rows.find((row) => row.ticker === state.selectedTicker);
-  const peers = state.rows
-    .filter((row) => row.ticker !== state.selectedTicker && row.sector === selected?.sector)
-    .sort((a, b) => Math.abs(number(a.composite_risk, 0) - number(selected?.composite_risk, 0)) - Math.abs(number(b.composite_risk, 0) - number(selected?.composite_risk, 0)))
-    .slice(0, 2);
-  state.compareTickers = [state.selectedTicker, ...peers.map((row) => row.ticker)];
-  state.compareTickers
-    .map((ticker) => state.rows.find((row) => row.ticker === ticker))
-    .filter(Boolean)
-    .forEach((row) => {
-      const item = document.createElement("div");
-      item.className = "compare-card";
-      item.innerHTML = `
+
+  if (!state.comparePair || !state.comparePayload) {
+    container.innerHTML = `<div class="empty">Type a second company and click "Compare".</div>`;
+    return;
+  }
+
+  const summary = state.comparePayload.summary;
+  if (summary) {
+    const summaryCard = document.createElement("div");
+    summaryCard.className = "compare-summary";
+    summaryCard.innerHTML = `
+      <strong>${summary.lower_risk_ticker} is lower risk</strong>
+      <p>${summary.decision}</p>
+    `;
+    container.appendChild(summaryCard);
+  }
+
+  (state.comparePayload.companies || []).forEach((companyResult) => {
+      const row = companyResult.company || {};
+      const card = document.createElement("div");
+      card.className = "compare-card";
+      card.innerHTML = `
         <strong>${row.ticker}</strong>
-        <span class="label-pill ${riskClass(row.risk_label)}">${row.risk_label}</span>
-        <p>Composite ${fmt(row.composite_risk, 2)} | Vol ${pct(row.ann_volatility_pct, 1)} | Drawdown ${pct(row.max_drawdown_pct, 1)}</p>
+        <span class="label-pill ${riskClass(companyResult.label)}">${companyResult.label || "-"}</span>
+        <p>${row.company && row.company !== row.ticker ? row.company : ""}</p>
+        <p>Verdict score ${fmt(companyResult.score, 2)} | Confidence ${companyResult.confidence === null || companyResult.confidence === undefined ? "-" : fmt(companyResult.confidence, 2)}</p>
+        <p>Gold composite ${fmt(row.composite_risk, 2)} | Vol ${pct(row.ann_volatility_pct, 1)} | Drawdown ${pct(row.max_drawdown_pct, 1)}</p>
+        <p>${companyResult.has_generated_verdict ? "Generated verdict available" : "Gold fallback mode"}</p>
       `;
-      container.appendChild(item);
+      container.appendChild(card);
     });
 }
 
 async function generateVerdict(row, mode = "critic", question = "") {
+  if (state.generating) return;
+  setGenerateBusy(true, mode);
   renderAdvisorAnswer({
     stance: mode === "debate" ? `Running debate for ${row.ticker}` : `Generating full verdict for ${row.ticker}`,
     className: "risk-moderate",
     body: "The backend is running the project agents, saving artifacts, and logging monitoring metadata.",
     bullets: ["The dashboard refreshes when the run completes."],
+    drivers: [],
+    offsets: [],
   });
-  await postJson(api.generateVerdict, {
-    ticker: row.ticker,
-    company: row.company || row.ticker,
-    sector: row.sector || "General",
-    query: question,
-    mode,
-  });
-  await loadCompanies();
-  await selectTicker(row.ticker, question);
+  try {
+    await postJson(api.generateVerdict, {
+      ticker: row.ticker,
+      company: row.company || row.ticker,
+      sector: row.sector || "General",
+      query: question,
+      mode,
+    });
+    await loadCompanies();
+    await selectTicker(row.ticker, question);
+  } catch (error) {
+    renderRunError(error);
+  } finally {
+    setGenerateBusy(false, mode);
+  }
 }
 
 async function selectTicker(ticker, question = "") {
@@ -427,18 +569,20 @@ async function selectTicker(ticker, question = "") {
   const activeJsonUrl = verdictPayload.active_verdict_type === "debate" && verdictPayload.debate_url ? verdictPayload.debate_url : verdictPayload.json_url;
   const rec = buildInvestmentAnswer(row, final, question, verdictPayload.fallback);
 
-  $("selectedTitle").textContent = `${row.ticker} - ${row.sector || "Unknown sector"}`;
+  $("selectedTitle").textContent = row.company && row.company !== row.ticker
+    ? `${row.company} (${row.ticker}) - ${row.sector || "Unknown sector"}`
+    : `${row.ticker} - ${row.sector || "Unknown sector"}`;
   $("compositeRisk").textContent = fmt(final.final_risk_score ?? row.composite_risk, 2);
   $("riskLabel").textContent = final.final_risk_label ?? row.risk_label ?? "-";
   $("riskLabel").className = riskClass(final.final_risk_label ?? row.risk_label);
   $("volatility").textContent = pct(row.ann_volatility_pct, 1);
   $("drawdown").textContent = pct(row.max_drawdown_pct, 1);
   $("confidence").textContent = final.confidence === null || final.confidence === undefined ? "-" : fmt(final.confidence, 2);
-  $("reviewFlag").textContent = final.requires_human_review ? "Human review required" : "Auto verdict";
+  $("reviewFlag").textContent = verdictPayload.fallback ? "Gold fallback" : final.requires_human_review ? "Human review required" : "Auto verdict";
   $("asOfDate").textContent = row.as_of_date || "-";
   $("criticType").textContent = verdictPayload.active_verdict_type === "debate" ? "Debate review output" : final.critic_type || "critic";
-  $("disagreementBadge").textContent = final.disagreement_detected ? "Disagreement" : "Aligned";
-  $("disagreementBadge").className = `status-pill ${final.disagreement_detected ? "risk-moderate" : "risk-low"}`;
+  $("disagreementBadge").textContent = verdictPayload.fallback ? "Fallback" : final.disagreement_detected ? "Disagreement" : "Aligned";
+  $("disagreementBadge").className = `status-pill ${verdictPayload.fallback || final.disagreement_detected ? "risk-moderate" : "risk-low"}`;
   $("finalDecision").textContent = final.final_decision || rec.body;
   $("jsonLink").hidden = !activeJsonUrl;
   $("pdfLink").hidden = !verdictPayload.pdf_url;
@@ -448,6 +592,7 @@ async function selectTicker(ticker, question = "") {
   $("generateVerdictButton").hidden = !verdictPayload.fallback;
   $("runDebateButton").hidden = !verdictPayload.verdict;
 
+  renderDecisionHero(row, final, verdictPayload, rec);
   renderAdvisorAnswer(rec);
   renderDrivers(final);
   drawPriceChart(pricePayload.prices || [], ticker);
@@ -455,6 +600,11 @@ async function selectTicker(ticker, question = "") {
   renderPolicyTrail(final);
   renderContradictions(verdictPayload);
   renderMonitoring(state.monitoring);
+
+  const compareInputA = $("compareInputA");
+  if (compareInputA && document.activeElement !== compareInputA) {
+    compareInputA.value = compareInputLabel(row);
+  }
   renderCompare();
 }
 
@@ -463,6 +613,7 @@ async function loadCompanies() {
   state.rows = payload.companies || [];
   renderCounts();
   applyFilters();
+  populateCompareOptions();
 }
 
 async function boot() {
@@ -491,13 +642,17 @@ $("askForm").addEventListener("submit", async (event) => {
   const question = $("askInput").value.trim();
   const row = findCompanyFromQuestion(question) || state.rows.find((item) => item.ticker === state.selectedTicker);
   if (!row) return;
-  if (state.selectedTicker !== row.ticker) {
-    await selectTicker(row.ticker, question);
-  }
-  if (state.current?.fallback) {
-    await generateVerdict(row, "critic", question);
-  } else {
-    renderAdvisorAnswer(buildInvestmentAnswer(state.current.company, state.current.final_output, question, false));
+  try {
+    if (state.selectedTicker !== row.ticker) {
+      await selectTicker(row.ticker, question);
+    }
+    if (state.current?.fallback) {
+      await generateVerdict(row, "critic", question);
+    } else {
+      renderAdvisorAnswer(buildInvestmentAnswer(state.current.company, state.current.final_output, question, false));
+    }
+  } catch (error) {
+    renderRunError(error);
   }
 });
 
@@ -509,6 +664,42 @@ $("generateVerdictButton").addEventListener("click", async () => {
 $("runDebateButton").addEventListener("click", async () => {
   const row = state.current?.company;
   if (row) await generateVerdict(row, "debate", $("askInput").value.trim());
+});
+
+$("compareForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputA = $("compareInputA");
+  const inputB = $("compareInputB");
+  const tickerA = resolveCompareTicker(inputA.value);
+  const tickerB = resolveCompareTicker(inputB.value);
+
+  let hasError = false;
+  [[inputA, tickerA], [inputB, tickerB]].forEach(([input, ticker]) => {
+    if (!ticker) {
+      input.classList.add("input-error");
+      setTimeout(() => input.classList.remove("input-error"), 1200);
+      hasError = true;
+    }
+  });
+  if (hasError) return;
+
+  if (tickerA === tickerB) {
+    inputB.classList.add("input-error");
+    setTimeout(() => inputB.classList.remove("input-error"), 1200);
+    return;
+  }
+
+  state.comparePair = [tickerA, tickerB];
+  $("compareGrid").innerHTML = `<div class="empty">Comparing ${tickerA} and ${tickerB} through the API...</div>`;
+  fetchJson(api.compare(state.comparePair))
+    .then((payload) => {
+      state.comparePayload = payload;
+      renderCompare();
+    })
+    .catch((error) => {
+      state.comparePayload = null;
+      $("compareGrid").innerHTML = `<div class="empty">Compare failed: ${error.message}</div>`;
+    });
 });
 
 boot();

@@ -45,6 +45,10 @@ class VerdictRequest(BaseModel):
     use_llm: bool = False
 
 
+class CompareRequest(BaseModel):
+    tickers: list[str] = Field(..., min_length=2, max_length=5)
+
+
 def _read_csv(path: Path) -> list[dict[str, str]]:
     if not path.exists():
         return []
@@ -109,28 +113,53 @@ def _safe_float(value: Any) -> float | None:
         return None
 
 
+def _price_metadata(ticker: str) -> dict[str, str]:
+    """Company name/sector/industry live in the Silver prices file, not the
+    Gold table (which is missing `company` entirely and has a blank `sector`
+    for a few tickers ingested before the sector-labeled batch run)."""
+    rows = _read_csv(_price_path(ticker))
+    if not rows:
+        return {}
+    latest = rows[-1]
+    return {
+        "company": latest.get("long_name") or "",
+        "sector": latest.get("sector") or "",
+        "industry": latest.get("industry") or "",
+    }
+
+
 def _company_payload(row: dict[str, str]) -> dict[str, Any]:
+    ticker = row.get("ticker", "")
     score = _safe_float(row.get("composite_risk"))
+    meta = _price_metadata(ticker)
     return {
         **row,
+        "company": row.get("company") or meta.get("company") or ticker,
+        "sector": row.get("sector") or meta.get("sector") or "Unknown sector",
+        "industry": row.get("industry") or meta.get("industry") or "",
         "composite_risk_num": score,
         "ann_volatility_pct_num": _safe_float(row.get("ann_volatility_pct")),
         "max_drawdown_pct_num": _safe_float(row.get("max_drawdown_pct")),
-        "has_verdict": _verdict_path(row.get("ticker", "")).exists(),
-        "has_debate": _debate_path(row.get("ticker", "")).exists(),
-        "has_price_history": _price_path(row.get("ticker", "")).exists(),
+        "has_verdict": _verdict_path(ticker).exists(),
+        "has_debate": _debate_path(ticker).exists(),
+        "has_price_history": _price_path(ticker).exists(),
     }
 
 
 def _gold_fallback_verdict(row: dict[str, str]) -> dict[str, Any]:
     ticker = row.get("ticker", "UNKNOWN")
+    name = row.get("company") or ticker
     score = _safe_float(row.get("composite_risk")) or 5.0
     label = row.get("risk_label") or "MODERATE"
+    def component_driver(label_text: str, key: str) -> str:
+        value = _safe_float(row.get(key))
+        return f"{label_text} {value:.2f}/10" if value is not None else f"{label_text} -/10"
+
     decision = {
-        "LOW": f"{ticker} is a lower-risk candidate for further research based on the Gold feature table.",
-        "MODERATE": f"{ticker} should stay on the watchlist pending deeper review of volatility, drawdown, and sector exposure.",
-        "HIGH": f"{ticker} is high risk in the Gold feature table and should require review before investment consideration.",
-    }.get(label, f"{ticker} should be reviewed before investment consideration.")
+        "LOW": f"{name} ({ticker}) is a lower-risk candidate for further research based on the Gold feature table.",
+        "MODERATE": f"{name} ({ticker}) should stay on the watchlist pending deeper review of volatility, drawdown, and sector exposure.",
+        "HIGH": f"{name} ({ticker}) is high risk in the Gold feature table and should require review before investment consideration.",
+    }.get(label, f"{name} ({ticker}) should be reviewed before investment consideration.")
     return {
         "agent": "Gold Table Fallback",
         "critic_type": "gold_table_fallback",
@@ -141,10 +170,10 @@ def _gold_fallback_verdict(row: dict[str, str]) -> dict[str, Any]:
         "requires_human_review": label == "HIGH",
         "final_decision": decision,
         "main_risk_drivers": [
-            f"Fundamental risk {row.get('fundamental_risk', '-')}/10",
-            f"Volatility risk {row.get('volatility_risk', '-')}/10",
-            f"Sentiment risk {row.get('sentiment_risk', '-')}/10",
-            f"Macro risk {row.get('macro_risk', '-')}/10",
+            component_driver("Fundamental risk", "fundamental_risk"),
+            component_driver("Volatility risk", "volatility_risk"),
+            component_driver("Sentiment risk", "sentiment_risk"),
+            component_driver("Macro risk", "macro_risk"),
         ],
         "risk_offsets": [],
         "policy_evidence_trail": [
@@ -161,6 +190,54 @@ def _gold_fallback_verdict(row: dict[str, str]) -> dict[str, Any]:
                 "evidence": ["No generated per-ticker agent verdict JSON was found."],
             },
         ],
+    }
+
+
+def _compare_companies(tickers: list[str]) -> dict[str, Any]:
+    unique_tickers = []
+    for ticker in tickers:
+        normalized = ticker.upper().strip()
+        if normalized and normalized not in unique_tickers:
+            unique_tickers.append(normalized)
+
+    if len(unique_tickers) < 2:
+        raise HTTPException(status_code=400, detail="Provide at least two different tickers to compare")
+
+    companies_payload = []
+    for ticker in unique_tickers:
+        row = _company_payload(_find_company(ticker))
+        final = _read_json(_debate_path(ticker)) or _read_json(_verdict_path(ticker))
+        final_output = (final or {}).get("final_output") or _gold_fallback_verdict(row)
+        companies_payload.append({
+            "ticker": ticker,
+            "company": row,
+            "final_output": final_output,
+            "score": _safe_float(final_output.get("final_risk_score")) or row.get("composite_risk_num"),
+            "label": final_output.get("final_risk_label") or row.get("risk_label"),
+            "confidence": _safe_float(final_output.get("confidence")),
+            "has_generated_verdict": final is not None,
+        })
+
+    ranked = sorted(companies_payload, key=lambda item: item.get("score") if item.get("score") is not None else 99.0)
+    lowest = ranked[0]
+    highest = ranked[-1]
+    score_delta = None
+    if lowest.get("score") is not None and highest.get("score") is not None:
+        score_delta = round(float(highest["score"]) - float(lowest["score"]), 2)
+
+    return {
+        "tickers": unique_tickers,
+        "count": len(companies_payload),
+        "companies": companies_payload,
+        "summary": {
+            "lower_risk_ticker": lowest["ticker"],
+            "higher_risk_ticker": highest["ticker"],
+            "score_delta": score_delta,
+            "decision": (
+                f"{lowest['ticker']} has the lower current project risk score"
+                + (f" by {score_delta:.2f} points." if score_delta is not None else ".")
+            ),
+        },
     }
 
 
@@ -198,6 +275,16 @@ def companies() -> dict[str, Any]:
     return {"count": len(rows), "companies": rows}
 
 
+@app.get("/api/compare")
+def compare_get(tickers: str) -> dict[str, Any]:
+    return _compare_companies(tickers.split(","))
+
+
+@app.post("/api/compare")
+def compare_post(request: CompareRequest) -> dict[str, Any]:
+    return _compare_companies(request.tickers)
+
+
 @app.get("/api/companies/{ticker}")
 def company(ticker: str) -> dict[str, Any]:
     row = _find_company(ticker)
@@ -225,6 +312,7 @@ def company_prices(ticker: str) -> dict[str, Any]:
 @app.get("/api/verdicts/{ticker}")
 def get_verdict(ticker: str) -> dict[str, Any]:
     row = _find_company(ticker)
+    company_payload = _company_payload(row)
     verdict_path = _verdict_path(ticker)
     debate_path = _debate_path(ticker)
     pdf_path = _pdf_path(ticker)
@@ -232,11 +320,11 @@ def get_verdict(ticker: str) -> dict[str, Any]:
     debate = _read_json(debate_path)
     debate_final = (debate or {}).get("final_output")
     critic_final = (verdict or {}).get("final_output")
-    final = debate_final or critic_final or _gold_fallback_verdict(row)
+    final = debate_final or critic_final or _gold_fallback_verdict(company_payload)
     active_type = "debate" if debate_final else "critic" if critic_final else "fallback"
     return {
         "ticker": ticker.upper(),
-        "company": _company_payload(row),
+        "company": company_payload,
         "verdict": verdict,
         "debate": debate,
         "final_output": final,
