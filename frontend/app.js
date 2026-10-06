@@ -105,6 +105,26 @@ function normalizeText(value) {
   return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
+function editDistance(a, b) {
+  const left = String(a || "");
+  const right = String(b || "");
+  if (!left) return right.length;
+  if (!right) return left.length;
+  const dp = Array.from({ length: left.length + 1 }, (_, i) => [i]);
+  for (let j = 1; j <= right.length; j += 1) dp[0][j] = j;
+  for (let i = 1; i <= left.length; i += 1) {
+    for (let j = 1; j <= right.length; j += 1) {
+      const cost = left[i - 1] === right[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost,
+      );
+    }
+  }
+  return dp[left.length][right.length];
+}
+
 async function fetchJson(path) {
   const response = await fetch(path, { cache: "no-store" });
   const data = await response.json().catch(() => ({}));
@@ -221,7 +241,24 @@ function findCompanyFromQuestion(question) {
     }
   }
 
-  return null;
+  const companyMatch = state.rows.find((row) => {
+    const company = normalizeText(row.company || "");
+    return company && (normalized.includes(company) || company.includes(normalized));
+  });
+  if (companyMatch) return companyMatch;
+
+  const tickerWords = words.filter((word) => word.length >= 2 && /[a-z]/.test(word));
+  let best = null;
+  tickerWords.forEach((word) => {
+    state.rows.forEach((row) => {
+      const ticker = String(row.ticker || "").toLowerCase();
+      const distance = editDistance(word, ticker);
+      if (distance <= 2 && (!best || distance < best.distance)) {
+        best = { row, distance };
+      }
+    });
+  });
+  return best?.row || null;
 }
 
 function recommendationFrom(finalOutput, fallback) {
@@ -964,8 +1001,18 @@ $("searchInput").addEventListener("input", applyFilters);
 $("askForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const question = $("askInput").value.trim();
-  const row = findCompanyFromQuestion(question) || state.rows.find((item) => item.ticker === state.selectedTicker);
-  if (!row) return;
+  const row = findCompanyFromQuestion(question) || (!question ? state.rows.find((item) => item.ticker === state.selectedTicker) : null);
+  if (!row) {
+    renderAdvisorAnswer({
+      stance: "Company not found",
+      className: "risk-moderate",
+      body: `I could not match "${question}" to a ticker in the current 519-company universe. Try a ticker such as GOOGL, GOOG, AAPL, or MSFT.`,
+      bullets: ["No verdict was generated because using the currently selected ticker would answer the wrong company."],
+      drivers: [],
+      offsets: [],
+    });
+    return;
+  }
   try {
     if (state.selectedTicker !== row.ticker) {
       await selectTicker(row.ticker, question);
