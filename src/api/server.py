@@ -218,10 +218,10 @@ def _model_registry() -> list[dict[str, Any]]:
             "training": _training_series(configured_lora_dir),
         },
         {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market Mistral LoRA Candidate",
             "model": "mistralai/Mistral-7B-Instruct-v0.3 + LoRA",
             "backend": "local_transformers_or_remote_colab",
-            "status": "available" if mistral_lora_dir.exists() else "not_trained_yet",
+            "status": "trained_available_not_active" if mistral_lora_dir.exists() else "not_trained_yet",
             "claim_type": "LORA_MODEL_INFERENCE",
             "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
             "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
