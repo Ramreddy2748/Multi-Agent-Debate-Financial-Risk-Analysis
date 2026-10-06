@@ -123,7 +123,7 @@ Expected output:
 - `data/silver/silver_prices_TICKER.csv` — cleaned price data with engineered features
 - `data/silver/silver_edgar_TICKER.csv` — cleaned financial statements
 - `data/silver/silver_macro.csv` — cleaned macroeconomic data
-- `data/silver/silver_news_sentiment.csv` — VADER sentiment scores
+- `data/silver/silver_news_sentiment.csv` — VADER fallback sentiment scores
 - `data/silver_parquet/*.parquet` — parquet copies for analytics and BigQuery-ready workflows
 
 ### Step 3 — EDA and risk scoring (Gold layer)
@@ -373,10 +373,32 @@ Gold layer (data/gold/)         -- risk scores, analytics-ready
 Train / Val / Test splits       -- stratified by risk label
    |
    v
-Model training and evaluation   -- coming in Phase 2
+Model training and evaluation   -- FinBERT, Qwen LoRA, and Mistral LoRA candidates
 ```  
 
 ---
+
+## Sentiment Agent
+
+The dedicated Sentiment Agent reads NewsAPI headline rows from
+`data/bronze/newsapi_headlines_raw.csv` and uses `ProsusAI/finbert` for
+financial sentiment inference when headlines are available. It returns a
+structured agent output with sentiment risk score, label, confidence, article
+count, FinBERT positive/neutral/negative counts, top positive/negative headline
+evidence, and fallback status.
+
+Run it directly:
+```bash
+python3 agents/sentiment/finbert.py AAPL --company "Apple Inc." --pretty
+```
+
+Fallback behavior:
+- `FINBERT_SENTIMENT_INFERENCE` when ticker-specific NewsAPI headlines are present and FinBERT loads.
+- `VADER_BASELINE_FALLBACK` when FinBERT is unavailable but Silver sentiment exists.
+- `NO_NEWS_FALLBACK` when no ticker-specific news coverage exists.
+
+The critic/orchestrator consumes this output as a separate specialist agent
+alongside Fundamental, Market/Volatility, Macro, and Critic outputs.
 
 ## Risk Score Dimensions
 
@@ -386,7 +408,7 @@ Each company receives four risk scores on a 1-10 scale:
 |---|---|---|
 | Fundamental risk | P/E ratio + beta + max drawdown (weighted) | Yahoo Finance, SEC EDGAR |
 | Volatility risk | Annualised standard deviation of daily returns | Yahoo Finance |
-| Sentiment risk | VADER compound score from news headlines (inverted) | NewsAPI |
+| Sentiment risk | FinBERT headline sentiment, with VADER fallback | NewsAPI |
 | Macro risk | Fed Funds Rate severity + CPI z-score | FRED |
 | Composite risk | 30% fundamental + 30% volatility + 20% sentiment + 20% macro | All sources |
 
@@ -396,13 +418,11 @@ Risk labels: HIGH (above 6.0) · MODERATE (3.5 to 6.0) · LOW (below 3.5)
 
 ## Current Dataset
 
-- Companies: 123 (S&P 500 + NASDAQ-100)
+- Companies: 519 in the current Gold master table
 - Sectors: 11 GICS sectors
-- Collection date: 2026-03-04
-- Bronze files: 361 CSVs
-- Silver files: 243 CSVs
-- Gold files: 17 CSVs
-- Report charts: 9 PNGs
+- Collection date: generated from the latest local pipeline run
+- Gold master file: `data/gold/gold_risk_scores_ALL.csv`
+- Model training files: `data/gold/fundamental_finetune_data.jsonl` and `data/gold/market_sentiment_finetune_data.jsonl`
 - Train set: 86 companies
 - Validation set: 18 companies
 - Test set: 19 companies
