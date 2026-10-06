@@ -40,8 +40,10 @@ BQ_TABLE_RISK   = f"{GCP_PROJECT_ID}.{BQ_DATASET}.risk_scores"
 LOCAL_DATA_DIR  = "data"
 LOCAL_BRONZE    = f"{LOCAL_DATA_DIR}/bronze"
 LOCAL_SILVER    = f"{LOCAL_DATA_DIR}/silver"
+LOCAL_SILVER_PARQUET = f"{LOCAL_DATA_DIR}/silver_parquet"
 LOCAL_GOLD      = f"{LOCAL_DATA_DIR}/gold"
 LOCAL_REPORTS   = f"{LOCAL_DATA_DIR}/reports"
+LOCAL_VERDICTS   = f"{LOCAL_DATA_DIR}/verdicts"
 
 # ─── CLEANING THRESHOLDS ──────────────────────────────────────────────────────
 ZSCORE_THRESHOLD        = 3.0    # Outlier detection on daily returns
@@ -61,4 +63,7 @@ FRED_SERIES = {
     "treasury_10y":     "GS10",        # 10-Year Treasury Yield
     "unemployment":     "UNRATE",      # Unemployment Rate
     "gdp_growth":       "A191RL1Q225SBEA",  # Real GDP growth rate
+    "yield_curve_10y2y":"T10Y2Y",      # 10-Year minus 2-Year Treasury spread
+    "vix":              "VIXCLS",      # CBOE Volatility Index
+    "wti_oil":          "DCOILWTICO",  # WTI crude oil price
 }

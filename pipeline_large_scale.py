@@ -253,6 +253,7 @@ def run(
     resume:     bool = False,
     test_mode:  bool = False,
     batch_size: int  = 50,
+    universe_csv: str = None,
 ):
     start_time = time.time()
     run_date   = datetime.today().strftime("%Y-%m-%d %H:%M")
@@ -266,10 +267,24 @@ def run(
     log.info(f"Resume     : {resume}")
     log.info(f"Test mode  : {test_mode} {'(10 per sector)' if test_mode else ''}")
     log.info(f"Batch size : {batch_size}")
+    log.info(f"Universe CSV: {universe_csv or 'live Wikipedia fetch'}")
 
     # ── Load ticker universe ───────────────────────────────────────────────
     log.info("\n[Setup] Loading ticker universe...")
-    universe_df = get_all_tickers()
+    if universe_csv:
+        universe_df = pd.read_csv(universe_csv)
+        required = {"ticker", "company", "sector"}
+        if not required.issubset(universe_df.columns):
+            missing = ", ".join(sorted(required - set(universe_df.columns)))
+            raise ValueError(f"Universe CSV missing required column(s): {missing}")
+        if "sub_industry" not in universe_df.columns:
+            universe_df["sub_industry"] = ""
+        if "index" not in universe_df.columns:
+            universe_df["index"] = "CUSTOM"
+        universe_df["ticker"] = universe_df["ticker"].astype(str).str.strip()
+        universe_df = universe_df.dropna(subset=["ticker"]).drop_duplicates(subset=["ticker"], keep="first")
+    else:
+        universe_df = get_all_tickers()
     if universe_df.empty:
         log.error("Could not load tickers — aborting")
         sys.exit(1)
@@ -426,6 +441,10 @@ if __name__ == "__main__":
         help="Number of tickers per batch (default: 50)"
     )
     parser.add_argument(
+        "--universe-csv", default=None,
+        help="CSV with ticker, company, sector columns; avoids live Wikipedia ticker fetch"
+    )
+    parser.add_argument(
         "--list-sectors", action="store_true",
         help="Just print available sectors and exit"
     )
@@ -455,4 +474,5 @@ if __name__ == "__main__":
         resume=args.resume,
         test_mode=args.test,
         batch_size=args.batch_size,
+        universe_csv=args.universe_csv,
     )

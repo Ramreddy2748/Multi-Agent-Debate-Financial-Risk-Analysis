@@ -12,6 +12,7 @@ Usage:
 
 import logging
 import time
+from pathlib import Path
 import pandas as pd
 import requests
 from typing import Optional
@@ -36,6 +37,7 @@ SECTORS = [
 # ─── Wikipedia URLs ───────────────────────────────────────────────────────────
 SP500_URL   = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 NASDAQ_URL  = "https://en.wikipedia.org/wiki/Nasdaq-100"
+CACHED_UNIVERSE_PATH = Path("data/gold/ticker_universe.csv")
 
 
 def _read_html_with_headers(url: str) -> list:
@@ -179,8 +181,31 @@ def _nasdaq100_fallback() -> pd.DataFrame:
     df = pd.DataFrame(nasdaq_tickers, columns=["ticker", "company", "sector"])
     df["sub_industry"] = ""
     df["index"] = "NASDAQ100"
-    log.info(f"  ✔ NASDAQ-100 fallback: {len(df)} companies")
+    log.info(f"  NASDAQ-100 fallback: {len(df)} companies")
     return df
+
+
+def _cached_universe_fallback() -> pd.DataFrame:
+    """Use the last saved ticker universe when live Wikipedia fetches fail."""
+    if not CACHED_UNIVERSE_PATH.exists():
+        return pd.DataFrame()
+    try:
+        df = pd.read_csv(CACHED_UNIVERSE_PATH)
+        required = {"ticker", "company", "sector"}
+        if not required.issubset(df.columns):
+            log.warning(f"  Cached ticker universe missing required columns: {CACHED_UNIVERSE_PATH}")
+            return pd.DataFrame()
+        if "sub_industry" not in df.columns:
+            df["sub_industry"] = ""
+        if "index" not in df.columns:
+            df["index"] = "CACHED"
+        df["ticker"] = df["ticker"].astype(str).str.strip()
+        df = df.dropna(subset=["ticker"]).drop_duplicates(subset=["ticker"], keep="first")
+        log.info(f"  Cached ticker universe fallback: {len(df)} companies from {CACHED_UNIVERSE_PATH}")
+        return df[["ticker", "company", "sector", "sub_industry", "index"]].reset_index(drop=True)
+    except Exception as exc:
+        log.warning(f"  Cached ticker universe fallback failed: {exc}")
+        return pd.DataFrame()
 
 
 def get_all_tickers(deduplicate: bool = True) -> pd.DataFrame:
@@ -197,8 +222,17 @@ def get_all_tickers(deduplicate: bool = True) -> pd.DataFrame:
     nasdaq  = fetch_nasdaq100()
 
     if sp500.empty and nasdaq.empty:
+        cached = _cached_universe_fallback()
+        if not cached.empty:
+            return cached
         log.error("Could not fetch any tickers!")
         return pd.DataFrame()
+
+    if sp500.empty and len(nasdaq) <= 40:
+        cached = _cached_universe_fallback()
+        if not cached.empty and len(cached) > len(nasdaq):
+            log.warning("  Live S&P 500 fetch failed; using larger cached ticker universe instead of small NASDAQ fallback.")
+            return cached
 
     combined = pd.concat([sp500, nasdaq], ignore_index=True)
 
@@ -210,7 +244,7 @@ def get_all_tickers(deduplicate: bool = True) -> pd.DataFrame:
         combined = combined.drop_duplicates(subset=["ticker"], keep="first")
         combined.loc[combined["ticker"].isin(both), "index"] = "BOTH"
 
-        log.info(f"  {len(both)} tickers appear in both indices (marked as BOTH)")
+        log.info(f"{len(both)} tickers appear in both indices (marked as BOTH)")
 
     log.info(f"[Tickers] Total universe: {len(combined)} unique companies\n")
     return combined.reset_index(drop=True)
@@ -234,13 +268,13 @@ def get_tickers_by_sector(df: Optional[pd.DataFrame] = None) -> dict:
     # Log summary
     log.info("[Tickers] Sector breakdown:")
     for sector, tickers in sorted(sector_map.items(), key=lambda x: -len(x[1])):
-        log.info(f"  {sector:<35} {len(tickers):>4} companies")
+        log.info(f"{sector:<35} {len(tickers):>4} companies")
 
     return sector_map
 
 
 def get_sector_batches(
-    df:         Optional[pd.DataFrame] = None,
+    df: Optional[pd.DataFrame] = None,
     batch_size: int = 50,
 ) -> list:
     """

@@ -319,17 +319,17 @@ fig.suptitle("FRED Macroeconomic Indicators — Agent Input Data\n"
              fontsize=13, fontweight="bold", color=NAVY)
 
 macro_df = pd.read_csv(
-    "data/silver/silver_macro_enhanced.csv",
-    parse_dates=["date"],
-    index_col="date"
+    "data/silver/silver_macro.csv",
+    index_col=0,
+    parse_dates=True
 )
 
 # Panel 1 — Fed Funds Rate + VIX
 ax1 = axes[0]
 ax1b = ax1.twinx()
-ax1.plot(macro_df.index, macro_df["FEDFUNDS"],
+ax1.plot(macro_df.index, macro_df["fed_funds_rate"],
          color="#EF4444", linewidth=1.5, label="Fed Funds Rate (%)")
-ax1b.plot(macro_df.index, macro_df["VIXCLS"],
+ax1b.plot(macro_df.index, macro_df["vix"],
           color="#7C3AED", linewidth=1, alpha=0.7, label="VIX")
 ax1.set_ylabel("Fed Funds Rate (%)", color="#EF4444", fontsize=9)
 ax1b.set_ylabel("VIX", color="#7C3AED", fontsize=9)
@@ -343,9 +343,9 @@ ax1.legend(lines1 + lines2, labels1 + labels2,
 # Panel 2 — CPI + Unemployment
 ax2 = axes[1]
 ax2b = ax2.twinx()
-ax2.plot(macro_df.index, macro_df["CPIAUCSL"],
+ax2.plot(macro_df.index, macro_df["cpi"],
          color="#F59E0B", linewidth=1.5, label="CPI Index")
-ax2b.plot(macro_df.index, macro_df["UNRATE"],
+ax2b.plot(macro_df.index, macro_df["unemployment"],
           color="#0D9488", linewidth=1, alpha=0.8, label="Unemployment (%)")
 ax2.set_ylabel("CPI Index", color="#F59E0B", fontsize=9)
 ax2b.set_ylabel("Unemployment (%)", color="#0D9488", fontsize=9)
@@ -359,11 +359,11 @@ ax2.legend(lines1 + lines2, labels1 + labels2,
 # Panel 3 — Yield Curve + Oil
 ax3 = axes[2]
 ax3b = ax3.twinx()
-ax3.plot(macro_df.index, macro_df["T10Y2Y"],
+ax3.plot(macro_df.index, macro_df["yield_curve_10y2y"],
          color="#185FA5", linewidth=1.5, label="Yield Curve (10Y-2Y)")
 ax3.axhline(0, color="#EF4444", linestyle="--",
             linewidth=1, alpha=0.5, label="Inversion line")
-ax3b.plot(macro_df.index, macro_df["DCOILWTICO"],
+ax3b.plot(macro_df.index, macro_df["wti_oil"],
           color="#854F0B", linewidth=1, alpha=0.7,
           label="WTI Oil ($/barrel)")
 ax3.set_ylabel("10Y-2Y Spread (%)", color="#185FA5", fontsize=9)

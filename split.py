@@ -2,7 +2,7 @@
 split.py
 ─────────────────────────────────────────────────────────────────────
 DATA SPLITTING MODULE
-Single-snapshot stratified split (123 companies, one date).
+Single-snapshot stratified split (current company universe, one date).
 Temporal split deferred until multi-date collection is complete.
 
 Split: 70% train / 15% val / 15% test (stratified by risk_label)
@@ -27,14 +27,34 @@ logging.basicConfig(
 )
 
 
+def _backfill_missing_sectors(df: pd.DataFrame) -> pd.DataFrame:
+    """A handful of early-pipeline tickers have no sector in the Gold table
+    (silently dropped by sector charts otherwise); the Silver price file for
+    that ticker still has it, so pull it from there instead of leaving a gap."""
+    missing = df[df["sector"].isna()]
+    for ticker in missing.index:
+        path = os.path.join(config.LOCAL_SILVER, f"silver_prices_{ticker}.csv")
+        if not os.path.exists(path):
+            continue
+        price_df = pd.read_csv(path)
+        sector_values = price_df["sector"].dropna() if "sector" in price_df.columns else pd.Series(dtype=object)
+        if not sector_values.empty:
+            df.loc[ticker, "sector"] = sector_values.iloc[-1]
+            log.info(f"  Backfilled sector for {ticker} from Silver prices: {sector_values.iloc[-1]}")
+    return df
+
+
 def load_gold() -> pd.DataFrame:
     path = os.path.join(config.LOCAL_GOLD, "gold_risk_scores_ALL.csv")
     if not os.path.exists(path):
         raise FileNotFoundError(f"Gold file not found at {path}. Run pipeline first.")
     df = pd.read_csv(path, index_col=0)
 
+    df = _backfill_missing_sectors(df)
+
     # Fix sector naming inconsistency
     df["sector"] = df["sector"].replace("Technology", "Information Technology")
+    df["sector"] = df["sector"].replace("Financial Services", "Financials")
     log.info(f"Loaded Gold table: {df.shape[0]} rows × {df.shape[1]} cols")
     return df
 
@@ -94,9 +114,10 @@ def plot_class_balance(train, val, test):
     colors  = {"HIGH": "#EF4444", "MODERATE": "#F59E0B", "LOW": "#22C55E"}
     splits  = {"Train (70%)": train, "Val (15%)": val, "Test (15%)": test}
 
+    total_companies = len(train) + len(val) + len(test)
     fig, axes = plt.subplots(1, 3, figsize=(12, 4))
     fig.suptitle(
-        "Risk Label Class Balance Across Splits\n(Stratified — 123 S&P 500 + NASDAQ-100 Companies)",
+        f"Risk Label Class Balance Across Splits\n(Stratified — {total_companies:,} S&P 500 + NASDAQ-100 Companies)",
         fontsize=13, fontweight="bold", color="#0D1B3E"
     )
 
@@ -153,7 +174,7 @@ def plot_sector_distribution(df: pd.DataFrame):
         ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height() / 2,
                 str(count), va="center", fontsize=10, fontweight="bold")
 
-    ax.set_title("Companies per Sector — 123 Total\n(S&P 500 + NASDAQ-100)",
+    ax.set_title(f"Companies per Sector — {sector_counts.sum():,} Total\n(S&P 500 + NASDAQ-100)",
                  fontsize=13, fontweight="bold", color="#0D1B3E")
     ax.set_xlabel("Number of Companies", fontsize=11)
     ax.spines["top"].set_visible(False)
@@ -183,7 +204,7 @@ def run_split():
     log.info("FINANCIAL RISK PIPELINE — DATA SPLITTING")
     log.info("=" * 60 + "\n")
 
-    df               = load_gold()
+    df= load_gold()
     train, val, test = stratified_split(df)
 
     print_split_summary(train, val, test)
