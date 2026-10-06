@@ -183,7 +183,7 @@ def run_split():
     log.info("FINANCIAL RISK PIPELINE — DATA SPLITTING")
     log.info("=" * 60 + "\n")
 
-    df               = load_gold()
+    df= load_gold()
     train, val, test = stratified_split(df)
 
     print_split_summary(train, val, test)

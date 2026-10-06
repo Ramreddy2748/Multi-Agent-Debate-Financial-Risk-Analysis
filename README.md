@@ -251,6 +251,34 @@ Run the app:
 uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
 ```
 
+To enable the local fine-tuned Market/News LoRA adapter, first place the
+adapter files under `models/market_sentiment_lora/`, then install the optional
+ML inference packages and start the API with the LoRA flag:
+
+```bash
+pip install torch transformers peft accelerate safetensors
+MARKET_LORA_ENABLED=1 uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
+```
+
+If the adapter is missing, dependencies are unavailable, or local inference is
+too slow, the market/news agent automatically falls back to the deterministic
+volatility and sentiment rule path.
+
+To train and enable the Fundamental Agent FinBERT classifier:
+
+```bash
+pip install torch transformers datasets scikit-learn accelerate safetensors
+python3 agents/fundamental_finbert.py train \
+  --train-jsonl data/gold/fundamental_finetune_data.jsonl \
+  --output-dir models/fundamental_agent_finbert
+
+FUNDAMENTAL_FINBERT_ENABLED=1 uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
+```
+
+If `models/fundamental_agent_finbert/` is missing or inference fails, the
+Fundamental Agent automatically falls back to the deterministic SEC-financials
+logic.
+
 Compatibility launcher:
 
 ```bash

@@ -23,8 +23,11 @@ import csv
 import json
 import math
 import os
+import re
 import statistics
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any, Optional
 
@@ -32,6 +35,34 @@ from typing import Any, Optional
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SILVER_DIR = PROJECT_ROOT / "data" / "silver"
 GOLD_DIR = PROJECT_ROOT / "data" / "gold"
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(PROJECT_ROOT / ".env", override=True)
+except Exception:
+    env_path = PROJECT_ROOT / ".env"
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            os.environ[key.strip()] = value.strip().strip('"').strip("'")
+MARKET_LORA_ADAPTER_DIR = Path(os.getenv("MARKET_LORA_ADAPTER_DIR", PROJECT_ROOT / "models" / "market_sentiment_lora"))
+MARKET_LORA_BASE_MODEL = os.getenv("MARKET_LORA_BASE_MODEL", "Qwen/Qwen2.5-1.5B-Instruct")
+MARKET_LORA_ENABLED = os.getenv("MARKET_LORA_ENABLED", "0").lower() in {"1", "true", "yes"}
+MARKET_LORA_MAX_NEW_TOKENS = int(os.getenv("MARKET_LORA_MAX_NEW_TOKENS", "48"))
+MARKET_LORA_REMOTE_URL = os.getenv("MARKET_LORA_REMOTE_URL", "").strip()
+MARKET_LORA_REMOTE_TIMEOUT = int(os.getenv("MARKET_LORA_REMOTE_TIMEOUT", "600"))
+FUNDAMENTAL_FINBERT_ENABLED = os.getenv("FUNDAMENTAL_FINBERT_ENABLED", "0").lower() in {"1", "true", "yes"}
+FUNDAMENTAL_FINBERT_MODEL_DIR = Path(os.getenv("FUNDAMENTAL_FINBERT_MODEL_DIR", PROJECT_ROOT / "models" / "fundamental_agent_finbert"))
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from agents.fundamental_finbert import predict_fundamental_finbert
+from agents.policy_evidence import build_policy_evidence_trail
+
+_MARKET_LORA_RUNTIME: dict[str, Any] | None = None
+_MARKET_LORA_LAST_ERROR: str | None = None
 
 
 def _safe_float(value: Any, default: Optional[float] = None) -> Optional[float]:
@@ -92,6 +123,196 @@ def _load_gold_context(ticker: str) -> dict[str, str]:
     return {}
 
 
+def _extract_json_object(text: str) -> dict[str, Any]:
+    """Extract the final JSON object from chatty causal-LM output."""
+    decoder = json.JSONDecoder()
+    candidates: list[dict[str, Any]] = []
+    for match in re.finditer(r"\{", text):
+        try:
+            parsed, _ = decoder.raw_decode(text[match.start():])
+            if isinstance(parsed, dict):
+                candidates.append(parsed)
+        except json.JSONDecodeError:
+            continue
+    for parsed in reversed(candidates):
+        if any(key in parsed for key in ("risk_score", "market_sentiment_risk_score", "combined_risk", "score")):
+            return parsed
+    if candidates:
+        return candidates[-1]
+    raise ValueError("LoRA output did not contain valid JSON")
+
+
+def _load_market_lora_runtime() -> dict[str, Any] | None:
+    global _MARKET_LORA_RUNTIME, _MARKET_LORA_LAST_ERROR
+    _MARKET_LORA_LAST_ERROR = None
+    if _MARKET_LORA_RUNTIME is not None:
+        return _MARKET_LORA_RUNTIME
+
+    if not MARKET_LORA_ENABLED:
+        _MARKET_LORA_LAST_ERROR = "MARKET_LORA_ENABLED is false."
+        return None
+    if not (MARKET_LORA_ADAPTER_DIR / "adapter_config.json").exists():
+        _MARKET_LORA_LAST_ERROR = f"Missing adapter_config.json at {MARKET_LORA_ADAPTER_DIR}."
+        return None
+
+    try:
+        import torch
+        from peft import PeftModel
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+    except Exception as exc:
+        _MARKET_LORA_LAST_ERROR = f"Missing LoRA inference dependency: {exc}"
+        return None
+
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(MARKET_LORA_BASE_MODEL, trust_remote_code=True)
+        use_cuda = torch.cuda.is_available()
+        use_mps = bool(getattr(torch.backends, "mps", None) and torch.backends.mps.is_available())
+        dtype = torch.float16 if use_cuda or use_mps else None
+        model = AutoModelForCausalLM.from_pretrained(
+            MARKET_LORA_BASE_MODEL,
+            torch_dtype=dtype,
+            device_map="auto" if use_cuda else None,
+            trust_remote_code=True,
+        )
+        model = PeftModel.from_pretrained(model, str(MARKET_LORA_ADAPTER_DIR))
+        if not use_cuda and use_mps:
+            model = model.to("mps")
+        model.eval()
+        _MARKET_LORA_RUNTIME = {"tokenizer": tokenizer, "model": model}
+        return _MARKET_LORA_RUNTIME
+    except Exception as exc:
+        _MARKET_LORA_LAST_ERROR = f"Failed to load Qwen LoRA runtime: {type(exc).__name__}: {exc}"
+        return None
+
+
+def _run_market_lora_remote(features: dict[str, Any]) -> dict[str, Any] | None:
+    global _MARKET_LORA_LAST_ERROR
+    if not MARKET_LORA_REMOTE_URL:
+        return None
+
+    payload = {
+        "ticker": features["ticker"],
+        "features": {
+            "annualized_volatility": features["annualized_volatility"],
+            "beta": features["beta"],
+            "max_drawdown": features["max_drawdown"],
+            "sentiment_mean": features["sentiment_mean"],
+            "article_count": features["article_count"],
+        },
+        "max_new_tokens": MARKET_LORA_MAX_NEW_TOKENS,
+    }
+    request = urllib.request.Request(
+        MARKET_LORA_REMOTE_URL,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=MARKET_LORA_REMOTE_TIMEOUT) as response:
+            body = response.read().decode("utf-8")
+        parsed = json.loads(body)
+        if isinstance(parsed, dict) and isinstance(parsed.get("prediction"), dict):
+            return parsed["prediction"]
+        if isinstance(parsed, dict) and isinstance(parsed.get("raw_output"), dict):
+            return parsed["raw_output"]
+        if isinstance(parsed, dict):
+            return parsed
+        _MARKET_LORA_LAST_ERROR = "Remote LoRA response was not a JSON object."
+        return None
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        _MARKET_LORA_LAST_ERROR = f"Remote LoRA HTTP {exc.code}: {detail[:300]}"
+        return None
+    except Exception as exc:
+        _MARKET_LORA_LAST_ERROR = f"Remote LoRA failed: {type(exc).__name__}: {exc}"
+        return None
+
+
+def _run_market_lora(features: dict[str, Any]) -> dict[str, Any] | None:
+    global _MARKET_LORA_LAST_ERROR
+    remote_result = _run_market_lora_remote(features)
+    if remote_result is not None:
+        return remote_result
+    if MARKET_LORA_REMOTE_URL and _MARKET_LORA_LAST_ERROR:
+        return None
+
+    runtime = _load_market_lora_runtime()
+    if runtime is None:
+        return None
+
+    try:
+        import torch
+
+        tokenizer = runtime["tokenizer"]
+        model = runtime["model"]
+        prompt = json.dumps({
+            "ticker": features["ticker"],
+            "task": (
+                "Assess market volatility and financial news sentiment risk. "
+                "Return only strict JSON with risk_score, risk_label, confidence, and explanation."
+            ),
+            "features": {
+                "annualized_volatility": features["annualized_volatility"],
+                "beta": features["beta"],
+                "max_drawdown": features["max_drawdown"],
+                "sentiment_mean": features["sentiment_mean"],
+                "article_count": features["article_count"],
+            },
+        })
+        messages = [
+            {"role": "system", "content": "You are a financial risk agent. Return strict JSON."},
+            {"role": "user", "content": prompt},
+        ]
+        if hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
+            text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        else:
+            text = f"SYSTEM: {messages[0]['content']}\n\nUSER: {messages[1]['content']}\n\nASSISTANT:"
+        device = next(model.parameters()).device
+        inputs = tokenizer(text, return_tensors="pt").to(device)
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=MARKET_LORA_MAX_NEW_TOKENS,
+                do_sample=False,
+                pad_token_id=tokenizer.eos_token_id,
+            )
+        decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        return _extract_json_object(decoded)
+    except Exception as exc:
+        _MARKET_LORA_LAST_ERROR = f"LoRA inference failed: {type(exc).__name__}: {exc}"
+        return None
+
+
+def _normalize_market_lora_output(raw: dict[str, Any], features: dict[str, Any], fallback_score: float) -> dict[str, Any]:
+    score = _safe_float(
+        raw.get("risk_score")
+        or raw.get("market_sentiment_risk_score")
+        or raw.get("combined_risk")
+        or raw.get("score"),
+        fallback_score,
+    )
+    score = _clamp_score(score or fallback_score)
+    label = str(raw.get("risk_label") or _label_from_score(score)).upper()
+    if label not in {"LOW", "MODERATE", "HIGH"}:
+        label = _label_from_score(score)
+    confidence = _safe_float(raw.get("confidence"), 0.65)
+    confidence = round(max(0.0, min(1.0, confidence or 0.65)), 2)
+    explanation = str(raw.get("explanation") or raw.get("justification") or "LoRA market/news model generated the risk estimate.")
+    return {
+        "risk_score": score,
+        "risk_label": label,
+        "confidence": confidence,
+        "explanation": explanation,
+        "raw_output": raw,
+        "evidence": [
+            f"LoRA adapter {MARKET_LORA_ADAPTER_DIR.name} produced market/news risk score {score:.2f}.",
+            f"Annualized volatility is {features['annualized_volatility']:.2%}; beta is {features['beta']:.2f}.",
+            f"Max drawdown is {features['max_drawdown']:.2%}.",
+            f"News sentiment mean is {features['sentiment_mean']:.3f} across {features['article_count']} recent articles.",
+        ],
+    }
+
+
 def run_fundamental_agent(ticker: str, company_name: Optional[str] = None) -> dict[str, Any]:
     """Rule implementation matching the fundamental fine-tune target logic."""
     ticker = ticker.upper()
@@ -110,6 +331,17 @@ def run_fundamental_agent(ticker: str, company_name: Optional[str] = None) -> di
             "negative_signals": ["Fundamental data unavailable."],
             "claim_type": "FALLBACK_ESTIMATE",
         }
+
+    model_row = {
+        **row,
+        "ticker": ticker,
+        "company": company_name or row.get("company") or ticker,
+    }
+    if FUNDAMENTAL_FINBERT_ENABLED:
+        finbert_output = predict_fundamental_finbert(model_row, FUNDAMENTAL_FINBERT_MODEL_DIR)
+        if finbert_output is not None:
+            finbert_output["as_of_date"] = row.get("end_date") or row.get("filed")
+            return finbert_output
 
     cash = _usd_m(row.get("cash_usd_m"))
     debt = _usd_m(row.get("long_term_debt"))
@@ -219,6 +451,18 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
     ]
     last_30_returns = daily_returns[-30:]
     realized_vol_30d = statistics.pstdev(last_30_returns) if len(last_30_returns) >= 2 else 0.0
+    close_values = [
+        x for x in (_safe_float(r.get("close")) for r in price_rows)
+        if x is not None and x > 0
+    ]
+    max_drawdown = 0.0
+    if close_values:
+        peak = close_values[0]
+        drawdowns = []
+        for value in close_values:
+            peak = max(peak, value)
+            drawdowns.append((value - peak) / peak)
+        max_drawdown = min(drawdowns)
 
     rolling_vol_30d = _safe_float(price_row.get("rolling_vol_30d"), realized_vol_30d) or 0.0
     rolling_vol_60d = _safe_float(price_row.get("rolling_vol_60d"), rolling_vol_30d) or rolling_vol_30d
@@ -248,6 +492,50 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
     ytd_component = min(abs(min(ytd_return, 0.0)) / 35.0, 1.0) * 1.0
     score = _clamp_score(1.0 + vol_component + beta_component + drawdown_component + sentiment_component + ytd_component)
 
+    lora_features = {
+        "ticker": ticker,
+        "annualized_volatility": annual_vol_pct / 100.0,
+        "beta": beta,
+        "max_drawdown": max_drawdown,
+        "sentiment_mean": avg_sentiment,
+        "article_count": article_count,
+    }
+    lora_result = _run_market_lora(lora_features)
+    if lora_result is not None:
+        normalized_lora = _normalize_market_lora_output(lora_result, lora_features, fallback_score=score)
+        return {
+            "agent": "Market + Volatility + News Sentiment Agent",
+            "ticker": ticker,
+            "company": company_name or price_row.get("long_name") or ticker,
+            "as_of_date": price_row.get("date"),
+            "risk_score": normalized_lora["risk_score"],
+            "risk_label": normalized_lora["risk_label"],
+            "confidence": normalized_lora["confidence"],
+            "claim_type": "LORA_MODEL_INFERENCE",
+            "model_name": MARKET_LORA_BASE_MODEL,
+            "inference_backend": "remote_colab" if MARKET_LORA_REMOTE_URL else "local",
+            "adapter_dir": str(MARKET_LORA_ADAPTER_DIR.relative_to(PROJECT_ROOT) if MARKET_LORA_ADAPTER_DIR.is_relative_to(PROJECT_ROOT) else MARKET_LORA_ADAPTER_DIR),
+            "metrics": {
+                "rolling_vol_30d": round(rolling_vol_30d, 6),
+                "rolling_vol_60d": round(rolling_vol_60d, 6),
+                "annualized_volatility_pct": round(annual_vol_pct, 2),
+                "beta": round(beta, 4),
+                "max_drawdown_pct": round(max_drawdown * 100, 2),
+                "price_vs_52w_high_pct": round(price_vs_high, 2),
+                "ytd_return_pct": round(ytd_return, 2),
+                "avg_news_sentiment": round(avg_sentiment, 4),
+                "recent_article_count": article_count,
+                "rule_fallback_score": score,
+            },
+            "evidence": normalized_lora["evidence"],
+            "positive_signals": [
+                "Fine-tuned market/news LoRA adapter was available and used for this specialist verdict."
+            ],
+            "negative_signals": [],
+            "overall_assessment": normalized_lora["explanation"],
+            "raw_model_output": normalized_lora["raw_output"],
+        }
+
     positive, negative = [], []
     if rolling_vol_30d <= rolling_vol_60d:
         positive.append("Short-term volatility is not above medium-term volatility.")
@@ -268,6 +556,8 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
         positive.append("Recent news sentiment is positive.")
     elif avg_sentiment <= -0.05:
         negative.append("Recent news sentiment is negative.")
+    if MARKET_LORA_ENABLED and _MARKET_LORA_LAST_ERROR:
+        negative.append(f"Market LoRA fallback reason: {_MARKET_LORA_LAST_ERROR}")
 
     return {
         "agent": "Market + Volatility + News Sentiment Agent",
@@ -287,7 +577,10 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
             "ytd_return_pct": round(ytd_return, 2),
             "avg_news_sentiment": round(avg_sentiment, 4),
             "recent_article_count": article_count,
-        },
+                "market_lora_enabled": MARKET_LORA_ENABLED,
+                "market_lora_remote_url_configured": bool(MARKET_LORA_REMOTE_URL),
+                "market_lora_fallback_reason": _MARKET_LORA_LAST_ERROR,
+            },
         "evidence": [
             f"Annualized 30-day volatility is {annual_vol_pct:.2f}%.",
             f"Beta is {beta:.2f}; price is {price_vs_high:.2f}% versus 52-week high.",
@@ -352,6 +645,9 @@ def _local_macro_agent(
     treasury = _safe_float(row.get("treasury_10y"), 0.0) or 0.0
     unemployment = _safe_float(row.get("unemployment"), 0.0) or 0.0
     gdp_growth = _safe_float(row.get("gdp_growth"), 0.0) or 0.0
+    yield_curve = _safe_float(row.get("yield_curve_10y2y"))
+    vix = _safe_float(row.get("vix"))
+    oil = _safe_float(row.get("wti_oil"))
 
     cpi_prev = None
     if len(rows) > 250:
@@ -364,6 +660,9 @@ def _local_macro_agent(
     score += min(max(unemployment - 4.5, 0.0) / 3.0, 1.0) * 1.5
     score += 1.0 if gdp_growth < 0 else 0.0
     score += 0.5 if treasury > 4.5 else 0.0
+    score += 0.75 if yield_curve is not None and yield_curve < 0 else 0.0
+    score += min(max(vix - 20.0, 0.0) / 20.0, 1.0) * 1.0 if vix is not None else 0.0
+    score += min(max(oil - 85.0, 0.0) / 40.0, 1.0) * 0.5 if oil is not None else 0.0
     score = _clamp_score(score)
 
     sensitivity_note = "General macro sensitivity."
@@ -377,11 +676,23 @@ def _local_macro_agent(
         score = _clamp_score(score + 0.35)
         sensitivity_note = "Growth-sensitive sector; higher rates can pressure valuations."
 
+    expanded_macro = []
+    if yield_curve is not None:
+        expanded_macro.append(f"10Y-2Y yield spread is {yield_curve:.2f}%")
+    if vix is not None:
+        expanded_macro.append(f"VIX is {vix:.2f}")
+    if oil is not None:
+        expanded_macro.append(f"WTI oil is {oil:.2f}")
+
     evidence = [
         f"Fed funds rate is {fed:.2f}%; 10Y Treasury is {treasury:.2f}%.",
         f"Unemployment is {unemployment:.2f}%; GDP growth is {gdp_growth:.2f}%.",
         f"CPI YoY estimate is {cpi_yoy:.2f}%.",
     ]
+    if expanded_macro:
+        evidence.append("; ".join(expanded_macro) + ".")
+    else:
+        evidence.append("Expanded macro fields (10Y-2Y spread, VIX, WTI oil) are unavailable; rerun ingestion and cleaning to populate them.")
     if error:
         evidence.append(f"LLM macro agent unavailable, local macro rules used: {error}")
 
@@ -403,6 +714,9 @@ def _local_macro_agent(
             "treasury_10y": round(treasury, 2),
             "unemployment": round(unemployment, 2),
             "gdp_growth": round(gdp_growth, 2),
+            "yield_curve_10y2y": round(yield_curve, 2) if yield_curve is not None else None,
+            "vix": round(vix, 2) if vix is not None else None,
+            "wti_oil": round(oil, 2) if oil is not None else None,
         },
         "evidence": evidence,
         "positive_signals": [],
@@ -456,6 +770,27 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
             if item not in risk_offsets:
                 risk_offsets.append(item)
 
+    agent_by_name = {output.get("agent"): output for output in agent_outputs}
+    fundamental_label = agent_by_name.get("Fundamental Agent", {}).get("risk_label")
+    market_label = agent_by_name.get("Market + Volatility + News Sentiment Agent", {}).get("risk_label")
+    macro_label = agent_by_name.get("Macro-Economic Agent", {}).get("risk_label")
+
+    fundamental_phrase = {
+        "LOW": "fundamental strength",
+        "MODERATE": "mixed fundamentals",
+        "HIGH": "fundamental weakness",
+    }.get(fundamental_label, "fundamental evidence")
+    market_phrase = {
+        "LOW": "low market/news pressure",
+        "MODERATE": "moderate market/news pressure",
+        "HIGH": "high market/news pressure",
+    }.get(market_label, "market/news evidence")
+    macro_phrase = {
+        "LOW": "supportive macro conditions",
+        "MODERATE": "moderate macro conditions",
+        "HIGH": "macro pressure",
+    }.get(macro_label, "macro conditions")
+
     return {
         "agent": "LLM-Based Critic Agent",
         "critic_type": "llm_based_critic_with_local_fallback",
@@ -469,7 +804,7 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
         "risk_offsets": risk_offsets[:5],
         "final_decision": (
             f"Final risk is {final_label} at {final_score}/10. "
-            "The critic combined fundamental strength, market/news pressure, and macro conditions."
+            f"The critic combined {fundamental_phrase}, {market_phrase}, and {macro_phrase}."
         ),
     }
 
@@ -561,12 +896,14 @@ def run_critic_agent(
         if llm_result and llm_result.get("error"):
             final["llm_error"] = llm_result["error"]
 
-    return {
+    report = {
         "ticker": ticker,
         "query": query,
         "agent_outputs": outputs,
         "final_output": final,
     }
+    final["policy_evidence_trail"] = build_policy_evidence_trail(report)
+    return report
 
 
 def print_critic_report(report: dict[str, Any]) -> None:
@@ -591,6 +928,7 @@ def main() -> None:
     parser.add_argument("--sector", default=None, help="Optional sector.")
     parser.add_argument("--use-llm", action="store_true", help="Use configured LLM critic instead of weighted fallback.")
     parser.add_argument("--save", default=None, help="Optional JSON output path.")
+    parser.add_argument("--pdf", default=None, help="Optional PDF verdict path.")
     args = parser.parse_args()
 
     report = run_critic_agent(
@@ -607,6 +945,12 @@ def main() -> None:
         save_path.parent.mkdir(parents=True, exist_ok=True)
         save_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(f"\nSaved report to {save_path}")
+
+    if args.pdf:
+        from agents.verdict_report import save_pdf_verdict
+
+        pdf_path = save_pdf_verdict(report, args.pdf)
+        print(f"Saved PDF verdict to {pdf_path}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
 data/bronze/
 data/silver/
+data/silver_parquet/
+data/reports/
+data/verdicts/
 venv/
 .venv/
 __pycache__/
@@ -11,3 +14,13 @@ mlruns/
 mlflow.db
 data/gold/_mlflow_artifacts/
 data/gold/vector_store/
+pipeline_progress.json
+trash/
+outputs/
+models/
+*.zip
+**/checkpoint-*/
+*.safetensors
+*.pt
+*.pth
+*.bin

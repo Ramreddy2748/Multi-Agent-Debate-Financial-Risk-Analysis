@@ -322,7 +322,7 @@ def fetch_fred(
 
 def fetch_news(
     tickers:   List[str],
-    days_back: int = 1,
+    days_back: int = 10,
     upload_gcs: bool = False,
 ) -> pd.DataFrame:
     log.info("=" * 60)

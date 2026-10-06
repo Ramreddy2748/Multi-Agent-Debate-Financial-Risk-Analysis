@@ -353,7 +353,11 @@ function renderAgentCards(outputs = []) {
       <ul class="evidence-list"></ul>
     `;
     const list = article.querySelector(".evidence-list");
-    (agent.evidence || []).slice(0, 4).forEach((item) => {
+    const evidenceItems = [
+      ...(agent.evidence || []),
+      ...(agent.negative_signals || []).map((item) => `Signal: ${item}`),
+    ];
+    evidenceItems.slice(0, 5).forEach((item) => {
       const li = document.createElement("li");
       li.textContent = item;
       list.appendChild(li);
@@ -565,7 +569,9 @@ async function selectTicker(ticker, question = "") {
   state.monitoring = monitoringPayload.records || [];
   const row = verdictPayload.company;
   const final = verdictPayload.final_output;
-  const outputs = verdictPayload.verdict?.agent_outputs || verdictPayload.debate?.agent_outputs || [];
+  const outputs = verdictPayload.active_verdict_type === "debate"
+    ? verdictPayload.debate?.agent_outputs || verdictPayload.verdict?.agent_outputs || []
+    : verdictPayload.verdict?.agent_outputs || verdictPayload.debate?.agent_outputs || [];
   const activeJsonUrl = verdictPayload.active_verdict_type === "debate" && verdictPayload.debate_url ? verdictPayload.debate_url : verdictPayload.json_url;
   const rec = buildInvestmentAnswer(row, final, question, verdictPayload.fallback);
 

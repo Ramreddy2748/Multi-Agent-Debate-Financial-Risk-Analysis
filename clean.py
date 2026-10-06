@@ -38,6 +38,7 @@ logging.basicConfig(
 
 def _ensure_dirs():
     Path(config.LOCAL_SILVER).mkdir(parents=True, exist_ok=True)
+    Path(config.LOCAL_SILVER_PARQUET).mkdir(parents=True, exist_ok=True)
 
 def _save_silver(df: pd.DataFrame, filename: str) -> str:
     _ensure_dirs()
@@ -45,6 +46,19 @@ def _save_silver(df: pd.DataFrame, filename: str) -> str:
     df.to_csv(path, index=True)
     log.info(f"  ✔ Saved Silver: {path}  ({len(df):,} rows × {df.shape[1]} cols)")
     return path
+
+def _save_silver_parquet(df: pd.DataFrame, filename: str) -> Optional[str]:
+    _ensure_dirs()
+    path = os.path.join(config.LOCAL_SILVER_PARQUET, filename)
+    try:
+        df.to_parquet(path, index=True)
+        log.info(f"  ✔ Saved Silver Parquet: {path}")
+        return path
+    except ImportError:
+        log.warning("  pyarrow or fastparquet not installed — skipping Silver Parquet export.")
+    except Exception as e:
+        log.warning(f"  Silver Parquet export skipped for {filename}: {e}")
+    return None
 
 def _upload_to_gcs(local_path: str, gcs_path: str):
     try:
@@ -277,6 +291,7 @@ def clean_prices(
         df = df.drop_duplicates()
         filename = f"silver_prices_{ticker}.csv"
         path = _save_silver(df, filename)
+        _save_silver_parquet(df, f"silver_prices_{ticker}.parquet")
         if upload_gcs:
             _upload_to_gcs(path, f"silver/prices/{filename}")
 
@@ -306,6 +321,7 @@ def clean_macro(
 
     filename = "silver_macro.csv"
     path = _save_silver(df, filename)
+    _save_silver_parquet(df, "silver_macro.parquet")
     if upload_gcs:
         _upload_to_gcs(path, "silver/macro/silver_macro.csv")
 
@@ -350,6 +366,7 @@ def clean_news(
 
     filename = "silver_news_sentiment.csv"
     path = _save_silver(daily_sentiment, filename)
+    _save_silver_parquet(daily_sentiment, "silver_news_sentiment.parquet")
     if upload_gcs:
         _upload_to_gcs(path, "silver/news/silver_news_sentiment.csv")
 
@@ -376,6 +393,7 @@ def clean_edgar(
 
         filename = f"silver_edgar_{ticker}.csv"
         path = _save_silver(df, filename)
+        _save_silver_parquet(df, f"silver_edgar_{ticker}.parquet")
         if upload_gcs:
             _upload_to_gcs(path, f"silver/edgar/{filename}")
 
@@ -420,3 +438,6 @@ if __name__ == "__main__":
         ticker = f.split("yahoo_")[1].split("_")[0]
         price_dfs[ticker] = pd.read_csv(f, index_col=0, parse_dates=True)
     run_cleaning({"prices": price_dfs, "edgar": {}, "macro": pd.DataFrame(), "news": pd.DataFrame()})
+
+
+

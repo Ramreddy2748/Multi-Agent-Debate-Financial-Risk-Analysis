@@ -1,5 +1,5 @@
 """
-macro_agent_prompt.py
+macro_agent.py
 ─────────────────────────────────────────────────────────────────
 MACRO-ECONOMIC AGENT — Prompt-Based Version
 ─────────────────────────────────────────────────────────────────
@@ -33,8 +33,8 @@ def get_client() -> OpenAI:
     )
 
 # ── Load FRED Data ────────────────────────────────────────────
-def load_macro_data(path: str = "data/silver/silver_macro_enhanced.csv") -> dict:
-    df = pd.read_csv(path, parse_dates=["date"], index_col="date")
+def load_macro_data(path: str = "data/silver/silver_macro.csv") -> dict:
+    df = pd.read_csv(path, index_col=0, parse_dates=True)
     df = df.sort_index().ffill(limit=5).dropna()
 
     latest     = df.iloc[-1]
@@ -61,18 +61,18 @@ def load_macro_data(path: str = "data/silver/silver_macro_enhanced.csv") -> dict
         except Exception:
             return 0.0
 
-    fed        = safe_get("FEDFUNDS")
-    cpi        = safe_get("CPIAUCSL")
-    t10y2y     = safe_get("T10Y2Y")
-    vix        = safe_get("VIXCLS")
-    oil        = safe_get("DCOILWTICO")
-    unemp      = safe_get("UNRATE")
-    gdp        = safe_get("GDP")
-    vix_30d    = float(df["VIXCLS"].tail(30).mean())
-    vix_90d    = float(df["VIXCLS"].tail(90).mean())
-    fed_6m_ago = float(df["FEDFUNDS"].iloc[-132]) if len(df) >= 132 else fed
+    fed        = safe_get("fed_funds_rate")
+    cpi        = safe_get("cpi")
+    t10y2y     = safe_get("yield_curve_10y2y")
+    vix        = safe_get("vix")
+    oil        = safe_get("wti_oil")
+    unemp      = safe_get("unemployment")
+    gdp        = safe_get("gdp_growth")
+    vix_30d    = float(df["vix"].tail(30).mean()) if "vix" in df.columns else vix
+    vix_90d    = float(df["vix"].tail(90).mean()) if "vix" in df.columns else vix
+    fed_6m_ago = float(df["fed_funds_rate"].iloc[-132]) if len(df) >= 132 and "fed_funds_rate" in df.columns else fed
     fed_trend  = "rising" if fed > fed_6m_ago else "falling" if fed < fed_6m_ago else "stable"
-    yield_trend= "steepening" if mom_change("T10Y2Y") > 0 else "flattening"
+    yield_trend= "steepening" if mom_change("yield_curve_10y2y") > 0 else "flattening"
 
     return {
         "as_of_date":       str(df.index[-1].date()),
@@ -80,7 +80,7 @@ def load_macro_data(path: str = "data/silver/silver_macro_enhanced.csv") -> dict
         "fed_trend":        fed_trend,
         "fed_6m_change":    round(fed - fed_6m_ago, 2),
         "cpi":              cpi,
-        "cpi_yoy_pct":      yoy_change("CPIAUCSL"),
+        "cpi_yoy_pct":      yoy_change("cpi"),
         "t10y2y_spread":    t10y2y,
         "yield_trend":      yield_trend,
         "recession_signal": t10y2y < 0,
@@ -89,10 +89,10 @@ def load_macro_data(path: str = "data/silver/silver_macro_enhanced.csv") -> dict
         "vix_90d_avg":      round(vix_90d, 2),
         "vix_vs_avg":       "elevated" if vix > vix_30d * 1.2 else "normal",
         "oil_price":        oil,
-        "oil_yoy_pct":      yoy_change("DCOILWTICO"),
+        "oil_yoy_pct":      yoy_change("wti_oil"),
         "unemployment":     unemp,
         "gdp":              gdp,
-        "gdp_yoy_pct":      yoy_change("GDP"),
+        "gdp_yoy_pct":      yoy_change("gdp_growth"),
     }
 
 # ── Sector Sensitivity ────────────────────────────────────────
@@ -225,7 +225,7 @@ def run_macro_agent(
     ticker:       str,
     sector:       str,
     company_name: str = None,
-    macro_path:   str = "data/silver/silver_macro_enhanced.csv",
+    macro_path:   str = "data/silver/silver_macro.csv",
     max_retries:  int = 3
 ) -> dict:
     # Fix NaN sector
@@ -291,7 +291,7 @@ def run_macro_agent(
 # ── Batch Runner ──────────────────────────────────────────────
 def run_macro_agent_batch(
     companies:     list,
-    macro_path:    str   = "data/silver/silver_macro_enhanced.csv",
+    macro_path:    str   = "data/silver/silver_macro.csv",
     delay_seconds: float = 1.5,
     save_path:     str   = "data/gold/macro_agent_outputs.json"
 ) -> list:

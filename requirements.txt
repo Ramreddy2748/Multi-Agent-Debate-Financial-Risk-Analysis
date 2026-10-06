@@ -25,6 +25,10 @@ uvicorn>=0.30.0
 # ─── Retrieval (RAG) ──────────────────────────────────────────────────────────
 chromadb>=1.0.0
 
+# ─── LLM Clients ──────────────────────────────────────────────────────────────
+openai>=1.0.0
+python-dotenv>=1.0.0
+
 # ─── GCP (install when ready to deploy) ──────────────────────────────────────
 # google-cloud-storage>=2.14.0
 # google-cloud-bigquery>=3.17.0
