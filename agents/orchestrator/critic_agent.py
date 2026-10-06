@@ -867,7 +867,86 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
     }
 
 
-def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+def _critic_prompt(agent_outputs: list[dict[str, Any]], query: str) -> dict[str, Any]:
+    return {
+        "query": query,
+        "agent_outputs": agent_outputs,
+        "required_output": {
+            "agent": "LLM-Based Critic Agent",
+            "final_risk_score": "number 1-10",
+            "final_risk_label": "LOW/MODERATE/HIGH",
+            "confidence": "0-1",
+            "disagreement_detected": "boolean",
+            "requires_human_review": "boolean",
+            "agent_scorecard": ["short summary per agent"],
+            "main_risk_drivers": ["top reasons"],
+            "risk_offsets": ["positive reasons"],
+            "final_decision": "clear final answer",
+        },
+    }
+
+
+def _extract_json_response(text: str) -> dict[str, Any] | None:
+    start, end = text.find("{"), text.rfind("}") + 1
+    if start >= 0 and end > start:
+        return json.loads(text[start:end])
+    return None
+
+
+def _claude_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+    """Native Anthropic Claude critic. Returns None when not configured."""
+    api_key = os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY")
+    if not api_key:
+        return None
+
+    model = os.getenv("CLAUDE_MODEL") or os.getenv("CRITIC_MODEL") or "claude-3-5-sonnet-latest"
+    prompt = _critic_prompt(agent_outputs, query)
+    try:
+        import requests
+
+        response = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": os.getenv("ANTHROPIC_VERSION", "2023-06-01"),
+                "content-type": "application/json",
+            },
+            json={
+                "model": model,
+                "max_tokens": int(os.getenv("CRITIC_MAX_TOKENS", "900")),
+                "temperature": 0.1,
+                "system": (
+                    "You are Claude acting as a financial critic/orchestrator. "
+                    "Compare the specialist agent outputs, explicitly check contradictions, "
+                    "resolve them into one auditable final verdict, and return strict JSON only."
+                ),
+                "messages": [{"role": "user", "content": json.dumps(prompt, indent=2)}],
+            },
+            timeout=int(os.getenv("CRITIC_TIMEOUT_SECONDS", "60")),
+        )
+        response.raise_for_status()
+        payload = response.json()
+        text = "".join(
+            block.get("text", "")
+            for block in payload.get("content", [])
+            if block.get("type") == "text"
+        )
+        result = _extract_json_response(text)
+        if result:
+            result["critic_type"] = f"claude:{model}"
+            result["agent"] = result.get("agent") or "Claude Critic Agent"
+            return result
+    except Exception as exc:
+        return {
+            "agent": "Claude Critic Agent",
+            "critic_type": "llm_failed_fallback_needed",
+            "error": f"Claude critic failed: {exc}",
+        }
+
+    return None
+
+
+def _openai_compatible_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
     """Optional OpenAI-compatible critic. Returns None when not configured."""
     api_key = os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")
     if not api_key:
@@ -883,21 +962,7 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
         from openai import OpenAI
 
         client = OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
-        prompt = {
-            "query": query,
-            "agent_outputs": agent_outputs,
-            "required_output": {
-                "agent": "LLM-Based Critic Agent",
-                "final_risk_score": "number 1-10",
-                "final_risk_label": "LOW/MODERATE/HIGH",
-                "confidence": "0-1",
-                "disagreement_detected": "boolean",
-                "agent_scorecard": ["short summary per agent"],
-                "main_risk_drivers": ["top reasons"],
-                "risk_offsets": ["positive reasons"],
-                "final_decision": "clear final answer",
-            },
-        }
+        prompt = _critic_prompt(agent_outputs, query)
         response = client.chat.completions.create(
             model=model,
             temperature=0.1,
@@ -913,9 +978,8 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
             ],
         )
         text = response.choices[0].message.content or ""
-        start, end = text.find("{"), text.rfind("}") + 1
-        if start >= 0 and end > start:
-            result = json.loads(text[start:end])
+        result = _extract_json_response(text)
+        if result:
             result["critic_type"] = f"llm:{model}"
             return result
     except Exception as exc:
@@ -926,6 +990,15 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
         }
 
     return None
+
+
+def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+    provider = os.getenv("CRITIC_PROVIDER", "").strip().lower()
+    if provider in {"anthropic", "claude"} or os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY"):
+        claude_result = _claude_critic(agent_outputs, query)
+        if claude_result:
+            return claude_result
+    return _openai_compatible_critic(agent_outputs, query)
 
 
 def run_critic_agent(

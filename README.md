@@ -175,6 +175,19 @@ python3 agents/verdict_report.py AAPL \
   --log-monitoring
 ```
 
+Optional Claude critic/orchestrator:
+
+```env
+CRITIC_LLM_ENABLED=1
+CRITIC_PROVIDER=anthropic
+ANTHROPIC_API_KEY=your_anthropic_key_here
+CLAUDE_MODEL=claude-3-5-sonnet-latest
+```
+
+With those settings, the critic asks Claude to compare the specialist agent
+outputs, check contradictions, and return a strict JSON final verdict. If Claude
+is not configured or fails, the project falls back to the weighted rule critic.
+
 ### Step 6 — Explicit debate state machine
 
 Runs the same specialist agents through an enforced protocol:
