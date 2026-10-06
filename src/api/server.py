@@ -218,10 +218,10 @@ def _model_registry() -> list[dict[str, Any]]:
             "training": _training_series(configured_lora_dir),
         },
         {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market Mistral LoRA Candidate",
             "model": "mistralai/Mistral-7B-Instruct-v0.3 + LoRA",
             "backend": "local_transformers_or_remote_colab",
-            "status": "available" if mistral_lora_dir.exists() else "not_trained_yet",
+            "status": "trained_available_not_active" if mistral_lora_dir.exists() else "not_trained_yet",
             "claim_type": "LORA_MODEL_INFERENCE",
             "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
             "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
@@ -255,9 +255,15 @@ def _model_registry() -> list[dict[str, Any]]:
         },
         {
             "agent": "Critic / Orchestrator",
-            "model": os.getenv("CRITIC_MODEL", "weighted critic; optional OpenAI-compatible LLM"),
+            "model": os.getenv("CLAUDE_MODEL") or os.getenv("CRITIC_MODEL", "weighted critic; optional Claude/OpenAI-compatible LLM"),
             "backend": "weighted_rules_or_api",
-            "status": "llm_configured" if (os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")) else "weighted_rules_active",
+            "status": "llm_configured" if (
+                os.getenv("ANTHROPIC_API_KEY")
+                or os.getenv("CLAUDE_API_KEY")
+                or os.getenv("CRITIC_API_KEY")
+                or os.getenv("OPENAI_API_KEY")
+                or os.getenv("DEEPSEEK_API_KEY")
+            ) else "weighted_rules_active",
             "claim_type": "llm_based_critic_with_local_fallback",
             "data": "Specialist agent outputs, confidence, disagreement flags, and evidence trail",
             "train_examples": 0,
@@ -535,7 +541,7 @@ def generate_verdict(request: VerdictRequest) -> dict[str, Any]:
             query=request.query,
             company_name=company_name,
             sector=sector,
-            use_llm=request.use_llm,
+            use_llm=request.use_llm or os.getenv("CRITIC_LLM_ENABLED", "0").lower() in {"1", "true", "yes"},
         )
         json_path = Path(save_json_verdict(report))
         pdf_path = Path(save_pdf_verdict(report))
