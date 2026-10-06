@@ -65,6 +65,8 @@ const AGENT_STYLES = {
   "market_sentiment_agent": { tag: "MV", color: "#7c5cff" },
   "Sentiment Agent": { tag: "SA", color: "#db2777" },
   "Macro-Economic Agent": { tag: "MC", color: "#0ea5a0" },
+  "Critic / Orchestrator Agent": { tag: "CR", color: "#111827" },
+  "LLM-Based Critic Agent": { tag: "CR", color: "#111827" },
 };
 
 function agentStyle(name) {
@@ -498,15 +500,42 @@ function drawRiskGauge(score, label) {
   `;
 }
 
-function renderAgentCards(outputs = []) {
+function criticCardFromFinal(finalOutput, activeType) {
+  if (!finalOutput || finalOutput.final_risk_score === undefined) return null;
+  const drivers = finalOutput.main_risk_drivers || [];
+  const offsets = finalOutput.risk_offsets || [];
+  const evidence = [
+    finalOutput.final_decision,
+    finalOutput.disagreement_detected ? "Critic detected a material disagreement across agents." : "Critic did not detect a material disagreement across agents.",
+    finalOutput.requires_human_review ? "Human review is required before using this verdict." : "No human-review flag was raised by the critic.",
+    ...drivers.map((item) => `Risk driver: ${item}`),
+    ...offsets.map((item) => `Offset: ${item}`),
+  ].filter(Boolean);
+
+  return {
+    agent: "Critic / Orchestrator Agent",
+    claim_type: activeType === "debate" ? "DEBATE_SYNTHESIS" : finalOutput.critic_type || "CRITIC_SYNTHESIS",
+    risk_score: finalOutput.final_risk_score,
+    risk_label: finalOutput.final_risk_label,
+    confidence: finalOutput.confidence,
+    evidence,
+    negative_signals: [],
+  };
+}
+
+function renderAgentCards(outputs = [], finalOutput = null, activeType = "") {
   const grid = $("agentGrid");
   grid.textContent = "";
-  if (!outputs.length) {
+  const cards = [...(outputs || [])];
+  const criticCard = criticCardFromFinal(finalOutput, activeType);
+  if (criticCard) cards.push(criticCard);
+
+  if (!cards.length) {
     grid.innerHTML = `<div class="empty">Generate a full agent verdict to view specialist evidence for this ticker.</div>`;
     return;
   }
 
-  outputs.forEach((agent) => {
+  cards.forEach((agent) => {
     const score = number(agent.risk_score ?? agent.macro_risk_score, 0);
     const style = agentStyle(agent.agent);
     const article = document.createElement("article");
@@ -892,7 +921,7 @@ async function selectTicker(ticker, question = "") {
   renderAdvisorAnswer(rec);
   renderDrivers(final);
   drawPriceChart(pricePayload.prices || [], ticker);
-  renderAgentCards(outputs);
+  renderAgentCards(outputs, final, verdictPayload.active_verdict_type);
   renderPolicyTrail(final);
   renderContradictions(verdictPayload);
   renderMonitoring(state.monitoring);
