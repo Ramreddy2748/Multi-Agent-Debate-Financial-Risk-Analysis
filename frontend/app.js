@@ -6,6 +6,7 @@ const api = {
   generateVerdict: "/api/verdict",
   compare: (tickers) => `/api/compare?tickers=${encodeURIComponent(tickers.join(","))}`,
   pdf: (ticker) => `/api/artifacts/${ticker}/pdf`,
+  modelTraining: "/api/models/training",
 };
 
 const state = {
@@ -17,8 +18,67 @@ const state = {
   monitoring: [],
   comparePair: null,
   comparePayload: null,
+  modelTraining: null,
   generating: false,
+  reportCategory: "pipeline",
+  renderedCount: 60,
 };
+
+const REPORT_CATEGORIES = [
+  {
+    id: "pipeline",
+    label: "Data & Pipeline",
+    files: [
+      "01_price_trends.png", "02_volatility.png", "03_return_distributions.png",
+      "04_correlation_matrix.png", "05_risk_scores.png", "08_class_balance.png",
+      "09_sector_distribution.png", "10_data_statistics_summary.png",
+    ],
+  },
+  {
+    id: "macro",
+    label: "Macro Agent",
+    files: [
+      "macro_01_score_distribution.png", "macro_02_label_distribution.png",
+      "macro_03_score_by_sector.png", "macro_04_confidence_distribution.png",
+      "macro_05_score_vs_confidence.png", "macro_06_avg_score_by_sector.png",
+      "macro_07_fred_timeseries.png", "macro_08_evaluation_summary.png",
+      "06_macro_overlay_AAPL.png", "06_macro_overlay_EXE.png",
+    ],
+  },
+  {
+    id: "llm",
+    label: "Multi-LLM Comparison",
+    files: [
+      "fundamental_llm_01_scores_by_ticker.png", "fundamental_llm_02_judge_overall.png",
+      "fundamental_llm_03_judge_subscores.png", "market_sentiment_llm_01_scores_by_ticker.png",
+      "market_sentiment_llm_02_judge_overall.png", "market_sentiment_llm_03_judge_subscores.png",
+      "macro_llm_01_scores_by_ticker.png", "macro_llm_02_judge_overall.png",
+      "macro_llm_03_judge_subscores.png",
+    ],
+  },
+];
+
+const AGENT_STYLES = {
+  "Fundamental Agent": { tag: "FD", color: "#2563eb" },
+  "fundamental_analysis_agent": { tag: "FD", color: "#2563eb" },
+  "Market/Volatility/Sentiment Agent": { tag: "MV", color: "#7c5cff" },
+  "market_sentiment_agent": { tag: "MV", color: "#7c5cff" },
+  "Sentiment Agent": { tag: "SA", color: "#db2777" },
+  "Macro-Economic Agent": { tag: "MC", color: "#0ea5a0" },
+};
+
+function agentStyle(name) {
+  return AGENT_STYLES[name] || { tag: String(name || "A").slice(0, 2).toUpperCase(), color: "#6b7686" };
+}
+
+function riskColor(label) {
+  if (label === "HIGH") return "#e5484d";
+  if (label === "LOW") return "#18a862";
+  return "#e2910f";
+}
+
+let priceChartInstance = null;
+const trainingChartInstances = {};
 
 const $ = (id) => document.getElementById(id);
 
@@ -68,6 +128,9 @@ function renderCounts() {
   $("highCount").textContent = state.rows.filter((row) => row.risk_label === "HIGH").length;
 }
 
+const TICKER_PAGE_SIZE = 60;
+let tickerObserver = null;
+
 function applyFilters() {
   const query = $("searchInput").value.trim().toLowerCase();
   state.filteredRows = state.rows
@@ -77,30 +140,58 @@ function applyFilters() {
       return [row.ticker, row.company, row.sector, row.risk_label].some((value) => String(value || "").toLowerCase().includes(query));
     })
     .sort((a, b) => number(b.composite_risk, 0) - number(a.composite_risk, 0));
+  state.renderedCount = TICKER_PAGE_SIZE;
   renderTickerList();
+}
+
+function buildTickerItem(row) {
+  const template = $("tickerItemTemplate");
+  const item = template.content.firstElementChild.cloneNode(true);
+  item.dataset.ticker = row.ticker;
+  item.dataset.risk = row.risk_label || "";
+  item.classList.toggle("active", row.ticker === state.selectedTicker);
+  item.querySelector(".ticker-symbol").textContent = row.ticker;
+  item.querySelector(".ticker-sector").textContent = row.company && row.company !== row.ticker
+    ? `${row.company} · ${row.sector || "Unknown sector"}`
+    : row.sector || "Unknown sector";
+  item.title = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
+  item.querySelector(".ticker-score").textContent = fmt(row.composite_risk, 1);
+  item.addEventListener("click", () => selectTicker(row.ticker));
+  return item;
 }
 
 function renderTickerList() {
   const list = $("tickerList");
-  const template = $("tickerItemTemplate");
   list.textContent = "";
 
-  state.filteredRows.forEach((row) => {
-    const item = template.content.firstElementChild.cloneNode(true);
-    item.dataset.ticker = row.ticker;
-    item.classList.toggle("active", row.ticker === state.selectedTicker);
-    item.querySelector(".ticker-symbol").textContent = row.ticker;
-    item.querySelector(".ticker-sector").textContent = row.company && row.company !== row.ticker
-      ? `${row.company} · ${row.sector || "Unknown sector"}`
-      : row.sector || "Unknown sector";
-    item.title = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
-    item.querySelector(".ticker-score").textContent = fmt(row.composite_risk, 1);
-    item.addEventListener("click", () => selectTicker(row.ticker));
-    list.appendChild(item);
-  });
+  if (tickerObserver) {
+    tickerObserver.disconnect();
+    tickerObserver = null;
+  }
 
   if (!state.filteredRows.length) {
     list.innerHTML = `<div class="empty">No tickers match the current filter.</div>`;
+    return;
+  }
+
+  const visible = state.filteredRows.slice(0, state.renderedCount || TICKER_PAGE_SIZE);
+  const fragment = document.createDocumentFragment();
+  visible.forEach((row) => fragment.appendChild(buildTickerItem(row)));
+  list.appendChild(fragment);
+
+  if (visible.length < state.filteredRows.length) {
+    const sentinel = document.createElement("div");
+    sentinel.className = "ticker-sentinel";
+    sentinel.textContent = `Loading more (${visible.length}/${state.filteredRows.length})...`;
+    list.appendChild(sentinel);
+
+    tickerObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        state.renderedCount = (state.renderedCount || TICKER_PAGE_SIZE) + TICKER_PAGE_SIZE;
+        renderTickerList();
+      }
+    }, { root: list, rootMargin: "120px" });
+    tickerObserver.observe(sentinel);
   }
 }
 
@@ -275,57 +366,99 @@ function renderDecisionHero(row, finalOutput, verdictPayload, answer) {
   $("artifactStatus").textContent = verdictPayload.fallback
     ? "Gold fallback active - generate verdict for full audit package"
     : `${mode} loaded with ${finalOutput.policy_evidence_trail?.length || 0} policy checks`;
+  drawRiskGauge(score, label);
 }
 
 function drawPriceChart(rows, ticker) {
-  const svg = $("priceChart");
-  svg.textContent = "";
-  const width = 720;
-  const height = 220;
-  const pad = { top: 20, right: 28, bottom: 32, left: 48 };
-  const values = rows.map((row) => number(row.close)).filter((value) => value !== null);
+  const wrap = $("priceChart").closest(".chart-wrap");
+  const points = rows
+    .map((row) => ({ x: row.date, y: number(row.close) }))
+    .filter((point) => point.y !== null);
 
-  if (values.length < 2) {
-    svg.innerHTML = `<text x="30" y="110" class="chart-label">No price data found for ${ticker}</text>`;
-    return;
+  if (priceChartInstance) {
+    priceChartInstance.destroy();
+    priceChartInstance = null;
   }
 
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const span = max - min || 1;
-  const xFor = (index) => pad.left + (index / (values.length - 1)) * (width - pad.left - pad.right);
-  const yFor = (value) => pad.top + (1 - (value - min) / span) * (height - pad.top - pad.bottom);
-  const points = values.map((value, index) => `${xFor(index).toFixed(2)},${yFor(value).toFixed(2)}`);
-  const area = `${pad.left},${height - pad.bottom} ${points.join(" ")} ${width - pad.right},${height - pad.bottom}`;
+  let canvas = $("priceChart");
+  if (points.length < 2) {
+    wrap.innerHTML = `<div class="chart-empty">No price data found for ${ticker}</div>`;
+    return;
+  }
+  if (!canvas) {
+    wrap.innerHTML = `<canvas id="priceChart" role="img" aria-label="Price chart"></canvas>`;
+    canvas = $("priceChart");
+  }
 
-  const axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  axis.setAttribute("class", "axis-line");
-  axis.setAttribute("x1", pad.left);
-  axis.setAttribute("x2", width - pad.right);
-  axis.setAttribute("y1", height - pad.bottom);
-  axis.setAttribute("y2", height - pad.bottom);
+  const ctx = canvas.getContext("2d");
+  const gradient = ctx.createLinearGradient(0, 0, 0, 240);
+  gradient.addColorStop(0, "rgba(59, 111, 224, 0.28)");
+  gradient.addColorStop(1, "rgba(59, 111, 224, 0.0)");
 
-  const areaShape = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-  areaShape.setAttribute("class", "area");
-  areaShape.setAttribute("points", area);
+  priceChartInstance = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: points.map((point) => point.x),
+      datasets: [{
+        data: points.map((point) => point.y),
+        borderColor: "#3b6fe0",
+        backgroundColor: gradient,
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: "#3b6fe0",
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { intersect: false, mode: "index" },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "#141b2b",
+          padding: 10,
+          titleFont: { size: 11 },
+          bodyFont: { size: 12, weight: "700" },
+          callbacks: { label: (item) => `$${Number(item.parsed.y).toFixed(2)}` },
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { maxTicksLimit: 6, color: "#97a1b0", font: { size: 10 } },
+        },
+        y: {
+          grid: { color: "#eef1f6" },
+          ticks: { callback: (value) => `$${value}`, color: "#97a1b0", font: { size: 10 } },
+        },
+      },
+    },
+  });
+}
 
-  const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  line.setAttribute("class", "sparkline");
-  line.setAttribute("points", points.join(" "));
+function drawRiskGauge(score, label) {
+  const host = $("riskGauge");
+  if (!host) return;
+  const clamped = Math.max(0, Math.min(10, number(score, 0)));
+  const radius = 64;
+  const circumference = Math.PI * radius; // half circle
+  const fraction = clamped / 10;
+  const color = riskColor(label);
 
-  const minLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  minLabel.setAttribute("class", "chart-label");
-  minLabel.setAttribute("x", 8);
-  minLabel.setAttribute("y", height - pad.bottom);
-  minLabel.textContent = `$${min.toFixed(0)}`;
-
-  const maxLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  maxLabel.setAttribute("class", "chart-label");
-  maxLabel.setAttribute("x", 8);
-  maxLabel.setAttribute("y", pad.top + 8);
-  maxLabel.textContent = `$${max.toFixed(0)}`;
-
-  svg.append(areaShape, axis, line, minLabel, maxLabel);
+  host.innerHTML = `
+    <svg width="160" height="104" viewBox="0 0 160 104">
+      <path class="gauge-track" d="M 16 96 A ${radius} ${radius} 0 0 1 144 96" />
+      <path class="gauge-value" stroke="${color}"
+            stroke-dasharray="${(fraction * circumference).toFixed(1)} ${circumference.toFixed(1)}"
+            d="M 16 96 A ${radius} ${radius} 0 0 1 144 96" />
+      <text x="80" y="78" class="gauge-center gauge-score" fill="${color}">${fmt(clamped, 1)}</text>
+      <text x="80" y="94" class="gauge-center gauge-max">/ 10</text>
+    </svg>
+    <span class="gauge-caption">Composite risk</span>
+  `;
 }
 
 function renderAgentCards(outputs = []) {
@@ -337,18 +470,20 @@ function renderAgentCards(outputs = []) {
   }
 
   outputs.forEach((agent) => {
-    const score = agent.risk_score ?? agent.macro_risk_score ?? "-";
+    const score = number(agent.risk_score ?? agent.macro_risk_score, 0);
+    const style = agentStyle(agent.agent);
     const article = document.createElement("article");
     article.className = "agent-card";
     article.innerHTML = `
       <header>
         <div>
-          <h4>${agent.agent || "Agent"}</h4>
+          <h4><span class="agent-icon" style="background:${style.color}">${style.tag}</span>${agent.agent || "Agent"}</h4>
           <p>${agent.claim_type || "Claim"}</p>
         </div>
         <span class="label-pill ${riskClass(agent.risk_label)}">${agent.risk_label || "-"}</span>
       </header>
-      <div class="agent-score">${fmt(score, 2)}</div>
+      <div class="agent-score">${score === null ? "-" : fmt(score, 2)}</div>
+      <div class="agent-meter"><span style="width:${Math.max(0, Math.min(100, (score || 0) * 10))}%;background:${riskColor(agent.risk_label)}"></span></div>
       <p>Confidence: ${agent.confidence ?? "-"}</p>
       <ul class="evidence-list"></ul>
     `;
@@ -364,6 +499,124 @@ function renderAgentCards(outputs = []) {
     });
     grid.appendChild(article);
   });
+}
+
+function modelStatusClass(status = "") {
+  if (String(status).includes("active") || String(status).includes("configured")) return "risk-low";
+  if (String(status).includes("fallback") || String(status).includes("rule")) return "risk-moderate";
+  return "";
+}
+
+function renderModelRegistry(payload) {
+  const registry = $("modelRegistry");
+  const charts = $("trainingCharts");
+  if (!registry || !charts) return;
+
+  Object.values(trainingChartInstances).forEach((chart) => chart.destroy());
+  Object.keys(trainingChartInstances).forEach((key) => delete trainingChartInstances[key]);
+
+  registry.textContent = "";
+  charts.textContent = "";
+
+  const models = payload?.models || [];
+  if (!models.length) {
+    registry.innerHTML = `<div class="empty">No model registry data available.</div>`;
+    return;
+  }
+
+  models.forEach((model) => {
+    const card = document.createElement("article");
+    card.className = "model-card";
+    card.innerHTML = `
+      <div>
+        <strong>${model.agent}</strong>
+        <p>${model.model}</p>
+      </div>
+      <span class="label-pill ${modelStatusClass(model.status)}">${model.status}</span>
+      <dl>
+        <div><dt>Backend</dt><dd>${model.backend || "-"}</dd></div>
+        <div><dt>Claim</dt><dd>${model.claim_type || "-"}</dd></div>
+        <div><dt>Training rows</dt><dd>${model.train_examples || 0}</dd></div>
+      </dl>
+      <p class="model-data">${model.data || ""}</p>
+    `;
+    registry.appendChild(card);
+  });
+
+  models
+    .filter((model) => model.training?.available && (model.training.train_loss || []).length)
+    .forEach((model, index) => {
+      const chartCard = document.createElement("article");
+      chartCard.className = "training-card";
+      const canvasId = `trainingChart${index}`;
+      const latest = model.training.train_loss.at(-1);
+      const metrics = model.metrics || {};
+      chartCard.innerHTML = `
+        <div class="training-head">
+          <div>
+            <strong>${model.agent}</strong>
+            <p>${model.model}</p>
+          </div>
+          <span class="status-pill">loss ${latest ? fmt(latest.loss, 3) : "-"}</span>
+        </div>
+        <div class="training-metrics">
+          <span>Steps ${model.training.summary?.global_step || "-"}</span>
+          <span>Epoch ${fmt(model.training.summary?.epoch, 2)}</span>
+          <span>Accuracy ${metrics.eval_accuracy === undefined ? "-" : pct(Number(metrics.eval_accuracy) * 100, 1)}</span>
+          <span>Macro F1 ${metrics.eval_macro_f1 === undefined ? "-" : fmt(metrics.eval_macro_f1, 3)}</span>
+        </div>
+        <div class="training-chart-wrap"><canvas id="${canvasId}" aria-label="${model.agent} training loss"></canvas></div>
+      `;
+      charts.appendChild(chartCard);
+
+      const train = model.training.train_loss || [];
+      const evalLoss = model.training.eval_loss || [];
+      const evalByStep = new Map(evalLoss.map((point) => [point.step, point.loss]));
+      const ctx = $(canvasId).getContext("2d");
+      trainingChartInstances[canvasId] = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: train.map((point) => point.step),
+          datasets: [
+            {
+              label: "train loss",
+              data: train.map((point) => point.loss),
+              borderColor: index === 0 ? "#2563eb" : "#7c5cff",
+              backgroundColor: "transparent",
+              borderWidth: 2.5,
+              tension: 0.25,
+              pointRadius: 2,
+            },
+            {
+              label: "eval loss",
+              data: train.map((point) => evalByStep.get(point.step) ?? null),
+              borderColor: "#e2910f",
+              backgroundColor: "transparent",
+              borderWidth: 2,
+              borderDash: [5, 5],
+              tension: 0.25,
+              pointRadius: 3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { boxWidth: 10, color: "#6b7686", font: { size: 11 } } },
+            tooltip: { backgroundColor: "#141b2b", padding: 10 },
+          },
+          scales: {
+            x: { title: { display: true, text: "step" }, grid: { display: false }, ticks: { color: "#97a1b0", font: { size: 10 } } },
+            y: { title: { display: true, text: "loss" }, grid: { color: "#eef1f6" }, ticks: { color: "#97a1b0", font: { size: 10 } } },
+          },
+        },
+      });
+    });
+
+  if (!charts.children.length) {
+    charts.innerHTML = `<div class="empty">No local training loss history found for the currently configured models.</div>`;
+  }
 }
 
 function renderPolicyTrail(finalOutput = {}) {
@@ -614,6 +867,56 @@ async function selectTicker(ticker, question = "") {
   renderCompare();
 }
 
+function reportTitle(filename) {
+  return filename
+    .replace(/\.png$/, "")
+    .replace(/^\d+_/, "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function renderReportTabs() {
+  const tabs = $("reportTabs");
+  tabs.textContent = "";
+  REPORT_CATEGORIES.forEach((category) => {
+    const button = document.createElement("button");
+    button.className = `report-tab ${category.id === state.reportCategory ? "active" : ""}`;
+    button.type = "button";
+    button.textContent = category.label;
+    button.addEventListener("click", () => {
+      state.reportCategory = category.id;
+      renderReportTabs();
+      renderReportGrid();
+    });
+    tabs.appendChild(button);
+  });
+}
+
+function renderReportGrid() {
+  const grid = $("reportGrid");
+  grid.textContent = "";
+  const category = REPORT_CATEGORIES.find((item) => item.id === state.reportCategory) || REPORT_CATEGORIES[0];
+  category.files.forEach((filename) => {
+    const figure = document.createElement("figure");
+    figure.className = "report-card";
+    const src = `/data/reports/${filename}`;
+    figure.innerHTML = `<img src="${src}" alt="${reportTitle(filename)}" loading="lazy"><figcaption>${reportTitle(filename)}</figcaption>`;
+    figure.addEventListener("click", () => openLightbox(src, reportTitle(filename)));
+    grid.appendChild(figure);
+  });
+}
+
+function openLightbox(src, alt) {
+  $("lightboxImage").src = src;
+  $("lightboxImage").alt = alt;
+  $("lightbox").hidden = false;
+}
+
+function closeLightbox() {
+  $("lightbox").hidden = true;
+  $("lightboxImage").src = "";
+}
+
 async function loadCompanies() {
   const payload = await fetchJson(api.companies);
   state.rows = payload.companies || [];
@@ -624,13 +927,28 @@ async function loadCompanies() {
 
 async function boot() {
   try {
-    await loadCompanies();
-    const first = state.rows.find((row) => row.ticker === "AAPL") || state.rows[0];
+    renderReportTabs();
+    renderReportGrid();
+    const [modelPayload] = await Promise.all([
+      fetchJson(api.modelTraining).catch((error) => ({ models: [], notes: [error.message] })),
+      loadCompanies(),
+    ]);
+    state.modelTraining = modelPayload;
+    renderModelRegistry(modelPayload);
+    const first = state.filteredRows[0] || state.rows[0];
     await selectTicker(first.ticker);
   } catch (error) {
     document.body.innerHTML = `<main class="workspace"><div class="panel"><h2>Unable to load app data</h2><p>${error.message}</p></div></main>`;
   }
 }
+
+$("lightboxClose").addEventListener("click", closeLightbox);
+$("lightbox").addEventListener("click", (event) => {
+  if (event.target.id === "lightbox") closeLightbox();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeLightbox();
+});
 
 document.addEventListener("click", (event) => {
   const button = event.target.closest(".segmented button");

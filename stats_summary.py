@@ -86,7 +86,7 @@ for col_idx, width in enumerate(col_widths):
 
 plt.title(
     "Data Statistics Summary — Raw to Prepared\n"
-    "Team 3 | DATA 298A | 123 Companies | S&P 500 + NASDAQ-100",
+    f"Team 3 | DATA 298A | {g_rows:,} Companies | S&P 500 + NASDAQ-100",
     fontsize=11, fontweight="bold", color="#1F3864", pad=12
 )
 plt.tight_layout()

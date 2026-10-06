@@ -279,6 +279,30 @@ If `models/fundamental_agent_finbert/` is missing or inference fails, the
 Fundamental Agent automatically falls back to the deterministic SEC-financials
 logic.
 
+To test the Market/News LoRA adapter directly from VS Code or a terminal:
+
+```bash
+curl -X POST http://127.0.0.1:8766/api/agents/market-lora/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticker": "AAPL",
+    "annualized_volatility": 0.28,
+    "beta": 1.12,
+    "max_drawdown": -0.17,
+    "sentiment_mean": 0.03,
+    "article_count": 40
+  }'
+```
+
+After training the Mistral adapter with `agents/market/market_mistral_training.ipynb`,
+switch the same endpoint to Mistral by setting:
+
+```env
+MARKET_LORA_ENABLED=1
+MARKET_LORA_BASE_MODEL=mistralai/Mistral-7B-Instruct-v0.3
+MARKET_LORA_ADAPTER_DIR=models/market_mistral_lora
+```
+
 Compatibility launcher:
 
 ```bash

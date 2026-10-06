@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Literal
@@ -24,10 +25,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import config
-from agents.critic_agent import run_critic_agent
-from agents.debate_state_machine import run_debate_state_machine
-from agents.monitoring import log_verdict_run
-from agents.verdict_report import save_json_verdict, save_pdf_verdict
+from agents.orchestrator.critic_agent import predict_market_lora_payload, run_critic_agent
+from agents.orchestrator.debate_state_machine import run_debate_state_machine
+from agents.orchestrator.monitoring import log_verdict_run
+from agents.orchestrator.verdict_report import save_json_verdict, save_pdf_verdict
 
 
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
@@ -47,6 +48,15 @@ class VerdictRequest(BaseModel):
 
 class CompareRequest(BaseModel):
     tickers: list[str] = Field(..., min_length=2, max_length=5)
+
+
+class MarketLoraRequest(BaseModel):
+    ticker: str = Field(..., min_length=1, max_length=12)
+    annualized_volatility: float = 0.0
+    beta: float = 1.0
+    max_drawdown: float = 0.0
+    sentiment_mean: float = 0.0
+    article_count: int = 0
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -111,6 +121,151 @@ def _safe_float(value: Any) -> float | None:
         return parsed
     except (TypeError, ValueError):
         return None
+
+
+def _count_jsonl(path: Path) -> int:
+    if not path.exists():
+        return 0
+    return sum(1 for line in path.read_text(encoding="utf-8").splitlines() if line.strip())
+
+
+def _latest_trainer_state(model_dir: Path) -> dict[str, Any] | None:
+    states = sorted(model_dir.glob("checkpoint-*/trainer_state.json"))
+    if not states:
+        direct = model_dir / "trainer_state.json"
+        states = [direct] if direct.exists() else []
+    best_state = None
+    best_step = -1
+    for path in states:
+        data = _read_json(path)
+        if not data:
+            continue
+        step = int(data.get("global_step") or 0)
+        if step >= best_step:
+            best_step = step
+            best_state = data
+    return best_state
+
+
+def _training_series(model_dir: Path) -> dict[str, Any]:
+    state = _latest_trainer_state(model_dir)
+    if not state:
+        return {"available": False, "train_loss": [], "eval_loss": [], "summary": {}}
+
+    train_loss = []
+    eval_loss = []
+    for item in state.get("log_history", []):
+        step = item.get("step")
+        epoch = item.get("epoch")
+        if item.get("loss") is not None:
+            train_loss.append({
+                "step": step,
+                "epoch": epoch,
+                "loss": round(float(item["loss"]), 6),
+            })
+        if item.get("eval_loss") is not None:
+            eval_loss.append({
+                "step": step,
+                "epoch": epoch,
+                "loss": round(float(item["eval_loss"]), 6),
+            })
+
+    summary = {
+        "global_step": state.get("global_step"),
+        "epoch": state.get("epoch"),
+        "max_steps": state.get("max_steps"),
+        "train_batch_size": state.get("train_batch_size"),
+        "best_metric": state.get("best_metric"),
+    }
+    return {
+        "available": True,
+        "train_loss": train_loss,
+        "eval_loss": eval_loss,
+        "summary": summary,
+    }
+
+
+def _model_registry() -> list[dict[str, Any]]:
+    finbert_dir = PROJECT_ROOT / "models" / "fundamental_agent_finbert"
+    lora_dir = PROJECT_ROOT / "models" / "market_sentiment_lora"
+    mistral_lora_dir = PROJECT_ROOT / "models" / "market_mistral_lora"
+    configured_lora_dir = Path(os.getenv("MARKET_LORA_ADAPTER_DIR", lora_dir))
+    finbert_metrics = _read_json(finbert_dir / "training_metrics.json") or {}
+
+    return [
+        {
+            "agent": "Fundamental Agent",
+            "model": "ProsusAI/finbert fine-tuned classifier",
+            "backend": "local_transformers",
+            "status": "active" if finbert_dir.exists() else "fallback_rules",
+            "claim_type": "FINBERT_MODEL_INFERENCE",
+            "data": "SEC EDGAR Silver fundamentals + Gold risk labels",
+            "train_examples": _count_jsonl(DATA_DIR / "gold" / "fundamental_finetune_data.jsonl"),
+            "model_dir": "models/fundamental_agent_finbert",
+            "metrics": finbert_metrics,
+            "training": _training_series(finbert_dir),
+        },
+        {
+            "agent": "Market + Volatility + News Sentiment Agent",
+            "model": os.getenv("MARKET_LORA_BASE_MODEL", "Qwen/Qwen2.5-1.5B-Instruct") + " + LoRA",
+            "backend": "remote_colab" if os.getenv("MARKET_LORA_REMOTE_URL") else "local_transformers",
+            "status": "active" if os.getenv("MARKET_LORA_ENABLED", "0").lower() in {"1", "true", "yes"} else "fallback_rules",
+            "claim_type": "LORA_MODEL_INFERENCE",
+            "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
+            "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
+            "model_dir": str(configured_lora_dir.relative_to(PROJECT_ROOT) if configured_lora_dir.is_relative_to(PROJECT_ROOT) else configured_lora_dir),
+            "metrics": {},
+            "training": _training_series(configured_lora_dir),
+        },
+        {
+            "agent": "Market + Volatility + News Sentiment Agent",
+            "model": "mistralai/Mistral-7B-Instruct-v0.3 + LoRA",
+            "backend": "local_transformers_or_remote_colab",
+            "status": "available" if mistral_lora_dir.exists() else "not_trained_yet",
+            "claim_type": "LORA_MODEL_INFERENCE",
+            "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
+            "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
+            "model_dir": "models/market_mistral_lora",
+            "metrics": {},
+            "training": _training_series(mistral_lora_dir),
+        },
+        {
+            "agent": "Sentiment Agent",
+            "model": os.getenv("SENTIMENT_FINBERT_MODEL", "ProsusAI/finbert"),
+            "backend": "local_transformers",
+            "status": "active_if_news_available",
+            "claim_type": "FINBERT_SENTIMENT_INFERENCE",
+            "data": "NewsAPI headline title/description text per ticker",
+            "train_examples": 0,
+            "model_dir": "downloaded from Hugging Face cache",
+            "metrics": {},
+            "training": {"available": False, "train_loss": [], "eval_loss": [], "summary": {}},
+        },
+        {
+            "agent": "Macro-Economic Agent",
+            "model": "DeepSeek macro reasoning when DEEPSEEK_API_KEY is configured",
+            "backend": "api_or_rules",
+            "status": "llm_configured" if os.getenv("DEEPSEEK_API_KEY") else "rule_based_active",
+            "claim_type": "RULE_BASED_ESTIMATE / MACRO_LLM_INFERENCE",
+            "data": "FRED macro series: rates, CPI, unemployment, GDP, yield curve, VIX, WTI oil",
+            "train_examples": 0,
+            "model_dir": "",
+            "metrics": {},
+            "training": {"available": False, "train_loss": [], "eval_loss": [], "summary": {}},
+        },
+        {
+            "agent": "Critic / Orchestrator",
+            "model": os.getenv("CRITIC_MODEL", "weighted critic; optional OpenAI-compatible LLM"),
+            "backend": "weighted_rules_or_api",
+            "status": "llm_configured" if (os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")) else "weighted_rules_active",
+            "claim_type": "llm_based_critic_with_local_fallback",
+            "data": "Specialist agent outputs, confidence, disagreement flags, and evidence trail",
+            "train_examples": 0,
+            "model_dir": "",
+            "metrics": {},
+            "training": {"available": False, "train_loss": [], "eval_loss": [], "summary": {}},
+        },
+    ]
 
 
 def _price_metadata(ticker: str) -> dict[str, str]:
@@ -266,6 +421,24 @@ def index() -> RedirectResponse:
 @app.get("/api/health")
 def health() -> dict[str, Any]:
     return {"ok": True, "gold_table": GOLD_PATH.exists(), "companies": len(_gold_rows())}
+
+
+@app.get("/api/models/training")
+def model_training() -> dict[str, Any]:
+    models = _model_registry()
+    return {
+        "count": len(models),
+        "models": models,
+        "notes": [
+            "Training loss is available only for locally saved fine-tuned models with trainer_state.json.",
+            "API-only or rule-based agents do not have local training loss curves.",
+        ],
+    }
+
+
+@app.post("/api/agents/market-lora/predict")
+def market_lora_predict(request: MarketLoraRequest) -> dict[str, Any]:
+    return predict_market_lora_payload(request.model_dump())
 
 
 @app.get("/api/companies")

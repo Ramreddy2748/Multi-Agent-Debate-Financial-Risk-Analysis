@@ -8,13 +8,15 @@ These are part of the current API-backed stock risk app.
 
 - `src/api/server.py` - FastAPI backend and frontend/static mounting.
 - `frontend/index.html`, `frontend/app.js`, `frontend/styles.css` - stock risk dashboard.
-- `agents/critic_agent.py` - runs Fundamental, Market/News, Macro, and critic synthesis.
-- `agents/debate_state_machine.py` - debate-style contradiction and revision flow.
-- `agents/monitoring.py` - monitoring log support.
-- `agents/verdict_report.py` - JSON/PDF verdict generation.
-- `agents/policy_evidence.py` - Policy A-H evidence trail.
-- `agents/fundamental_finbert.py` - FinBERT training/inference wrapper.
-- `agents/macro_agent.py` - macro agent logic and optional external model path.
+- `agents/orchestrator/critic_agent.py` - runs Fundamental, Market/News, Sentiment, Macro, and critic synthesis.
+- `agents/orchestrator/debate_state_machine.py` - debate-style contradiction and revision flow.
+- `agents/orchestrator/monitoring.py` - monitoring log support.
+- `agents/orchestrator/verdict_report.py` - JSON/PDF verdict generation.
+- `agents/orchestrator/policy_evidence.py` - Policy A-H evidence trail.
+- `agents/fundamental/finbert.py` - FinBERT training/inference wrapper.
+- `agents/sentiment/finbert.py` - ProsusAI/finbert headline sentiment specialist.
+- `agents/macro/agent.py` - macro agent logic and optional external model path.
+- `agents/*.py` - thin compatibility wrappers for old commands/imports.
 - `config.py`, `requirements.txt`, `.env` locally - configuration and dependencies.
 
 ## Keep For Data Pipeline
@@ -33,12 +35,13 @@ These are useful if you want to rebuild the data layers.
 
 These are useful, but they are not needed every time the frontend runs.
 
-- `agents/build_fundamental_finetune_data.py` - builds FinBERT fundamental JSONL.
-- `agents/build_market_sentiment_finetune_data.py` - builds Qwen LoRA market/news JSONL.
-- `agents/finetune_lora.py` - generic LoRA fine-tuning script.
-- `agents/infer_lora.py` - standalone LoRA inference test script.
-- `agents/fundamental_finbert_colab.ipynb` - Colab workflow for FinBERT training.
-- `agents/market_sentiment_lora_colab.ipynb` - Colab workflow for market/news LoRA.
+- `agents/fundamental/build_finetune_data.py` - builds FinBERT fundamental JSONL.
+- `agents/market/build_finetune_data.py` - builds Qwen LoRA market/news JSONL.
+- `agents/market/finetune_lora.py` - generic LoRA fine-tuning script.
+- `agents/market/infer_lora.py` - standalone LoRA inference test script.
+- `agents/fundamental/fundamental_finbert_colab.ipynb` - Colab workflow for FinBERT training.
+- `agents/market/market_sentiment_lora_colab.ipynb` - Colab workflow for market/news LoRA.
+- `agents/market/market_mistral_training.ipynb` - Colab workflow for Mistral market/news LoRA.
 
 ## Optional / Demo / Research Files
 
@@ -46,10 +49,10 @@ These are useful for explanation, experiments, or reporting, but not required by
 
 - `demo_pipeline.ipynb` - demo notebook.
 - `agents_evaluation.ipynb` - evaluation notebook.
-- `agents/fundamental_agent.py` - older deterministic fundamental agent used by dataset builders.
-- `agents/market_sentiment_agent.py` - older deterministic market/news agent used by dataset builders.
-- `agents/fundamental_agent_llm.py`, `agents/market_sentiment_agent_llm.py`, `agents/macro_agent_llm_compare.py`, `agents/llm_comparison.py`, `agents/llm_comparison_plots.py` - model comparison experiments.
-- `agents/retrieval.py` - vector retrieval experiment.
+- `agents/fundamental/rule_based.py` - older deterministic fundamental agent used by dataset builders.
+- `agents/market/rule_based.py` - older deterministic market/news agent used by dataset builders.
+- `agents/fundamental/llm_compare.py`, `agents/market/llm_compare.py`, `agents/macro/llm_compare.py`, `agents/shared/llm_comparison.py`, `agents/shared/llm_comparison_plots.py` - model comparison experiments.
+- `agents/shared/retrieval.py` - vector retrieval experiment.
 - `macro_agent_plot.py` - report plotting utility.
 - `DATA_INGESTION_DEEP_DIVE.md`, `PIPELINE_DEEP_DIVE.md`, `GCP_SETUP.md`, `data_pipeline_diagram.md` - documentation.
 

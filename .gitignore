@@ -3,6 +3,9 @@ data/silver/
 data/silver_parquet/
 data/reports/
 data/verdicts/
+data/gold/*_batch*.csv
+data/gold/*llm_comparison.json
+data/gold/monitoring_runs.jsonl
 venv/
 .venv/
 __pycache__/
@@ -10,6 +13,7 @@ __pycache__/
 .env
 *.log
 .DS_Store
+.claude/
 mlruns/
 mlflow.db
 data/gold/_mlflow_artifacts/
