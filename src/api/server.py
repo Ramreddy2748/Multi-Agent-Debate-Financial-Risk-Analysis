@@ -255,9 +255,15 @@ def _model_registry() -> list[dict[str, Any]]:
         },
         {
             "agent": "Critic / Orchestrator",
-            "model": os.getenv("CRITIC_MODEL", "weighted critic; optional OpenAI-compatible LLM"),
+            "model": os.getenv("CLAUDE_MODEL") or os.getenv("CRITIC_MODEL", "weighted critic; optional Claude/OpenAI-compatible LLM"),
             "backend": "weighted_rules_or_api",
-            "status": "llm_configured" if (os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")) else "weighted_rules_active",
+            "status": "llm_configured" if (
+                os.getenv("ANTHROPIC_API_KEY")
+                or os.getenv("CLAUDE_API_KEY")
+                or os.getenv("CRITIC_API_KEY")
+                or os.getenv("OPENAI_API_KEY")
+                or os.getenv("DEEPSEEK_API_KEY")
+            ) else "weighted_rules_active",
             "claim_type": "llm_based_critic_with_local_fallback",
             "data": "Specialist agent outputs, confidence, disagreement flags, and evidence trail",
             "train_examples": 0,
@@ -535,7 +541,7 @@ def generate_verdict(request: VerdictRequest) -> dict[str, Any]:
             query=request.query,
             company_name=company_name,
             sector=sector,
-            use_llm=request.use_llm,
+            use_llm=request.use_llm or os.getenv("CRITIC_LLM_ENABLED", "0").lower() in {"1", "true", "yes"},
         )
         json_path = Path(save_json_verdict(report))
         pdf_path = Path(save_pdf_verdict(report))
