@@ -1,0 +1,99 @@
+{
+  "version": "1.0",
+  "purpose": "Maps each production agent to the RAG evidence sources it should retrieve before producing or reviewing a risk claim.",
+  "priority_order": [
+    "Project numeric data from Silver/Gold tables",
+    "Curated financial terms and thresholds from data/rag/financial_terms.jsonl",
+    "Model output from fine-tuned or remote LLM agents",
+    "General narrative context from retrieved documents"
+  ],
+  "collections": {
+    "financial_terms": {
+      "path": "data/rag/financial_terms.jsonl",
+      "description": "Curated financial definitions, threshold rules, and policy guidance."
+    },
+    "fundamental_silver": {
+      "path_glob": "data/silver/silver_edgar_*.csv",
+      "description": "SEC-derived company fundamentals, cash, debt, income, assets, liabilities, and equity."
+    },
+    "market_silver": {
+      "path_glob": "data/silver/silver_prices_*.csv",
+      "description": "Yahoo Finance price, volatility, beta, drawdown, valuation, and market features."
+    },
+    "sentiment_silver": {
+      "path": "data/silver/silver_news_sentiment.csv",
+      "description": "Filtered NewsAPI/Google News headline sentiment aggregates by ticker and date."
+    },
+    "raw_news": {
+      "path": "data/bronze/newsapi_headlines_raw.csv",
+      "description": "Raw headline-level news records retained for audit and reprocessing."
+    },
+    "gold_risk": {
+      "path": "data/gold/gold_risk_scores_ALL.csv",
+      "description": "Project Gold layer with final engineered risk features and labels."
+    },
+    "runtime_vector_store": {
+      "path": "data/gold/vector_store",
+      "description": "Generated Chroma vector store. Rebuildable artifact, not source-of-truth data."
+    }
+  },
+  "agents": {
+    "fundamental_agent": {
+      "display_name": "Fundamental Agent",
+      "retrieves": ["fundamental_silver", "gold_risk", "financial_terms"],
+      "query_template": "{ticker} cash debt income revenue equity profitability margin leverage",
+      "top_k": 5,
+      "required_terms": [
+        "fundamental_debt_to_equity",
+        "fundamental_cash_debt_coverage",
+        "fundamental_profit_margin",
+        "fundamental_operating_margin",
+        "fundamental_negative_income"
+      ],
+      "output_use": "Ground FinBERT or fallback fundamental classifications in SEC-derived evidence and financial ratio thresholds."
+    },
+    "market_agent": {
+      "display_name": "Market + Volatility Agent",
+      "retrieves": ["market_silver", "gold_risk", "financial_terms"],
+      "query_template": "{ticker} annualized volatility beta drawdown price versus 52-week high return trend",
+      "top_k": 5,
+      "required_terms": [
+        "market_annualized_volatility",
+        "market_beta",
+        "market_max_drawdown",
+        "market_price_vs_52w_high"
+      ],
+      "output_use": "Ground market LoRA or fallback outputs in Yahoo-derived price and volatility features only."
+    },
+    "sentiment_agent": {
+      "display_name": "Sentiment Agent",
+      "retrieves": ["sentiment_silver", "raw_news", "financial_terms"],
+      "query_template": "{ticker} recent financial headlines positive neutral negative sentiment confidence",
+      "top_k": 5,
+      "required_terms": [
+        "sentiment_finbert_label",
+        "sentiment_article_count"
+      ],
+      "output_use": "Ground ProsusAI/FinBERT headline sentiment in filtered recent news and disclose thin or missing coverage."
+    },
+    "critic_agent": {
+      "display_name": "Critic / Orchestrator Agent",
+      "retrieves": ["gold_risk", "financial_terms", "fundamental_silver", "market_silver", "sentiment_silver"],
+      "query_template": "{ticker} evidence priority confidence disagreement policy fallback review",
+      "top_k": 8,
+      "required_terms": [
+        "critic_agent_disagreement",
+        "critic_confidence_floor",
+        "critic_policy_provenance",
+        "output_research_disclaimer"
+      ],
+      "output_use": "Verify specialist claims, detect contradictions, disclose fallback behavior, and produce an auditable final verdict."
+    }
+  },
+  "rebuild_commands": {
+    "runtime_vector_store": "python3 agents/retrieval.py --build-all",
+    "full_rag_prototype": "python3 RAG/rag.py"
+  }
+}
+
+

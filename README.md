@@ -181,7 +181,7 @@ Optional Claude critic/orchestrator:
 CRITIC_LLM_ENABLED=1
 CRITIC_PROVIDER=anthropic
 ANTHROPIC_API_KEY=your_anthropic_key_here
-CLAUDE_MODEL=claude-3-5-sonnet-latest
+CLAUDE_MODEL=claude-sonnet-5-5
 ```
 
 With those settings, the critic asks Claude to compare the specialist agent
@@ -264,7 +264,7 @@ Run the app:
 uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
 ```
 
-To enable the local fine-tuned Market/News LoRA adapter, first place the
+To enable the local fine-tuned Market/Volatility LoRA adapter, first place the
 adapter files under `models/market_sentiment_lora/`, then install the optional
 ML inference packages and start the API with the LoRA flag:
 
@@ -274,8 +274,20 @@ MARKET_LORA_ENABLED=1 uvicorn src.api.server:app --reload --host 127.0.0.1 --por
 ```
 
 If the adapter is missing, dependencies are unavailable, or local inference is
-too slow, the market/news agent automatically falls back to the deterministic
-volatility and sentiment rule path.
+too slow, the market agent automatically falls back to the deterministic
+price and volatility rule path. News is scored separately by the Sentiment Agent.
+
+The previous `market_sentiment_lora` adapter was trained with the old combined
+schema. Regenerate the JSONL and retrain the adapter before treating its output
+as a market-only model:
+
+```bash
+python3 agents/market/build_finetune_data.py
+python3 agents/finetune_lora.py \
+  --train-jsonl data/gold/market_sentiment_finetune_data.jsonl \
+  --base-model Qwen/Qwen2.5-1.5B-Instruct \
+  --output-dir models/market_volatility_lora
+```
 
 To train and enable the Fundamental Agent FinBERT classifier:
 
@@ -292,7 +304,7 @@ If `models/fundamental_agent_finbert/` is missing or inference fails, the
 Fundamental Agent automatically falls back to the deterministic SEC-financials
 logic.
 
-To test the Market/News LoRA adapter directly from VS Code or a terminal:
+To test the Market/Volatility LoRA adapter directly from VS Code or a terminal:
 
 ```bash
 curl -X POST http://127.0.0.1:8766/api/agents/market-lora/predict \
@@ -302,8 +314,10 @@ curl -X POST http://127.0.0.1:8766/api/agents/market-lora/predict \
     "annualized_volatility": 0.28,
     "beta": 1.12,
     "max_drawdown": -0.17,
-    "sentiment_mean": 0.03,
-    "article_count": 40
+    "price_vs_52w_high_pct": -12.5,
+    "ytd_return_pct": 8.2,
+    "rolling_vol_30d": 0.28,
+    "rolling_vol_60d": 0.24
   }'
 ```
 
@@ -426,5 +440,25 @@ Risk labels: HIGH (above 6.0) · MODERATE (3.5 to 6.0) · LOW (below 3.5)
 - Train set: 86 companies
 - Validation set: 18 companies
 - Test set: 19 companies
+
+## Feature Priority and Freshness
+
+The feature-priority layer ranks evidence for Fundamental, Market, Sentiment,
+and Macro agents using configured risk impact, feature importance, data quality,
+and source freshness. It does not alter the specialist risk score; it identifies
+which columns should receive attention first and makes stale evidence visible.
+
+Run it after refreshing Silver/Gold data:
+
+```bash
+python3 agents/evaluation/feature_priority.py
+```
+
+Generated artifacts:
+
+- `data/gold/feature_priority_scores.csv` — one auditable row per agent/ticker/feature.
+- `data/gold/feature_priority_summary.csv` — top three features per agent and ticker.
+- `data/gold/feature_freshness.csv` — freshness and missing-value status.
+- `data/gold/feature_priority_report.md` — highest-priority evidence report.
 
 ---

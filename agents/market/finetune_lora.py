@@ -5,7 +5,7 @@ Use this for:
   1. Fundamental Agent fine-tuning data:
      data/gold/fundamental_finetune_data.jsonl
 
-  2. Market/Sentiment Agent fine-tuning data:
+  2. Market/Volatility Agent fine-tuning data:
      data/gold/market_sentiment_finetune_data.jsonl
 
 Expected JSONL format:

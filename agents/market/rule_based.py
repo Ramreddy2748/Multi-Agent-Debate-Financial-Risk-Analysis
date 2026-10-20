@@ -1,12 +1,8 @@
 """
-Agent 2 — Market / Volatility / Sentiment Agent
-Uses:
-  - data/silver/silver_prices_<TICKER>.csv
-  - data/silver/silver_news_sentiment.csv
-
-Proposed fine-tuned model:
-  Market/Volatility + Sentiment risk model using numeric price features and
-  financial news sentiment signals.
+Agent 2 — Market / Volatility Agent
+Uses only Yahoo-derived price and volatility features from
+``data/silver/silver_prices_<TICKER>.csv``. News headlines belong to the
+dedicated Sentiment Agent.
 
 Current version is deterministic and explainable. Later, this file can keep the
 same JSON interface while the scoring section is replaced by fine-tuned model
@@ -66,7 +62,7 @@ def _mean(values: list[float]) -> float | None:
 
 
 @dataclass
-class MarketSentimentAgentResult:
+class MarketAgentResult:
     agent: str
     ticker: str
     model_name: str
@@ -77,15 +73,12 @@ class MarketSentimentAgentResult:
     evidence: list[str]
 
 
-class MarketSentimentAgent:
-    def __init__(
-        self,
-        silver_dir: str = config.LOCAL_SILVER,
-        news_path: str | None = None,
-    ):
+class MarketAgent:
+    def __init__(self, silver_dir: str = config.LOCAL_SILVER, news_path: str | None = None):
         self.silver_dir = silver_dir
-        self.news_path = news_path or os.path.join(config.LOCAL_SILVER, "silver_news_sentiment.csv")
-        self.model_name = "Fine-tuned market volatility + news sentiment agent candidate"
+        # ``news_path`` remains accepted for compatibility with old scripts, but
+        # is intentionally ignored so market risk cannot double-count headlines.
+        self.model_name = "Fine-tuned market volatility agent candidate"
 
     def _price_path(self, ticker: str) -> str:
         return os.path.join(self.silver_dir, f"silver_prices_{ticker.upper()}.csv")
@@ -97,12 +90,6 @@ class MarketSentimentAgent:
         with open(path, newline="", encoding="utf-8") as f:
             rows = list(csv.DictReader(f))
         return sorted(rows, key=lambda row: _parse_date(row.get("date", "")))
-
-    def load_news(self) -> list[dict[str, str]]:
-        if not os.path.exists(self.news_path):
-            return []
-        with open(self.news_path, newline="", encoding="utf-8") as f:
-            return list(csv.DictReader(f))
 
     def _market_score(self, rows: list[dict[str, str]]) -> tuple[float, dict[str, Any], list[str]]:
         latest = rows[-1]
@@ -117,6 +104,14 @@ class MarketSentimentAgent:
         latest_vol_60d = _safe_float(latest.get("rolling_vol_60d"))
         latest_drawdown_52w = _safe_float(latest.get("price_vs_52w_high_pct"))
         latest_sma_50 = _safe_float(latest.get("sma_50"))
+        latest_date = _parse_date(latest.get("date", ""))
+        year_rows = [row for row in rows if _parse_date(row.get("date", "")).year == latest_date.year]
+        year_start_close = _safe_float(year_rows[0].get("close")) if year_rows else None
+        ytd_return = (
+            (latest_close - year_start_close) / year_start_close
+            if latest_close and year_start_close
+            else None
+        )
 
         if returns:
             mean_return = sum(returns) / len(returns)
@@ -163,6 +158,7 @@ class MarketSentimentAgent:
             "max_drawdown": max_drawdown,
             "price_vs_52w_high_pct": latest_drawdown_52w,
             "sma_50_gap": sma_gap,
+            "ytd_return_pct": ytd_return * 100 if ytd_return is not None else None,
             "price_rows_used": len(rows),
         }
         evidence = [
@@ -174,77 +170,10 @@ class MarketSentimentAgent:
             evidence.append(f"Price is {latest_drawdown_52w:.1f}% from 52-week high.")
         if sma_gap is not None:
             evidence.append(f"Latest close vs SMA-50 gap is {sma_gap:.1%}.")
+        if ytd_return is not None:
+            evidence.append(f"Year-to-date return is {ytd_return:.1%}.")
 
         return score, features, evidence
-
-    def _sentiment_score(self, ticker: str) -> tuple[float, dict[str, Any], list[str], str]:
-        rows_all = self.load_news()
-        rows = [row for row in rows_all if str(row.get("ticker", "")).upper() == ticker.upper()]
-
-        if not rows:
-            return (
-                5.0,
-                {
-                    "sentiment_mean": None,
-                    "sentiment_std": None,
-                    "article_count": 0,
-                    "news_days_covered": 0,
-                },
-                ["No company-specific news sentiment rows found; sentiment defaulted to neutral."],
-                "LOW",
-            )
-
-        rows = sorted(rows, key=lambda row: _parse_date(row.get("date", "")))
-        article_counts = [_safe_float(row.get("article_count"), 0.0) or 0.0 for row in rows]
-        total_articles = int(sum(article_counts))
-
-        weighted_total = 0.0
-        weight_sum = 0.0
-        for row, count in zip(rows, article_counts):
-            sentiment = _safe_float(row.get("sentiment_mean"), 0.0) or 0.0
-            weight = max(count, 1.0)
-            weighted_total += sentiment * weight
-            weight_sum += weight
-        weighted_sentiment = weighted_total / weight_sum if weight_sum else 0.0
-
-        sentiment_std = _mean([
-            value
-            for value in (_safe_float(row.get("sentiment_std")) for row in rows)
-            if value is not None
-        ])
-        if sentiment_std is None:
-            sentiment_std = 0.0
-
-        score = _clip_score(5.5 - weighted_sentiment * 5)
-        if sentiment_std > 0.50:
-            score = _clip_score(score + 0.75)
-
-        if total_articles >= 10:
-            confidence = "HIGH"
-        elif total_articles >= 3:
-            confidence = "MEDIUM"
-        else:
-            confidence = "LOW"
-
-        dates = [_parse_date(row.get("date", "")) for row in rows]
-        days_covered = len(set(row.get("date") for row in rows))
-        features = {
-            "sentiment_mean": weighted_sentiment,
-            "sentiment_std": sentiment_std,
-            "article_count": total_articles,
-            "news_days_covered": days_covered,
-            "first_news_date": min(dates).date().isoformat(),
-            "last_news_date": max(dates).date().isoformat(),
-        }
-        evidence = [
-            f"Weighted news sentiment_mean is {weighted_sentiment:.3f}.",
-            f"Article count is {total_articles} across {days_covered} day(s).",
-            f"Average sentiment_std is {sentiment_std:.3f}.",
-        ]
-        if total_articles < 3:
-            evidence.append("Low article volume makes the sentiment component less reliable.")
-
-        return score, features, evidence, confidence
 
     def analyze(self, ticker: str) -> MarketSentimentAgentResult:
         ticker = ticker.upper()
@@ -252,51 +181,33 @@ class MarketSentimentAgent:
         if not price_rows:
             raise ValueError(f"No price rows found for {ticker}")
 
-        market_score, market_features, market_evidence = self._market_score(price_rows)
-        sentiment_score, sentiment_features, sentiment_evidence, sentiment_confidence = self._sentiment_score(ticker)
-
-        sentiment_weight = 0.25
-        market_weight = 0.75
-        if sentiment_confidence == "LOW":
-            sentiment_weight = 0.10
-            market_weight = 0.90
-
-        score = round(_clip_score(market_score * market_weight + sentiment_score * sentiment_weight), 2)
-        confidence = "HIGH" if len(price_rows) >= 120 and sentiment_confidence != "LOW" else "MEDIUM"
-
-        evidence = [
-            f"Market component score is {market_score:.2f}.",
-            f"Sentiment component score is {sentiment_score:.2f}.",
-            f"Component weights are market={market_weight:.2f}, sentiment={sentiment_weight:.2f}.",
-        ] + market_evidence + sentiment_evidence
+        score, features, evidence = self._market_score(price_rows)
+        confidence = "HIGH" if len(price_rows) >= 120 else "MEDIUM"
 
         return MarketSentimentAgentResult(
-            agent="market_sentiment_agent",
+            agent="market_agent",
             ticker=ticker,
             model_name=self.model_name,
             risk_score=score,
             risk_label=_risk_label(score),
             confidence=confidence,
-            features={
-                **market_features,
-                **sentiment_features,
-                "market_component_score": market_score,
-                "sentiment_component_score": sentiment_score,
-                "market_weight": market_weight,
-                "sentiment_weight": sentiment_weight,
-                "sentiment_confidence": sentiment_confidence,
-            },
+            features=features,
             evidence=evidence,
         )
 
 
+# Compatibility aliases for older imports and saved experiment scripts.
+MarketSentimentAgent = MarketAgent
+MarketSentimentAgentResult = MarketAgentResult
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the Market / Volatility / Sentiment Agent.")
+    parser = argparse.ArgumentParser(description="Run the Market / Volatility Agent.")
     parser.add_argument("ticker", help="Ticker symbol, for example KO or AAPL")
     parser.add_argument("--out", help="Optional JSON output path")
     args = parser.parse_args()
 
-    result = asdict(MarketSentimentAgent().analyze(args.ticker))
+    result = asdict(MarketAgent().analyze(args.ticker))
     payload = json.dumps(result, indent=2)
     print(payload)
 
