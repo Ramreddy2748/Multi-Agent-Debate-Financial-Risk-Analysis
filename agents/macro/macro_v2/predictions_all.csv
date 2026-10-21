@@ -1,0 +1,1021 @@
+as_of_date,etf,sector,split,pred_expected_vol_pct,pred_risk_label,pred_macro_risk_score,valid_json,raw_output,actual_vol_pct,actual_risk_label,has_label
+2019-01-31,XLB,Materials,val,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",13.586029192522151,MODERATE,True
+2019-01-31,XLE,Energy,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",16.539075141454255,MODERATE,True
+2019-01-31,XLF,Financials,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",14.15444622397382,MODERATE,True
+2019-01-31,XLI,Industrials,val,16.0,MODERATE,5.4,True,"{""expected_vol_pct"": 16.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.4}",12.93324913660549,LOW,True
+2019-01-31,XLK,Information Technology,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",12.128838534645517,LOW,True
+2019-01-31,XLP,Consumer Staples,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",7.608543724497957,LOW,True
+2019-01-31,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",11.130198019723798,LOW,True
+2019-01-31,XLU,Utilities,val,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",8.437826418993092,LOW,True
+2019-01-31,XLV,Health Care,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",13.968801802028239,MODERATE,True
+2019-01-31,XLY,Consumer Discretionary,val,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",10.939130742954568,LOW,True
+2019-02-28,XLB,Materials,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.587534081891999,MODERATE,True
+2019-02-28,XLE,Energy,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.978973666810873,MODERATE,True
+2019-02-28,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.608608276073102,MODERATE,True
+2019-02-28,XLI,Industrials,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.230400862086585,MODERATE,True
+2019-02-28,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.53010642328743,MODERATE,True
+2019-02-28,XLP,Consumer Staples,val,9.7,LOW,1.1,True,"{""expected_vol_pct"": 9.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",8.73255857017857,LOW,True
+2019-02-28,XLRE,Real Estate,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.064413266570131,LOW,True
+2019-02-28,XLU,Utilities,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",10.407515215877757,LOW,True
+2019-02-28,XLV,Health Care,val,12.4,LOW,2.7,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.7}",14.436955990140707,MODERATE,True
+2019-02-28,XLY,Consumer Discretionary,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",13.428005678916008,MODERATE,True
+2019-03-29,XLB,Materials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.858761116894925,MODERATE,True
+2019-03-29,XLE,Energy,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.290157271814465,MODERATE,True
+2019-03-29,XLF,Financials,val,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",14.961837021205898,MODERATE,True
+2019-03-29,XLI,Industrials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.949097980908707,MODERATE,True
+2019-03-29,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.075860813416334,MODERATE,True
+2019-03-29,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",10.298831983807439,LOW,True
+2019-03-29,XLRE,Real Estate,val,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",13.251346088450891,MODERATE,True
+2019-03-29,XLU,Utilities,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",12.175147510653117,LOW,True
+2019-03-29,XLV,Health Care,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",13.567037866725931,MODERATE,True
+2019-03-29,XLY,Consumer Discretionary,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.070140049203376,MODERATE,True
+2019-04-30,XLB,Materials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.759561242205105,MODERATE,True
+2019-04-30,XLC,Communication Services,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",16.784529293652295,MODERATE,True
+2019-04-30,XLE,Energy,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.7021217129657,MODERATE,True
+2019-04-30,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.299958872483884,MODERATE,True
+2019-04-30,XLI,Industrials,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.443483254461817,MODERATE,True
+2019-04-30,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.55967117309687,HIGH,True
+2019-04-30,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",10.963679761015946,LOW,True
+2019-04-30,XLRE,Real Estate,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.360231194283168,MODERATE,True
+2019-04-30,XLU,Utilities,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",12.894612964380592,LOW,True
+2019-04-30,XLV,Health Care,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",11.393290536001906,LOW,True
+2019-04-30,XLY,Consumer Discretionary,val,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",13.94169013395135,MODERATE,True
+2019-05-31,XLB,Materials,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.944827855134786,MODERATE,True
+2019-05-31,XLC,Communication Services,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",20.143489141600195,HIGH,True
+2019-05-31,XLE,Energy,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",20.96621557272643,HIGH,True
+2019-05-31,XLF,Financials,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",18.999593926554095,HIGH,True
+2019-05-31,XLI,Industrials,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.914773503566966,MODERATE,True
+2019-05-31,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.029877076772305,HIGH,True
+2019-05-31,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",13.936554736692674,MODERATE,True
+2019-05-31,XLRE,Real Estate,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.245878886642988,MODERATE,True
+2019-05-31,XLU,Utilities,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",12.365633932786329,LOW,True
+2019-05-31,XLV,Health Care,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.251230309099524,MODERATE,True
+2019-05-31,XLY,Consumer Discretionary,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.168841241804184,MODERATE,True
+2019-06-28,XLB,Materials,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.509511923953053,MODERATE,True
+2019-06-28,XLC,Communication Services,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.74293226639402,HIGH,True
+2019-06-28,XLE,Energy,val,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",21.323544956966934,HIGH,True
+2019-06-28,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.90378119199584,HIGH,True
+2019-06-28,XLI,Industrials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.58669747492572,MODERATE,True
+2019-06-28,XLK,Information Technology,val,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",20.561972592591786,HIGH,True
+2019-06-28,XLP,Consumer Staples,val,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",13.442339858710382,MODERATE,True
+2019-06-28,XLRE,Real Estate,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.66589382707929,MODERATE,True
+2019-06-28,XLU,Utilities,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",10.93484324575782,LOW,True
+2019-06-28,XLV,Health Care,val,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",13.756740495447936,MODERATE,True
+2019-06-28,XLY,Consumer Discretionary,val,15.3,MODERATE,4.9,True,"{""expected_vol_pct"": 15.3, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.9}",17.15503035064297,MODERATE,True
+2019-07-31,XLB,Materials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.514799965373676,MODERATE,True
+2019-07-31,XLC,Communication Services,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",19.203192069161563,HIGH,True
+2019-07-31,XLE,Energy,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",23.216815624644177,HIGH,True
+2019-07-31,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",20.587791535480356,HIGH,True
+2019-07-31,XLI,Industrials,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",18.568232843983946,HIGH,True
+2019-07-31,XLK,Information Technology,val,14.7,MODERATE,4.6,True,"{""expected_vol_pct"": 14.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",22.22538468277761,HIGH,True
+2019-07-31,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",13.387434800423973,MODERATE,True
+2019-07-31,XLRE,Real Estate,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",12.501442125758173,LOW,True
+2019-07-31,XLU,Utilities,val,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",10.676897963860961,LOW,True
+2019-07-31,XLV,Health Care,val,11.4,LOW,2.3,True,"{""expected_vol_pct"": 11.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.3}",15.273664608354922,MODERATE,True
+2019-07-31,XLY,Consumer Discretionary,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.72483868932337,MODERATE,True
+2019-08-30,XLB,Materials,val,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",13.176211709881573,MODERATE,True
+2019-08-30,XLC,Communication Services,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.843070818086973,LOW,True
+2019-08-30,XLE,Energy,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",19.99361926127992,HIGH,True
+2019-08-30,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.277661856199598,MODERATE,True
+2019-08-30,XLI,Industrials,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.223934935422252,MODERATE,True
+2019-08-30,XLK,Information Technology,val,15.0,MODERATE,4.8,True,"{""expected_vol_pct"": 15.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.8}",14.860769530894466,MODERATE,True
+2019-08-30,XLP,Consumer Staples,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",8.920195626094689,LOW,True
+2019-08-30,XLRE,Real Estate,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.810588204925807,LOW,True
+2019-08-30,XLU,Utilities,val,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",10.993135054088786,LOW,True
+2019-08-30,XLV,Health Care,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",11.886180923345336,LOW,True
+2019-08-30,XLY,Consumer Discretionary,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",10.898183780064516,LOW,True
+2019-09-30,XLB,Materials,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",12.498251142524069,LOW,True
+2019-09-30,XLC,Communication Services,val,14.4,MODERATE,4.3,True,"{""expected_vol_pct"": 14.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.3}",11.028084031301942,LOW,True
+2019-09-30,XLE,Energy,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.866086799088183,HIGH,True
+2019-09-30,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.964095431605264,LOW,True
+2019-09-30,XLI,Industrials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.040742164752405,MODERATE,True
+2019-09-30,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.261790130978937,MODERATE,True
+2019-09-30,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",8.374811137115183,LOW,True
+2019-09-30,XLRE,Real Estate,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",12.109620838134976,LOW,True
+2019-09-30,XLU,Utilities,val,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",10.249060585038757,LOW,True
+2019-09-30,XLV,Health Care,val,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",11.369622837120117,LOW,True
+2019-09-30,XLY,Consumer Discretionary,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",9.578541369500806,LOW,True
+2019-10-31,XLB,Materials,val,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",11.361444558229437,LOW,True
+2019-10-31,XLC,Communication Services,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",9.515277856963952,LOW,True
+2019-10-31,XLE,Energy,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.374193491078056,MODERATE,True
+2019-10-31,XLF,Financials,val,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",10.842091033626014,LOW,True
+2019-10-31,XLI,Industrials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.33496156187613,LOW,True
+2019-10-31,XLK,Information Technology,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",11.973217599320236,LOW,True
+2019-10-31,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",6.438694317595861,LOW,True
+2019-10-31,XLRE,Real Estate,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",12.562468623462234,LOW,True
+2019-10-31,XLU,Utilities,val,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",9.40128099689114,LOW,True
+2019-10-31,XLV,Health Care,val,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",9.33374690082075,LOW,True
+2019-10-31,XLY,Consumer Discretionary,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",9.438564521519158,LOW,True
+2019-11-29,XLB,Materials,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",19.74781142270227,HIGH,True
+2019-11-29,XLC,Communication Services,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.999174966701794,MODERATE,True
+2019-11-29,XLE,Energy,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",25.06959835093671,HIGH,True
+2019-11-29,XLF,Financials,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",18.161089459345096,MODERATE,True
+2019-11-29,XLI,Industrials,val,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",17.966780711978373,MODERATE,True
+2019-11-29,XLK,Information Technology,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",22.649993649636375,HIGH,True
+2019-11-29,XLP,Consumer Staples,val,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",12.619900886194339,LOW,True
+2019-11-29,XLRE,Real Estate,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",18.395381410509792,MODERATE,True
+2019-11-29,XLU,Utilities,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",14.225339570937246,MODERATE,True
+2019-11-29,XLV,Health Care,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",15.796599311022586,MODERATE,True
+2019-11-29,XLY,Consumer Discretionary,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",16.28486005648865,MODERATE,True
+2019-12-31,XLB,Materials,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",59.63660298910685,HIGH,True
+2019-12-31,XLC,Communication Services,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",52.697909102976915,HIGH,True
+2019-12-31,XLE,Energy,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",88.07260289753413,HIGH,True
+2019-12-31,XLF,Financials,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",71.10303188204755,HIGH,True
+2019-12-31,XLI,Industrials,val,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",63.4181637451371,HIGH,True
+2019-12-31,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",65.2672327495473,HIGH,True
+2019-12-31,XLP,Consumer Staples,val,9.7,LOW,1.1,True,"{""expected_vol_pct"": 9.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",48.408784346011664,HIGH,True
+2019-12-31,XLRE,Real Estate,val,11.4,LOW,2.1,True,"{""expected_vol_pct"": 11.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.1}",64.49413361243646,HIGH,True
+2019-12-31,XLU,Utilities,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",63.28672844435141,HIGH,True
+2019-12-31,XLV,Health Care,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",49.853890084745615,HIGH,True
+2019-12-31,XLY,Consumer Discretionary,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",55.084503788242166,HIGH,True
+2020-01-31,XLB,Materials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",66.70409044033644,HIGH,True
+2020-01-31,XLC,Communication Services,val,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",56.88392502267989,HIGH,True
+2020-01-31,XLE,Energy,val,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",97.3946447464081,HIGH,True
+2020-01-31,XLF,Financials,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",78.02810772554677,HIGH,True
+2020-01-31,XLI,Industrials,val,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",68.11718825704507,HIGH,True
+2020-01-31,XLK,Information Technology,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",70.540641353903,HIGH,True
+2020-01-31,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",51.74876491085241,HIGH,True
+2020-01-31,XLRE,Real Estate,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",72.74145646526856,HIGH,True
+2020-01-31,XLU,Utilities,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",71.50772386345446,HIGH,True
+2020-01-31,XLV,Health Care,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",54.83010542498401,HIGH,True
+2020-01-31,XLY,Consumer Discretionary,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",61.012981628642535,HIGH,True
+2020-02-28,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",67.0647475968601,HIGH,True
+2020-02-28,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",57.274969330660674,HIGH,True
+2020-02-28,XLE,Energy,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",101.12493330000656,HIGH,True
+2020-02-28,XLF,Financials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",80.20175009094159,HIGH,True
+2020-02-28,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",70.04605460283112,HIGH,True
+2020-02-28,XLK,Information Technology,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",69.72326084587552,HIGH,True
+2020-02-28,XLP,Consumer Staples,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",51.27852748472432,HIGH,True
+2020-02-28,XLRE,Real Estate,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",73.49651599991125,HIGH,True
+2020-02-28,XLU,Utilities,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",71.90846639825314,HIGH,True
+2020-02-28,XLV,Health Care,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",53.93653777827714,HIGH,True
+2020-02-28,XLY,Consumer Discretionary,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",61.32565116099904,HIGH,True
+2020-03-31,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",40.07144948962802,HIGH,True
+2020-03-31,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.721739784084388,HIGH,True
+2020-03-31,XLE,Energy,val,78.8,HIGH,9.9,True,"{""expected_vol_pct"": 78.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.9}",62.63762915156714,HIGH,True
+2020-03-31,XLF,Financials,val,34.7,HIGH,9.4,True,"{""expected_vol_pct"": 34.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.4}",48.49472674386899,HIGH,True
+2020-03-31,XLI,Industrials,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",40.95963944946907,HIGH,True
+2020-03-31,XLK,Information Technology,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",34.93416062204046,HIGH,True
+2020-03-31,XLP,Consumer Staples,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",21.893937590282157,HIGH,True
+2020-03-31,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",43.667230733186635,HIGH,True
+2020-03-31,XLU,Utilities,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",38.83944888765611,HIGH,True
+2020-03-31,XLV,Health Care,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.159869331996568,HIGH,True
+2020-03-31,XLY,Consumer Discretionary,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",33.3366738695052,HIGH,True
+2020-04-30,XLB,Materials,val,22.8,HIGH,8.0,True,"{""expected_vol_pct"": 22.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.0}",28.740677252028657,HIGH,True
+2020-04-30,XLC,Communication Services,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",22.69584071785784,HIGH,True
+2020-04-30,XLE,Energy,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",52.23435084821547,HIGH,True
+2020-04-30,XLF,Financials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",39.14649409475211,HIGH,True
+2020-04-30,XLI,Industrials,val,24.5,HIGH,8.2,True,"{""expected_vol_pct"": 24.5, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.2}",34.46276829362975,HIGH,True
+2020-04-30,XLK,Information Technology,val,22.8,HIGH,8.0,True,"{""expected_vol_pct"": 22.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.0}",24.81774868350253,HIGH,True
+2020-04-30,XLP,Consumer Staples,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.91525999005271,MODERATE,True
+2020-04-30,XLRE,Real Estate,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",30.6931260997358,HIGH,True
+2020-04-30,XLU,Utilities,val,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",24.492910587824003,HIGH,True
+2020-04-30,XLV,Health Care,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",20.467441774968307,HIGH,True
+2020-04-30,XLY,Consumer Discretionary,val,20.4,HIGH,7.3,True,"{""expected_vol_pct"": 20.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.3}",24.612824346187104,HIGH,True
+2020-05-29,XLB,Materials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",25.60384449597382,HIGH,True
+2020-05-29,XLC,Communication Services,val,20.0,HIGH,7.2,True,"{""expected_vol_pct"": 20.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.2}",21.28825594118485,HIGH,True
+2020-05-29,XLE,Energy,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",45.60978038533788,HIGH,True
+2020-05-29,XLF,Financials,val,25.8,HIGH,8.6,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.6}",32.52254983775196,HIGH,True
+2020-05-29,XLI,Industrials,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",28.186525390236255,HIGH,True
+2020-05-29,XLK,Information Technology,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",23.970739141253926,HIGH,True
+2020-05-29,XLP,Consumer Staples,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",14.765964172871069,MODERATE,True
+2020-05-29,XLRE,Real Estate,val,22.0,HIGH,7.7,True,"{""expected_vol_pct"": 22.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.7}",26.164860313306704,HIGH,True
+2020-05-29,XLU,Utilities,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",20.67502005350622,HIGH,True
+2020-05-29,XLV,Health Care,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",18.66489909883542,HIGH,True
+2020-05-29,XLY,Consumer Discretionary,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",20.456768292259095,HIGH,True
+2020-06-30,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.612217449003992,HIGH,True
+2020-06-30,XLC,Communication Services,val,24.4,HIGH,8.3,True,"{""expected_vol_pct"": 24.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",21.44865309211417,HIGH,True
+2020-06-30,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",33.44894313665973,HIGH,True
+2020-06-30,XLF,Financials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",20.624025936510883,HIGH,True
+2020-06-30,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.95804111645639,HIGH,True
+2020-06-30,XLK,Information Technology,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",27.326198752252196,HIGH,True
+2020-06-30,XLP,Consumer Staples,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",12.718166977954601,LOW,True
+2020-06-30,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",20.747682305091622,HIGH,True
+2020-06-30,XLU,Utilities,val,24.4,HIGH,8.3,True,"{""expected_vol_pct"": 24.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",18.12371374339122,MODERATE,True
+2020-06-30,XLV,Health Care,val,20.4,HIGH,7.3,True,"{""expected_vol_pct"": 20.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.3}",14.824656098233788,MODERATE,True
+2020-06-30,XLY,Consumer Discretionary,val,22.1,HIGH,7.7,True,"{""expected_vol_pct"": 22.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.7}",17.601077903380247,MODERATE,True
+2020-07-31,XLB,Materials,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",21.210646565822994,HIGH,True
+2020-07-31,XLC,Communication Services,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.713626195572488,HIGH,True
+2020-07-31,XLE,Energy,val,25.6,HIGH,8.5,True,"{""expected_vol_pct"": 25.6, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",31.36937518385028,HIGH,True
+2020-07-31,XLF,Financials,val,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",20.144039358318658,HIGH,True
+2020-07-31,XLI,Industrials,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",19.59162466355836,HIGH,True
+2020-07-31,XLK,Information Technology,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",27.643373321169275,HIGH,True
+2020-07-31,XLP,Consumer Staples,val,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",13.060014111257981,MODERATE,True
+2020-07-31,XLRE,Real Estate,val,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",20.453601200751777,HIGH,True
+2020-07-31,XLU,Utilities,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.50343449878397,MODERATE,True
+2020-07-31,XLV,Health Care,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.2844791099329,MODERATE,True
+2020-07-31,XLY,Consumer Discretionary,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.49584578143273,MODERATE,True
+2020-08-31,XLB,Materials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",26.205477037387322,HIGH,True
+2020-08-31,XLC,Communication Services,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",25.41750130919648,HIGH,True
+2020-08-31,XLE,Energy,val,24.7,HIGH,8.3,True,"{""expected_vol_pct"": 24.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",49.06839844234522,HIGH,True
+2020-08-31,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",28.148371668511956,HIGH,True
+2020-08-31,XLI,Industrials,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",24.6000235432986,HIGH,True
+2020-08-31,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",30.775926563405676,HIGH,True
+2020-08-31,XLP,Consumer Staples,val,9.5,LOW,0.9,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",15.743886057119,MODERATE,True
+2020-08-31,XLRE,Real Estate,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",21.555068266901706,HIGH,True
+2020-08-31,XLU,Utilities,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.87806400891847,HIGH,True
+2020-08-31,XLV,Health Care,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",20.412077762358642,HIGH,True
+2020-08-31,XLY,Consumer Discretionary,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",21.62970443277878,HIGH,True
+2020-09-30,XLB,Materials,val,16.7,MODERATE,5.8,True,"{""expected_vol_pct"": 16.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.8}",22.177978808433743,HIGH,True
+2020-09-30,XLC,Communication Services,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.148556115319163,HIGH,True
+2020-09-30,XLE,Energy,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",50.21767813304877,HIGH,True
+2020-09-30,XLF,Financials,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",26.205255541486295,HIGH,True
+2020-09-30,XLI,Industrials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.11786426515321,HIGH,True
+2020-09-30,XLK,Information Technology,val,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",22.646019950139184,HIGH,True
+2020-09-30,XLP,Consumer Staples,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",13.012946101595771,LOW,True
+2020-09-30,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.725138897780017,MODERATE,True
+2020-09-30,XLU,Utilities,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.11838527662027,MODERATE,True
+2020-09-30,XLV,Health Care,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.494797167901275,MODERATE,True
+2020-09-30,XLY,Consumer Discretionary,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.391110531383088,MODERATE,True
+2020-10-30,XLB,Materials,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",22.8075593877504,HIGH,True
+2020-10-30,XLC,Communication Services,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",18.675342793087584,HIGH,True
+2020-10-30,XLE,Energy,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",48.90104021288044,HIGH,True
+2020-10-30,XLF,Financials,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",26.50977671320842,HIGH,True
+2020-10-30,XLI,Industrials,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",19.4692372652465,HIGH,True
+2020-10-30,XLK,Information Technology,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.760552168691408,HIGH,True
+2020-10-30,XLP,Consumer Staples,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",11.511413094448786,LOW,True
+2020-10-30,XLRE,Real Estate,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",17.93514628037347,MODERATE,True
+2020-10-30,XLU,Utilities,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",18.93512033503072,HIGH,True
+2020-10-30,XLV,Health Care,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",15.700266588576378,MODERATE,True
+2020-10-30,XLY,Consumer Discretionary,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",16.075193169035167,MODERATE,True
+2020-11-30,XLB,Materials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.239598434746686,HIGH,True
+2020-11-30,XLC,Communication Services,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.38575395321316,MODERATE,True
+2020-11-30,XLE,Energy,val,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",34.92549177107029,HIGH,True
+2020-11-30,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.038716834263397,HIGH,True
+2020-11-30,XLI,Industrials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.840954945266425,MODERATE,True
+2020-11-30,XLK,Information Technology,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.754302738061238,HIGH,True
+2020-11-30,XLP,Consumer Staples,val,11.4,LOW,2.2,True,"{""expected_vol_pct"": 11.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.2}",10.712375418687122,LOW,True
+2020-11-30,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.619388427704635,MODERATE,True
+2020-11-30,XLU,Utilities,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.04001115635171,MODERATE,True
+2020-11-30,XLV,Health Care,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.429932540579353,LOW,True
+2020-11-30,XLY,Consumer Discretionary,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",18.564672797589953,HIGH,True
+2020-12-31,XLB,Materials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.0699110369238,HIGH,True
+2020-12-31,XLC,Communication Services,val,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",20.038951162984777,HIGH,True
+2020-12-31,XLE,Energy,val,20.4,HIGH,7.3,True,"{""expected_vol_pct"": 20.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.3}",34.536444599817706,HIGH,True
+2020-12-31,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.781504052532064,HIGH,True
+2020-12-31,XLI,Industrials,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",18.62795207181587,HIGH,True
+2020-12-31,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",24.604022836239555,HIGH,True
+2020-12-31,XLP,Consumer Staples,val,9.5,LOW,0.9,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",12.594896966030603,LOW,True
+2020-12-31,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.675820400208828,MODERATE,True
+2020-12-31,XLU,Utilities,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",18.30448949842965,MODERATE,True
+2020-12-31,XLV,Health Care,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.75537296727968,MODERATE,True
+2020-12-31,XLY,Consumer Discretionary,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",23.045510835419933,HIGH,True
+2021-01-29,XLB,Materials,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",17.639981157675525,MODERATE,True
+2021-01-29,XLC,Communication Services,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.71225734282043,MODERATE,True
+2021-01-29,XLE,Energy,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",30.323244217004802,HIGH,True
+2021-01-29,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.194491909960337,MODERATE,True
+2021-01-29,XLI,Industrials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.515417300270215,MODERATE,True
+2021-01-29,XLK,Information Technology,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",23.67142274978842,HIGH,True
+2021-01-29,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.366877363363466,LOW,True
+2021-01-29,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.626511066507415,MODERATE,True
+2021-01-29,XLU,Utilities,val,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.819249650892912,MODERATE,True
+2021-01-29,XLV,Health Care,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",11.643844583622277,LOW,True
+2021-01-29,XLY,Consumer Discretionary,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",21.145109661047062,HIGH,True
+2021-02-26,XLB,Materials,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",18.02155902885968,MODERATE,True
+2021-02-26,XLC,Communication Services,val,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.72935429914294,HIGH,True
+2021-02-26,XLE,Energy,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",29.106905517276605,HIGH,True
+2021-02-26,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.25631299074997,MODERATE,True
+2021-02-26,XLI,Industrials,val,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",16.01552563893484,MODERATE,True
+2021-02-26,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",24.03575538172018,HIGH,True
+2021-02-26,XLP,Consumer Staples,val,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",11.485404275774608,LOW,True
+2021-02-26,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.335338880419762,MODERATE,True
+2021-02-26,XLU,Utilities,val,14.7,MODERATE,4.6,True,"{""expected_vol_pct"": 14.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",14.684413476782094,MODERATE,True
+2021-02-26,XLV,Health Care,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.366286984188925,LOW,True
+2021-02-26,XLY,Consumer Discretionary,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.1552012111591,HIGH,True
+2021-03-31,XLB,Materials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.759104451144495,MODERATE,True
+2021-03-31,XLC,Communication Services,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.296250799436734,MODERATE,True
+2021-03-31,XLE,Energy,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",27.64330159601192,HIGH,True
+2021-03-31,XLF,Financials,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.83505178297078,MODERATE,True
+2021-03-31,XLI,Industrials,val,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",13.755965047644741,MODERATE,True
+2021-03-31,XLK,Information Technology,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.52951101452357,MODERATE,True
+2021-03-31,XLP,Consumer Staples,val,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",10.659340029495915,LOW,True
+2021-03-31,XLRE,Real Estate,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.587188625049757,MODERATE,True
+2021-03-31,XLU,Utilities,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.200303633058963,MODERATE,True
+2021-03-31,XLV,Health Care,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",10.534151024812312,LOW,True
+2021-03-31,XLY,Consumer Discretionary,val,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.817657835694373,MODERATE,True
+2021-04-30,XLB,Materials,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",16.73548345569834,MODERATE,True
+2021-04-30,XLC,Communication Services,val,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",14.66200243465373,MODERATE,True
+2021-04-30,XLE,Energy,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",30.32282621930345,HIGH,True
+2021-04-30,XLF,Financials,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",19.22506563770648,HIGH,True
+2021-04-30,XLI,Industrials,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",15.714898709200192,MODERATE,True
+2021-04-30,XLK,Information Technology,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",16.19018219586392,MODERATE,True
+2021-04-30,XLP,Consumer Staples,val,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",10.053988853890424,LOW,True
+2021-04-30,XLRE,Real Estate,val,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",14.385381736638795,MODERATE,True
+2021-04-30,XLU,Utilities,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.179690701008303,MODERATE,True
+2021-04-30,XLV,Health Care,val,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",10.37931483662977,LOW,True
+2021-04-30,XLY,Consumer Discretionary,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",14.294260294928327,MODERATE,True
+2021-05-28,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.771650733957257,MODERATE,True
+2021-05-28,XLC,Communication Services,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",11.922865517399755,LOW,True
+2021-05-28,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",29.900675926137545,HIGH,True
+2021-05-28,XLF,Financials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.922003055913972,HIGH,True
+2021-05-28,XLI,Industrials,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",14.378959952777551,MODERATE,True
+2021-05-28,XLK,Information Technology,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",12.09604479414982,LOW,True
+2021-05-28,XLP,Consumer Staples,val,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",9.775730475704297,LOW,True
+2021-05-28,XLRE,Real Estate,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",12.615308296754815,LOW,True
+2021-05-28,XLU,Utilities,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",13.549082926369465,MODERATE,True
+2021-05-28,XLV,Health Care,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",11.006902415207676,LOW,True
+2021-05-28,XLY,Consumer Discretionary,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",12.934937020673173,LOW,True
+2021-06-30,XLB,Materials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.596569534473891,MODERATE,True
+2021-06-30,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",12.621468804925248,LOW,True
+2021-06-30,XLE,Energy,val,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",30.07615474561699,HIGH,True
+2021-06-30,XLF,Financials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.544347842784724,HIGH,True
+2021-06-30,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",14.560129017263904,MODERATE,True
+2021-06-30,XLK,Information Technology,val,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",12.571605048665157,LOW,True
+2021-06-30,XLP,Consumer Staples,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",8.643737571759539,LOW,True
+2021-06-30,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",12.728749512111593,LOW,True
+2021-06-30,XLU,Utilities,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",12.643560832112577,LOW,True
+2021-06-30,XLV,Health Care,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",10.285372655115177,LOW,True
+2021-06-30,XLY,Consumer Discretionary,val,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",13.77393164061995,MODERATE,True
+2021-07-30,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.07002955066572,MODERATE,True
+2021-07-30,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",14.158879740648942,MODERATE,True
+2021-07-30,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",27.384772892622156,HIGH,True
+2021-07-30,XLF,Financials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.508810681978055,MODERATE,True
+2021-07-30,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",13.50126448844176,MODERATE,True
+2021-07-30,XLK,Information Technology,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.154258823387867,MODERATE,True
+2021-07-30,XLP,Consumer Staples,val,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",9.842256322623431,LOW,True
+2021-07-30,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",13.173653644544657,MODERATE,True
+2021-07-30,XLU,Utilities,val,22.8,HIGH,8.0,True,"{""expected_vol_pct"": 22.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.0}",13.584019651560775,MODERATE,True
+2021-07-30,XLV,Health Care,val,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",12.522200225988463,LOW,True
+2021-07-30,XLY,Consumer Discretionary,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",14.444136317708997,MODERATE,True
+2021-08-31,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",14.14615865977001,MODERATE,True
+2021-08-31,XLC,Communication Services,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",13.990377101304041,MODERATE,True
+2021-08-31,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",26.790418035709735,HIGH,True
+2021-08-31,XLF,Financials,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",15.956445309457386,MODERATE,True
+2021-08-31,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",12.566756514189107,LOW,True
+2021-08-31,XLK,Information Technology,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",15.429213428837368,MODERATE,True
+2021-08-31,XLP,Consumer Staples,val,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",9.29251477718516,LOW,True
+2021-08-31,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",13.723064444958991,MODERATE,True
+2021-08-31,XLU,Utilities,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",13.813738794183008,MODERATE,True
+2021-08-31,XLV,Health Care,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",11.873612811923412,LOW,True
+2021-08-31,XLY,Consumer Discretionary,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",15.145501234132643,MODERATE,True
+2021-09-30,XLB,Materials,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",15.197281134896793,MODERATE,True
+2021-09-30,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.778092857458113,MODERATE,True
+2021-09-30,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",26.111232275054956,HIGH,True
+2021-09-30,XLF,Financials,val,32.7,HIGH,9.1,True,"{""expected_vol_pct"": 32.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",19.079362487993716,HIGH,True
+2021-09-30,XLI,Industrials,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.998735487168764,MODERATE,True
+2021-09-30,XLK,Information Technology,val,32.7,HIGH,9.1,True,"{""expected_vol_pct"": 32.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",20.773026258824004,HIGH,True
+2021-09-30,XLP,Consumer Staples,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",11.814971204908378,LOW,True
+2021-09-30,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.134592793884792,MODERATE,True
+2021-09-30,XLU,Utilities,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",14.658565606060108,MODERATE,True
+2021-09-30,XLV,Health Care,val,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",12.042430248820828,LOW,True
+2021-09-30,XLY,Consumer Discretionary,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",20.433339379189157,HIGH,True
+2021-10-29,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.23301272693592,MODERATE,True
+2021-10-29,XLC,Communication Services,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",17.78849742367398,MODERATE,True
+2021-10-29,XLE,Energy,val,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",27.63155619784762,HIGH,True
+2021-10-29,XLF,Financials,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",19.75441045875266,HIGH,True
+2021-10-29,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.352684610701978,MODERATE,True
+2021-10-29,XLK,Information Technology,val,32.1,HIGH,9.1,True,"{""expected_vol_pct"": 32.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",23.292237770244082,HIGH,True
+2021-10-29,XLP,Consumer Staples,val,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.495649954006483,LOW,True
+2021-10-29,XLRE,Real Estate,val,24.6,HIGH,8.2,True,"{""expected_vol_pct"": 24.6, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.2}",17.244610308929943,MODERATE,True
+2021-10-29,XLU,Utilities,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",14.116588682422549,MODERATE,True
+2021-10-29,XLV,Health Care,val,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",12.185808463639953,LOW,True
+2021-10-29,XLY,Consumer Discretionary,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",23.31089531668295,HIGH,True
+2021-11-30,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.550454801124705,HIGH,True
+2021-11-30,XLC,Communication Services,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",26.234654581616663,HIGH,True
+2021-11-30,XLE,Energy,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",25.638086288613643,HIGH,True
+2021-11-30,XLF,Financials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.00888502404901,HIGH,True
+2021-11-30,XLI,Industrials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.471586882988216,MODERATE,True
+2021-11-30,XLK,Information Technology,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.870880009439613,HIGH,True
+2021-11-30,XLP,Consumer Staples,val,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",13.747648339143288,MODERATE,True
+2021-11-30,XLRE,Real Estate,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",20.782705850005843,HIGH,True
+2021-11-30,XLU,Utilities,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",15.506806294177242,MODERATE,True
+2021-11-30,XLV,Health Care,val,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",15.162152233691122,MODERATE,True
+2021-11-30,XLY,Consumer Discretionary,val,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",28.846767277692496,HIGH,True
+2021-12-31,XLB,Materials,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",22.23631026478974,HIGH,True
+2021-12-31,XLC,Communication Services,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",28.8719067160852,HIGH,True
+2021-12-31,XLE,Energy,val,32.1,HIGH,9.1,True,"{""expected_vol_pct"": 32.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",29.787998085550914,HIGH,True
+2021-12-31,XLF,Financials,val,22.1,HIGH,7.7,True,"{""expected_vol_pct"": 22.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.7}",24.76521924021395,HIGH,True
+2021-12-31,XLI,Industrials,val,22.4,HIGH,7.8,True,"{""expected_vol_pct"": 22.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.8}",18.25402064556662,MODERATE,True
+2021-12-31,XLK,Information Technology,val,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",31.4377159999539,HIGH,True
+2021-12-31,XLP,Consumer Staples,val,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",15.213426305753961,MODERATE,True
+2021-12-31,XLRE,Real Estate,val,22.1,HIGH,7.7,True,"{""expected_vol_pct"": 22.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.7}",21.288201149391014,HIGH,True
+2021-12-31,XLU,Utilities,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.596991892771452,MODERATE,True
+2021-12-31,XLV,Health Care,val,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",17.356575611810804,MODERATE,True
+2021-12-31,XLY,Consumer Discretionary,val,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",32.93970223034865,HIGH,True
+2022-01-31,XLB,Materials,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",22.940036319532272,HIGH,True
+2022-01-31,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",30.981830266471906,HIGH,True
+2022-01-31,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",30.60778679143667,HIGH,True
+2022-01-31,XLF,Financials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",24.64301503122146,HIGH,True
+2022-01-31,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.87023822428334,HIGH,True
+2022-01-31,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",31.407308319289623,HIGH,True
+2022-01-31,XLP,Consumer Staples,test,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",16.160870903064083,MODERATE,True
+2022-01-31,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",20.231288854408,HIGH,True
+2022-01-31,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",16.834705817814633,MODERATE,True
+2022-01-31,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.51638269310729,HIGH,True
+2022-01-31,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",33.301865959279155,HIGH,True
+2022-02-28,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",24.843848878775677,HIGH,True
+2022-02-28,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",32.407055328347184,HIGH,True
+2022-02-28,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",37.22874606763257,HIGH,True
+2022-02-28,XLF,Financials,test,28.8,HIGH,8.9,True,"{""expected_vol_pct"": 28.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.9}",27.21179250732287,HIGH,True
+2022-02-28,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.369360636524814,HIGH,True
+2022-02-28,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",36.48554876443767,HIGH,True
+2022-02-28,XLP,Consumer Staples,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",22.46256920998719,HIGH,True
+2022-02-28,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",25.39477546878831,HIGH,True
+2022-02-28,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",17.346429635741035,MODERATE,True
+2022-02-28,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.137814712937004,HIGH,True
+2022-02-28,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",39.536213431930484,HIGH,True
+2022-03-31,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",28.131769591645877,HIGH,True
+2022-03-31,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",35.458393005200065,HIGH,True
+2022-03-31,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",42.78165331761324,HIGH,True
+2022-03-31,XLF,Financials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",26.62812463885379,HIGH,True
+2022-03-31,XLI,Industrials,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",24.840174971735756,HIGH,True
+2022-03-31,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",38.06791827735272,HIGH,True
+2022-03-31,XLP,Consumer Staples,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",23.394728524800392,HIGH,True
+2022-03-31,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",29.282335890217116,HIGH,True
+2022-03-31,XLU,Utilities,test,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",21.835610639056753,HIGH,True
+2022-03-31,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",23.227559930651392,HIGH,True
+2022-03-31,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",43.03830065397792,HIGH,True
+2022-04-29,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",27.715874736883805,HIGH,True
+2022-04-29,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",34.28640561325548,HIGH,True
+2022-04-29,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",43.99269837282853,HIGH,True
+2022-04-29,XLF,Financials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",26.771791030454505,HIGH,True
+2022-04-29,XLI,Industrials,test,25.9,HIGH,8.6,True,"{""expected_vol_pct"": 25.9, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.6}",24.992494107299585,HIGH,True
+2022-04-29,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",35.89821803003476,HIGH,True
+2022-04-29,XLP,Consumer Staples,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",21.70218644263769,HIGH,True
+2022-04-29,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",26.990009984771113,HIGH,True
+2022-04-29,XLU,Utilities,test,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",21.987989752415874,HIGH,True
+2022-04-29,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.293871751293377,HIGH,True
+2022-04-29,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",41.943626509030615,HIGH,True
+2022-05-31,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",24.847488233300723,HIGH,True
+2022-05-31,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",30.50653683993394,HIGH,True
+2022-05-31,XLE,Energy,test,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",40.560239294260064,HIGH,True
+2022-05-31,XLF,Financials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",23.72969367868605,HIGH,True
+2022-05-31,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",22.12669574933321,HIGH,True
+2022-05-31,XLK,Information Technology,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",29.59691458149891,HIGH,True
+2022-05-31,XLP,Consumer Staples,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",14.715024696078661,MODERATE,True
+2022-05-31,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",23.426433173300786,HIGH,True
+2022-05-31,XLU,Utilities,test,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",21.643631074565143,HIGH,True
+2022-05-31,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.78887681303474,HIGH,True
+2022-05-31,XLY,Consumer Discretionary,test,32.8,HIGH,9.1,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",33.85933182628524,HIGH,True
+2022-06-30,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",23.11095192456889,HIGH,True
+2022-06-30,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.70277170583797,HIGH,True
+2022-06-30,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",35.66737379682803,HIGH,True
+2022-06-30,XLF,Financials,test,32.1,HIGH,9.1,True,"{""expected_vol_pct"": 32.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",22.17386882147756,HIGH,True
+2022-06-30,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.346230958612832,HIGH,True
+2022-06-30,XLK,Information Technology,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",26.84138743142062,HIGH,True
+2022-06-30,XLP,Consumer Staples,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",14.42020233379268,MODERATE,True
+2022-06-30,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.664704013110583,HIGH,True
+2022-06-30,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",20.253875636068592,HIGH,True
+2022-06-30,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",17.571217882767908,MODERATE,True
+2022-06-30,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",30.248691682369323,HIGH,True
+2022-07-29,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",27.682052110141193,HIGH,True
+2022-07-29,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",27.835644750515048,HIGH,True
+2022-07-29,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",37.30809262077247,HIGH,True
+2022-07-29,XLF,Financials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",25.982803251536957,HIGH,True
+2022-07-29,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",24.565168646254026,HIGH,True
+2022-07-29,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",29.369558589182503,HIGH,True
+2022-07-29,XLP,Consumer Staples,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",18.082973153775402,MODERATE,True
+2022-07-29,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",25.10657683251642,HIGH,True
+2022-07-29,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",25.263032752259555,HIGH,True
+2022-07-29,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.9708339220565,HIGH,True
+2022-07-29,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",30.82871230353702,HIGH,True
+2022-08-31,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",29.818317685207408,HIGH,True
+2022-08-31,XLC,Communication Services,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",32.74127078201573,HIGH,True
+2022-08-31,XLE,Energy,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",36.36202012723162,HIGH,True
+2022-08-31,XLF,Financials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",26.795608134429283,HIGH,True
+2022-08-31,XLI,Industrials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",24.94527492685143,HIGH,True
+2022-08-31,XLK,Information Technology,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",34.997148951209255,HIGH,True
+2022-08-31,XLP,Consumer Staples,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",18.93396677217309,HIGH,True
+2022-08-31,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",30.988819433588027,HIGH,True
+2022-08-31,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.80100380411907,HIGH,True
+2022-08-31,XLV,Health Care,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",19.913612652711794,HIGH,True
+2022-08-31,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",33.82064472876506,HIGH,True
+2022-09-30,XLB,Materials,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",27.836795188037616,HIGH,True
+2022-09-30,XLC,Communication Services,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",31.267638211622796,HIGH,True
+2022-09-30,XLE,Energy,test,32.1,HIGH,9.1,True,"{""expected_vol_pct"": 32.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",32.40002759852332,HIGH,True
+2022-09-30,XLF,Financials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",24.9854421429241,HIGH,True
+2022-09-30,XLI,Industrials,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",22.737809868931087,HIGH,True
+2022-09-30,XLK,Information Technology,test,32.1,HIGH,9.1,True,"{""expected_vol_pct"": 32.1, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.1}",35.59878727836633,HIGH,True
+2022-09-30,XLP,Consumer Staples,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",16.25068837126958,MODERATE,True
+2022-09-30,XLRE,Real Estate,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",29.348419916144852,HIGH,True
+2022-09-30,XLU,Utilities,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",25.310018095269992,HIGH,True
+2022-09-30,XLV,Health Care,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",17.934654293484904,MODERATE,True
+2022-09-30,XLY,Consumer Discretionary,test,32.8,HIGH,9.2,True,"{""expected_vol_pct"": 32.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 9.2}",30.813313023655027,HIGH,True
+2022-10-31,XLB,Materials,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",23.626589632364936,HIGH,True
+2022-10-31,XLC,Communication Services,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",26.892217327789446,HIGH,True
+2022-10-31,XLE,Energy,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",28.46976306909307,HIGH,True
+2022-10-31,XLF,Financials,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.2617459423869,HIGH,True
+2022-10-31,XLI,Industrials,test,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",18.95087432745225,HIGH,True
+2022-10-31,XLK,Information Technology,test,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",31.490159847533523,HIGH,True
+2022-10-31,XLP,Consumer Staples,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.859621446961194,MODERATE,True
+2022-10-31,XLRE,Real Estate,test,20.4,HIGH,7.3,True,"{""expected_vol_pct"": 20.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.3}",26.812735753341737,HIGH,True
+2022-10-31,XLU,Utilities,test,20.4,HIGH,7.3,True,"{""expected_vol_pct"": 20.4, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.3}",19.429390316418775,HIGH,True
+2022-10-31,XLV,Health Care,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",14.300883039156023,MODERATE,True
+2022-10-31,XLY,Consumer Discretionary,test,25.6,HIGH,8.4,True,"{""expected_vol_pct"": 25.6, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.4}",28.622999609909378,HIGH,True
+2022-11-30,XLB,Materials,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",18.556246610766188,HIGH,True
+2022-11-30,XLC,Communication Services,test,16.4,MODERATE,5.7,True,"{""expected_vol_pct"": 16.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.7}",26.598090291121434,HIGH,True
+2022-11-30,XLE,Energy,test,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",27.078693740195842,HIGH,True
+2022-11-30,XLF,Financials,test,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",15.168326271269834,MODERATE,True
+2022-11-30,XLI,Industrials,test,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",16.62596049736672,MODERATE,True
+2022-11-30,XLK,Information Technology,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",24.522450738544475,HIGH,True
+2022-11-30,XLP,Consumer Staples,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",13.175816285093353,MODERATE,True
+2022-11-30,XLRE,Real Estate,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",21.149978105902274,HIGH,True
+2022-11-30,XLU,Utilities,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.30129633686076,MODERATE,True
+2022-11-30,XLV,Health Care,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.556243347915135,LOW,True
+2022-11-30,XLY,Consumer Discretionary,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",24.637039903343748,HIGH,True
+2022-12-30,XLB,Materials,test,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",20.939839365388412,HIGH,True
+2022-12-30,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",25.438225118675877,HIGH,True
+2022-12-30,XLE,Energy,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",28.657602537116755,HIGH,True
+2022-12-30,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.748189869871844,HIGH,True
+2022-12-30,XLI,Industrials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.63937053063294,MODERATE,True
+2022-12-30,XLK,Information Technology,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",22.39711891059324,HIGH,True
+2022-12-30,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",13.551964671020814,MODERATE,True
+2022-12-30,XLRE,Real Estate,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",24.457790323793915,HIGH,True
+2022-12-30,XLU,Utilities,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",19.588929228176198,HIGH,True
+2022-12-30,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.971283548389604,LOW,True
+2022-12-30,XLY,Consumer Discretionary,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",24.145323676866795,HIGH,True
+2023-01-31,XLB,Materials,test,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",19.123007765400892,HIGH,True
+2023-01-31,XLC,Communication Services,test,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",26.96400356549512,HIGH,True
+2023-01-31,XLE,Energy,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",27.958071424989495,HIGH,True
+2023-01-31,XLF,Financials,test,16.4,MODERATE,5.7,True,"{""expected_vol_pct"": 16.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.7}",21.786852698005053,HIGH,True
+2023-01-31,XLI,Industrials,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",16.917630554783504,MODERATE,True
+2023-01-31,XLK,Information Technology,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",20.76971571756098,HIGH,True
+2023-01-31,XLP,Consumer Staples,test,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",10.744238988065625,LOW,True
+2023-01-31,XLRE,Real Estate,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.359159448996362,HIGH,True
+2023-01-31,XLU,Utilities,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.27495089099816,HIGH,True
+2023-01-31,XLV,Health Care,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",13.197306414091386,MODERATE,True
+2023-01-31,XLY,Consumer Discretionary,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",23.14576963607241,HIGH,True
+2023-02-28,XLB,Materials,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",19.149989188233437,HIGH,True
+2023-02-28,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.527260322809926,HIGH,True
+2023-02-28,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",27.425084547324563,HIGH,True
+2023-02-28,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",23.24034592062747,HIGH,True
+2023-02-28,XLI,Industrials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.224555507343254,MODERATE,True
+2023-02-28,XLK,Information Technology,test,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",18.212370854220378,MODERATE,True
+2023-02-28,XLP,Consumer Staples,test,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",10.329356840207659,LOW,True
+2023-02-28,XLRE,Real Estate,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.7144635671889,HIGH,True
+2023-02-28,XLU,Utilities,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.912353333309945,MODERATE,True
+2023-02-28,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.435774030220559,LOW,True
+2023-02-28,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.743183311632126,HIGH,True
+2023-03-31,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.224510567906794,MODERATE,True
+2023-03-31,XLC,Communication Services,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.57781310238441,HIGH,True
+2023-03-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",23.85071680455747,HIGH,True
+2023-03-31,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.825669923285838,MODERATE,True
+2023-03-31,XLI,Industrials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",15.93220967813435,MODERATE,True
+2023-03-31,XLK,Information Technology,test,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",18.81679217975129,HIGH,True
+2023-03-31,XLP,Consumer Staples,test,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",9.209562980680165,LOW,True
+2023-03-31,XLRE,Real Estate,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.251581777962922,MODERATE,True
+2023-03-31,XLU,Utilities,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.210493386563531,MODERATE,True
+2023-03-31,XLV,Health Care,test,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",10.99419881204677,LOW,True
+2023-03-31,XLY,Consumer Discretionary,test,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",17.923185759495976,MODERATE,True
+2023-04-28,XLB,Materials,test,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",16.379440303640646,MODERATE,True
+2023-04-28,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.104198553474626,MODERATE,True
+2023-04-28,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.866274504954063,HIGH,True
+2023-04-28,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.533604834469898,MODERATE,True
+2023-04-28,XLI,Industrials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.757137924388918,MODERATE,True
+2023-04-28,XLK,Information Technology,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",18.20050091368925,MODERATE,True
+2023-04-28,XLP,Consumer Staples,test,12.0,LOW,2.6,True,"{""expected_vol_pct"": 12.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",9.378805442391217,LOW,True
+2023-04-28,XLRE,Real Estate,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",15.709567491766322,MODERATE,True
+2023-04-28,XLU,Utilities,test,15.0,MODERATE,4.8,True,"{""expected_vol_pct"": 15.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.8}",14.252469675335472,MODERATE,True
+2023-04-28,XLV,Health Care,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",10.877034658824435,LOW,True
+2023-04-28,XLY,Consumer Discretionary,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",16.907695004313666,MODERATE,True
+2023-05-31,XLB,Materials,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",15.1338393885755,MODERATE,True
+2023-05-31,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.431688267388811,MODERATE,True
+2023-05-31,XLE,Energy,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",18.974625551348204,HIGH,True
+2023-05-31,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.30276786757912,LOW,True
+2023-05-31,XLI,Industrials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",12.815618196299926,LOW,True
+2023-05-31,XLK,Information Technology,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",17.381381984187293,MODERATE,True
+2023-05-31,XLP,Consumer Staples,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",9.623277332212576,LOW,True
+2023-05-31,XLRE,Real Estate,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.131477668240445,MODERATE,True
+2023-05-31,XLU,Utilities,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",14.59289593089485,MODERATE,True
+2023-05-31,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",10.744060649652882,LOW,True
+2023-05-31,XLY,Consumer Discretionary,test,16.0,MODERATE,5.4,True,"{""expected_vol_pct"": 16.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.4}",17.823744955575034,MODERATE,True
+2023-06-30,XLB,Materials,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",13.713925693854936,MODERATE,True
+2023-06-30,XLC,Communication Services,test,14.8,MODERATE,4.7,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.7}",16.01367103807592,MODERATE,True
+2023-06-30,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.644257879196445,MODERATE,True
+2023-06-30,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.542429359962437,LOW,True
+2023-06-30,XLI,Industrials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.181433875181568,LOW,True
+2023-06-30,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.343320775218203,MODERATE,True
+2023-06-30,XLP,Consumer Staples,test,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",9.701905071306305,LOW,True
+2023-06-30,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.602346704339759,MODERATE,True
+2023-06-30,XLU,Utilities,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.247344427411141,MODERATE,True
+2023-06-30,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",10.223370971921822,LOW,True
+2023-06-30,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.689573006323666,HIGH,True
+2023-07-31,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.593867995894167,MODERATE,True
+2023-07-31,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.973075765049272,MODERATE,True
+2023-07-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.954616344713376,HIGH,True
+2023-07-31,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.437021757540737,LOW,True
+2023-07-31,XLI,Industrials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",13.137335298070996,MODERATE,True
+2023-07-31,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.684150488857163,MODERATE,True
+2023-07-31,XLP,Consumer Staples,test,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",10.71073729958483,LOW,True
+2023-07-31,XLRE,Real Estate,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.053266444537172,MODERATE,True
+2023-07-31,XLU,Utilities,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",19.3853984365027,HIGH,True
+2023-07-31,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",9.399243043700945,LOW,True
+2023-07-31,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.79407827504189,HIGH,True
+2023-08-31,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.81863400609104,MODERATE,True
+2023-08-31,XLC,Communication Services,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",18.251970457992012,MODERATE,True
+2023-08-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.738949070770225,HIGH,True
+2023-08-31,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.264163098862396,MODERATE,True
+2023-08-31,XLI,Industrials,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.27147628471414,MODERATE,True
+2023-08-31,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.221646620473543,MODERATE,True
+2023-08-31,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.722373334277652,LOW,True
+2023-08-31,XLRE,Real Estate,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",22.975879038058363,HIGH,True
+2023-08-31,XLU,Utilities,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",21.35765434638278,HIGH,True
+2023-08-31,XLV,Health Care,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.073658905280837,LOW,True
+2023-08-31,XLY,Consumer Discretionary,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",21.07718597559825,HIGH,True
+2023-09-29,XLB,Materials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.41069104415034,MODERATE,True
+2023-09-29,XLC,Communication Services,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.858908341622307,MODERATE,True
+2023-09-29,XLE,Energy,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",20.922806630798192,HIGH,True
+2023-09-29,XLF,Financials,test,15.0,MODERATE,4.8,True,"{""expected_vol_pct"": 15.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.8}",14.215144615716884,MODERATE,True
+2023-09-29,XLI,Industrials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.127167526715892,MODERATE,True
+2023-09-29,XLK,Information Technology,test,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",15.438461131170211,MODERATE,True
+2023-09-29,XLP,Consumer Staples,test,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",12.997830084965232,LOW,True
+2023-09-29,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",23.078688107469556,HIGH,True
+2023-09-29,XLU,Utilities,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",21.340727391785748,HIGH,True
+2023-09-29,XLV,Health Care,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.02486802269901,LOW,True
+2023-09-29,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.17273008209868,HIGH,True
+2023-10-31,XLB,Materials,test,12.9,LOW,3.3,True,"{""expected_vol_pct"": 12.9, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",13.911397819532073,MODERATE,True
+2023-10-31,XLC,Communication Services,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.250449363523034,LOW,True
+2023-10-31,XLE,Energy,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.947722861006802,HIGH,True
+2023-10-31,XLF,Financials,test,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",10.907741466176022,LOW,True
+2023-10-31,XLI,Industrials,test,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",11.754790058190977,LOW,True
+2023-10-31,XLK,Information Technology,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",15.431183735730283,MODERATE,True
+2023-10-31,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.214955322171882,LOW,True
+2023-10-31,XLRE,Real Estate,test,12.9,LOW,3.3,True,"{""expected_vol_pct"": 12.9, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",20.75039753278623,HIGH,True
+2023-10-31,XLU,Utilities,test,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",17.92097192287348,MODERATE,True
+2023-10-31,XLV,Health Care,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",10.609770961464717,LOW,True
+2023-10-31,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.984926306766042,MODERATE,True
+2023-11-30,XLB,Materials,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.29356366465072,MODERATE,True
+2023-11-30,XLC,Communication Services,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.300491824146967,MODERATE,True
+2023-11-30,XLE,Energy,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.148024680990197,MODERATE,True
+2023-11-30,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",10.939563418835686,LOW,True
+2023-11-30,XLI,Industrials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.917602338840114,LOW,True
+2023-11-30,XLK,Information Technology,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.954890494693345,MODERATE,True
+2023-11-30,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.581397970857171,LOW,True
+2023-11-30,XLRE,Real Estate,test,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",18.407106471644386,MODERATE,True
+2023-11-30,XLU,Utilities,test,11.4,LOW,2.1,True,"{""expected_vol_pct"": 11.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.1}",18.294913749460378,MODERATE,True
+2023-11-30,XLV,Health Care,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",9.723334920420328,LOW,True
+2023-11-30,XLY,Consumer Discretionary,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.680060861965007,MODERATE,True
+2023-12-29,XLB,Materials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",13.35874976554384,MODERATE,True
+2023-12-29,XLC,Communication Services,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.55952759614758,MODERATE,True
+2023-12-29,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.208241459796128,MODERATE,True
+2023-12-29,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",10.1552081028937,LOW,True
+2023-12-29,XLI,Industrials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.45740313962665,LOW,True
+2023-12-29,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.835238786451026,HIGH,True
+2023-12-29,XLP,Consumer Staples,test,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",9.680450977110779,LOW,True
+2023-12-29,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",16.67163640000875,MODERATE,True
+2023-12-29,XLU,Utilities,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",16.856516682879956,MODERATE,True
+2023-12-29,XLV,Health Care,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",9.091420488002143,LOW,True
+2023-12-29,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.592927234798779,MODERATE,True
+2024-01-31,XLB,Materials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.404476062240994,MODERATE,True
+2024-01-31,XLC,Communication Services,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.553444842039926,HIGH,True
+2024-01-31,XLE,Energy,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.326698510655662,MODERATE,True
+2024-01-31,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.241201469752374,LOW,True
+2024-01-31,XLI,Industrials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.259710071022184,LOW,True
+2024-01-31,XLK,Information Technology,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.444999749017136,MODERATE,True
+2024-01-31,XLP,Consumer Staples,test,9.5,LOW,0.9,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",9.449106733582207,LOW,True
+2024-01-31,XLRE,Real Estate,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.235917417433093,MODERATE,True
+2024-01-31,XLU,Utilities,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",16.454439483388413,MODERATE,True
+2024-01-31,XLV,Health Care,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",10.644744679218507,LOW,True
+2024-01-31,XLY,Consumer Discretionary,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.45010594639101,MODERATE,True
+2024-02-29,XLB,Materials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.784714214041783,LOW,True
+2024-02-29,XLC,Communication Services,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.08316205656009,MODERATE,True
+2024-02-29,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.35175639627355,MODERATE,True
+2024-02-29,XLF,Financials,test,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",11.405332422698555,LOW,True
+2024-02-29,XLI,Industrials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",10.860853494006435,LOW,True
+2024-02-29,XLK,Information Technology,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",18.544457285550774,HIGH,True
+2024-02-29,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",9.272736065455087,LOW,True
+2024-02-29,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",17.99976410198226,MODERATE,True
+2024-02-29,XLU,Utilities,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.454309968888454,MODERATE,True
+2024-02-29,XLV,Health Care,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",10.123782228978087,LOW,True
+2024-02-29,XLY,Consumer Discretionary,test,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",15.266263365011318,MODERATE,True
+2024-03-28,XLB,Materials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.036939277561094,LOW,True
+2024-03-28,XLC,Communication Services,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.206306314637102,MODERATE,True
+2024-03-28,XLE,Energy,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.90904253755342,MODERATE,True
+2024-03-28,XLF,Financials,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",11.850085756735819,LOW,True
+2024-03-28,XLI,Industrials,test,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",11.732282173336406,LOW,True
+2024-03-28,XLK,Information Technology,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",19.33368354002711,HIGH,True
+2024-03-28,XLP,Consumer Staples,test,9.3,LOW,0.8,True,"{""expected_vol_pct"": 9.3, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.8}",10.09393889147621,LOW,True
+2024-03-28,XLRE,Real Estate,test,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",17.492942925116854,MODERATE,True
+2024-03-28,XLU,Utilities,test,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",14.960710341023315,MODERATE,True
+2024-03-28,XLV,Health Care,test,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",10.260076952749921,LOW,True
+2024-03-28,XLY,Consumer Discretionary,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.67180848388227,MODERATE,True
+2024-04-30,XLB,Materials,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",12.791214612748448,LOW,True
+2024-04-30,XLC,Communication Services,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.910027577538195,LOW,True
+2024-04-30,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.323284889737355,MODERATE,True
+2024-04-30,XLF,Financials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.861856189213155,LOW,True
+2024-04-30,XLI,Industrials,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",13.43890051227552,MODERATE,True
+2024-04-30,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.661621174531422,HIGH,True
+2024-04-30,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",10.190129550867173,LOW,True
+2024-04-30,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.458446377410242,MODERATE,True
+2024-04-30,XLU,Utilities,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",14.7341492841169,MODERATE,True
+2024-04-30,XLV,Health Care,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",10.174403202861813,LOW,True
+2024-04-30,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.045897786001355,MODERATE,True
+2024-05-31,XLB,Materials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.228838958691265,MODERATE,True
+2024-05-31,XLC,Communication Services,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.337458019874232,MODERATE,True
+2024-05-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.582505349372994,HIGH,True
+2024-05-31,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.442465061179016,MODERATE,True
+2024-05-31,XLI,Industrials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.443625390957202,MODERATE,True
+2024-05-31,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",28.56532177102315,HIGH,True
+2024-05-31,XLP,Consumer Staples,test,9.7,LOW,1.1,True,"{""expected_vol_pct"": 9.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",9.832737488622591,LOW,True
+2024-05-31,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.948915189129227,MODERATE,True
+2024-05-31,XLU,Utilities,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",13.93709818533023,MODERATE,True
+2024-05-31,XLV,Health Care,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",11.647095699313208,LOW,True
+2024-05-31,XLY,Consumer Discretionary,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",22.36697211507804,HIGH,True
+2024-06-28,XLB,Materials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.735427428200294,MODERATE,True
+2024-06-28,XLC,Communication Services,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",16.701921731550346,MODERATE,True
+2024-06-28,XLE,Energy,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.756500962377142,HIGH,True
+2024-06-28,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.38306374681575,MODERATE,True
+2024-06-28,XLI,Industrials,test,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",16.560474795542714,MODERATE,True
+2024-06-28,XLK,Information Technology,test,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",31.02486015573463,HIGH,True
+2024-06-28,XLP,Consumer Staples,test,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",10.01799573208652,LOW,True
+2024-06-28,XLRE,Real Estate,test,10.6,LOW,1.6,True,"{""expected_vol_pct"": 10.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.6}",13.996055166983446,MODERATE,True
+2024-06-28,XLU,Utilities,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",13.726329382334473,MODERATE,True
+2024-06-28,XLV,Health Care,test,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",12.365967305616607,LOW,True
+2024-06-28,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",23.751280219106786,HIGH,True
+2024-07-31,XLB,Materials,test,15.0,MODERATE,4.8,True,"{""expected_vol_pct"": 15.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.8}",14.747556155500142,MODERATE,True
+2024-07-31,XLC,Communication Services,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.317943164609249,MODERATE,True
+2024-07-31,XLE,Energy,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",21.20875644778825,HIGH,True
+2024-07-31,XLF,Financials,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.128045085659577,MODERATE,True
+2024-07-31,XLI,Industrials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.68719703021519,MODERATE,True
+2024-07-31,XLK,Information Technology,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",26.89330411453516,HIGH,True
+2024-07-31,XLP,Consumer Staples,test,9.6,LOW,1.0,True,"{""expected_vol_pct"": 9.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",9.753725482752706,LOW,True
+2024-07-31,XLRE,Real Estate,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.98597128322436,MODERATE,True
+2024-07-31,XLU,Utilities,test,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",13.932529877156998,MODERATE,True
+2024-07-31,XLV,Health Care,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.783927104644361,LOW,True
+2024-07-31,XLY,Consumer Discretionary,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",21.946473430881973,HIGH,True
+2024-08-30,XLB,Materials,test,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",13.710209401899343,MODERATE,True
+2024-08-30,XLC,Communication Services,test,15.3,MODERATE,4.9,True,"{""expected_vol_pct"": 15.3, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.9}",13.156725543678194,MODERATE,True
+2024-08-30,XLE,Energy,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",20.106081882370844,HIGH,True
+2024-08-30,XLF,Financials,test,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",17.802551655321842,MODERATE,True
+2024-08-30,XLI,Industrials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.142672659334824,MODERATE,True
+2024-08-30,XLK,Information Technology,test,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",22.496275137660156,HIGH,True
+2024-08-30,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",9.745846690155142,LOW,True
+2024-08-30,XLRE,Real Estate,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.75903206502806,MODERATE,True
+2024-08-30,XLU,Utilities,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",16.30030404140533,MODERATE,True
+2024-08-30,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",11.016050154873895,LOW,True
+2024-08-30,XLY,Consumer Discretionary,test,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",18.124460203205828,MODERATE,True
+2024-09-30,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.862112928486557,LOW,True
+2024-09-30,XLC,Communication Services,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",14.404003684520857,MODERATE,True
+2024-09-30,XLE,Energy,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",19.553626580902193,HIGH,True
+2024-09-30,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.52514764101196,HIGH,True
+2024-09-30,XLI,Industrials,test,15.3,MODERATE,4.9,True,"{""expected_vol_pct"": 15.3, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.9}",15.127417598006693,MODERATE,True
+2024-09-30,XLK,Information Technology,test,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",19.418080557588162,HIGH,True
+2024-09-30,XLP,Consumer Staples,test,12.0,LOW,2.6,True,"{""expected_vol_pct"": 12.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",9.837900766678763,LOW,True
+2024-09-30,XLRE,Real Estate,test,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",17.39366169162596,MODERATE,True
+2024-09-30,XLU,Utilities,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",17.014898247623382,MODERATE,True
+2024-09-30,XLV,Health Care,test,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",11.877328917127638,LOW,True
+2024-09-30,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.027813901810802,HIGH,True
+2024-10-31,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.244308752489237,MODERATE,True
+2024-10-31,XLC,Communication Services,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.142201443061085,MODERATE,True
+2024-10-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.18460596068627,MODERATE,True
+2024-10-31,XLF,Financials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.827988700892426,HIGH,True
+2024-10-31,XLI,Industrials,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.144480926835918,MODERATE,True
+2024-10-31,XLK,Information Technology,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.198707639855083,HIGH,True
+2024-10-31,XLP,Consumer Staples,test,9.4,LOW,0.9,True,"{""expected_vol_pct"": 9.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",11.81370647701277,LOW,True
+2024-10-31,XLRE,Real Estate,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",19.202665178229534,HIGH,True
+2024-10-31,XLU,Utilities,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",18.321693495406503,MODERATE,True
+2024-10-31,XLV,Health Care,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.753677471850928,MODERATE,True
+2024-10-31,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.365502211997725,HIGH,True
+2024-11-29,XLB,Materials,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.510936536425135,MODERATE,True
+2024-11-29,XLC,Communication Services,test,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",14.6889466196474,MODERATE,True
+2024-11-29,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.696431697563852,HIGH,True
+2024-11-29,XLF,Financials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.887382196768275,MODERATE,True
+2024-11-29,XLI,Industrials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",13.76292788009076,MODERATE,True
+2024-11-29,XLK,Information Technology,test,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",23.615145126497318,HIGH,True
+2024-11-29,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",12.900008036282252,LOW,True
+2024-11-29,XLRE,Real Estate,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.28280340725633,MODERATE,True
+2024-11-29,XLU,Utilities,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.979132447625446,MODERATE,True
+2024-11-29,XLV,Health Care,test,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",12.938300134025441,LOW,True
+2024-11-29,XLY,Consumer Discretionary,test,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",19.968756343382786,HIGH,True
+2024-12-31,XLB,Materials,test,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",15.89631219522911,MODERATE,True
+2024-12-31,XLC,Communication Services,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",16.865059242237937,MODERATE,True
+2024-12-31,XLE,Energy,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.465911408265956,HIGH,True
+2024-12-31,XLF,Financials,test,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",17.616628494719883,MODERATE,True
+2024-12-31,XLI,Industrials,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",16.208505847908523,MODERATE,True
+2024-12-31,XLK,Information Technology,test,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",27.293967978836648,HIGH,True
+2024-12-31,XLP,Consumer Staples,test,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",15.059527501083487,MODERATE,True
+2024-12-31,XLRE,Real Estate,test,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.196806265587895,MODERATE,True
+2024-12-31,XLU,Utilities,test,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",17.40160967109507,MODERATE,True
+2024-12-31,XLV,Health Care,test,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.61553630318154,LOW,True
+2024-12-31,XLY,Consumer Discretionary,test,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",22.584676237955104,HIGH,True
+2025-01-31,XLB,Materials,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",31.02866007431705,HIGH,True
+2025-01-31,XLC,Communication Services,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",30.864307217675346,HIGH,True
+2025-01-31,XLE,Energy,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",39.61962525025862,HIGH,True
+2025-01-31,XLF,Financials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",30.848847078880947,HIGH,True
+2025-01-31,XLI,Industrials,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",30.64788832328823,HIGH,True
+2025-01-31,XLK,Information Technology,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",43.956168847772474,HIGH,True
+2025-01-31,XLP,Consumer Staples,post_cutoff,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",19.67697890653423,HIGH,True
+2025-01-31,XLRE,Real Estate,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",24.11067274643543,HIGH,True
+2025-01-31,XLU,Utilities,post_cutoff,11.4,LOW,2.1,True,"{""expected_vol_pct"": 11.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.1}",21.499199660129264,HIGH,True
+2025-01-31,XLV,Health Care,post_cutoff,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",20.713884862180272,HIGH,True
+2025-01-31,XLY,Consumer Discretionary,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",37.31218754196697,HIGH,True
+2025-02-28,XLB,Materials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",31.45108451804421,HIGH,True
+2025-02-28,XLC,Communication Services,post_cutoff,14.8,MODERATE,4.7,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.7}",30.98460079900364,HIGH,True
+2025-02-28,XLE,Energy,post_cutoff,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",39.511560766003676,HIGH,True
+2025-02-28,XLF,Financials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",31.29341614259351,HIGH,True
+2025-02-28,XLI,Industrials,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",31.681553637162107,HIGH,True
+2025-02-28,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",44.233607744028305,HIGH,True
+2025-02-28,XLP,Consumer Staples,post_cutoff,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",19.42095978498255,HIGH,True
+2025-02-28,XLRE,Real Estate,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",25.184520244656255,HIGH,True
+2025-02-28,XLU,Utilities,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",21.99220776277193,HIGH,True
+2025-02-28,XLV,Health Care,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",24.951921237450104,HIGH,True
+2025-02-28,XLY,Consumer Discretionary,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",38.785807151762505,HIGH,True
+2025-03-31,XLB,Materials,post_cutoff,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",30.34979933909722,HIGH,True
+2025-03-31,XLC,Communication Services,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",28.959826534241124,HIGH,True
+2025-03-31,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",39.28928103592365,HIGH,True
+2025-03-31,XLF,Financials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",29.415469877568423,HIGH,True
+2025-03-31,XLI,Industrials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",29.824393041438853,HIGH,True
+2025-03-31,XLK,Information Technology,post_cutoff,16.4,MODERATE,5.7,True,"{""expected_vol_pct"": 16.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.7}",40.930142105976,HIGH,True
+2025-03-31,XLP,Consumer Staples,post_cutoff,9.7,LOW,1.1,True,"{""expected_vol_pct"": 9.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",17.99005431441866,MODERATE,True
+2025-03-31,XLRE,Real Estate,post_cutoff,14.7,MODERATE,4.6,True,"{""expected_vol_pct"": 14.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",23.652475294978206,HIGH,True
+2025-03-31,XLU,Utilities,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",21.145967619387637,HIGH,True
+2025-03-31,XLV,Health Care,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",24.79809269034836,HIGH,True
+2025-03-31,XLY,Consumer Discretionary,post_cutoff,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",35.867472650639534,HIGH,True
+2025-04-30,XLB,Materials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.419575395905094,MODERATE,True
+2025-04-30,XLC,Communication Services,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",12.344178272229215,LOW,True
+2025-04-30,XLE,Energy,post_cutoff,16.4,MODERATE,5.7,True,"{""expected_vol_pct"": 16.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.7}",18.648151552283327,HIGH,True
+2025-04-30,XLF,Financials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.613449627646535,MODERATE,True
+2025-04-30,XLI,Industrials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",12.814664104027424,LOW,True
+2025-04-30,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.22207972612677,MODERATE,True
+2025-04-30,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.143985861963653,LOW,True
+2025-04-30,XLRE,Real Estate,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.749507994520945,MODERATE,True
+2025-04-30,XLU,Utilities,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",13.631255092606395,MODERATE,True
+2025-04-30,XLV,Health Care,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",19.097100746438105,HIGH,True
+2025-04-30,XLY,Consumer Discretionary,post_cutoff,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",18.949790630620203,HIGH,True
+2025-05-30,XLB,Materials,post_cutoff,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",15.603329591433502,MODERATE,True
+2025-05-30,XLC,Communication Services,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.815312656907862,LOW,True
+2025-05-30,XLE,Energy,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.35662726957899,MODERATE,True
+2025-05-30,XLF,Financials,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",12.975324986552392,LOW,True
+2025-05-30,XLI,Industrials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.057668626676563,LOW,True
+2025-05-30,XLK,Information Technology,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",13.86553266500489,MODERATE,True
+2025-05-30,XLP,Consumer Staples,post_cutoff,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",10.840285864077154,LOW,True
+2025-05-30,XLRE,Real Estate,post_cutoff,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",13.41794319726036,MODERATE,True
+2025-05-30,XLU,Utilities,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",12.259640067971363,LOW,True
+2025-05-30,XLV,Health Care,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",15.226957859821969,MODERATE,True
+2025-05-30,XLY,Consumer Discretionary,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",16.605661502498197,MODERATE,True
+2025-06-30,XLB,Materials,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.783893552331332,MODERATE,True
+2025-06-30,XLC,Communication Services,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",11.968848737930388,LOW,True
+2025-06-30,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",16.432611283795367,MODERATE,True
+2025-06-30,XLF,Financials,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.417655600863151,LOW,True
+2025-06-30,XLI,Industrials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",10.99936332679508,LOW,True
+2025-06-30,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.042664281376933,MODERATE,True
+2025-06-30,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",10.552102433534586,LOW,True
+2025-06-30,XLRE,Real Estate,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.201890371947608,MODERATE,True
+2025-06-30,XLU,Utilities,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",12.260600266758816,LOW,True
+2025-06-30,XLV,Health Care,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.159722198321482,MODERATE,True
+2025-06-30,XLY,Consumer Discretionary,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.905557289236866,MODERATE,True
+2025-07-31,XLB,Materials,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",14.432898424232492,MODERATE,True
+2025-07-31,XLC,Communication Services,post_cutoff,12.0,LOW,2.6,True,"{""expected_vol_pct"": 12.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",12.562976182015737,LOW,True
+2025-07-31,XLE,Energy,post_cutoff,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",16.737368590748034,MODERATE,True
+2025-07-31,XLF,Financials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.857647437354581,MODERATE,True
+2025-07-31,XLI,Industrials,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.675501801323946,LOW,True
+2025-07-31,XLK,Information Technology,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.856307844328782,MODERATE,True
+2025-07-31,XLP,Consumer Staples,post_cutoff,8.8,LOW,0.6,True,"{""expected_vol_pct"": 8.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.6}",10.484921869308698,LOW,True
+2025-07-31,XLRE,Real Estate,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",11.59446362554074,LOW,True
+2025-07-31,XLU,Utilities,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.377823346182453,LOW,True
+2025-07-31,XLV,Health Care,post_cutoff,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",14.157824013155846,MODERATE,True
+2025-07-31,XLY,Consumer Discretionary,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.761290809165924,MODERATE,True
+2025-08-29,XLB,Materials,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",15.15065135075028,MODERATE,True
+2025-08-29,XLC,Communication Services,post_cutoff,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",13.445450528055181,MODERATE,True
+2025-08-29,XLE,Energy,post_cutoff,13.0,LOW,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.3}",17.575921093675284,MODERATE,True
+2025-08-29,XLF,Financials,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.889435614970076,MODERATE,True
+2025-08-29,XLI,Industrials,post_cutoff,12.4,LOW,2.7,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.7}",12.710248354648057,LOW,True
+2025-08-29,XLK,Information Technology,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",21.20024386718862,HIGH,True
+2025-08-29,XLP,Consumer Staples,post_cutoff,9.4,LOW,0.9,True,"{""expected_vol_pct"": 9.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",11.488998405019142,LOW,True
+2025-08-29,XLRE,Real Estate,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.338243052688249,MODERATE,True
+2025-08-29,XLU,Utilities,post_cutoff,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",12.357216753960337,LOW,True
+2025-08-29,XLV,Health Care,post_cutoff,10.6,LOW,1.6,True,"{""expected_vol_pct"": 10.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.6}",13.763936413282066,MODERATE,True
+2025-08-29,XLY,Consumer Discretionary,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",19.220328408934996,HIGH,True
+2025-09-30,XLB,Materials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.46533030651585,MODERATE,True
+2025-09-30,XLC,Communication Services,post_cutoff,12.1,LOW,2.6,True,"{""expected_vol_pct"": 12.1, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.6}",12.570307613994913,LOW,True
+2025-09-30,XLE,Energy,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.922539140343233,MODERATE,True
+2025-09-30,XLF,Financials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.180056470146173,MODERATE,True
+2025-09-30,XLI,Industrials,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.002789253273978,MODERATE,True
+2025-09-30,XLK,Information Technology,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",22.4849562144374,HIGH,True
+2025-09-30,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",11.671388795652268,LOW,True
+2025-09-30,XLRE,Real Estate,post_cutoff,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",12.586103941836225,LOW,True
+2025-09-30,XLU,Utilities,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.820547770260266,LOW,True
+2025-09-30,XLV,Health Care,post_cutoff,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",14.201331735695751,MODERATE,True
+2025-09-30,XLY,Consumer Discretionary,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",19.136694939216326,HIGH,True
+2025-10-31,XLB,Materials,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.309314688561926,MODERATE,True
+2025-10-31,XLC,Communication Services,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",12.379205939635343,LOW,True
+2025-10-31,XLE,Energy,post_cutoff,15.3,MODERATE,4.9,True,"{""expected_vol_pct"": 15.3, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.9}",20.2115803752726,HIGH,True
+2025-10-31,XLF,Financials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.062063599606073,MODERATE,True
+2025-10-31,XLI,Industrials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.832657048173841,MODERATE,True
+2025-10-31,XLK,Information Technology,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",20.530526930212435,HIGH,True
+2025-10-31,XLP,Consumer Staples,post_cutoff,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",11.575820311710986,LOW,True
+2025-10-31,XLRE,Real Estate,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",11.497345034472175,LOW,True
+2025-10-31,XLU,Utilities,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",13.244059971714709,MODERATE,True
+2025-10-31,XLV,Health Care,post_cutoff,11.8,LOW,2.5,True,"{""expected_vol_pct"": 11.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.5}",14.265762163616532,MODERATE,True
+2025-10-31,XLY,Consumer Discretionary,post_cutoff,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",17.78516969889859,MODERATE,True
+2025-11-28,XLB,Materials,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",17.16394801858146,MODERATE,True
+2025-11-28,XLC,Communication Services,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",12.158169910805041,LOW,True
+2025-11-28,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.96872116523187,HIGH,True
+2025-11-28,XLF,Financials,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.880566804551968,MODERATE,True
+2025-11-28,XLI,Industrials,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.297007211267555,MODERATE,True
+2025-11-28,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.49756467482636,HIGH,True
+2025-11-28,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",12.412812383018474,LOW,True
+2025-11-28,XLRE,Real Estate,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",12.584159811751647,LOW,True
+2025-11-28,XLU,Utilities,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",15.347495889285643,MODERATE,True
+2025-11-28,XLV,Health Care,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",13.223896116907385,MODERATE,True
+2025-11-28,XLY,Consumer Discretionary,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.397898403289567,MODERATE,True
+2025-12-31,XLB,Materials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.10787668283572,HIGH,True
+2025-12-31,XLC,Communication Services,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",14.498891497114801,MODERATE,True
+2025-12-31,XLE,Energy,post_cutoff,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",20.970300576337515,HIGH,True
+2025-12-31,XLF,Financials,post_cutoff,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",17.960684380144336,MODERATE,True
+2025-12-31,XLI,Industrials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.143104748978658,MODERATE,True
+2025-12-31,XLK,Information Technology,post_cutoff,15.7,MODERATE,5.2,True,"{""expected_vol_pct"": 15.7, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",23.38464535090668,HIGH,True
+2025-12-31,XLP,Consumer Staples,post_cutoff,9.5,LOW,1.0,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.0}",15.155773331594427,MODERATE,True
+2025-12-31,XLRE,Real Estate,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.791125174885982,MODERATE,True
+2025-12-31,XLU,Utilities,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.870436235507206,MODERATE,True
+2025-12-31,XLV,Health Care,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",14.67974939369943,MODERATE,True
+2025-12-31,XLY,Consumer Discretionary,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.004481377036758,HIGH,True
+2026-01-30,XLB,Materials,post_cutoff,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",19.492678504094016,HIGH,True
+2026-01-30,XLC,Communication Services,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",15.282384301624802,MODERATE,True
+2026-01-30,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",23.028909683721167,HIGH,True
+2026-01-30,XLF,Financials,post_cutoff,13.0,MODERATE,3.3,True,"{""expected_vol_pct"": 13.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 3.3}",17.940506037295453,MODERATE,True
+2026-01-30,XLI,Industrials,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",20.061918816410817,HIGH,True
+2026-01-30,XLK,Information Technology,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",26.323452060812848,HIGH,True
+2026-01-30,XLP,Consumer Staples,post_cutoff,10.8,LOW,1.7,True,"{""expected_vol_pct"": 10.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.7}",15.393201792333592,MODERATE,True
+2026-01-30,XLRE,Real Estate,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",15.506035028675512,MODERATE,True
+2026-01-30,XLU,Utilities,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.934546235509238,MODERATE,True
+2026-01-30,XLV,Health Care,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",15.225017725428849,MODERATE,True
+2026-01-30,XLY,Consumer Discretionary,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",21.176123766880178,HIGH,True
+2026-02-27,XLB,Materials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",19.465022278676773,HIGH,True
+2026-02-27,XLC,Communication Services,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",14.46930230464018,MODERATE,True
+2026-02-27,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",25.034100975983932,HIGH,True
+2026-02-27,XLF,Financials,post_cutoff,14.8,MODERATE,4.6,True,"{""expected_vol_pct"": 14.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.6}",14.001570357892401,MODERATE,True
+2026-02-27,XLI,Industrials,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",21.305908999145515,HIGH,True
+2026-02-27,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",24.803625869763465,HIGH,True
+2026-02-27,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",14.583761890610539,MODERATE,True
+2026-02-27,XLRE,Real Estate,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.033375771704973,MODERATE,True
+2026-02-27,XLU,Utilities,post_cutoff,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",16.775629872583647,MODERATE,True
+2026-02-27,XLV,Health Care,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",15.471042112114858,MODERATE,True
+2026-02-27,XLY,Consumer Discretionary,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",21.10790896366997,HIGH,True
+2026-03-31,XLB,Materials,post_cutoff,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",19.13707064415319,HIGH,True
+2026-03-31,XLC,Communication Services,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.178897449803493,MODERATE,True
+2026-03-31,XLE,Energy,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",26.151795309023385,HIGH,True
+2026-03-31,XLF,Financials,post_cutoff,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",13.064656713366865,MODERATE,True
+2026-03-31,XLI,Industrials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.9714699228958,HIGH,True
+2026-03-31,XLK,Information Technology,post_cutoff,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",31.013316271945655,HIGH,True
+2026-03-31,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",15.46088131036926,MODERATE,True
+2026-03-31,XLRE,Real Estate,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",15.718024029631517,MODERATE,True
+2026-03-31,XLU,Utilities,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",17.044701537515934,MODERATE,True
+2026-03-31,XLV,Health Care,post_cutoff,12.6,LOW,3.0,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.0}",16.884831729151145,MODERATE,True
+2026-03-31,XLY,Consumer Discretionary,post_cutoff,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",20.11762233020741,HIGH,True
+2026-04-30,XLB,Materials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",20.371284465369463,HIGH,True
+2026-04-30,XLC,Communication Services,post_cutoff,14.6,MODERATE,4.5,True,"{""expected_vol_pct"": 14.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 4.5}",17.497966164321166,MODERATE,True
+2026-04-30,XLE,Energy,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",24.48617492339259,HIGH,True
+2026-04-30,XLF,Financials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",13.446929649123796,MODERATE,True
+2026-04-30,XLI,Industrials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",18.52530946367773,HIGH,True
+2026-04-30,XLK,Information Technology,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",33.90432532211234,HIGH,True
+2026-04-30,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",16.969601074479215,MODERATE,True
+2026-04-30,XLRE,Real Estate,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.028839024405293,MODERATE,True
+2026-04-30,XLU,Utilities,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",16.601241177502946,MODERATE,True
+2026-04-30,XLV,Health Care,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",18.187058670581216,MODERATE,True
+2026-04-30,XLY,Consumer Discretionary,post_cutoff,19.0,HIGH,6.9,True,"{""expected_vol_pct"": 19.0, ""risk_label"": ""HIGH"", ""macro_risk_score"": 6.9}",21.243290723323113,HIGH,True
+2026-05-29,XLB,Materials,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",19.721872511487796,HIGH,True
+2026-05-29,XLC,Communication Services,post_cutoff,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",20.105983643756485,HIGH,True
+2026-05-29,XLE,Energy,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",22.989989508265403,HIGH,True
+2026-05-29,XLF,Financials,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",13.386889513933347,MODERATE,True
+2026-05-29,XLI,Industrials,post_cutoff,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",18.778495424512684,HIGH,True
+2026-05-29,XLK,Information Technology,post_cutoff,24.8,HIGH,8.3,True,"{""expected_vol_pct"": 24.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",35.317806974537646,HIGH,True
+2026-05-29,XLP,Consumer Staples,post_cutoff,9.5,LOW,0.9,True,"{""expected_vol_pct"": 9.5, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.9}",17.504073596017545,MODERATE,True
+2026-05-29,XLRE,Real Estate,post_cutoff,15.8,MODERATE,5.2,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.2}",16.054209836890642,MODERATE,True
+2026-05-29,XLU,Utilities,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",16.294263905572137,MODERATE,True
+2026-05-29,XLV,Health Care,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",19.72979219842992,HIGH,True
+2026-05-29,XLY,Consumer Discretionary,post_cutoff,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",22.08469690186891,HIGH,True
+2026-06-30,XLB,Materials,post_cutoff,25.7,HIGH,8.5,True,"{""expected_vol_pct"": 25.7, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",17.358986520673334,MODERATE,True
+2026-06-30,XLC,Communication Services,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",21.225905960850078,HIGH,True
+2026-06-30,XLE,Energy,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",21.605912701804577,HIGH,True
+2026-06-30,XLF,Financials,post_cutoff,24.6,HIGH,8.3,True,"{""expected_vol_pct"": 24.6, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.3}",13.656010300918272,MODERATE,True
+2026-06-30,XLI,Industrials,post_cutoff,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",14.598006019318122,MODERATE,True
+2026-06-30,XLK,Information Technology,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",27.62819427086496,HIGH,True
+2026-06-30,XLP,Consumer Staples,post_cutoff,9.8,LOW,1.1,True,"{""expected_vol_pct"": 9.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.1}",15.973907666175313,MODERATE,True
+2026-06-30,XLRE,Real Estate,post_cutoff,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",13.127132093033433,MODERATE,True
+2026-06-30,XLU,Utilities,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",14.629498168227437,MODERATE,True
+2026-06-30,XLV,Health Care,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",17.920185536043835,MODERATE,True
+2026-06-30,XLY,Consumer Discretionary,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",19.561913196784776,HIGH,True
+2026-07-31,XLB,Materials,post_cutoff,22.8,HIGH,8.0,True,"{""expected_vol_pct"": 22.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.0}",,,False
+2026-07-31,XLC,Communication Services,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",,,False
+2026-07-31,XLE,Energy,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",,,False
+2026-07-31,XLF,Financials,post_cutoff,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",,,False
+2026-07-31,XLI,Industrials,post_cutoff,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",,,False
+2026-07-31,XLK,Information Technology,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",,,False
+2026-07-31,XLP,Consumer Staples,post_cutoff,8.8,LOW,0.5,True,"{""expected_vol_pct"": 8.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.5}",,,False
+2026-07-31,XLRE,Real Estate,post_cutoff,16.8,MODERATE,5.9,True,"{""expected_vol_pct"": 16.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.9}",,,False
+2026-07-31,XLU,Utilities,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",,,False
+2026-07-31,XLV,Health Care,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",,,False
+2026-07-31,XLY,Consumer Discretionary,post_cutoff,25.8,HIGH,8.5,True,"{""expected_vol_pct"": 25.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 8.5}",,,False
+2026-08-31,XLB,Materials,post_cutoff,15.6,MODERATE,5.1,True,"{""expected_vol_pct"": 15.6, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.1}",,,False
+2026-08-31,XLC,Communication Services,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",,,False
+2026-08-31,XLE,Energy,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",,,False
+2026-08-31,XLF,Financials,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",,,False
+2026-08-31,XLI,Industrials,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",,,False
+2026-08-31,XLK,Information Technology,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",,,False
+2026-08-31,XLP,Consumer Staples,post_cutoff,8.8,LOW,0.5,True,"{""expected_vol_pct"": 8.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.5}",,,False
+2026-08-31,XLRE,Real Estate,post_cutoff,12.8,LOW,3.1,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",,,False
+2026-08-31,XLU,Utilities,post_cutoff,12.6,LOW,2.9,True,"{""expected_vol_pct"": 12.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.9}",,,False
+2026-08-31,XLV,Health Care,post_cutoff,12.4,LOW,2.8,True,"{""expected_vol_pct"": 12.4, ""risk_label"": ""LOW"", ""macro_risk_score"": 2.8}",,,False
+2026-08-31,XLY,Consumer Discretionary,post_cutoff,15.8,MODERATE,5.3,True,"{""expected_vol_pct"": 15.8, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.3}",,,False
+2026-09-30,XLB,Materials,post_cutoff,18.1,MODERATE,6.5,True,"{""expected_vol_pct"": 18.1, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.5}",,,False
+2026-09-30,XLC,Communication Services,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",,,False
+2026-09-30,XLE,Energy,post_cutoff,18.0,MODERATE,6.4,True,"{""expected_vol_pct"": 18.0, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.4}",,,False
+2026-09-30,XLF,Financials,post_cutoff,15.4,MODERATE,5.0,True,"{""expected_vol_pct"": 15.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 5.0}",,,False
+2026-09-30,XLI,Industrials,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",,,False
+2026-09-30,XLK,Information Technology,post_cutoff,20.8,HIGH,7.4,True,"{""expected_vol_pct"": 20.8, ""risk_label"": ""HIGH"", ""macro_risk_score"": 7.4}",,,False
+2026-09-30,XLP,Consumer Staples,post_cutoff,8.6,LOW,0.4,True,"{""expected_vol_pct"": 8.6, ""risk_label"": ""LOW"", ""macro_risk_score"": 0.4}",,,False
+2026-09-30,XLRE,Real Estate,post_cutoff,12.7,LOW,3.1,True,"{""expected_vol_pct"": 12.7, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.1}",,,False
+2026-09-30,XLU,Utilities,post_cutoff,12.8,LOW,3.2,True,"{""expected_vol_pct"": 12.8, ""risk_label"": ""LOW"", ""macro_risk_score"": 3.2}",,,False
+2026-09-30,XLV,Health Care,post_cutoff,11.0,LOW,1.8,True,"{""expected_vol_pct"": 11.0, ""risk_label"": ""LOW"", ""macro_risk_score"": 1.8}",,,False
+2026-09-30,XLY,Consumer Discretionary,post_cutoff,18.4,MODERATE,6.6,True,"{""expected_vol_pct"": 18.4, ""risk_label"": ""MODERATE"", ""macro_risk_score"": 6.6}",,,False

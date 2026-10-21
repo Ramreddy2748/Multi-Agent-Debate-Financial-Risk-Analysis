@@ -1,0 +1,75 @@
+column,source,series_id,name,category,frequency,units,transform,point_in_time
+DFF,FRED,DFF,Effective federal funds rate,policy_rates,D,percent,level,market data; usable from next business day
+DFF_chg_3m,FRED,DFF,Effective federal funds rate,policy_rates,D,percent,chg_3m,market data; usable from next business day
+DFF_z3y,derived,DFF,Effective federal funds rate,policy_rates,business day,standard deviations,trailing ~3y z-score,trailing window only
+DGS3MO,FRED,DGS3MO,3-month Treasury yield,policy_rates,D,percent,level,market data; usable from next business day
+DGS2,FRED,DGS2,2-year Treasury yield,policy_rates,D,percent,level,market data; usable from next business day
+DGS2_chg_3m,FRED,DGS2,2-year Treasury yield,policy_rates,D,percent,chg_3m,market data; usable from next business day
+DGS10,FRED,DGS10,10-year Treasury yield,policy_rates,D,percent,level,market data; usable from next business day
+DGS10_chg_3m,FRED,DGS10,10-year Treasury yield,policy_rates,D,percent,chg_3m,market data; usable from next business day
+DGS10_z3y,derived,DGS10,10-year Treasury yield,policy_rates,business day,standard deviations,trailing ~3y z-score,trailing window only
+DGS30,FRED,DGS30,30-year Treasury yield,policy_rates,D,percent,level,market data; usable from next business day
+T10Y2Y,FRED,T10Y2Y,10Y minus 2Y Treasury spread,policy_rates,D,percentage points,level,market data; usable from next business day
+T10Y2Y_chg_3m,FRED,T10Y2Y,10Y minus 2Y Treasury spread,policy_rates,D,percentage points,chg_3m,market data; usable from next business day
+T10Y2Y_z3y,derived,T10Y2Y,10Y minus 2Y Treasury spread,policy_rates,business day,standard deviations,trailing ~3y z-score,trailing window only
+T10Y3M,FRED,T10Y3M,10Y minus 3M Treasury spread,policy_rates,D,percentage points,level,market data; usable from next business day
+T10Y3M_z3y,derived,T10Y3M,10Y minus 3M Treasury spread,policy_rates,business day,standard deviations,trailing ~3y z-score,trailing window only
+VIXCLS,FRED,VIXCLS,CBOE VIX,markets_credit,D,index,level,market data; usable from next business day
+VIXCLS_chg_3m,FRED,VIXCLS,CBOE VIX,markets_credit,D,index,chg_3m,market data; usable from next business day
+VIXCLS_z3y,derived,VIXCLS,CBOE VIX,markets_credit,business day,standard deviations,trailing ~3y z-score,trailing window only
+DCOILWTICO,FRED,DCOILWTICO,WTI crude oil price,markets_credit,D,USD per barrel,level,market data; usable from next business day
+DCOILWTICO_ret_3m,FRED,DCOILWTICO,WTI crude oil price,markets_credit,D,USD per barrel,ret_3m,market data; usable from next business day
+DCOILWTICO_yoy,FRED,DCOILWTICO,WTI crude oil price,markets_credit,D,USD per barrel,yoy,market data; usable from next business day
+DCOILWTICO_ret_3m_z3y,derived,DCOILWTICO,WTI crude oil price,markets_credit,business day,standard deviations,trailing ~3y z-score,trailing window only
+DTWEXBGS,FRED,DTWEXBGS,Broad trade-weighted US dollar index,markets_credit,D,index,level,market data; usable from next business day
+DTWEXBGS_ret_3m,FRED,DTWEXBGS,Broad trade-weighted US dollar index,markets_credit,D,index,ret_3m,market data; usable from next business day
+DTWEXBGS_ret_3m_z3y,derived,DTWEXBGS,Broad trade-weighted US dollar index,markets_credit,business day,standard deviations,trailing ~3y z-score,trailing window only
+BAMLH0A0HYM2,FRED,BAMLH0A0HYM2,ICE BofA US high-yield option-adjusted spread,markets_credit,D,percentage points,level,market data; usable from next business day
+BAMLH0A0HYM2_chg_3m,FRED,BAMLH0A0HYM2,ICE BofA US high-yield option-adjusted spread,markets_credit,D,percentage points,chg_3m,market data; usable from next business day
+BAMLH0A0HYM2_z3y,derived,BAMLH0A0HYM2,ICE BofA US high-yield option-adjusted spread,markets_credit,business day,standard deviations,trailing ~3y z-score,trailing window only
+BAA10Y,FRED,BAA10Y,Moody's Baa corporate yield minus 10Y Treasury,markets_credit,D,percentage points,level,market data; usable from next business day
+BAA10Y_chg_3m,FRED,BAA10Y,Moody's Baa corporate yield minus 10Y Treasury,markets_credit,D,percentage points,chg_3m,market data; usable from next business day
+BAA10Y_z3y,derived,BAA10Y,Moody's Baa corporate yield minus 10Y Treasury,markets_credit,business day,standard deviations,trailing ~3y z-score,trailing window only
+T5YIE,FRED,T5YIE,5-year breakeven inflation rate,inflation,D,percent,level,market data; usable from next business day
+T5YIE_chg_3m,FRED,T5YIE,5-year breakeven inflation rate,inflation,D,percent,chg_3m,market data; usable from next business day
+ICSA,FRED,ICSA,Initial jobless claims,labor,W,claims,level,"first-release value from ALFRED, available from its publication date"
+ICSA_yoy,FRED,ICSA,Initial jobless claims,labor,W,claims,yoy,"first-release value from ALFRED, available from its publication date"
+ICSA_pct_4w,FRED,ICSA,Initial jobless claims,labor,W,claims,pct_4w,"first-release value from ALFRED, available from its publication date"
+ICSA_yoy_z3y,derived,ICSA,Initial jobless claims,labor,business day,standard deviations,trailing ~3y z-score,trailing window only
+NFCI,FRED,NFCI,Chicago Fed National Financial Conditions Index,financial_stress,W,index,level,"first-release value from ALFRED, available from its publication date"
+NFCI_chg_4w,FRED,NFCI,Chicago Fed National Financial Conditions Index,financial_stress,W,index,chg_4w,"first-release value from ALFRED, available from its publication date"
+STLFSI4,FRED,STLFSI4,St. Louis Fed Financial Stress Index,financial_stress,W,index,level,"first-release value from ALFRED, available from its publication date"
+STLFSI4_chg_4w,FRED,STLFSI4,St. Louis Fed Financial Stress Index,financial_stress,W,index,chg_4w,"first-release value from ALFRED, available from its publication date"
+MORTGAGE30US,FRED,MORTGAGE30US,30-year fixed mortgage rate,housing,W,percent,level,"first-release value from ALFRED, available from its publication date"
+MORTGAGE30US_chg_3m,FRED,MORTGAGE30US,30-year fixed mortgage rate,housing,W,percent,chg_3m,"first-release value from ALFRED, available from its publication date"
+CPIAUCSL_yoy,FRED,CPIAUCSL,CPI all items,inflation,M,index,yoy,"first-release value from ALFRED, available from its publication date"
+CPIAUCSL_yoy_z3y,derived,CPIAUCSL,CPI all items,inflation,business day,standard deviations,trailing ~3y z-score,trailing window only
+CPILFESL_yoy,FRED,CPILFESL,Core CPI (ex food and energy),inflation,M,index,yoy,"first-release value from ALFRED, available from its publication date"
+PCEPILFE_yoy,FRED,PCEPILFE,Core PCE price index,inflation,M,index,yoy,"first-release value from ALFRED, available from its publication date"
+PPIACO_yoy,FRED,PPIACO,PPI all commodities,inflation,M,index,yoy,"first-release value from ALFRED, available from its publication date"
+UNRATE,FRED,UNRATE,Unemployment rate,labor,M,percent,level,"first-release value from ALFRED, available from its publication date"
+UNRATE_chg_3m,FRED,UNRATE,Unemployment rate,labor,M,percent,chg_3m,"first-release value from ALFRED, available from its publication date"
+PAYEMS_yoy,FRED,PAYEMS,Nonfarm payrolls,labor,M,thousands,yoy,"first-release value from ALFRED, available from its publication date"
+PAYEMS_diff_1,FRED,PAYEMS,Nonfarm payrolls,labor,M,thousands,diff_1,"first-release value from ALFRED, available from its publication date"
+INDPRO_yoy,FRED,INDPRO,Industrial production index,growth,M,index,yoy,"first-release value from ALFRED, available from its publication date"
+RSAFS_yoy,FRED,RSAFS,Retail sales,growth,M,USD millions,yoy,"first-release value from ALFRED, available from its publication date"
+HOUST,FRED,HOUST,Housing starts,housing,M,thousands of units,level,"first-release value from ALFRED, available from its publication date"
+HOUST_yoy,FRED,HOUST,Housing starts,housing,M,thousands of units,yoy,"first-release value from ALFRED, available from its publication date"
+UMCSENT,FRED,UMCSENT,U. Michigan consumer sentiment,sentiment,M,index,level,"first-release value from ALFRED, available from its publication date"
+UMCSENT_chg_3m,FRED,UMCSENT,U. Michigan consumer sentiment,sentiment,M,index,chg_3m,"first-release value from ALFRED, available from its publication date"
+CFNAI,FRED,CFNAI,Chicago Fed National Activity Index,growth,M,index,level,"first-release value from ALFRED, available from its publication date"
+GDPC1_yoy,FRED,GDPC1,Real GDP,growth,Q,billions of chained 2017 USD,yoy,"first-release value from ALFRED, available from its publication date"
+etf,derived,,SPDR sector ETF ticker,sector,month-end,,,
+sector,derived,,GICS sector name,sector,month-end,,,
+split,derived,,train / val / test / post_cutoff by as-of date,sector,month-end,,,
+risk_label,derived,,LOW / MODERATE / HIGH from fwd_vol_60d train terciles,sector,month-end,,,uses future prices (label only)
+beta_mkt,derived,,sensitivity to SPY daily return,sector,month-end,per unit return,,trailing 252 trading days
+beta_d_dgs10,derived,,"sensitivity to daily change in 10Y yield, net of market",sector,month-end,return per 1 pp,,trailing 252 trading days
+beta_r_oil,derived,,"sensitivity to daily WTI oil return, net of market",sector,month-end,per unit return,,trailing 252 trading days
+beta_r_usd,derived,,"sensitivity to daily dollar-index return, net of market",sector,month-end,per unit return,,trailing 252 trading days
+beta_d_vix,derived,,"sensitivity to daily VIX change, net of market",sector,month-end,return per VIX point,,trailing 252 trading days
+beta_d_credit,derived,,"sensitivity to daily high-yield (or Baa) spread change, net of market",sector,month-end,return per 1 pp,,trailing 252 trading days
+r2,derived,,R-squared of the sensitivity regression,sector,month-end,,,
+fwd_vol_60d,derived,,annualized realized volatility over next 60 trading days,sector,month-end,decimal,,future data (label only)
+fwd_mdd_60d,derived,,max drawdown over next 60 trading days,sector,month-end,decimal (negative),,future data (label only)
+fwd_ret_60d,derived,,total return over next 60 trading days,sector,month-end,decimal,,future data (label only)

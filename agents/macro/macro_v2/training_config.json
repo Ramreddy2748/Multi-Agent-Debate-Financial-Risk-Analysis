@@ -1,0 +1,20 @@
+{
+  "base_model": "microsoft/Phi-4-mini-instruct",
+  "epochs": 2,
+  "learning_rate": 0.0002,
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "max_len": 1024,
+  "seed": 0,
+  "train_rows": 1434,
+  "val_rows": 393,
+  "splits": {
+    "train": "2006-2018",
+    "val": "2019-2021",
+    "test": "2022-2024",
+    "post_cutoff": "2025-2026"
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "precision": "bf16"
+}

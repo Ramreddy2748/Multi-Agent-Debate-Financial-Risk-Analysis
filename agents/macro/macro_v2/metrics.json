@@ -1,0 +1,34 @@
+{
+  "model": "microsoft/Phi-4-mini-instruct",
+  "train_minutes": 9.92,
+  "sec_per_answer": 0.325,
+  "rows": {
+    "test+post_cutoff": {
+      "n": 594,
+      "valid_rate": 1.0,
+      "spearman_pooled": 0.6572591758200799,
+      "spearman_within_sector": 0.5121836757985601,
+      "spearman_score": 0.657914203146751,
+      "macro_f1": 0.5150978672297645,
+      "vol_mae_pp": 4.082994604232779
+    },
+    "post_cutoff": {
+      "n": 198,
+      "valid_rate": 1.0,
+      "spearman_pooled": 0.4324466142283029,
+      "spearman_within_sector": 0.25574452337970344,
+      "spearman_score": 0.44101697846952653,
+      "macro_f1": 0.3106853980417199,
+      "vol_mae_pp": 5.516428329598597
+    },
+    "test": {
+      "n": 396,
+      "valid_rate": 1.0,
+      "spearman_pooled": 0.7804254866695065,
+      "spearman_within_sector": 0.724467282091608,
+      "spearman_score": 0.7779775117981614,
+      "macro_f1": 0.5954685048938381,
+      "vol_mae_pp": 3.3662777415498715
+    }
+  }
+}

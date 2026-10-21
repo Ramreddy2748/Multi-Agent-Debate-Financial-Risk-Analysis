@@ -1,0 +1,423 @@
+{
+  "errors": [],
+  "warnings": [
+    "BAMLH0A0HYM2: 86% missing since 2006-01-01",
+    "BAMLH0A0HYM2_chg_3m: 87% missing since 2006-01-01"
+  ],
+  "series": {
+    "DFF": {
+      "rows": 9406,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 9406
+      },
+      "missing_rate": {
+        "DFF": 0.0,
+        "DFF_chg_3m": 0.0
+      }
+    },
+    "DGS3MO": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "DGS3MO": 0.0
+      }
+    },
+    "DGS2": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "DGS2": 0.0,
+        "DGS2_chg_3m": 0.0
+      }
+    },
+    "DGS10": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "DGS10": 0.0,
+        "DGS10_chg_3m": 0.0
+      }
+    },
+    "DGS30": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "DGS30": 0.0
+      }
+    },
+    "T10Y2Y": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "T10Y2Y": 0.0,
+        "T10Y2Y_chg_3m": 0.0
+      }
+    },
+    "T10Y3M": {
+      "rows": 6441,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6441
+      },
+      "missing_rate": {
+        "T10Y3M": 0.0
+      }
+    },
+    "VIXCLS": {
+      "rows": 6510,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6510
+      },
+      "missing_rate": {
+        "VIXCLS": 0.0,
+        "VIXCLS_chg_3m": 0.0
+      }
+    },
+    "DCOILWTICO": {
+      "rows": 6107,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-09-29",
+      "last_release": "2026-09-30",
+      "release_source": {
+        "market_close_t+1": 6107
+      },
+      "missing_rate": {
+        "DCOILWTICO": 0.0,
+        "DCOILWTICO_ret_3m": 0.0,
+        "DCOILWTICO_yoy": 0.0
+      }
+    },
+    "DTWEXBGS": {
+      "rows": 5203,
+      "first_obs": "2006-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 5203
+      },
+      "missing_rate": {
+        "DTWEXBGS": 0.0002,
+        "DTWEXBGS_ret_3m": 0.0118
+      }
+    },
+    "BAMLH0A0HYM2": {
+      "rows": 783,
+      "first_obs": "2023-10-09",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 783
+      },
+      "missing_rate": {
+        "BAMLH0A0HYM2": 0.8561,
+        "BAMLH0A0HYM2_chg_3m": 0.868
+      }
+    },
+    "BAA10Y": {
+      "rows": 6435,
+      "first_obs": "2001-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 6435
+      },
+      "missing_rate": {
+        "BAA10Y": 0.0,
+        "BAA10Y_chg_3m": 0.0
+      }
+    },
+    "T5YIE": {
+      "rows": 5943,
+      "first_obs": "2003-01-02",
+      "last_obs": "2026-10-02",
+      "last_release": "2026-10-05",
+      "release_source": {
+        "market_close_t+1": 5943
+      },
+      "missing_rate": {
+        "T5YIE": 0.0,
+        "T5YIE_chg_3m": 0.0
+      }
+    },
+    "ICSA": {
+      "rows": 1343,
+      "first_obs": "2001-01-06",
+      "last_obs": "2026-09-26",
+      "last_release": "2026-10-01",
+      "release_source": {
+        "alfred_first_release": 909,
+        "fallback_lag": 434
+      },
+      "missing_rate": {
+        "ICSA": 0.0048,
+        "ICSA_yoy": 0.0048,
+        "ICSA_pct_4w": 0.0048
+      }
+    },
+    "NFCI": {
+      "rows": 1343,
+      "first_obs": "2001-01-05",
+      "last_obs": "2026-09-25",
+      "last_release": "2026-10-03",
+      "release_source": {
+        "fallback_lag_latest_vintage": 1343
+      },
+      "missing_rate": {
+        "NFCI": 0.0,
+        "NFCI_chg_4w": 0.0
+      }
+    },
+    "STLFSI4": {
+      "rows": 1343,
+      "first_obs": "2001-01-05",
+      "last_obs": "2026-09-25",
+      "last_release": "2026-10-03",
+      "release_source": {
+        "fallback_lag_latest_vintage": 1343
+      },
+      "missing_rate": {
+        "STLFSI4": 0.0,
+        "STLFSI4_chg_4w": 0.0
+      }
+    },
+    "MORTGAGE30US": {
+      "rows": 1344,
+      "first_obs": "2001-01-05",
+      "last_obs": "2026-10-01",
+      "last_release": "2026-10-01",
+      "release_source": {
+        "alfred_first_release": 857,
+        "fallback_lag": 487
+      },
+      "missing_rate": {
+        "MORTGAGE30US": 0.0024,
+        "MORTGAGE30US_chg_3m": 0.0024
+      }
+    },
+    "CPIAUCSL": {
+      "rows": 307,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-11",
+      "release_source": {
+        "alfred_first_release": 307
+      },
+      "missing_rate": {
+        "CPIAUCSL_yoy": 0.0
+      }
+    },
+    "CPILFESL": {
+      "rows": 307,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-11",
+      "release_source": {
+        "alfred_first_release": 307
+      },
+      "missing_rate": {
+        "CPILFESL_yoy": 0.0
+      }
+    },
+    "PCEPILFE": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-30",
+      "release_source": {
+        "alfred_first_release": 308
+      },
+      "missing_rate": {
+        "PCEPILFE_yoy": 0.0
+      }
+    },
+    "PPIACO": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-10",
+      "release_source": {
+        "alfred_first_release": 308
+      },
+      "missing_rate": {
+        "PPIACO_yoy": 0.0
+      }
+    },
+    "UNRATE": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-09-01",
+      "last_release": "2026-10-02",
+      "release_source": {
+        "alfred_first_release": 308
+      },
+      "missing_rate": {
+        "UNRATE": 0.0,
+        "UNRATE_chg_3m": 0.0
+      }
+    },
+    "PAYEMS": {
+      "rows": 309,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-09-01",
+      "last_release": "2026-10-02",
+      "release_source": {
+        "alfred_first_release": 309
+      },
+      "missing_rate": {
+        "PAYEMS_yoy": 0.0,
+        "PAYEMS_diff_1": 0.0
+      }
+    },
+    "INDPRO": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-18",
+      "release_source": {
+        "alfred_first_release": 308
+      },
+      "missing_rate": {
+        "INDPRO_yoy": 0.0
+      }
+    },
+    "RSAFS": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-16",
+      "release_source": {
+        "alfred_first_release": 306,
+        "fallback_lag": 2
+      },
+      "missing_rate": {
+        "RSAFS_yoy": 0.0
+      }
+    },
+    "HOUST": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-17",
+      "release_source": {
+        "alfred_first_release": 307,
+        "fallback_lag": 1
+      },
+      "missing_rate": {
+        "HOUST": 0.0013,
+        "HOUST_yoy": 0.0013
+      }
+    },
+    "UMCSENT": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-08-28",
+      "release_source": {
+        "alfred_first_release": 308
+      },
+      "missing_rate": {
+        "UMCSENT": 0.0,
+        "UMCSENT_chg_3m": 0.0
+      }
+    },
+    "CFNAI": {
+      "rows": 308,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-08-01",
+      "last_release": "2026-09-21",
+      "release_source": {
+        "alfred_first_release": 187,
+        "fallback_lag": 121
+      },
+      "missing_rate": {
+        "CFNAI": 0.0024
+      }
+    },
+    "GDPC1": {
+      "rows": 102,
+      "first_obs": "2001-01-01",
+      "last_obs": "2026-04-01",
+      "last_release": "2026-07-30",
+      "release_source": {
+        "alfred_first_release": 102
+      },
+      "missing_rate": {
+        "GDPC1_yoy": 0.0
+      }
+    }
+  },
+  "eval_set": {
+    "rows": 2465,
+    "sectors": 11,
+    "first_as_of": "2006-01-31",
+    "last_as_of": "2026-10-02",
+    "rows_by_split": {
+      "train": 1434,
+      "test": 396,
+      "val": 393,
+      "post_cutoff": 242
+    },
+    "labeled_by_split": {
+      "train": 1434,
+      "test": 396,
+      "val": 393,
+      "post_cutoff": 198
+    },
+    "label_counts_by_split": {
+      "post_cutoff": {
+        "MODERATE": 89,
+        "HIGH": 78,
+        "LOW": 31
+      },
+      "test": {
+        "HIGH": 176,
+        "MODERATE": 149,
+        "LOW": 71
+      },
+      "train": {
+        "MODERATE": 478,
+        "HIGH": 478,
+        "LOW": 478
+      },
+      "val": {
+        "HIGH": 170,
+        "MODERATE": 145,
+        "LOW": 78
+      }
+    }
+  },
+  "passed": true
+}
