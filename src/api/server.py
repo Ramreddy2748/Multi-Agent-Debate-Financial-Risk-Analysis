@@ -46,6 +46,7 @@ GOLD_PATH = DATA_DIR / "gold" / "gold_risk_scores_ALL.csv"
 MONITORING_PATH = DATA_DIR / "gold" / "monitoring_runs.jsonl"
 CHAT_TRAINING_CANDIDATES_PATH = DATA_DIR / "gold" / "chat_training_candidates.jsonl"
 CHAT_FEEDBACK_PATH = DATA_DIR / "gold" / "chat_feedback.jsonl"
+FEATURE_PRIORITY_PATH = DATA_DIR / "gold" / "feature_priority_scores.csv"
 
 
 class VerdictRequest(BaseModel):
@@ -153,6 +154,65 @@ def _pdf_path(ticker: str) -> Path:
 
 def _price_path(ticker: str) -> Path:
     return DATA_DIR / "silver" / f"silver_prices_{ticker.upper()}.csv"
+
+
+def _feature_priority_payload(ticker: str) -> dict[str, Any]:
+    """Return generated evidence priority and freshness for one ticker."""
+    normalized = ticker.upper().strip()
+    rows = [
+        row for row in _read_csv(FEATURE_PRIORITY_PATH)
+        if row.get("ticker", "").upper() == normalized
+    ]
+    if not rows:
+        return {
+            "available": False,
+            "ticker": normalized,
+            "message": "No feature-priority artifact is available for this ticker.",
+            "top_features": [],
+            "freshness": {},
+        }
+
+    def priority_score(row: dict[str, str]) -> float:
+        return _safe_float(row.get("priority_score")) or 0.0
+
+    ranked = sorted(rows, key=priority_score, reverse=True)
+    statuses = [str(row.get("freshness_status") or "UNKNOWN").upper() for row in rows]
+    freshness_status = (
+        "EXPIRED" if "EXPIRED" in statuses else
+        "STALE" if "STALE" in statuses else
+        "RECENT" if "RECENT" in statuses else "UNKNOWN"
+    )
+    top_features = []
+    for row in ranked[:8]:
+        top_features.append({
+            "feature": row.get("feature") or row.get("feature_name") or "Unknown feature",
+            "source": row.get("source") or "-",
+            "priority_score": round(priority_score(row), 3),
+            "priority_band": row.get("priority_band") or "-",
+            "freshness_status": row.get("freshness_status") or "UNKNOWN",
+            "age_days": _safe_float(row.get("age_days")),
+            "value": row.get("value") or "-",
+            "reason": row.get("priority_reason") or row.get("reason") or "-",
+        })
+    return {
+        "available": True,
+        "ticker": normalized,
+        "feature_count": len(rows),
+        "high_priority_count": sum(
+            str(row.get("priority_band") or "").upper() in {"HIGH", "CRITICAL"}
+            for row in rows
+        ),
+        "top_features": top_features,
+        "freshness": {
+            "status": freshness_status,
+            "stale_or_expired_count": sum(status in {"STALE", "EXPIRED"} for status in statuses),
+            "missing_value_count": sum(
+                _safe_float(row.get("data_quality")) == 0.0
+                for row in rows
+            ),
+        },
+        "artifact": str(FEATURE_PRIORITY_PATH.relative_to(PROJECT_ROOT)),
+    }
 
 
 def _safe_float(value: Any) -> float | None:
@@ -815,6 +875,11 @@ def company_prices(ticker: str) -> dict[str, Any]:
         for row in rows
     ]
     return {"ticker": ticker.upper(), "count": len(prices), "prices": prices}
+
+
+@app.get("/api/companies/{ticker}/feature-priority")
+def company_feature_priority(ticker: str) -> dict[str, Any]:
+    return _feature_priority_payload(ticker)
 
 
 @app.get("/api/verdicts/{ticker}")

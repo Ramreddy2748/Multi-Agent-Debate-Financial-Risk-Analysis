@@ -3,6 +3,7 @@ const api = {
   monitoring: (ticker = "") => `/api/monitoring${ticker ? `?ticker=${encodeURIComponent(ticker)}` : ""}`,
   verdict: (ticker) => `/api/verdicts/${ticker}`,
   prices: (ticker) => `/api/companies/${ticker}/prices`,
+  featurePriority: (ticker) => `/api/companies/${encodeURIComponent(ticker)}/feature-priority`,
   generateVerdict: "/api/verdict",
   chat: "/api/chat",
   chatFeedback: "/api/chat/feedback",
@@ -21,6 +22,7 @@ const state = {
   comparePair: null,
   comparePayload: null,
   modelTraining: null,
+  featurePriority: null,
   generating: false,
   lastChatPayload: null,
   reportCategory: "pipeline",
@@ -663,6 +665,64 @@ function renderAgentCards(outputs = [], finalOutput = null, activeType = "") {
   });
 }
 
+function renderFeaturePriority(payload) {
+  const host = $("prioritySummary");
+  const badge = $("priorityFreshnessBadge");
+  if (!host || !badge) return;
+  host.textContent = "";
+
+  if (!payload?.available) {
+    badge.textContent = "Unavailable";
+    badge.className = "status-pill risk-moderate";
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = payload?.message || "Run the feature-priority generator to populate this view.";
+    host.appendChild(empty);
+    return;
+  }
+
+  const freshness = payload.freshness || {};
+  badge.textContent = freshness.status || "UNKNOWN";
+  badge.className = `status-pill ${freshness.status === "RECENT" ? "risk-low" : "risk-moderate"}`;
+
+  const summary = document.createElement("div");
+  summary.className = "priority-metrics";
+  [["Features", payload.feature_count ?? 0], ["High priority", payload.high_priority_count ?? 0], ["Stale/expired", freshness.stale_or_expired_count ?? 0], ["Missing", freshness.missing_value_count ?? 0]].forEach(([label, value]) => {
+    const item = document.createElement("div");
+    item.className = "priority-metric";
+    const valueNode = document.createElement("strong");
+    valueNode.textContent = String(value);
+    const labelNode = document.createElement("span");
+    labelNode.textContent = label;
+    item.append(valueNode, labelNode);
+    summary.appendChild(item);
+  });
+  host.appendChild(summary);
+
+  const list = document.createElement("div");
+  list.className = "priority-list";
+  (payload.top_features || []).forEach((feature) => {
+    const item = document.createElement("article");
+    item.className = "priority-item";
+    const heading = document.createElement("div");
+    heading.className = "priority-item-head";
+    const name = document.createElement("strong");
+    name.textContent = feature.feature;
+    const band = document.createElement("span");
+    band.className = `label-pill ${feature.priority_band === "HIGH" || feature.priority_band === "CRITICAL" ? "risk-high" : "risk-moderate"}`;
+    band.textContent = feature.priority_band || "-";
+    heading.append(name, band);
+    const detail = document.createElement("p");
+    const age = feature.age_days === null || feature.age_days === undefined ? "age unavailable" : `${fmt(feature.age_days, 0)}d old`;
+    detail.textContent = `${feature.source} · ${feature.freshness_status || "UNKNOWN"} · ${age} · value ${feature.value}`;
+    const reason = document.createElement("small");
+    reason.textContent = feature.reason || "Priority is based on configured financial impact and data quality.";
+    item.append(heading, detail, reason);
+    list.appendChild(item);
+  });
+  host.appendChild(list);
+}
+
 function modelStatusClass(status = "") {
   if (String(status).includes("active") || String(status).includes("configured")) return "risk-low";
   if (String(status).includes("fallback") || String(status).includes("rule")) return "risk-moderate";
@@ -1059,13 +1119,15 @@ async function selectTicker(ticker, question = "") {
   hideFeedbackPanel();
   document.querySelectorAll(".ticker-item").forEach((item) => item.classList.toggle("active", item.dataset.ticker === ticker));
 
-  const [verdictPayload, pricePayload, monitoringPayload] = await Promise.all([
+  const [verdictPayload, pricePayload, monitoringPayload, priorityPayload] = await Promise.all([
     fetchJson(api.verdict(ticker)),
     fetchJson(api.prices(ticker)),
     fetchJson(api.monitoring(ticker)),
+    fetchJson(api.featurePriority(ticker)),
   ]);
 
   state.current = verdictPayload;
+  state.featurePriority = priorityPayload;
   state.monitoring = monitoringPayload.records || [];
   const row = verdictPayload.company;
   const final = verdictPayload.final_output;
@@ -1105,6 +1167,7 @@ async function selectTicker(ticker, question = "") {
   renderDrivers(final);
   drawPriceChart(priceRows, ticker);
   renderAgentCards(outputs, final, verdictPayload.active_verdict_type);
+  renderFeaturePriority(priorityPayload);
   renderPolicyTrail(final);
   renderContradictions(verdictPayload);
   renderMonitoring(state.monitoring);

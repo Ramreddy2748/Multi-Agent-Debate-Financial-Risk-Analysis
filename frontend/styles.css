@@ -872,6 +872,66 @@ input {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.priority-summary {
+  display: grid;
+  gap: 14px;
+}
+
+.priority-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.priority-metric {
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.priority-metric strong {
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.priority-metric span,
+.priority-item p,
+.priority-item small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.priority-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.priority-item {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.priority-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.priority-item p,
+.priority-item small {
+  margin: 0;
+  line-height: 1.45;
+}
+
 /* ─── Model registry / training ─────────────────────────────────────── */
 
 .model-registry {
@@ -1317,6 +1377,8 @@ input {
   .decision-hero,
   .content-grid,
   .agent-grid,
+  .priority-list,
+  .priority-metrics,
   .compare-grid {
     grid-template-columns: 1fr;
   }

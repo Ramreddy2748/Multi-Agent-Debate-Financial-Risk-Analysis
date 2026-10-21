@@ -350,6 +350,7 @@ Useful API endpoints:
 - `GET /api/health` — app/data readiness
 - `GET /api/companies` — Gold risk universe
 - `GET /api/verdicts/AAPL` — saved verdict plus fallback risk answer
+- `GET /api/companies/AAPL/feature-priority` — ranked evidence and freshness status
 - `POST /api/verdict` — generate a critic or debate verdict
 - `GET /api/monitoring?ticker=AAPL` — lineage records
 
