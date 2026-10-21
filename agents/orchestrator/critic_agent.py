@@ -54,6 +54,7 @@ MARKET_LORA_ENABLED = os.getenv("MARKET_LORA_ENABLED", "0").lower() in {"1", "tr
 MARKET_LORA_MAX_NEW_TOKENS = int(os.getenv("MARKET_LORA_MAX_NEW_TOKENS", "48"))
 MARKET_LORA_REMOTE_URL = os.getenv("MARKET_LORA_REMOTE_URL", "").strip()
 MARKET_LORA_REMOTE_TIMEOUT = int(os.getenv("MARKET_LORA_REMOTE_TIMEOUT", "600"))
+MARKET_LORA_FEATURE_SCHEMA = os.getenv("MARKET_LORA_FEATURE_SCHEMA", "market_only_v1")
 FUNDAMENTAL_FINBERT_ENABLED = os.getenv("FUNDAMENTAL_FINBERT_ENABLED", "0").lower() in {"1", "true", "yes"}
 FUNDAMENTAL_FINBERT_MODEL_DIR = Path(os.getenv("FUNDAMENTAL_FINBERT_MODEL_DIR", PROJECT_ROOT / "models" / "fundamental_agent_finbert"))
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -136,7 +137,7 @@ def _extract_json_object(text: str) -> dict[str, Any]:
         except json.JSONDecodeError:
             continue
     for parsed in reversed(candidates):
-        if any(key in parsed for key in ("risk_score", "market_sentiment_risk_score", "combined_risk", "score")):
+        if any(key in parsed for key in ("risk_score", "market_risk_score", "market_sentiment_risk_score", "combined_risk", "score")):
             return parsed
     if candidates:
         return candidates[-1]
@@ -193,12 +194,15 @@ def _run_market_lora_remote(features: dict[str, Any]) -> dict[str, Any] | None:
 
     payload = {
         "ticker": features["ticker"],
+        "feature_schema": MARKET_LORA_FEATURE_SCHEMA,
         "features": {
             "annualized_volatility": features["annualized_volatility"],
             "beta": features["beta"],
             "max_drawdown": features["max_drawdown"],
-            "sentiment_mean": features["sentiment_mean"],
-            "article_count": features["article_count"],
+            "price_vs_52w_high_pct": features["price_vs_52w_high_pct"],
+            "ytd_return_pct": features["ytd_return_pct"],
+            "rolling_vol_30d": features["rolling_vol_30d"],
+            "rolling_vol_60d": features["rolling_vol_60d"],
         },
         "max_new_tokens": MARKET_LORA_MAX_NEW_TOKENS,
     }
@@ -248,16 +252,19 @@ def _run_market_lora(features: dict[str, Any]) -> dict[str, Any] | None:
         model = runtime["model"]
         prompt = json.dumps({
             "ticker": features["ticker"],
+            "feature_schema": MARKET_LORA_FEATURE_SCHEMA,
             "task": (
-                "Assess market volatility and financial news sentiment risk. "
+                "Assess market volatility and price risk. "
                 "Return only strict JSON with risk_score, risk_label, confidence, and explanation."
             ),
             "features": {
                 "annualized_volatility": features["annualized_volatility"],
                 "beta": features["beta"],
                 "max_drawdown": features["max_drawdown"],
-                "sentiment_mean": features["sentiment_mean"],
-                "article_count": features["article_count"],
+                "price_vs_52w_high_pct": features["price_vs_52w_high_pct"],
+                "ytd_return_pct": features["ytd_return_pct"],
+                "rolling_vol_30d": features["rolling_vol_30d"],
+                "rolling_vol_60d": features["rolling_vol_60d"],
             },
         })
         messages = [
@@ -291,15 +298,18 @@ def predict_market_lora_payload(features: dict[str, Any]) -> dict[str, Any]:
         "annualized_volatility": _safe_float(features.get("annualized_volatility"), 0.0) or 0.0,
         "beta": _safe_float(features.get("beta"), 1.0) or 1.0,
         "max_drawdown": _safe_float(features.get("max_drawdown"), 0.0) or 0.0,
-        "sentiment_mean": _safe_float(features.get("sentiment_mean"), 0.0) or 0.0,
-        "article_count": int(_safe_float(features.get("article_count"), 0) or 0),
+        "price_vs_52w_high_pct": _safe_float(features.get("price_vs_52w_high_pct"), 0.0) or 0.0,
+        "ytd_return_pct": _safe_float(features.get("ytd_return_pct"), 0.0) or 0.0,
+        "rolling_vol_30d": _safe_float(features.get("rolling_vol_30d"), 0.0) or 0.0,
+        "rolling_vol_60d": _safe_float(features.get("rolling_vol_60d"), 0.0) or 0.0,
     }
     fallback_score = _clamp_score(
         1.0
         + min((normalized_features["annualized_volatility"] * 100.0) / 50.0, 1.0) * 3.0
         + min(max(normalized_features["beta"] - 0.8, 0.0) / 1.2, 1.0) * 2.0
         + min(abs(min(normalized_features["max_drawdown"], 0.0)) / 0.40, 1.0) * 2.0
-        + min(max(-normalized_features["sentiment_mean"], 0.0) / 0.6, 1.0) * 2.0
+        + min(abs(min(normalized_features["price_vs_52w_high_pct"], 0.0)) / 40.0, 1.0) * 1.0
+        + min(abs(min(normalized_features["ytd_return_pct"], 0.0)) / 35.0, 1.0) * 1.0
     )
     raw = _run_market_lora(normalized_features)
     if raw is None:
@@ -314,6 +324,7 @@ def predict_market_lora_payload(features: dict[str, Any]) -> dict[str, Any]:
                 "explanation": "Market LoRA was unavailable, so this is a rule fallback estimate.",
             },
             "features": normalized_features,
+            "feature_schema": MARKET_LORA_FEATURE_SCHEMA,
         }
     normalized = _normalize_market_lora_output(raw, normalized_features, fallback_score=fallback_score)
     return {
@@ -330,24 +341,25 @@ def predict_market_lora_payload(features: dict[str, Any]) -> dict[str, Any]:
         },
         "raw_output": normalized["raw_output"],
         "features": normalized_features,
+        "feature_schema": MARKET_LORA_FEATURE_SCHEMA,
     }
 
 
 def _normalize_market_lora_output(raw: dict[str, Any], features: dict[str, Any], fallback_score: float) -> dict[str, Any]:
     score = _safe_float(
         raw.get("risk_score")
-        or raw.get("market_sentiment_risk_score")
+        or raw.get("market_risk_score")
         or raw.get("combined_risk")
         or raw.get("score"),
         fallback_score,
     )
     score = _clamp_score(score or fallback_score)
-    label = str(raw.get("risk_label") or _label_from_score(score)).upper()
+    label = str(raw.get("risk_label") or raw.get("market_risk_label") or _label_from_score(score)).upper()
     if label not in {"LOW", "MODERATE", "HIGH"}:
         label = _label_from_score(score)
     confidence = _safe_float(raw.get("confidence"), 0.65)
     confidence = round(max(0.0, min(1.0, confidence or 0.65)), 2)
-    explanation = str(raw.get("explanation") or raw.get("justification") or "LoRA market/news model generated the risk estimate.")
+    explanation = str(raw.get("explanation") or raw.get("justification") or "LoRA market volatility model generated the risk estimate.")
     return {
         "risk_score": score,
         "risk_label": label,
@@ -355,10 +367,10 @@ def _normalize_market_lora_output(raw: dict[str, Any], features: dict[str, Any],
         "explanation": explanation,
         "raw_output": raw,
         "evidence": [
-            f"LoRA adapter {MARKET_LORA_ADAPTER_DIR.name} produced market/news risk score {score:.2f}.",
+            f"LoRA adapter {MARKET_LORA_ADAPTER_DIR.name} produced market risk score {score:.2f}.",
             f"Annualized volatility is {features['annualized_volatility']:.2%}; beta is {features['beta']:.2f}.",
             f"Max drawdown is {features['max_drawdown']:.2%}.",
-            f"News sentiment mean is {features['sentiment_mean']:.3f} across {features['article_count']} recent articles.",
+            f"Price is {features['price_vs_52w_high_pct']:.2f}% versus its 52-week high.",
         ],
     }
 
@@ -473,18 +485,13 @@ def run_fundamental_agent(ticker: str, company_name: Optional[str] = None) -> di
 
 
 def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) -> dict[str, Any]:
-    """Market + volatility + news sentiment agent."""
+    """Market and volatility agent; headline analysis is delegated to Sentiment Agent."""
     ticker = ticker.upper()
     price_rows = _read_csv(SILVER_DIR / f"silver_prices_{ticker}.csv")
     price_row = _latest_row(price_rows, ("date",))
-    news_rows = [
-        r for r in _read_csv(SILVER_DIR / "silver_news_sentiment.csv")
-        if str(r.get("ticker", "")).upper() == ticker
-    ]
-
     if not price_row:
         return {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market + Volatility Agent",
             "ticker": ticker,
             "risk_score": 5.0,
             "risk_label": "MODERATE",
@@ -520,13 +527,6 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
     price_vs_high = _safe_float(price_row.get("price_vs_52w_high_pct"), 0.0) or 0.0
     ytd_return = _safe_float(_load_gold_context(ticker).get("ytd_return_pct"), 0.0) or 0.0
 
-    sentiment_values = [
-        x for x in (_safe_float(r.get("sentiment_mean")) for r in news_rows)
-        if x is not None
-    ]
-    avg_sentiment = statistics.mean(sentiment_values[-10:]) if sentiment_values else 0.0
-    article_count = sum(int(_safe_float(r.get("article_count"), 0) or 0) for r in news_rows[-10:])
-
     # In this project some silver files store rolling volatility as an
     # annualized decimal (for example 0.26 = 26%), while raw daily-return
     # volatility is usually much smaller. Handle both forms.
@@ -537,24 +537,26 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
     )
     vol_component = min(annual_vol_pct / 50.0, 1.0) * 3.0
     beta_component = min(max(beta - 0.8, 0.0) / 1.2, 1.0) * 2.0
-    drawdown_component = min(abs(min(price_vs_high, 0.0)) / 40.0, 1.0) * 2.0
-    sentiment_component = min(max(-avg_sentiment, 0.0) / 0.6, 1.0) * 2.0
+    drawdown_component = min(abs(min(max_drawdown, 0.0)) / 0.40, 1.0) * 2.0
+    high_gap_component = min(abs(min(price_vs_high, 0.0)) / 40.0, 1.0) * 1.0
     ytd_component = min(abs(min(ytd_return, 0.0)) / 35.0, 1.0) * 1.0
-    score = _clamp_score(1.0 + vol_component + beta_component + drawdown_component + sentiment_component + ytd_component)
+    score = _clamp_score(1.0 + vol_component + beta_component + drawdown_component + high_gap_component + ytd_component)
 
     lora_features = {
         "ticker": ticker,
         "annualized_volatility": annual_vol_pct / 100.0,
         "beta": beta,
         "max_drawdown": max_drawdown,
-        "sentiment_mean": avg_sentiment,
-        "article_count": article_count,
+        "price_vs_52w_high_pct": price_vs_high,
+        "ytd_return_pct": ytd_return,
+        "rolling_vol_30d": rolling_vol_30d,
+        "rolling_vol_60d": rolling_vol_60d,
     }
     lora_result = _run_market_lora(lora_features)
     if lora_result is not None:
         normalized_lora = _normalize_market_lora_output(lora_result, lora_features, fallback_score=score)
         return {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market + Volatility Agent",
             "ticker": ticker,
             "company": company_name or price_row.get("long_name") or ticker,
             "as_of_date": price_row.get("date"),
@@ -569,17 +571,15 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
                 "rolling_vol_30d": round(rolling_vol_30d, 6),
                 "rolling_vol_60d": round(rolling_vol_60d, 6),
                 "annualized_volatility_pct": round(annual_vol_pct, 2),
-                "beta": round(beta, 4),
-                "max_drawdown_pct": round(max_drawdown * 100, 2),
+            "beta": round(beta, 4),
+            "max_drawdown_pct": round(max_drawdown * 100, 2),
                 "price_vs_52w_high_pct": round(price_vs_high, 2),
                 "ytd_return_pct": round(ytd_return, 2),
-                "avg_news_sentiment": round(avg_sentiment, 4),
-                "recent_article_count": article_count,
                 "rule_fallback_score": score,
             },
             "evidence": normalized_lora["evidence"],
             "positive_signals": [
-                "Fine-tuned market/news LoRA adapter was available and used for this specialist verdict."
+                "Fine-tuned market volatility LoRA adapter was available and used for this specialist verdict."
             ],
             "negative_signals": [],
             "overall_assessment": normalized_lora["explanation"],
@@ -602,15 +602,11 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
     elif price_vs_high < -30:
         negative.append("Price is far below its 52-week high.")
 
-    if avg_sentiment >= 0.05:
-        positive.append("Recent news sentiment is positive.")
-    elif avg_sentiment <= -0.05:
-        negative.append("Recent news sentiment is negative.")
     if MARKET_LORA_ENABLED and _MARKET_LORA_LAST_ERROR:
         negative.append(f"Market LoRA fallback reason: {_MARKET_LORA_LAST_ERROR}")
 
     return {
-        "agent": "Market + Volatility + News Sentiment Agent",
+        "agent": "Market + Volatility Agent",
         "ticker": ticker,
         "company": company_name or price_row.get("long_name") or ticker,
         "as_of_date": price_row.get("date"),
@@ -623,24 +619,23 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
             "rolling_vol_60d": round(rolling_vol_60d, 6),
             "annualized_volatility_pct": round(annual_vol_pct, 2),
             "beta": round(beta, 4),
+                "max_drawdown_pct": round(max_drawdown * 100, 2),
             "price_vs_52w_high_pct": round(price_vs_high, 2),
             "ytd_return_pct": round(ytd_return, 2),
-            "avg_news_sentiment": round(avg_sentiment, 4),
-            "recent_article_count": article_count,
-                "market_lora_enabled": MARKET_LORA_ENABLED,
-                "market_lora_remote_url_configured": bool(MARKET_LORA_REMOTE_URL),
-                "market_lora_fallback_reason": _MARKET_LORA_LAST_ERROR,
-            },
+            "market_lora_enabled": MARKET_LORA_ENABLED,
+            "market_lora_remote_url_configured": bool(MARKET_LORA_REMOTE_URL),
+            "market_lora_fallback_reason": _MARKET_LORA_LAST_ERROR,
+        },
         "evidence": [
             f"Annualized 30-day volatility is {annual_vol_pct:.2f}%.",
             f"Beta is {beta:.2f}; price is {price_vs_high:.2f}% versus 52-week high.",
-            f"Average recent news sentiment is {avg_sentiment:.3f} across {article_count} articles.",
+            f"Maximum observed drawdown is {max_drawdown:.2%}.",
         ],
         "positive_signals": positive,
         "negative_signals": negative,
         "overall_assessment": (
-            f"Market/news risk is {_label_from_score(score)} based on volatility, "
-            "beta, price drawdown, YTD return, and news sentiment."
+            f"Market risk is {_label_from_score(score)} based on volatility, beta, "
+            "drawdown, price distance from the 52-week high, and YTD return."
         ),
     }
 
@@ -650,21 +645,19 @@ def run_macro_agent_safe(ticker: str, sector: Optional[str] = None, company_name
     ticker = ticker.upper()
     sector = sector or _load_gold_context(ticker).get("sector") or "General"
 
-    if os.getenv("DEEPSEEK_API_KEY"):
-        try:
-            sys.path.insert(0, str(PROJECT_ROOT))
-            from agents.macro.agent import run_macro_agent
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from agents.macro.agent import run_macro_agent
 
-            result = run_macro_agent(ticker=ticker, sector=sector, company_name=company_name or ticker)
-            if "macro_risk_score" in result and "risk_score" not in result:
-                result["risk_score"] = result["macro_risk_score"]
-            result.setdefault("agent", "Macro-Economic Agent")
-            result.setdefault("risk_label", _label_from_score(float(result.get("risk_score", 5.0))))
-            return result
-        except Exception as exc:
-            return _local_macro_agent(ticker, sector, company_name, error=str(exc))
+        result = run_macro_agent(ticker=ticker, sector=sector, company_name=company_name or ticker)
+        if "macro_risk_score" in result and "risk_score" not in result:
+            result["risk_score"] = result["macro_risk_score"]
+        result.setdefault("agent", "Macro-Economic Agent")
+        result.setdefault("risk_label", _label_from_score(float(result.get("risk_score", 5.0))))
+        return result
+    except Exception as exc:
+        return _local_macro_agent(ticker, sector, company_name, error=str(exc))
 
-    return _local_macro_agent(ticker, sector, company_name)
 
 
 def _local_macro_agent(
@@ -779,7 +772,7 @@ def _local_macro_agent(
 def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> dict[str, Any]:
     weights = {
         "Fundamental Agent": 0.35,
-        "Market + Volatility + News Sentiment Agent": 0.25,
+        "Market + Volatility Agent": 0.25,
         "Sentiment Agent": 0.15,
         "Macro-Economic Agent": 0.25,
     }
@@ -823,7 +816,7 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
 
     agent_by_name = {output.get("agent"): output for output in agent_outputs}
     fundamental_label = agent_by_name.get("Fundamental Agent", {}).get("risk_label")
-    market_label = agent_by_name.get("Market + Volatility + News Sentiment Agent", {}).get("risk_label")
+    market_label = agent_by_name.get("Market + Volatility Agent", {}).get("risk_label")
     sentiment_label = agent_by_name.get("Sentiment Agent", {}).get("risk_label")
     macro_label = agent_by_name.get("Macro-Economic Agent", {}).get("risk_label")
 
@@ -833,10 +826,10 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
         "HIGH": "fundamental weakness",
     }.get(fundamental_label, "fundamental evidence")
     market_phrase = {
-        "LOW": "low market/news pressure",
-        "MODERATE": "moderate market/news pressure",
-        "HIGH": "high market/news pressure",
-    }.get(market_label, "market/news evidence")
+        "LOW": "low market pressure",
+        "MODERATE": "moderate market pressure",
+        "HIGH": "high market pressure",
+    }.get(market_label, "market evidence")
     sentiment_phrase = {
         "LOW": "supportive headline sentiment",
         "MODERATE": "mixed headline sentiment",
@@ -867,7 +860,103 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
     }
 
 
-def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+def _critic_prompt(agent_outputs: list[dict[str, Any]], query: str) -> dict[str, Any]:
+    return {
+        "query": query,
+        "agent_outputs": agent_outputs,
+        "required_output": {
+            "agent": "LLM-Based Critic Agent",
+            "final_risk_score": "number 1-10",
+            "final_risk_label": "LOW/MODERATE/HIGH",
+            "confidence": "0-1",
+            "disagreement_detected": "boolean",
+            "requires_human_review": "boolean",
+            "agent_scorecard": ["short summary per agent"],
+            "main_risk_drivers": ["top reasons"],
+            "risk_offsets": ["positive reasons"],
+            "final_decision": "clear final answer",
+        },
+    }
+
+
+def _extract_json_response(text: str) -> dict[str, Any] | None:
+    start, end = text.find("{"), text.rfind("}") + 1
+    if start >= 0 and end > start:
+        return json.loads(text[start:end])
+    return None
+
+
+def _claude_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+    """Native Anthropic Claude critic. Returns None when not configured."""
+    api_key = os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY")
+    if not api_key:
+        return None
+
+    model = os.getenv("CLAUDE_MODEL") or os.getenv("CRITIC_MODEL") or "claude-sonnet-5-5"
+    prompt = _critic_prompt(agent_outputs, query)
+    try:
+        import requests
+
+        body = {
+            "model": model,
+            "max_tokens": int(os.getenv("CRITIC_MAX_TOKENS", "900")),
+            "system": (
+                "You are Claude acting as a financial critic/orchestrator. "
+                "Compare the specialist agent outputs, explicitly check contradictions, "
+                "resolve them into one auditable final verdict, and return compact strict JSON only. "
+                "No markdown. Keep agent_scorecard, main_risk_drivers, and risk_offsets to at most 3 items each."
+            ),
+            "messages": [{"role": "user", "content": json.dumps(prompt, separators=(",", ":"))}],
+        }
+        if not model.startswith("claude-sonnet-5"):
+            body["temperature"] = 0.1
+
+        response = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": os.getenv("ANTHROPIC_VERSION", "2023-06-01"),
+                "content-type": "application/json",
+            },
+            json=body,
+            timeout=int(os.getenv("CRITIC_TIMEOUT_SECONDS", "60")),
+        )
+        try:
+            response.raise_for_status()
+        except Exception as exc:
+            detail = response.text[:1000] if getattr(response, "text", None) else str(exc)
+            return {
+                "agent": "Claude Critic Agent",
+                "critic_type": "llm_failed_fallback_needed",
+                "error": f"Claude critic failed: {response.status_code} {detail}",
+            }
+        payload = response.json()
+        text = "".join(
+            block.get("text", "")
+            for block in payload.get("content", [])
+            if block.get("type") == "text"
+        )
+        result = _extract_json_response(text)
+        if result:
+            result["critic_type"] = f"claude:{model}"
+            result["agent"] = result.get("agent") or "Claude Critic Agent"
+            return result
+        return {
+            "agent": "Claude Critic Agent",
+            "critic_type": "llm_failed_fallback_needed",
+            "error": f"Claude critic returned non-parseable JSON: {text[:500]}",
+        }
+    except Exception as exc:
+        return {
+            "agent": "Claude Critic Agent",
+            "critic_type": "llm_failed_fallback_needed",
+            "error": f"Claude critic failed: {exc}",
+        }
+
+    return None
+
+
+def _openai_compatible_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
     """Optional OpenAI-compatible critic. Returns None when not configured."""
     api_key = os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")
     if not api_key:
@@ -883,21 +972,7 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
         from openai import OpenAI
 
         client = OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
-        prompt = {
-            "query": query,
-            "agent_outputs": agent_outputs,
-            "required_output": {
-                "agent": "LLM-Based Critic Agent",
-                "final_risk_score": "number 1-10",
-                "final_risk_label": "LOW/MODERATE/HIGH",
-                "confidence": "0-1",
-                "disagreement_detected": "boolean",
-                "agent_scorecard": ["short summary per agent"],
-                "main_risk_drivers": ["top reasons"],
-                "risk_offsets": ["positive reasons"],
-                "final_decision": "clear final answer",
-            },
-        }
+        prompt = _critic_prompt(agent_outputs, query)
         response = client.chat.completions.create(
             model=model,
             temperature=0.1,
@@ -913,9 +988,8 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
             ],
         )
         text = response.choices[0].message.content or ""
-        start, end = text.find("{"), text.rfind("}") + 1
-        if start >= 0 and end > start:
-            result = json.loads(text[start:end])
+        result = _extract_json_response(text)
+        if result:
             result["critic_type"] = f"llm:{model}"
             return result
     except Exception as exc:
@@ -926,6 +1000,15 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
         }
 
     return None
+
+
+def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dict[str, Any]]:
+    provider = os.getenv("CRITIC_PROVIDER", "").strip().lower()
+    if provider in {"anthropic", "claude"} or os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY"):
+        claude_result = _claude_critic(agent_outputs, query)
+        if claude_result:
+            return claude_result
+    return _openai_compatible_critic(agent_outputs, query)
 
 
 def run_critic_agent(

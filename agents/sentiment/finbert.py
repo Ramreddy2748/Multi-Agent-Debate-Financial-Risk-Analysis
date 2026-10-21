@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import csv
+import argparse
+import json
 import math
 import os
 import statistics
@@ -254,3 +256,19 @@ def run_sentiment_agent(ticker: str, company_name: Optional[str] = None) -> dict
         "negative_signals": ["VADER sentiment baseline is negative."] if avg_vader < 0 else [],
         "overall_assessment": f"Sentiment risk is {_label_from_score(score)} using VADER fallback sentiment.",
     }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the dedicated FinBERT news sentiment agent.")
+    parser.add_argument("ticker", help="Ticker symbol to score, for example AAPL.")
+    parser.add_argument("--company", default=None, help="Optional company name for report output.")
+    parser.add_argument("--pretty", action="store_true", help="Pretty-print JSON output.")
+    args = parser.parse_args()
+
+    result = run_sentiment_agent(args.ticker, company_name=args.company)
+    indent = 2 if args.pretty else None
+    print(json.dumps(result, indent=indent, sort_keys=bool(indent)))
+
+
+if __name__ == "__main__":
+    main()

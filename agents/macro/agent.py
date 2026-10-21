@@ -243,6 +243,11 @@ def run_macro_agent(
         return _fallback(ticker, sector, error=str(e))
 
     prompt = build_prompt(ticker, sector, name, macro)
+    if not os.getenv("DEEPSEEK_API_KEY"):
+        result = _fallback(ticker, sector, error="DEEPSEEK_API_KEY not set")
+        result["claim_type"] = "MACRO_V2_UNAVAILABLE"
+        return result
+
     client = get_client()
 
     for attempt in range(1, max_retries + 1):
