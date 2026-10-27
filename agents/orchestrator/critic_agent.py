@@ -62,6 +62,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from agents.fundamental.finbert import predict_fundamental_finbert
 from agents.orchestrator.policy_evidence import build_policy_evidence_trail
 from agents.sentiment.finbert import run_sentiment_agent
+from agents.shared.financial_rag import build_rag_context
 
 _MARKET_LORA_RUNTIME: dict[str, Any] | None = None
 _MARKET_LORA_LAST_ERROR: str | None = None
@@ -96,6 +97,30 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return []
     with path.open(newline="", encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
+
+
+def attach_rag_context(output: dict[str, Any], agent: str, query: str) -> dict[str, Any]:
+    """Attach curated, prioritized financial rules to a live agent output."""
+    try:
+        context = build_rag_context(agent=agent, query=query, limit=4)
+    except Exception as exc:
+        output.setdefault("rag_context", {"status": "unavailable", "error": str(exc)})
+        return output
+
+    terms = context.get("terms", [])
+    output["rag_context"] = {
+        "status": "active" if terms else "empty",
+        "source": context.get("source"),
+        "term_ids": [term.get("id") for term in terms],
+        "context": context.get("context", ""),
+    }
+    if terms:
+        output.setdefault("evidence", []).append(
+            "RAG retrieved prioritized financial rules: "
+            + ", ".join(str(term.get("term")) for term in terms)
+            + "."
+        )
+    return output
 
 
 def _latest_row(rows: list[dict[str, str]], date_columns: tuple[str, ...]) -> dict[str, str]:
@@ -1029,6 +1054,19 @@ def run_critic_agent(
         run_sentiment_agent(ticker, company_name=company_name),
         run_macro_agent_safe(ticker, sector=sector, company_name=company_name),
     ]
+    outputs = [
+        attach_rag_context(
+            output,
+            agent={
+                "Fundamental Agent": "fundamental",
+                "Market + Volatility Agent": "market",
+                "Sentiment Agent": "sentiment",
+                "Macro-Economic Agent": "macro",
+            }.get(str(output.get("agent")), "critic"),
+            query=f"{ticker} {sector} financial risk evidence",
+        )
+        for output in outputs
+    ]
 
     llm_result = _llm_critic(outputs, query) if use_llm else None
     if llm_result and llm_result.get("critic_type") != "llm_failed_fallback_needed":
@@ -1037,6 +1075,12 @@ def run_critic_agent(
         final = _weighted_critic(outputs, query=query)
         if llm_result and llm_result.get("error"):
             final["llm_error"] = llm_result["error"]
+
+    attach_rag_context(
+        final,
+        agent="critic",
+        query=query or f"{ticker} specialist disagreement confidence and financial risk",
+    )
 
     report = {
         "ticker": ticker,

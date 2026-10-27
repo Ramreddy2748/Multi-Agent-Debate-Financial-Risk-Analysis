@@ -28,6 +28,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import config
 from agents.orchestrator.critic_agent import (
+    attach_rag_context,
     predict_market_lora_payload,
     run_critic_agent,
     run_fundamental_agent,
@@ -635,16 +636,32 @@ def _run_chat_agents(
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     intent_id = intent["id"]
     if intent_id == "fundamental":
-        outputs = [run_fundamental_agent(ticker, company_name=company_name)]
+        outputs = [attach_rag_context(
+            run_fundamental_agent(ticker, company_name=company_name),
+            "fundamental",
+            query or f"{ticker} fundamental financial risk",
+        )]
         return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
     if intent_id == "market":
-        outputs = [run_market_sentiment_agent(ticker, company_name=company_name)]
+        outputs = [attach_rag_context(
+            run_market_sentiment_agent(ticker, company_name=company_name),
+            "market",
+            query or f"{ticker} market volatility risk",
+        )]
         return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
     if intent_id == "sentiment":
-        outputs = [run_sentiment_agent(ticker, company_name=company_name)]
+        outputs = [attach_rag_context(
+            run_sentiment_agent(ticker, company_name=company_name),
+            "sentiment",
+            query or f"{ticker} financial news sentiment risk",
+        )]
         return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
     if intent_id == "macro":
-        outputs = [run_macro_agent_safe(ticker, sector=sector, company_name=company_name)]
+        outputs = [attach_rag_context(
+            run_macro_agent_safe(ticker, sector=sector, company_name=company_name),
+            "macro",
+            query or f"{ticker} macroeconomic risk",
+        )]
         return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
 
     report = run_critic_agent(
