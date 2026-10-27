@@ -1,5 +1,0 @@
-,ticker,company,end_date,form,filed,cash_usd_m,long_term_debt,net_income_usd_m,operating_income_usd_m,revenue,revenue_alt,shares_outstanding,stockholders_equity_usd_m,total_assets_usd_m
-1970-01-01 00:00:00.000000022,AWK,"American Water Works Company, Inc.",2011-12-31,10-K,2015-02-25,14.207,5389942000.0,309.613,803.136,2666236000.0,,175664000.0,4235.837,14776.391
-1970-01-01 00:00:00.000000032,AWK,"American Water Works Company, Inc.",2012-12-31,10-K,2016-02-25,24.0,5325289000.0,358.07,924.104,2853926000.0,,176988000.0,4445.0,14718.976
-1970-01-01 00:00:00.000000041,AWK,"American Water Works Company, Inc.",2013-12-31,10-K,2016-02-25,27.0,5244232000.0,369.0,948.0,706242000.0,,178379000.0,4728.0,15064.0
-1970-01-01 00:00:00.000000051,AWK,"American Water Works Company, Inc.",2014-12-31,10-K,2017-02-21,23.0,5485000000.0,423.0,1003.0,731378000.0,,179462000.0,4915.0,16038.0
