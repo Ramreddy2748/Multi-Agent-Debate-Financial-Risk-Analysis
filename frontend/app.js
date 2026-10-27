@@ -3,7 +3,10 @@ const api = {
   monitoring: (ticker = "") => `/api/monitoring${ticker ? `?ticker=${encodeURIComponent(ticker)}` : ""}`,
   verdict: (ticker) => `/api/verdicts/${ticker}`,
   prices: (ticker) => `/api/companies/${ticker}/prices`,
+  featurePriority: (ticker) => `/api/companies/${encodeURIComponent(ticker)}/feature-priority`,
   generateVerdict: "/api/verdict",
+  chat: "/api/chat",
+  chatFeedback: "/api/chat/feedback",
   compare: (tickers) => `/api/compare?tickers=${encodeURIComponent(tickers.join(","))}`,
   pdf: (ticker) => `/api/artifacts/${ticker}/pdf`,
   modelTraining: "/api/models/training",
@@ -19,7 +22,9 @@ const state = {
   comparePair: null,
   comparePayload: null,
   modelTraining: null,
+  featurePriority: null,
   generating: false,
+  lastChatPayload: null,
   reportCategory: "pipeline",
   renderedCount: 60,
 };
@@ -61,10 +66,12 @@ const REPORT_CATEGORIES = [
 const AGENT_STYLES = {
   "Fundamental Agent": { tag: "FD", color: "#2563eb" },
   "fundamental_analysis_agent": { tag: "FD", color: "#2563eb" },
-  "Market/Volatility/Sentiment Agent": { tag: "MV", color: "#7c5cff" },
-  "market_sentiment_agent": { tag: "MV", color: "#7c5cff" },
+  "Market + Volatility Agent": { tag: "MV", color: "#7c5cff" },
+  "market_agent": { tag: "MV", color: "#7c5cff" },
   "Sentiment Agent": { tag: "SA", color: "#db2777" },
   "Macro-Economic Agent": { tag: "MC", color: "#0ea5a0" },
+  "Critic / Orchestrator Agent": { tag: "CR", color: "#111827" },
+  "LLM-Based Critic Agent": { tag: "CR", color: "#111827" },
 };
 
 function agentStyle(name) {
@@ -123,6 +130,18 @@ function editDistance(a, b) {
     }
   }
   return dp[left.length][right.length];
+}
+
+const COMPANY_STOP_WORDS = new Set([
+  "a", "an", "and", "are", "buy", "can", "class", "co", "company", "corp", "corporation",
+  "for", "group", "holdings", "i", "in", "inc", "incorporated", "invest", "is", "limited",
+  "llc", "lp", "ltd", "me", "my", "of", "on", "plc", "sa", "should", "stock", "the",
+]);
+
+function meaningfulWords(value) {
+  return normalizeText(value)
+    .split(" ")
+    .filter((word) => word.length >= 3 && !COMPANY_STOP_WORDS.has(word));
 }
 
 async function fetchJson(path) {
@@ -219,6 +238,7 @@ function findCompanyFromQuestion(question) {
   const normalized = normalizeText(question);
   if (!normalized) return null;
   const words = normalized.split(" ").filter(Boolean);
+  const meaningful = meaningfulWords(question);
   const directTicker = state.rows.find((row) => words.includes(String(row.ticker).toLowerCase()));
   if (directTicker) return directTicker;
 
@@ -247,6 +267,24 @@ function findCompanyFromQuestion(question) {
   });
   if (companyMatch) return companyMatch;
 
+  let bestCompany = null;
+  state.rows.forEach((row) => {
+    const companyWords = meaningfulWords(row.company || "");
+    if (!companyWords.length) return;
+    const matchedWords = companyWords.filter((word) => meaningful.includes(word));
+    const hasPrefixMatch = companyWords.some((companyWord) =>
+      meaningful.some((queryWord) =>
+        (queryWord.length >= 4 && companyWord.startsWith(queryWord))
+        || (companyWord.length >= 4 && queryWord.startsWith(companyWord))
+      )
+    );
+    const score = matchedWords.length * 3 + (hasPrefixMatch ? 2 : 0);
+    if (score > 0 && (!bestCompany || score > bestCompany.score)) {
+      bestCompany = { row, score };
+    }
+  });
+  if (bestCompany) return bestCompany.row;
+
   const tickerWords = words.filter((word) => word.length >= 2 && /[a-z]/.test(word));
   let best = null;
   tickerWords.forEach((word) => {
@@ -259,6 +297,25 @@ function findCompanyFromQuestion(question) {
     });
   });
   return best?.row || null;
+}
+
+function renderCompanyNotFound(query) {
+  renderAdvisorAnswer({
+    stance: "Company not found",
+    className: "risk-moderate",
+    body: `I could not match "${query}" to a ticker in the current 519-company universe. Try a ticker such as GOOGL, GOOG, AAPL, or MSFT.`,
+    bullets: ["No verdict was generated because using the currently selected ticker would answer the wrong company."],
+    drivers: [],
+    offsets: [],
+  });
+}
+
+function resolveActionRowFromQuestion(question) {
+  const trimmed = String(question || "").trim();
+  const matched = findCompanyFromQuestion(trimmed);
+  if (matched) return matched;
+  if (trimmed) return null;
+  return state.current?.company || state.rows.find((item) => item.ticker === state.selectedTicker) || null;
 }
 
 function recommendationFrom(finalOutput, fallback) {
@@ -338,6 +395,7 @@ function renderAdvisorAnswer(answer) {
 }
 
 function renderRunError(error) {
+  hideFeedbackPanel();
   renderAdvisorAnswer({
     stance: "Run failed",
     className: "risk-high",
@@ -346,6 +404,47 @@ function renderRunError(error) {
     drivers: [],
     offsets: [],
   });
+}
+
+function hideFeedbackPanel() {
+  const panel = $("feedbackPanel");
+  if (!panel) return;
+  panel.hidden = true;
+  $("feedbackStatus").textContent = "";
+}
+
+function showFeedbackPanel() {
+  const panel = $("feedbackPanel");
+  if (!panel || !state.lastChatPayload?.feedback_id) return;
+  panel.hidden = false;
+  $("feedbackStatus").textContent = "Saved as training candidate.";
+  ["feedbackGoodButton", "feedbackReviewButton"].forEach((id) => {
+    const button = $(id);
+    if (button) button.disabled = false;
+  });
+}
+
+async function submitChatFeedback(rating) {
+  const payload = state.lastChatPayload;
+  if (!payload?.feedback_id) return;
+  const buttons = ["feedbackGoodButton", "feedbackReviewButton"].map((id) => $(id)).filter(Boolean);
+  buttons.forEach((button) => { button.disabled = true; });
+  $("feedbackStatus").textContent = "Saving feedback...";
+  try {
+    await postJson(api.chatFeedback, {
+      feedback_id: payload.feedback_id,
+      ticker: payload.ticker,
+      query: payload.query,
+      rating,
+      correction: "",
+    });
+    $("feedbackStatus").textContent = rating === "good"
+      ? "Feedback saved: good answer."
+      : "Feedback saved: needs review.";
+  } catch (error) {
+    buttons.forEach((button) => { button.disabled = false; });
+    $("feedbackStatus").textContent = `Feedback failed: ${error.message}`;
+  }
 }
 
 function setGenerateBusy(isBusy, mode = "critic") {
@@ -498,15 +597,43 @@ function drawRiskGauge(score, label) {
   `;
 }
 
-function renderAgentCards(outputs = []) {
+function criticCardFromFinal(finalOutput, activeType) {
+  if (activeType === "chat") return null;
+  if (!finalOutput || finalOutput.final_risk_score === undefined) return null;
+  const drivers = finalOutput.main_risk_drivers || [];
+  const offsets = finalOutput.risk_offsets || [];
+  const evidence = [
+    finalOutput.final_decision,
+    finalOutput.disagreement_detected ? "Critic detected a material disagreement across agents." : "Critic did not detect a material disagreement across agents.",
+    finalOutput.requires_human_review ? "Human review is required before using this verdict." : "No human-review flag was raised by the critic.",
+    ...drivers.map((item) => `Risk driver: ${item}`),
+    ...offsets.map((item) => `Offset: ${item}`),
+  ].filter(Boolean);
+
+  return {
+    agent: "Critic / Orchestrator Agent",
+    claim_type: finalOutput.critic_type || (activeType === "debate" ? "DEBATE_SYNTHESIS" : "CRITIC_SYNTHESIS"),
+    risk_score: finalOutput.final_risk_score,
+    risk_label: finalOutput.final_risk_label,
+    confidence: finalOutput.confidence,
+    evidence,
+    negative_signals: [],
+  };
+}
+
+function renderAgentCards(outputs = [], finalOutput = null, activeType = "") {
   const grid = $("agentGrid");
   grid.textContent = "";
-  if (!outputs.length) {
+  const cards = [...(outputs || [])];
+  const criticCard = criticCardFromFinal(finalOutput, activeType);
+  if (criticCard) cards.push(criticCard);
+
+  if (!cards.length) {
     grid.innerHTML = `<div class="empty">Generate a full agent verdict to view specialist evidence for this ticker.</div>`;
     return;
   }
 
-  outputs.forEach((agent) => {
+  cards.forEach((agent) => {
     const score = number(agent.risk_score ?? agent.macro_risk_score, 0);
     const style = agentStyle(agent.agent);
     const article = document.createElement("article");
@@ -536,6 +663,64 @@ function renderAgentCards(outputs = []) {
     });
     grid.appendChild(article);
   });
+}
+
+function renderFeaturePriority(payload) {
+  const host = $("prioritySummary");
+  const badge = $("priorityFreshnessBadge");
+  if (!host || !badge) return;
+  host.textContent = "";
+
+  if (!payload?.available) {
+    badge.textContent = "Unavailable";
+    badge.className = "status-pill risk-moderate";
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = payload?.message || "Run the feature-priority generator to populate this view.";
+    host.appendChild(empty);
+    return;
+  }
+
+  const freshness = payload.freshness || {};
+  badge.textContent = freshness.status || "UNKNOWN";
+  badge.className = `status-pill ${freshness.status === "RECENT" ? "risk-low" : "risk-moderate"}`;
+
+  const summary = document.createElement("div");
+  summary.className = "priority-metrics";
+  [["Features", payload.feature_count ?? 0], ["High priority", payload.high_priority_count ?? 0], ["Stale/expired", freshness.stale_or_expired_count ?? 0], ["Missing", freshness.missing_value_count ?? 0]].forEach(([label, value]) => {
+    const item = document.createElement("div");
+    item.className = "priority-metric";
+    const valueNode = document.createElement("strong");
+    valueNode.textContent = String(value);
+    const labelNode = document.createElement("span");
+    labelNode.textContent = label;
+    item.append(valueNode, labelNode);
+    summary.appendChild(item);
+  });
+  host.appendChild(summary);
+
+  const list = document.createElement("div");
+  list.className = "priority-list";
+  (payload.top_features || []).forEach((feature) => {
+    const item = document.createElement("article");
+    item.className = "priority-item";
+    const heading = document.createElement("div");
+    heading.className = "priority-item-head";
+    const name = document.createElement("strong");
+    name.textContent = feature.feature;
+    const band = document.createElement("span");
+    band.className = `label-pill ${feature.priority_band === "HIGH" || feature.priority_band === "CRITICAL" ? "risk-high" : "risk-moderate"}`;
+    band.textContent = feature.priority_band || "-";
+    heading.append(name, band);
+    const detail = document.createElement("p");
+    const age = feature.age_days === null || feature.age_days === undefined ? "age unavailable" : `${fmt(feature.age_days, 0)}d old`;
+    detail.textContent = `${feature.source} · ${feature.freshness_status || "UNKNOWN"} · ${age} · value ${feature.value}`;
+    const reason = document.createElement("small");
+    reason.textContent = feature.reason || "Priority is based on configured financial impact and data quality.";
+    item.append(heading, detail, reason);
+    list.appendChild(item);
+  });
+  host.appendChild(list);
 }
 
 function modelStatusClass(status = "") {
@@ -780,6 +965,12 @@ function compareInputLabel(row) {
   return row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
 }
 
+function compareSourceLabel(source) {
+  if (source === "debate") return "Debate verdict";
+  if (source === "critic") return "Generated critic verdict";
+  return "Gold fallback baseline";
+}
+
 function renderCompare() {
   const container = $("compareGrid");
   if (!container) return;
@@ -797,6 +988,7 @@ function renderCompare() {
     summaryCard.innerHTML = `
       <strong>${summary.lower_risk_ticker} is lower risk</strong>
       <p>${summary.decision}</p>
+      <p>${state.comparePayload.comparison_mode === "fresh_debate" ? "Compared after running fresh debate reviews for both companies." : "Compared from saved verdicts or Gold fallback data."}</p>
     `;
     container.appendChild(summaryCard);
   }
@@ -809,9 +1001,9 @@ function renderCompare() {
         <strong>${row.ticker}</strong>
         <span class="label-pill ${riskClass(companyResult.label)}">${companyResult.label || "-"}</span>
         <p>${row.company && row.company !== row.ticker ? row.company : ""}</p>
-        <p>Verdict score ${fmt(companyResult.score, 2)} | Confidence ${companyResult.confidence === null || companyResult.confidence === undefined ? "-" : fmt(companyResult.confidence, 2)}</p>
-        <p>Gold composite ${fmt(row.composite_risk, 2)} | Vol ${pct(row.ann_volatility_pct, 1)} | Drawdown ${pct(row.max_drawdown_pct, 1)}</p>
-        <p>${companyResult.has_generated_verdict ? "Generated verdict available" : "Gold fallback mode"}</p>
+        <p>${compareSourceLabel(companyResult.verdict_source)} score ${fmt(companyResult.score, 2)} | Confidence ${companyResult.confidence === null || companyResult.confidence === undefined ? "-" : fmt(companyResult.confidence, 2)}</p>
+        <p>Gold baseline ${fmt(row.composite_risk, 2)} | Vol ${pct(row.ann_volatility_pct, 1)} | Drawdown ${pct(row.max_drawdown_pct, 1)}</p>
+        <p>${companyResult.has_generated_verdict ? "Agent verdict available" : "Run a verdict for this ticker to compare specialist-agent output."}</p>
       `;
       container.appendChild(card);
     });
@@ -820,8 +1012,11 @@ function renderCompare() {
 async function generateVerdict(row, mode = "critic", question = "") {
   if (state.generating) return;
   setGenerateBusy(true, mode);
+  state.lastChatPayload = null;
+  hideFeedbackPanel();
+  const companyLabel = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
   renderAdvisorAnswer({
-    stance: mode === "debate" ? `Running debate for ${row.ticker}` : `Generating full verdict for ${row.ticker}`,
+    stance: mode === "debate" ? `Running debate for ${companyLabel}` : `Generating full verdict for ${companyLabel}`,
     className: "risk-moderate",
     body: "The backend is running the project agents, saving artifacts, and logging monitoring metadata.",
     bullets: ["The dashboard refreshes when the run completes."],
@@ -845,17 +1040,94 @@ async function generateVerdict(row, mode = "critic", question = "") {
   }
 }
 
+async function runChatQuestion(row, question = "") {
+  if (state.generating) return;
+  setGenerateBusy(true, "chat");
+  const companyLabel = row.company && row.company !== row.ticker ? `${row.company} (${row.ticker})` : row.ticker;
+  renderAdvisorAnswer({
+    stance: `Routing question for ${companyLabel}`,
+    className: "risk-moderate",
+    body: "The chatbot is reading the question and selecting only the relevant project agent scope.",
+    bullets: ["Financial questions run the Fundamental Agent only; investment verdict questions run the full critic flow."],
+    drivers: [],
+    offsets: [],
+  });
+
+  try {
+    if (state.selectedTicker !== row.ticker) {
+      await selectTicker(row.ticker, question);
+    }
+
+    const payload = await postJson(api.chat, {
+      ticker: row.ticker,
+      company: row.company || row.ticker,
+      sector: row.sector || "General",
+      query: question || `Can I invest in ${row.ticker}?`,
+    });
+    state.lastChatPayload = payload;
+    const final = payload.final_output || {};
+    const answer = payload.answer || buildInvestmentAnswer(payload.company || row, final, question, false);
+    const currentRow = payload.company || row;
+    const focusedPayload = {
+      final_output: final,
+      debate: null,
+      active_verdict_type: "chat",
+      fallback: false,
+    };
+
+    state.current = {
+      ...(state.current || {}),
+      company: currentRow,
+      chat: payload,
+      final_output: final,
+      active_verdict_type: "chat",
+      fallback: false,
+    };
+
+    $("selectedTitle").textContent = currentRow.company && currentRow.company !== currentRow.ticker
+      ? `${currentRow.company} (${currentRow.ticker}) - ${currentRow.sector || "Unknown sector"}`
+      : `${currentRow.ticker} - ${currentRow.sector || "Unknown sector"}`;
+    $("compositeRisk").textContent = fmt(final.final_risk_score ?? currentRow.composite_risk, 2);
+    $("riskLabel").textContent = final.final_risk_label ?? currentRow.risk_label ?? "-";
+    $("riskLabel").className = riskClass(final.final_risk_label ?? currentRow.risk_label);
+    $("confidence").textContent = final.confidence === null || final.confidence === undefined ? "-" : fmt(final.confidence, 2);
+    $("reviewFlag").textContent = final.requires_human_review ? "Human review required" : "Focused chat";
+    $("criticType").textContent = payload.intent?.label || final.critic_type || "Focused chat";
+    $("disagreementBadge").textContent = payload.intent?.id === "investment" ? "Full" : "Focused";
+    $("disagreementBadge").className = `status-pill ${riskClass(final.final_risk_label)}`;
+    $("finalDecision").textContent = final.final_decision || answer.body;
+    $("jsonLink").hidden = true;
+    $("pdfLink").hidden = true;
+
+    renderDecisionHero(currentRow, final, focusedPayload, answer);
+    renderAdvisorAnswer(answer);
+    renderDrivers(final);
+    renderAgentCards(payload.agent_outputs || [], final, "chat");
+    renderPolicyTrail(final);
+    renderContradictions(focusedPayload);
+    showFeedbackPanel();
+  } catch (error) {
+    renderRunError(error);
+  } finally {
+    setGenerateBusy(false, "chat");
+  }
+}
+
 async function selectTicker(ticker, question = "") {
   state.selectedTicker = ticker;
+  state.lastChatPayload = null;
+  hideFeedbackPanel();
   document.querySelectorAll(".ticker-item").forEach((item) => item.classList.toggle("active", item.dataset.ticker === ticker));
 
-  const [verdictPayload, pricePayload, monitoringPayload] = await Promise.all([
+  const [verdictPayload, pricePayload, monitoringPayload, priorityPayload] = await Promise.all([
     fetchJson(api.verdict(ticker)),
     fetchJson(api.prices(ticker)),
     fetchJson(api.monitoring(ticker)),
+    fetchJson(api.featurePriority(ticker)),
   ]);
 
   state.current = verdictPayload;
+  state.featurePriority = priorityPayload;
   state.monitoring = monitoringPayload.records || [];
   const row = verdictPayload.company;
   const final = verdictPayload.final_output;
@@ -864,6 +1136,8 @@ async function selectTicker(ticker, question = "") {
     : verdictPayload.verdict?.agent_outputs || verdictPayload.debate?.agent_outputs || [];
   const activeJsonUrl = verdictPayload.active_verdict_type === "debate" && verdictPayload.debate_url ? verdictPayload.debate_url : verdictPayload.json_url;
   const rec = buildInvestmentAnswer(row, final, question, verdictPayload.fallback);
+  const priceRows = pricePayload.prices || [];
+  const latestPriceDate = priceRows.length ? priceRows[priceRows.length - 1].date : null;
 
   $("selectedTitle").textContent = row.company && row.company !== row.ticker
     ? `${row.company} (${row.ticker}) - ${row.sector || "Unknown sector"}`
@@ -875,8 +1149,8 @@ async function selectTicker(ticker, question = "") {
   $("drawdown").textContent = pct(row.max_drawdown_pct, 1);
   $("confidence").textContent = final.confidence === null || final.confidence === undefined ? "-" : fmt(final.confidence, 2);
   $("reviewFlag").textContent = verdictPayload.fallback ? "Gold fallback" : final.requires_human_review ? "Human review required" : "Auto verdict";
-  $("asOfDate").textContent = row.as_of_date || "-";
-  $("criticType").textContent = verdictPayload.active_verdict_type === "debate" ? "Debate review output" : final.critic_type || "critic";
+  $("asOfDate").textContent = latestPriceDate || row.as_of_date || "-";
+  $("criticType").textContent = final.critic_type || (verdictPayload.active_verdict_type === "debate" ? "Debate review output" : "critic");
   $("disagreementBadge").textContent = verdictPayload.fallback ? "Fallback" : final.disagreement_detected ? "Disagreement" : "Aligned";
   $("disagreementBadge").className = `status-pill ${verdictPayload.fallback || final.disagreement_detected ? "risk-moderate" : "risk-low"}`;
   $("finalDecision").textContent = final.final_decision || rec.body;
@@ -886,13 +1160,14 @@ async function selectTicker(ticker, question = "") {
   $("pdfLink").href = verdictPayload.pdf_url || "#";
   $("priceSubtitle").textContent = `${pricePayload.count || 0} price rows loaded from API`;
   $("generateVerdictButton").hidden = !verdictPayload.fallback;
-  $("runDebateButton").hidden = !verdictPayload.verdict;
+  $("runDebateButton").hidden = false;
 
   renderDecisionHero(row, final, verdictPayload, rec);
   renderAdvisorAnswer(rec);
   renderDrivers(final);
-  drawPriceChart(pricePayload.prices || [], ticker);
-  renderAgentCards(outputs);
+  drawPriceChart(priceRows, ticker);
+  renderAgentCards(outputs, final, verdictPayload.active_verdict_type);
+  renderFeaturePriority(priorityPayload);
   renderPolicyTrail(final);
   renderContradictions(verdictPayload);
   renderMonitoring(state.monitoring);
@@ -998,43 +1273,38 @@ document.addEventListener("click", (event) => {
 
 $("searchInput").addEventListener("input", applyFilters);
 
+$("feedbackGoodButton").addEventListener("click", () => submitChatFeedback("good"));
+$("feedbackReviewButton").addEventListener("click", () => submitChatFeedback("needs_review"));
+
 $("askForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const question = $("askInput").value.trim();
-  const row = findCompanyFromQuestion(question) || (!question ? state.rows.find((item) => item.ticker === state.selectedTicker) : null);
+  const row = resolveActionRowFromQuestion(question);
   if (!row) {
-    renderAdvisorAnswer({
-      stance: "Company not found",
-      className: "risk-moderate",
-      body: `I could not match "${question}" to a ticker in the current 519-company universe. Try a ticker such as GOOGL, GOOG, AAPL, or MSFT.`,
-      bullets: ["No verdict was generated because using the currently selected ticker would answer the wrong company."],
-      drivers: [],
-      offsets: [],
-    });
+    renderCompanyNotFound(question);
     return;
   }
-  try {
-    if (state.selectedTicker !== row.ticker) {
-      await selectTicker(row.ticker, question);
-    }
-    if (state.current?.fallback) {
-      await generateVerdict(row, "critic", question);
-    } else {
-      renderAdvisorAnswer(buildInvestmentAnswer(state.current.company, state.current.final_output, question, false));
-    }
-  } catch (error) {
-    renderRunError(error);
-  }
+  await runChatQuestion(row, question || `Can I invest in ${row.ticker}?`);
 });
 
 $("generateVerdictButton").addEventListener("click", async () => {
-  const row = state.current?.company;
-  if (row) await generateVerdict(row, "critic", $("askInput").value.trim());
+  const question = $("askInput").value.trim();
+  const row = resolveActionRowFromQuestion(question);
+  if (!row) {
+    renderCompanyNotFound(question);
+    return;
+  }
+  await generateVerdict(row, "critic", question);
 });
 
 $("runDebateButton").addEventListener("click", async () => {
-  const row = state.current?.company;
-  if (row) await generateVerdict(row, "debate", $("askInput").value.trim());
+  const question = $("askInput").value.trim();
+  const row = resolveActionRowFromQuestion(question);
+  if (!row) {
+    renderCompanyNotFound(question);
+    return;
+  }
+  await generateVerdict(row, "debate", question);
 });
 
 $("compareForm").addEventListener("submit", (event) => {
@@ -1061,8 +1331,12 @@ $("compareForm").addEventListener("submit", (event) => {
   }
 
   state.comparePair = [tickerA, tickerB];
-  $("compareGrid").innerHTML = `<div class="empty">Comparing ${tickerA} and ${tickerB} through the API...</div>`;
-  fetchJson(api.compare(state.comparePair))
+  $("compareGrid").innerHTML = `<div class="empty">Running fresh debate review for ${tickerA} and ${tickerB} before comparing...</div>`;
+  postJson("/api/compare", {
+    tickers: state.comparePair,
+    run_debate: true,
+    query: `Compare ${tickerA} and ${tickerB} using fresh debate review outputs.`,
+  })
     .then((payload) => {
       state.comparePayload = payload;
       renderCompare();

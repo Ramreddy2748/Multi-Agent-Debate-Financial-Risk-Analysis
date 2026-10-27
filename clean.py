@@ -349,8 +349,11 @@ def clean_news(
     # Deduplicate by URL
     df = df.drop_duplicates(subset=["url"])
 
-    # Standardize dates
-    df["published_at"] = pd.to_datetime(df["published_at"]).dt.tz_localize(None)
+    # Standardize dates. format="mixed" handles bronze files that mix ISO8601
+    # ("...Z") and space-separated ("+00:00") published_at strings from different
+    # ingestion scripts — a plain to_datetime() would infer one format and silently
+    # NaT (then groupby-drop, with no warning) any rows written in the other format.
+    df["published_at"] = pd.to_datetime(df["published_at"], format="mixed", utc=True).dt.tz_localize(None)
 
     # VADER sentiment scoring
     df = score_news_sentiment(df)
