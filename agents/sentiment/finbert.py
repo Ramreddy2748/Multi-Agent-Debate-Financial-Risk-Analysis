@@ -7,6 +7,7 @@ import argparse
 import json
 import math
 import os
+import re
 import statistics
 from pathlib import Path
 from typing import Any, Optional
@@ -51,11 +52,49 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+NEWS_FINANCE_TERMS = {
+    "stock", "stocks", "share", "shares", "earnings", "revenue", "profit", "profits",
+    "guidance", "analyst", "upgrade", "downgrade", "price target", "market", "markets",
+    "nasdaq", "nyse", "investor", "investors", "dividend", "forecast", "quarter",
+    "sales", "eps", "valuation", "buy", "sell", "hold", "outperform", "underperform",
+}
+
+COMPANY_STOP_WORDS = {
+    "a", "an", "and", "co", "company", "corp", "corporation", "group", "holdings",
+    "inc", "incorporated", "limited", "llc", "lp", "ltd", "n", "plc", "sa", "the",
+}
+
+
+def _tokens(value: Any) -> set[str]:
+    return set(re.findall(r"[a-z0-9]+", str(value or "").lower()))
+
+
+def _company_keywords(company: Any) -> set[str]:
+    return {token for token in _tokens(company) if len(token) >= 3 and token not in COMPANY_STOP_WORDS}
+
+
+def _is_relevant_news(row: dict[str, str], ticker: str) -> bool:
+    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
+    source = str(row.get("source", "") or "").lower()
+    text_tokens = _tokens(text)
+    company_hits = _company_keywords(row.get("company", "")) & text_tokens
+    ticker_hit = bool(re.search(rf"(?<![A-Za-z0-9]){re.escape(ticker.lower())}(?![A-Za-z0-9])", text))
+    explicit_ticker_market_hit = bool(
+        re.search(rf"(\({re.escape(ticker.lower())}\)|{re.escape(ticker.lower())}\s+stock|stock\s+{re.escape(ticker.lower())})", text)
+    )
+    finance_hit = any(term in text or term in source for term in NEWS_FINANCE_TERMS)
+    if company_hits and (finance_hit or len(company_hits) >= 2):
+        return True
+    if len(ticker) <= 3 and not explicit_ticker_market_hit:
+        return False
+    return ticker_hit and finance_hit
+
+
 def _load_raw_news(ticker: str, limit: int = 40) -> list[dict[str, str]]:
     ticker = ticker.upper()
     rows = [
         row for row in _read_csv(BRONZE_DIR / "newsapi_headlines_raw.csv")
-        if str(row.get("ticker", "")).upper() == ticker and row.get("title")
+        if str(row.get("ticker", "")).upper() == ticker and row.get("title") and _is_relevant_news(row, ticker)
     ]
     return sorted(rows, key=lambda row: str(row.get("published_at", "")), reverse=True)[:limit]
 

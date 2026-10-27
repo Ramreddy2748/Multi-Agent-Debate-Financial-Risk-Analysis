@@ -730,6 +730,46 @@ input {
   font-size: 12px;
 }
 
+.feedback-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--sidebar-muted);
+  font-size: 12px;
+}
+
+.feedback-panel[hidden] {
+  display: none;
+}
+
+.feedback-panel span {
+  color: var(--sidebar-text);
+  font-weight: 700;
+}
+
+.feedback-button {
+  min-height: 30px;
+  padding: 0 10px;
+  color: #d6fff9;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--sidebar-line);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.feedback-button:hover {
+  border-color: rgba(94, 234, 212, 0.5);
+}
+
+.feedback-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
 .artifact-status {
   display: inline-flex;
   min-height: 38px;

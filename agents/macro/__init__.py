@@ -1,2 +1,1 @@
-"""Macro-economic risk agent package."""
-
+"""Macro agent package."""
