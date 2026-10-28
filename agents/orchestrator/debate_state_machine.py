@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import statistics
 import sys
 from pathlib import Path
@@ -23,6 +24,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from agents.orchestrator.critic_agent import (
     _label_from_score,
+    _llm_critic,
     _weighted_critic,
     run_fundamental_agent,
     run_macro_agent_safe,
@@ -157,15 +159,36 @@ def revise_positions(state: DebateState) -> DebateState:
 def synthesize_verdict(state: DebateState) -> DebateState:
     outputs = state.get("agent_outputs", [])
     contradictions = state.get("contradictions", [])
-    final = _weighted_critic(outputs, query=state.get("query", ""))
+    query = state.get("query", "")
+    use_llm = os.getenv("CRITIC_LLM_ENABLED", "0").lower() in {"1", "true", "yes"}
+    llm_result = _llm_critic(outputs, query) if use_llm else None
+    weighted = _weighted_critic(outputs, query=query)
+
+    if llm_result and llm_result.get("critic_type") != "llm_failed_fallback_needed":
+        final = {**weighted, **llm_result}
+        final.setdefault("risk_offsets", weighted.get("risk_offsets", []))
+        final.setdefault("main_risk_drivers", weighted.get("main_risk_drivers", []))
+        final.setdefault("agent_scorecard", weighted.get("agent_scorecard", []))
+        final.setdefault("final_decision", weighted.get("final_decision", ""))
+    else:
+        final = weighted
+        if llm_result and llm_result.get("error"):
+            final["llm_error"] = llm_result["error"]
+            final.setdefault("agent_scorecard", []).append(llm_result["error"])
     final["contradictions"] = contradictions
     final["revision_rounds"] = state.get("revision_round", 0)
 
     high_contradictions = [c for c in contradictions if c.get("severity") == "HIGH"]
     if high_contradictions:
-        final["confidence"] = min(float(final.get("confidence", 0.60)), 0.55)
+        try:
+            current_confidence = float(final.get("confidence", 0.60))
+        except (TypeError, ValueError):
+            current_confidence = 0.60
+        final["confidence"] = min(current_confidence, 0.55)
         final["requires_human_review"] = True
-        final["final_decision"] += " Contradictions remain material, so this verdict requires human review."
+        final["final_decision"] = (
+            final.get("final_decision") or weighted.get("final_decision") or "Final debate verdict generated."
+        ) + " Contradictions remain material, so this verdict requires human review."
     else:
         final["requires_human_review"] = False
 

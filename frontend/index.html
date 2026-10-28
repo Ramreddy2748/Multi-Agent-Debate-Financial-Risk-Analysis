@@ -104,6 +104,12 @@
             <strong>Select a company or ask a question.</strong>
             <p>This tool gives project-model risk guidance for research, not personal financial advice.</p>
           </div>
+          <div id="feedbackPanel" class="feedback-panel" hidden>
+            <span>Improve this agent answer</span>
+            <button id="feedbackGoodButton" class="feedback-button" type="button">Good answer</button>
+            <button id="feedbackReviewButton" class="feedback-button" type="button">Needs review</button>
+            <small id="feedbackStatus"></small>
+          </div>
           <div class="ask-actions">
             <button id="generateVerdictButton" class="secondary-action" type="button">Generate full agent verdict</button>
             <button id="runDebateButton" class="secondary-action" type="button">Run debate review</button>
@@ -267,6 +273,6 @@
     </template>
 
     <script src="./vendor/chart.umd.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="./app.js?v=2989-self-improving-feedback"></script>
   </body>
 </html>
