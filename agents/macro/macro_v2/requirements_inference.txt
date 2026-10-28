@@ -1,0 +1,5 @@
+torch>=2.1
+transformers>=4.48
+peft>=0.10
+accelerate
+pandas

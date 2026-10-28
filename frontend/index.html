@@ -104,6 +104,12 @@
             <strong>Select a company or ask a question.</strong>
             <p>This tool gives project-model risk guidance for research, not personal financial advice.</p>
           </div>
+          <div id="feedbackPanel" class="feedback-panel" hidden>
+            <span>Improve this agent answer</span>
+            <button id="feedbackGoodButton" class="feedback-button" type="button">Good answer</button>
+            <button id="feedbackReviewButton" class="feedback-button" type="button">Needs review</button>
+            <small id="feedbackStatus"></small>
+          </div>
           <div class="ask-actions">
             <button id="generateVerdictButton" class="secondary-action" type="button">Generate full agent verdict</button>
             <button id="runDebateButton" class="secondary-action" type="button">Run debate review</button>
@@ -164,10 +170,21 @@
             <div class="panel-head">
               <div>
                 <h3>Agent Scorecards</h3>
-                <p>Specialist claims and evidence</p>
+                <p>Specialist and critic claims with evidence</p>
               </div>
             </div>
             <div id="agentGrid" class="agent-grid"></div>
+          </div>
+
+          <div class="panel wide priority-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Evidence Priority &amp; Freshness</h3>
+                <p>Highest-impact features and source freshness for this ticker</p>
+              </div>
+              <span id="priorityFreshnessBadge" class="status-pill">-</span>
+            </div>
+            <div id="prioritySummary" class="priority-summary"></div>
           </div>
 
           <div class="panel wide model-panel">
@@ -256,6 +273,6 @@
     </template>
 
     <script src="./vendor/chart.umd.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="./app.js?v=2989-self-improving-feedback"></script>
   </body>
 </html>

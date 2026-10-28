@@ -1,0 +1,12 @@
+{
+  "label_target": "fwd_vol_60d (annualized realized volatility over next 60 trading days)",
+  "thresholds_from": "train split terciles, pooled across sectors",
+  "low_max": 0.13019514230797674,
+  "moderate_max": 0.18521597694337344,
+  "splits": {
+    "train_end": "2018-12-31",
+    "val_end": "2021-12-31",
+    "test_end": "2024-12-31"
+  },
+  "horizon_days": 60
+}

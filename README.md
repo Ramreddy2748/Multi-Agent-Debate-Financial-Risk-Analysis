@@ -123,7 +123,7 @@ Expected output:
 - `data/silver/silver_prices_TICKER.csv` — cleaned price data with engineered features
 - `data/silver/silver_edgar_TICKER.csv` — cleaned financial statements
 - `data/silver/silver_macro.csv` — cleaned macroeconomic data
-- `data/silver/silver_news_sentiment.csv` — VADER sentiment scores
+- `data/silver/silver_news_sentiment.csv` — VADER fallback sentiment scores
 - `data/silver_parquet/*.parquet` — parquet copies for analytics and BigQuery-ready workflows
 
 ### Step 3 — EDA and risk scoring (Gold layer)
@@ -174,6 +174,19 @@ python3 agents/verdict_report.py AAPL \
   --sector "Information Technology" \
   --log-monitoring
 ```
+
+Optional Claude critic/orchestrator:
+
+```env
+CRITIC_LLM_ENABLED=1
+CRITIC_PROVIDER=anthropic
+ANTHROPIC_API_KEY=your_anthropic_key_here
+CLAUDE_MODEL=claude-sonnet-5-5
+```
+
+With those settings, the critic asks Claude to compare the specialist agent
+outputs, check contradictions, and return a strict JSON final verdict. If Claude
+is not configured or fails, the project falls back to the weighted rule critic.
 
 ### Step 6 — Explicit debate state machine
 
@@ -251,7 +264,7 @@ Run the app:
 uvicorn src.api.server:app --reload --host 127.0.0.1 --port 8766
 ```
 
-To enable the local fine-tuned Market/News LoRA adapter, first place the
+To enable the local fine-tuned Market/Volatility LoRA adapter, first place the
 adapter files under `models/market_sentiment_lora/`, then install the optional
 ML inference packages and start the API with the LoRA flag:
 
@@ -261,8 +274,20 @@ MARKET_LORA_ENABLED=1 uvicorn src.api.server:app --reload --host 127.0.0.1 --por
 ```
 
 If the adapter is missing, dependencies are unavailable, or local inference is
-too slow, the market/news agent automatically falls back to the deterministic
-volatility and sentiment rule path.
+too slow, the market agent automatically falls back to the deterministic
+price and volatility rule path. News is scored separately by the Sentiment Agent.
+
+The previous `market_sentiment_lora` adapter was trained with the old combined
+schema. Regenerate the JSONL and retrain the adapter before treating its output
+as a market-only model:
+
+```bash
+python3 agents/market/build_finetune_data.py
+python3 agents/finetune_lora.py \
+  --train-jsonl data/gold/market_sentiment_finetune_data.jsonl \
+  --base-model Qwen/Qwen2.5-1.5B-Instruct \
+  --output-dir models/market_volatility_lora
+```
 
 To train and enable the Fundamental Agent FinBERT classifier:
 
@@ -279,7 +304,7 @@ If `models/fundamental_agent_finbert/` is missing or inference fails, the
 Fundamental Agent automatically falls back to the deterministic SEC-financials
 logic.
 
-To test the Market/News LoRA adapter directly from VS Code or a terminal:
+To test the Market/Volatility LoRA adapter directly from VS Code or a terminal:
 
 ```bash
 curl -X POST http://127.0.0.1:8766/api/agents/market-lora/predict \
@@ -289,8 +314,10 @@ curl -X POST http://127.0.0.1:8766/api/agents/market-lora/predict \
     "annualized_volatility": 0.28,
     "beta": 1.12,
     "max_drawdown": -0.17,
-    "sentiment_mean": 0.03,
-    "article_count": 40
+    "price_vs_52w_high_pct": -12.5,
+    "ytd_return_pct": 8.2,
+    "rolling_vol_30d": 0.28,
+    "rolling_vol_60d": 0.24
   }'
 ```
 
@@ -323,6 +350,7 @@ Useful API endpoints:
 - `GET /api/health` — app/data readiness
 - `GET /api/companies` — Gold risk universe
 - `GET /api/verdicts/AAPL` — saved verdict plus fallback risk answer
+- `GET /api/companies/AAPL/feature-priority` — ranked evidence and freshness status
 - `POST /api/verdict` — generate a critic or debate verdict
 - `GET /api/monitoring?ticker=AAPL` — lineage records
 
@@ -360,10 +388,32 @@ Gold layer (data/gold/)         -- risk scores, analytics-ready
 Train / Val / Test splits       -- stratified by risk label
    |
    v
-Model training and evaluation   -- coming in Phase 2
+Model training and evaluation   -- FinBERT, Qwen LoRA, and Mistral LoRA candidates
 ```  
 
 ---
+
+## Sentiment Agent
+
+The dedicated Sentiment Agent reads NewsAPI headline rows from
+`data/bronze/newsapi_headlines_raw.csv` and uses `ProsusAI/finbert` for
+financial sentiment inference when headlines are available. It returns a
+structured agent output with sentiment risk score, label, confidence, article
+count, FinBERT positive/neutral/negative counts, top positive/negative headline
+evidence, and fallback status.
+
+Run it directly:
+```bash
+python3 agents/sentiment/finbert.py AAPL --company "Apple Inc." --pretty
+```
+
+Fallback behavior:
+- `FINBERT_SENTIMENT_INFERENCE` when ticker-specific NewsAPI headlines are present and FinBERT loads.
+- `VADER_BASELINE_FALLBACK` when FinBERT is unavailable but Silver sentiment exists.
+- `NO_NEWS_FALLBACK` when no ticker-specific news coverage exists.
+
+The critic/orchestrator consumes this output as a separate specialist agent
+alongside Fundamental, Market/Volatility, Macro, and Critic outputs.
 
 ## Risk Score Dimensions
 
@@ -373,7 +423,7 @@ Each company receives four risk scores on a 1-10 scale:
 |---|---|---|
 | Fundamental risk | P/E ratio + beta + max drawdown (weighted) | Yahoo Finance, SEC EDGAR |
 | Volatility risk | Annualised standard deviation of daily returns | Yahoo Finance |
-| Sentiment risk | VADER compound score from news headlines (inverted) | NewsAPI |
+| Sentiment risk | FinBERT headline sentiment, with VADER fallback | NewsAPI |
 | Macro risk | Fed Funds Rate severity + CPI z-score | FRED |
 | Composite risk | 30% fundamental + 30% volatility + 20% sentiment + 20% macro | All sources |
 
@@ -383,15 +433,33 @@ Risk labels: HIGH (above 6.0) · MODERATE (3.5 to 6.0) · LOW (below 3.5)
 
 ## Current Dataset
 
-- Companies: 123 (S&P 500 + NASDAQ-100)
+- Companies: 519 in the current Gold master table
 - Sectors: 11 GICS sectors
-- Collection date: 2026-03-04
-- Bronze files: 361 CSVs
-- Silver files: 243 CSVs
-- Gold files: 17 CSVs
-- Report charts: 9 PNGs
+- Collection date: generated from the latest local pipeline run
+- Gold master file: `data/gold/gold_risk_scores_ALL.csv`
+- Model training files: `data/gold/fundamental_finetune_data.jsonl` and `data/gold/market_sentiment_finetune_data.jsonl`
 - Train set: 86 companies
 - Validation set: 18 companies
 - Test set: 19 companies
+
+## Feature Priority and Freshness
+
+The feature-priority layer ranks evidence for Fundamental, Market, Sentiment,
+and Macro agents using configured risk impact, feature importance, data quality,
+and source freshness. It does not alter the specialist risk score; it identifies
+which columns should receive attention first and makes stale evidence visible.
+
+Run it after refreshing Silver/Gold data:
+
+```bash
+python3 agents/evaluation/feature_priority.py
+```
+
+Generated artifacts:
+
+- `data/gold/feature_priority_scores.csv` — one auditable row per agent/ticker/feature.
+- `data/gold/feature_priority_summary.csv` — top three features per agent and ticker.
+- `data/gold/feature_freshness.csv` — freshness and missing-value status.
+- `data/gold/feature_priority_report.md` — highest-priority evidence report.
 
 ---

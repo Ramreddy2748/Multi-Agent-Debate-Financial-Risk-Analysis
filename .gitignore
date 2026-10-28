@@ -3,9 +3,16 @@ data/silver/
 data/silver_parquet/
 data/reports/
 data/verdicts/
-data/gold/*_batch*.csv
 data/gold/*llm_comparison.json
 data/gold/monitoring_runs.jsonl
+data/gold/chat_training_candidates.jsonl
+data/gold/chat_feedback.jsonl
+data/gold/gold_risk_*_batch*.csv
+data/gold/run_report.json
+data/gold/split_*.csv
+data/gold/macro_agent_outputs.json
+data/gold/agent_data_freshness.*
+data/gold/news_coverage_by_company.csv
 venv/
 .venv/
 __pycache__/

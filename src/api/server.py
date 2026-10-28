@@ -11,6 +11,8 @@ import csv
 import json
 import os
 import sys
+import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal
 
@@ -25,16 +27,26 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import config
-from agents.orchestrator.critic_agent import predict_market_lora_payload, run_critic_agent
+from agents.orchestrator.critic_agent import (
+    predict_market_lora_payload,
+    run_critic_agent,
+    run_fundamental_agent,
+    run_macro_agent_safe,
+    run_market_sentiment_agent,
+)
 from agents.orchestrator.debate_state_machine import run_debate_state_machine
 from agents.orchestrator.monitoring import log_verdict_run
 from agents.orchestrator.verdict_report import save_json_verdict, save_pdf_verdict
+from agents.sentiment.finbert import run_sentiment_agent
 
 
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
 DATA_DIR = PROJECT_ROOT / "data"
 GOLD_PATH = DATA_DIR / "gold" / "gold_risk_scores_ALL.csv"
 MONITORING_PATH = DATA_DIR / "gold" / "monitoring_runs.jsonl"
+CHAT_TRAINING_CANDIDATES_PATH = DATA_DIR / "gold" / "chat_training_candidates.jsonl"
+CHAT_FEEDBACK_PATH = DATA_DIR / "gold" / "chat_feedback.jsonl"
+FEATURE_PRIORITY_PATH = DATA_DIR / "gold" / "feature_priority_scores.csv"
 
 
 class VerdictRequest(BaseModel):
@@ -48,6 +60,8 @@ class VerdictRequest(BaseModel):
 
 class CompareRequest(BaseModel):
     tickers: list[str] = Field(..., min_length=2, max_length=5)
+    run_debate: bool = False
+    query: str = ""
 
 
 class MarketLoraRequest(BaseModel):
@@ -55,8 +69,25 @@ class MarketLoraRequest(BaseModel):
     annualized_volatility: float = 0.0
     beta: float = 1.0
     max_drawdown: float = 0.0
-    sentiment_mean: float = 0.0
-    article_count: int = 0
+    price_vs_52w_high_pct: float = 0.0
+    ytd_return_pct: float = 0.0
+    rolling_vol_30d: float = 0.0
+    rolling_vol_60d: float = 0.0
+
+
+class ChatRequest(BaseModel):
+    ticker: str = Field(..., min_length=1, max_length=12)
+    company: str | None = None
+    sector: str | None = None
+    query: str = Field(..., min_length=1, max_length=500)
+
+
+class ChatFeedbackRequest(BaseModel):
+    feedback_id: str = Field(..., min_length=1, max_length=80)
+    ticker: str = Field(..., min_length=1, max_length=12)
+    query: str = Field(..., min_length=1, max_length=500)
+    rating: Literal["good", "needs_review"]
+    correction: str = Field(default="", max_length=1000)
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -87,6 +118,16 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _append_jsonl(path: Path, record: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+
+
 def _gold_rows() -> list[dict[str, str]]:
     return _read_csv(GOLD_PATH)
 
@@ -113,6 +154,65 @@ def _pdf_path(ticker: str) -> Path:
 
 def _price_path(ticker: str) -> Path:
     return DATA_DIR / "silver" / f"silver_prices_{ticker.upper()}.csv"
+
+
+def _feature_priority_payload(ticker: str) -> dict[str, Any]:
+    """Return generated evidence priority and freshness for one ticker."""
+    normalized = ticker.upper().strip()
+    rows = [
+        row for row in _read_csv(FEATURE_PRIORITY_PATH)
+        if row.get("ticker", "").upper() == normalized
+    ]
+    if not rows:
+        return {
+            "available": False,
+            "ticker": normalized,
+            "message": "No feature-priority artifact is available for this ticker.",
+            "top_features": [],
+            "freshness": {},
+        }
+
+    def priority_score(row: dict[str, str]) -> float:
+        return _safe_float(row.get("priority_score")) or 0.0
+
+    ranked = sorted(rows, key=priority_score, reverse=True)
+    statuses = [str(row.get("freshness_status") or "UNKNOWN").upper() for row in rows]
+    freshness_status = (
+        "EXPIRED" if "EXPIRED" in statuses else
+        "STALE" if "STALE" in statuses else
+        "RECENT" if "RECENT" in statuses else "UNKNOWN"
+    )
+    top_features = []
+    for row in ranked[:8]:
+        top_features.append({
+            "feature": row.get("feature") or row.get("feature_name") or "Unknown feature",
+            "source": row.get("source") or "-",
+            "priority_score": round(priority_score(row), 3),
+            "priority_band": row.get("priority_band") or "-",
+            "freshness_status": row.get("freshness_status") or "UNKNOWN",
+            "age_days": _safe_float(row.get("age_days")),
+            "value": row.get("value") or "-",
+            "reason": row.get("priority_reason") or row.get("reason") or "-",
+        })
+    return {
+        "available": True,
+        "ticker": normalized,
+        "feature_count": len(rows),
+        "high_priority_count": sum(
+            str(row.get("priority_band") or "").upper() in {"HIGH", "CRITICAL"}
+            for row in rows
+        ),
+        "top_features": top_features,
+        "freshness": {
+            "status": freshness_status,
+            "stale_or_expired_count": sum(status in {"STALE", "EXPIRED"} for status in statuses),
+            "missing_value_count": sum(
+                _safe_float(row.get("data_quality")) == 0.0
+                for row in rows
+            ),
+        },
+        "artifact": str(FEATURE_PRIORITY_PATH.relative_to(PROJECT_ROOT)),
+    }
 
 
 def _safe_float(value: Any) -> float | None:
@@ -206,24 +306,24 @@ def _model_registry() -> list[dict[str, Any]]:
             "training": _training_series(finbert_dir),
         },
         {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market + Volatility Agent",
             "model": os.getenv("MARKET_LORA_BASE_MODEL", "Qwen/Qwen2.5-1.5B-Instruct") + " + LoRA",
             "backend": "remote_colab" if os.getenv("MARKET_LORA_REMOTE_URL") else "local_transformers",
             "status": "active" if os.getenv("MARKET_LORA_ENABLED", "0").lower() in {"1", "true", "yes"} else "fallback_rules",
             "claim_type": "LORA_MODEL_INFERENCE",
-            "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
+            "data": "Yahoo price and volatility features + Gold risk labels",
             "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
             "model_dir": str(configured_lora_dir.relative_to(PROJECT_ROOT) if configured_lora_dir.is_relative_to(PROJECT_ROOT) else configured_lora_dir),
             "metrics": {},
             "training": _training_series(configured_lora_dir),
         },
         {
-            "agent": "Market + Volatility + News Sentiment Agent",
+            "agent": "Market Mistral LoRA Candidate",
             "model": "mistralai/Mistral-7B-Instruct-v0.3 + LoRA",
             "backend": "local_transformers_or_remote_colab",
-            "status": "available" if mistral_lora_dir.exists() else "not_trained_yet",
+            "status": "trained_available_not_active" if mistral_lora_dir.exists() else "not_trained_yet",
             "claim_type": "LORA_MODEL_INFERENCE",
-            "data": "Yahoo price features + NewsAPI sentiment + Gold risk labels",
+            "data": "Yahoo price and volatility features + Gold risk labels",
             "train_examples": _count_jsonl(DATA_DIR / "gold" / "market_sentiment_finetune_data.jsonl"),
             "model_dir": "models/market_mistral_lora",
             "metrics": {},
@@ -255,9 +355,15 @@ def _model_registry() -> list[dict[str, Any]]:
         },
         {
             "agent": "Critic / Orchestrator",
-            "model": os.getenv("CRITIC_MODEL", "weighted critic; optional OpenAI-compatible LLM"),
+            "model": os.getenv("CLAUDE_MODEL") or os.getenv("CRITIC_MODEL", "weighted critic; optional Claude/OpenAI-compatible LLM"),
             "backend": "weighted_rules_or_api",
-            "status": "llm_configured" if (os.getenv("CRITIC_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")) else "weighted_rules_active",
+            "status": "llm_configured" if (
+                os.getenv("ANTHROPIC_API_KEY")
+                or os.getenv("CLAUDE_API_KEY")
+                or os.getenv("CRITIC_API_KEY")
+                or os.getenv("OPENAI_API_KEY")
+                or os.getenv("DEEPSEEK_API_KEY")
+            ) else "weighted_rules_active",
             "claim_type": "llm_based_critic_with_local_fallback",
             "data": "Specialist agent outputs, confidence, disagreement flags, and evidence trail",
             "train_examples": 0,
@@ -348,7 +454,225 @@ def _gold_fallback_verdict(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
-def _compare_companies(tickers: list[str]) -> dict[str, Any]:
+def _risk_label_from_score(score: float | None) -> str:
+    if score is None:
+        return "MODERATE"
+    if score <= 3.5:
+        return "LOW"
+    if score <= 6.0:
+        return "MODERATE"
+    return "HIGH"
+
+
+CHAT_INTENTS: dict[str, dict[str, Any]] = {
+    "fundamental": {
+        "label": "Financial fundamentals",
+        "agents": ["Fundamental Agent"],
+        "keywords": {
+            "financial", "finance", "fundamental", "fundamentals", "balance", "debt",
+            "cash", "revenue", "income", "profit", "margin", "earnings", "leverage",
+            "asset", "assets", "liability", "liabilities", "equity", "status",
+        },
+    },
+    "market": {
+        "label": "Market and volatility",
+        "agents": ["Market + Volatility Agent"],
+        "keywords": {
+            "market", "price", "volatility", "volatile", "beta", "drawdown", "return",
+            "returns", "momentum", "trend", "technical", "moving", "performance",
+        },
+    },
+    "sentiment": {
+        "label": "News sentiment",
+        "agents": ["Sentiment Agent"],
+        "keywords": {
+            "news", "headline", "headlines", "sentiment", "media", "article", "articles",
+            "positive", "negative", "public", "coverage",
+        },
+    },
+    "macro": {
+        "label": "Macro-economic conditions",
+        "agents": ["Macro-Economic Agent"],
+        "keywords": {
+            "macro", "economy", "economic", "rate", "rates", "fed", "inflation", "cpi",
+            "gdp", "unemployment", "vix", "oil", "yield", "treasury", "recession",
+        },
+    },
+    "investment": {
+        "label": "Full investment verdict",
+        "agents": [
+            "Fundamental Agent",
+            "Market + Volatility Agent",
+            "Sentiment Agent",
+            "Macro-Economic Agent",
+            "Critic / Orchestrator Agent",
+        ],
+        "keywords": {
+            "invest", "investment", "buy", "sell", "hold", "verdict", "overall",
+            "risk", "safe", "should", "can i", "recommend", "recommendation",
+        },
+    },
+}
+
+
+def _chat_intent(query: str) -> dict[str, Any]:
+    normalized = f" {query.lower()} "
+
+    # Specific specialist intents win over broad investment words such as
+    # "risk" so a question like "financial risk of Apple" stays fundamental.
+    for intent_id in ("fundamental", "sentiment", "market", "macro"):
+        intent = CHAT_INTENTS[intent_id]
+        if any(f" {word} " in normalized or word in normalized for word in intent["keywords"]):
+            return {"id": intent_id, **intent}
+
+    investment = CHAT_INTENTS["investment"]
+    if any(word in normalized for word in investment["keywords"]):
+        return {"id": "investment", **investment}
+    return {"id": "investment", **investment}
+
+
+def _agent_score(agent_output: dict[str, Any]) -> float | None:
+    return _safe_float(agent_output.get("risk_score")) or _safe_float(agent_output.get("macro_risk_score"))
+
+
+def _focused_final_output(
+    row: dict[str, Any],
+    query: str,
+    intent: dict[str, Any],
+    agent_outputs: list[dict[str, Any]],
+) -> dict[str, Any]:
+    scores = [score for score in (_agent_score(output) for output in agent_outputs) if score is not None]
+    confidences = [
+        confidence
+        for confidence in (_safe_float(output.get("confidence")) for output in agent_outputs)
+        if confidence is not None
+    ]
+    final_score = round(sum(scores) / len(scores), 2) if scores else 5.0
+    final_label = _risk_label_from_score(final_score)
+    confidence = round(sum(confidences) / len(confidences), 2) if confidences else None
+    drivers: list[str] = []
+    offsets: list[str] = []
+    for output in agent_outputs:
+        drivers.extend(str(item) for item in output.get("negative_signals", []) if item)
+        offsets.extend(str(item) for item in output.get("positive_signals", []) if item)
+        if not output.get("negative_signals"):
+            drivers.extend(str(item) for item in (output.get("evidence") or [])[:2] if item)
+
+    ticker = row.get("ticker", "UNKNOWN")
+    company = row.get("company") or ticker
+    return {
+        "agent": "Chat Intent Router",
+        "critic_type": f"focused_chat_{intent['id']}",
+        "final_risk_score": final_score,
+        "final_risk_label": final_label,
+        "confidence": confidence,
+        "disagreement_detected": False,
+        "requires_human_review": final_label == "HIGH" or (confidence is not None and confidence < 0.5),
+        "final_decision": (
+            f"For \"{query}\", the chatbot routed {company} ({ticker}) to "
+            f"{intent['label'].lower()} and returned {final_label} risk at {final_score:.2f}/10."
+        ),
+        "main_risk_drivers": drivers[:4],
+        "risk_offsets": offsets[:3],
+        "policy_evidence_trail": [
+            {
+                "policy_id": "A",
+                "policy_name": "Question routing",
+                "status": "PASS",
+                "evidence": [f"Natural-language query classified as {intent['label']}."],
+            },
+            {
+                "policy_id": "B",
+                "policy_name": "Focused agent execution",
+                "status": "PASS",
+                "evidence": [f"Agents run: {', '.join(intent['agents'])}."],
+            },
+        ],
+    }
+
+
+def _chat_answer(
+    row: dict[str, Any],
+    query: str,
+    intent: dict[str, Any],
+    agent_outputs: list[dict[str, Any]],
+    final_output: dict[str, Any],
+) -> dict[str, Any]:
+    label = final_output.get("final_risk_label") or "MODERATE"
+    class_name = f"risk-{str(label).lower()}"
+    agent_names = ", ".join(output.get("agent", "Agent") for output in agent_outputs)
+    bullets = [
+        f"Question intent: {intent['label']}.",
+        f"Agents run: {agent_names}.",
+        (
+            "Confidence unavailable."
+            if final_output.get("confidence") is None
+            else f"Confidence: {float(final_output['confidence']):.2f}."
+        ),
+    ]
+    for output in agent_outputs:
+        claim = output.get("claim_type")
+        if claim:
+            bullets.append(f"{output.get('agent', 'Agent')} used {claim}.")
+        bullets.extend(str(item) for item in (output.get("evidence") or [])[:2] if item)
+
+    return {
+        "stance": f"{intent['label']} answer",
+        "className": class_name,
+        "body": final_output.get("final_decision"),
+        "bullets": bullets[:7],
+        "drivers": final_output.get("main_risk_drivers", []),
+        "offsets": final_output.get("risk_offsets", []),
+    }
+
+
+def _run_chat_agents(
+    ticker: str,
+    company_name: str,
+    sector: str,
+    intent: dict[str, Any],
+    query: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    intent_id = intent["id"]
+    if intent_id == "fundamental":
+        outputs = [run_fundamental_agent(ticker, company_name=company_name)]
+        return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
+    if intent_id == "market":
+        outputs = [run_market_sentiment_agent(ticker, company_name=company_name)]
+        return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
+    if intent_id == "sentiment":
+        outputs = [run_sentiment_agent(ticker, company_name=company_name)]
+        return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
+    if intent_id == "macro":
+        outputs = [run_macro_agent_safe(ticker, sector=sector, company_name=company_name)]
+        return outputs, _focused_final_output({"ticker": ticker, "company": company_name}, query, intent, outputs)
+
+    report = run_critic_agent(
+        ticker=ticker,
+        query=query,
+        company_name=company_name,
+        sector=sector,
+        use_llm=os.getenv("CRITIC_LLM_ENABLED", "0").lower() in {"1", "true", "yes"},
+    )
+    return report.get("agent_outputs", []), report.get("final_output", {})
+
+
+def _run_debate_for_compare(ticker: str, query: str = "") -> dict[str, Any]:
+    row = _company_payload(_find_company(ticker))
+    report = run_debate_state_machine(
+        ticker=ticker,
+        query=query or f"Compare {ticker} against another company.",
+        company_name=row.get("company") or ticker,
+        sector=row.get("sector") or "General",
+    )
+    path = _debate_path(ticker)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    log_verdict_run(report, run_type="compare_debate_state_machine", artifact_paths=[str(path)])
+    return report
+
+
+def _compare_companies(tickers: list[str], run_debate: bool = False, query: str = "") -> dict[str, Any]:
     unique_tickers = []
     for ticker in tickers:
         normalized = ticker.upper().strip()
@@ -361,7 +685,10 @@ def _compare_companies(tickers: list[str]) -> dict[str, Any]:
     companies_payload = []
     for ticker in unique_tickers:
         row = _company_payload(_find_company(ticker))
-        final = _read_json(_debate_path(ticker)) or _read_json(_verdict_path(ticker))
+        debate = _run_debate_for_compare(ticker, query=query) if run_debate else _read_json(_debate_path(ticker))
+        verdict = _read_json(_verdict_path(ticker))
+        final = debate or verdict
+        verdict_source = "debate" if debate else "critic" if verdict else "gold_fallback"
         final_output = (final or {}).get("final_output") or _gold_fallback_verdict(row)
         companies_payload.append({
             "ticker": ticker,
@@ -371,6 +698,7 @@ def _compare_companies(tickers: list[str]) -> dict[str, Any]:
             "label": final_output.get("final_risk_label") or row.get("risk_label"),
             "confidence": _safe_float(final_output.get("confidence")),
             "has_generated_verdict": final is not None,
+            "verdict_source": verdict_source,
         })
 
     ranked = sorted(companies_payload, key=lambda item: item.get("score") if item.get("score") is not None else 99.0)
@@ -383,6 +711,7 @@ def _compare_companies(tickers: list[str]) -> dict[str, Any]:
     return {
         "tickers": unique_tickers,
         "count": len(companies_payload),
+        "comparison_mode": "fresh_debate" if run_debate else "saved_verdicts",
         "companies": companies_payload,
         "summary": {
             "lower_risk_ticker": lowest["ticker"],
@@ -441,6 +770,72 @@ def market_lora_predict(request: MarketLoraRequest) -> dict[str, Any]:
     return predict_market_lora_payload(request.model_dump())
 
 
+@app.post("/api/chat")
+def chat(request: ChatRequest) -> dict[str, Any]:
+    ticker = request.ticker.upper().strip()
+    row = _company_payload(_find_company(ticker))
+    company_name = request.company or row.get("company") or ticker
+    sector = request.sector or row.get("sector") or "General"
+    intent = _chat_intent(request.query)
+    feedback_id = f"chat_{ticker}_{uuid.uuid4().hex[:12]}"
+    agent_outputs, final_output = _run_chat_agents(
+        ticker=ticker,
+        company_name=company_name,
+        sector=sector,
+        intent=intent,
+        query=request.query,
+    )
+    answer = _chat_answer(row, request.query, intent, agent_outputs, final_output)
+    _append_jsonl(
+        CHAT_TRAINING_CANDIDATES_PATH,
+        {
+            "feedback_id": feedback_id,
+            "timestamp": _utc_now(),
+            "ticker": ticker,
+            "company": company_name,
+            "sector": sector,
+            "query": request.query,
+            "intent_id": intent["id"],
+            "intent_label": intent["label"],
+            "ran_agents": [output.get("agent", "Agent") for output in agent_outputs],
+            "agent_outputs": agent_outputs,
+            "final_output": final_output,
+            "answer": answer,
+            "review_status": "pending_human_feedback",
+        },
+    )
+    return {
+        "ok": True,
+        "feedback_id": feedback_id,
+        "ticker": ticker,
+        "company": row,
+        "query": request.query,
+        "intent": {
+            "id": intent["id"],
+            "label": intent["label"],
+            "agents": intent["agents"],
+        },
+        "ran_agents": [output.get("agent", "Agent") for output in agent_outputs],
+        "agent_outputs": agent_outputs,
+        "final_output": final_output,
+        "answer": answer,
+    }
+
+
+@app.post("/api/chat/feedback")
+def chat_feedback(request: ChatFeedbackRequest) -> dict[str, Any]:
+    record = {
+        "feedback_id": request.feedback_id,
+        "timestamp": _utc_now(),
+        "ticker": request.ticker.upper().strip(),
+        "query": request.query,
+        "rating": request.rating,
+        "correction": request.correction.strip(),
+    }
+    _append_jsonl(CHAT_FEEDBACK_PATH, record)
+    return {"ok": True, "saved": True, "feedback": record}
+
+
 @app.get("/api/companies")
 def companies() -> dict[str, Any]:
     rows = [_company_payload(row) for row in _gold_rows()]
@@ -455,7 +850,7 @@ def compare_get(tickers: str) -> dict[str, Any]:
 
 @app.post("/api/compare")
 def compare_post(request: CompareRequest) -> dict[str, Any]:
-    return _compare_companies(request.tickers)
+    return _compare_companies(request.tickers, run_debate=request.run_debate, query=request.query)
 
 
 @app.get("/api/companies/{ticker}")
@@ -480,6 +875,11 @@ def company_prices(ticker: str) -> dict[str, Any]:
         for row in rows
     ]
     return {"ticker": ticker.upper(), "count": len(prices), "prices": prices}
+
+
+@app.get("/api/companies/{ticker}/feature-priority")
+def company_feature_priority(ticker: str) -> dict[str, Any]:
+    return _feature_priority_payload(ticker)
 
 
 @app.get("/api/verdicts/{ticker}")
@@ -535,7 +935,7 @@ def generate_verdict(request: VerdictRequest) -> dict[str, Any]:
             query=request.query,
             company_name=company_name,
             sector=sector,
-            use_llm=request.use_llm,
+            use_llm=request.use_llm or os.getenv("CRITIC_LLM_ENABLED", "0").lower() in {"1", "true", "yes"},
         )
         json_path = Path(save_json_verdict(report))
         pdf_path = Path(save_pdf_verdict(report))

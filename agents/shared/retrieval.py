@@ -29,6 +29,7 @@ VECTOR_STORE_DIR = PROJECT_ROOT / "data" / "gold" / "vector_store"
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from agents.orchestrator.critic_agent import _read_csv, _safe_float, _usd_m
+from agents.shared.financial_rag import build_rag_context
 
 COLLECTION_NAME = "financial_documents"
 
@@ -220,6 +221,7 @@ def main() -> None:
     parser.add_argument("ticker", nargs="?", help="Ticker symbol to query, for example AAPL")
     parser.add_argument("--query", default=None, help="Natural-language query to retrieve evidence for.")
     parser.add_argument("--k", type=int, default=5, help="Number of chunks to retrieve.")
+    parser.add_argument("--agent", default=None, help="Also show curated RAG rules for this agent id.")
     parser.add_argument("--build-all", action="store_true", help="(Re)build the index for every ticker in data/silver/.")
     args = parser.parse_args()
 
@@ -231,9 +233,25 @@ def main() -> None:
     if not args.ticker or not args.query:
         parser.error("Provide a ticker and --query, or use --build-all.")
 
-    results = retrieve(args.ticker, args.query, k=args.k)
+    try:
+        results = retrieve(args.ticker, args.query, k=args.k)
+    except ModuleNotFoundError as exc:
+        if exc.name != "chromadb":
+            raise
+        results = []
+        print("Vector evidence retrieval unavailable: install chromadb or rebuild the environment.")
+        print("Curated financial RAG rules can still be shown.\n")
+
+    if args.agent:
+        rag_context = build_rag_context(args.agent, args.query, limit=args.k)
+    else:
+        rag_context = None
+
     if not results:
-        print(f"No chunks found for {args.ticker.upper()}. Run --build-all first.")
+        print(f"No vector chunks found for {args.ticker.upper()}. Run --build-all after installing chromadb.")
+        if rag_context:
+            print("\nCurated financial RAG rules")
+            print(rag_context["context"] or "No matching financial terms found.")
         return
 
     print(f"Top {len(results)} chunks for {args.ticker.upper()} — query: {args.query!r}\n")
@@ -241,6 +259,10 @@ def main() -> None:
         when = item.get("end_date") or item.get("date") or "-"
         print(f"[{i}] distance={item['distance']:.4f} source={item.get('source')} date={when}")
         print(f"    {item['text']}\n")
+
+    if rag_context:
+        print("Curated financial RAG rules")
+        print(rag_context["context"] or "No matching financial terms found.")
 
 
 if __name__ == "__main__":

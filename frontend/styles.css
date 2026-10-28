@@ -730,6 +730,46 @@ input {
   font-size: 12px;
 }
 
+.feedback-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--sidebar-muted);
+  font-size: 12px;
+}
+
+.feedback-panel[hidden] {
+  display: none;
+}
+
+.feedback-panel span {
+  color: var(--sidebar-text);
+  font-weight: 700;
+}
+
+.feedback-button {
+  min-height: 30px;
+  padding: 0 10px;
+  color: #d6fff9;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--sidebar-line);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.feedback-button:hover {
+  border-color: rgba(94, 234, 212, 0.5);
+}
+
+.feedback-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
 .artifact-status {
   display: inline-flex;
   min-height: 38px;
@@ -870,6 +910,66 @@ input {
 
 .agent-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.priority-summary {
+  display: grid;
+  gap: 14px;
+}
+
+.priority-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.priority-metric {
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.priority-metric strong {
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.priority-metric span,
+.priority-item p,
+.priority-item small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.priority-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.priority-item {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.priority-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.priority-item p,
+.priority-item small {
+  margin: 0;
+  line-height: 1.45;
 }
 
 /* ─── Model registry / training ─────────────────────────────────────── */
@@ -1317,6 +1417,8 @@ input {
   .decision-hero,
   .content-grid,
   .agent-grid,
+  .priority-list,
+  .priority-metrics,
   .compare-grid {
     grid-template-columns: 1fr;
   }
