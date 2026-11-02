@@ -598,7 +598,7 @@ function drawRiskGauge(score, label) {
 }
 
 function criticCardFromFinal(finalOutput, activeType) {
-  if (activeType === "chat") return null;
+  if (activeType === "chat" || activeType === "fallback") return null;
   if (!finalOutput || finalOutput.final_risk_score === undefined) return null;
   const drivers = finalOutput.main_risk_drivers || [];
   const offsets = finalOutput.risk_offsets || [];
