@@ -91,6 +91,30 @@ def _clamp_score(score: float) -> float:
     return round(max(1.0, min(10.0, float(score))), 2)
 
 
+def _as_bool(value: Any) -> bool:
+    if isinstance(value, str):
+        return value.strip().lower() in {"true", "1", "yes"}
+    return bool(value)
+
+
+def _sanitize_llm_verdict(result: dict[str, Any]) -> dict[str, Any] | None:
+    """Make an LLM critic verdict consistent with project rules, or reject it."""
+    try:
+        score = _clamp_score(result.get("final_risk_score"))
+    except (TypeError, ValueError):
+        return None
+    try:
+        confidence = float(result.get("confidence", 0.5))
+    except (TypeError, ValueError):
+        confidence = 0.5
+    result["final_risk_score"] = score
+    result["final_risk_label"] = _label_from_score(score)
+    result["confidence"] = round(max(0.0, min(1.0, confidence)), 2)
+    result["disagreement_detected"] = _as_bool(result.get("disagreement_detected"))
+    result["requires_human_review"] = _as_bool(result.get("requires_human_review"))
+    return result
+
+
 def _read_csv(path: Path) -> list[dict[str, str]]:
     if not path.exists():
         return []
@@ -1031,9 +1055,10 @@ def run_critic_agent(
     ]
 
     llm_result = _llm_critic(outputs, query) if use_llm else None
+    final = None
     if llm_result and llm_result.get("critic_type") != "llm_failed_fallback_needed":
-        final = llm_result
-    else:
+        final = _sanitize_llm_verdict(llm_result)
+    if final is None:
         final = _weighted_critic(outputs, query=query)
         if llm_result and llm_result.get("error"):
             final["llm_error"] = llm_result["error"]
