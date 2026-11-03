@@ -487,6 +487,8 @@ function renderDecisionHero(row, finalOutput, verdictPayload, answer) {
   const score = finalOutput.final_risk_score ?? row.composite_risk;
   const label = finalOutput.final_risk_label ?? row.risk_label ?? "-";
   const mode = verdictPayload.active_verdict_type === "debate" ? "debate verdict" : verdictPayload.active_verdict_type === "critic" ? "critic verdict" : "gold fallback";
+  const report = verdictPayload.active_verdict_type === "debate" ? verdictPayload.debate : verdictPayload.verdict;
+  const executionMode = report?.execution_mode || "baseline";
   const confidence = finalOutput.confidence === null || finalOutput.confidence === undefined ? "-" : fmt(finalOutput.confidence, 2);
   const reviewState = finalOutput.requires_human_review ? "Human review" : finalOutput.disagreement_detected ? "Review disagreement" : "Auto review";
 
@@ -501,7 +503,7 @@ function renderDecisionHero(row, finalOutput, verdictPayload, answer) {
   setTextList("heroOffsets", finalOutput.risk_offsets, "No material offsets captured.");
   $("artifactStatus").textContent = verdictPayload.fallback
     ? "Gold fallback active - generate verdict for full audit package"
-    : `${mode} loaded with ${finalOutput.policy_evidence_trail?.length || 0} policy checks`;
+    : `${mode} loaded in ${executionMode} mode with ${finalOutput.policy_evidence_trail?.length || 0} policy checks`;
   drawRiskGauge(score, label);
 }
 
@@ -597,7 +599,7 @@ function drawRiskGauge(score, label) {
   `;
 }
 
-function criticCardFromFinal(finalOutput, activeType) {
+function criticCardFromFinal(finalOutput, activeType, executionMode = "baseline") {
   if (activeType === "chat") return null;
   if (!finalOutput || finalOutput.final_risk_score === undefined) return null;
   const drivers = finalOutput.main_risk_drivers || [];
@@ -606,6 +608,7 @@ function criticCardFromFinal(finalOutput, activeType) {
     finalOutput.final_decision,
     finalOutput.disagreement_detected ? "Critic detected a material disagreement across agents." : "Critic did not detect a material disagreement across agents.",
     finalOutput.requires_human_review ? "Human review is required before using this verdict." : "No human-review flag was raised by the critic.",
+    ...(finalOutput.freshness_warnings || []).map((item) => `Freshness: ${item}`),
     ...drivers.map((item) => `Risk driver: ${item}`),
     ...offsets.map((item) => `Offset: ${item}`),
   ].filter(Boolean);
@@ -616,16 +619,18 @@ function criticCardFromFinal(finalOutput, activeType) {
     risk_score: finalOutput.final_risk_score,
     risk_label: finalOutput.final_risk_label,
     confidence: finalOutput.confidence,
+    execution_mode: finalOutput.execution_mode || executionMode,
+    attempts: finalOutput.attempts || 1,
     evidence,
     negative_signals: [],
   };
 }
 
-function renderAgentCards(outputs = [], finalOutput = null, activeType = "") {
+function renderAgentCards(outputs = [], finalOutput = null, activeType = "", executionMode = "baseline") {
   const grid = $("agentGrid");
   grid.textContent = "";
   const cards = [...(outputs || [])];
-  const criticCard = criticCardFromFinal(finalOutput, activeType);
+  const criticCard = criticCardFromFinal(finalOutput, activeType, executionMode);
   if (criticCard) cards.push(criticCard);
 
   if (!cards.length) {
@@ -652,6 +657,22 @@ function renderAgentCards(outputs = [], finalOutput = null, activeType = "") {
       <ul class="evidence-list"></ul>
     `;
     const list = article.querySelector(".evidence-list");
+    const execution = document.createElement("p");
+    execution.className = "agent-execution-meta";
+    const attempts = Number(agent.attempts || 1);
+    execution.textContent = `${agent.execution_mode || "baseline"} mode · ${attempts} attempt${attempts === 1 ? "" : "s"}`;
+    article.insertBefore(execution, list);
+
+    const reliabilityNotes = [
+      ...(agent.healing_actions || []).map((item) => `Healing: ${item}`),
+      ...(agent.data_quality_warnings || []).map((item) => `Data quality: ${item}`),
+    ];
+    reliabilityNotes.forEach((item) => {
+      const note = document.createElement("p");
+      note.className = "agent-reliability-note";
+      note.textContent = item;
+      article.insertBefore(note, list);
+    });
     const evidenceItems = [
       ...(agent.evidence || []),
       ...(agent.negative_signals || []).map((item) => `Signal: ${item}`),
@@ -895,21 +916,71 @@ function renderContradictions(verdictPayload) {
 function renderMonitoring(records = []) {
   const list = $("monitoring");
   list.textContent = "";
-  const latest = records.slice(-4).reverse();
+  const latest = records.slice(-8).reverse();
   if (!latest.length) {
     list.innerHTML = `<div class="empty">No monitoring records found for this ticker.</div>`;
     return;
   }
 
+  const groups = [];
   latest.forEach((record) => {
-    const row = document.createElement("div");
-    row.className = "monitor-row";
-    row.innerHTML = `
-      <strong>${record.run_type || "run"} - ${record.final_risk_label || "-"}</strong>
-      <p>${record.timestamp || ""}</p>
-      <p>score ${fmt(record.final_risk_score, 2)} | confidence ${fmt(record.confidence, 2)} | contradictions ${record.contradiction_count ?? 0}</p>
-    `;
-    list.appendChild(row);
+    const timestamp = record.timestamp || "Unknown time";
+    const epoch = Date.parse(timestamp);
+    let group = groups.find((item) => {
+      if (!Number.isFinite(epoch) || !Number.isFinite(item.epoch)) return item.timestamp === timestamp;
+      return Math.abs(item.epoch - epoch) <= 5 * 60 * 1000;
+    });
+    if (!group) {
+      group = { timestamp, epoch, records: [] };
+      groups.push(group);
+    }
+    group.records.push(record);
+  });
+
+  const runLabel = (runType = "run") => {
+    const labels = {
+      critic_verdict: "Critic verdict",
+      debate_state_machine: "Debate state machine",
+      compare_debate_state_machine: "Comparison debate",
+    };
+    return labels[runType] || runType.replaceAll("_", " ");
+  };
+
+  const formatTime = (value) => {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+  };
+
+  groups.slice(0, 4).forEach((group, index) => {
+    const run = document.createElement("section");
+    run.className = "monitor-run";
+
+    const header = document.createElement("div");
+    header.className = "monitor-run-head";
+    header.innerHTML = `<div><span class="monitor-run-label">Run ${groups.length - index}</span><strong>${formatTime(group.timestamp)}</strong></div><span class="monitor-count">${group.records.length} event${group.records.length === 1 ? "" : "s"}</span>`;
+    run.appendChild(header);
+
+    group.records.forEach((record) => {
+      const row = document.createElement("div");
+      row.className = "monitor-event";
+
+      const title = document.createElement("div");
+      title.className = "monitor-event-title";
+      const label = document.createElement("strong");
+      label.textContent = runLabel(record.run_type);
+      const risk = document.createElement("span");
+      const riskLabel = String(record.final_risk_label || "-").toLowerCase();
+      risk.className = `status-pill risk-${riskLabel}`;
+      risk.textContent = String(record.final_risk_label || "-");
+      title.append(label, risk);
+
+      const details = document.createElement("p");
+      details.textContent = `Score ${fmt(record.final_risk_score, 2)}  |  Confidence ${fmt(record.confidence, 2)}  |  ${record.contradiction_count ?? 0} contradiction${record.contradiction_count === 1 ? "" : "s"}`;
+      row.append(title, details);
+      run.appendChild(row);
+    });
+    list.appendChild(run);
   });
 }
 
@@ -1166,7 +1237,8 @@ async function selectTicker(ticker, question = "") {
   renderAdvisorAnswer(rec);
   renderDrivers(final);
   drawPriceChart(priceRows, ticker);
-  renderAgentCards(outputs, final, verdictPayload.active_verdict_type);
+  const executionMode = (verdictPayload.active_verdict_type === "debate" ? verdictPayload.debate : verdictPayload.verdict)?.execution_mode || "baseline";
+  renderAgentCards(outputs, final, verdictPayload.active_verdict_type, executionMode);
   renderFeaturePriority(priorityPayload);
   renderPolicyTrail(final);
   renderContradictions(verdictPayload);

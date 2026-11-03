@@ -11,7 +11,40 @@ Example:
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
+
+
+def extract_prediction(text: str) -> dict:
+    """Extract the last valid JSON object and normalize the model label."""
+    decoder = json.JSONDecoder()
+    candidates = []
+    for index, character in enumerate(text):
+        if character != "{":
+            continue
+        try:
+            value, _ = decoder.raw_decode(text[index:])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict):
+            candidates.append(value)
+    if not candidates:
+        return {
+            "error": "No valid JSON object was generated.",
+            "raw_text": text[-1000:],
+        }
+
+    raw = candidates[-1]
+    score = raw.get("market_risk_score", raw.get("risk_score"))
+    label = raw.get("market_risk_label", raw.get("risk_label"))
+    result = {
+        "market_risk_score": score,
+        "market_risk_label": str(label).upper() if label is not None else None,
+        "explanation": raw.get("explanation", ""),
+    }
+    if "confidence" in raw:
+        result["confidence"] = raw["confidence"]
+    return result
 
 
 def main() -> None:
@@ -87,13 +120,17 @@ def main() -> None:
         text = f"SYSTEM: {messages[0]['content']}\n\nUSER: {messages[1]['content']}\n\nASSISTANT:"
 
     inputs = tokenizer(text, return_tensors="pt").to(model.device)
+    input_length = inputs["input_ids"].shape[1]
     outputs = model.generate(
         **inputs,
         max_new_tokens=args.max_new_tokens,
         do_sample=False,
         pad_token_id=tokenizer.eos_token_id,
     )
-    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+    # Decode only newly generated tokens so the prompt is never echoed back.
+    generated_tokens = outputs[0][input_length:]
+    generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
+    print(json.dumps(extract_prediction(generated_text), ensure_ascii=True))
 
 
 if __name__ == "__main__":
