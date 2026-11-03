@@ -90,12 +90,35 @@ def _is_relevant_news(row: dict[str, str], ticker: str) -> bool:
     return ticker_hit and finance_hit
 
 
+def _company_name_for_ticker(ticker: str) -> str:
+    """Resolve a company alias from persisted Silver price metadata."""
+    rows = _read_csv(SILVER_DIR / f"silver_prices_{ticker.upper()}.csv")
+    if not rows:
+        return ticker
+    latest = rows[-1]
+    return str(latest.get("long_name") or latest.get("company") or ticker).strip()
+
+
 def _load_raw_news(ticker: str, limit: int = 40) -> list[dict[str, str]]:
     ticker = ticker.upper()
-    rows = [
-        row for row in _read_csv(BRONZE_DIR / "newsapi_headlines_raw.csv")
-        if str(row.get("ticker", "")).upper() == ticker and row.get("title") and _is_relevant_news(row, ticker)
-    ]
+    company_name = _company_name_for_ticker(ticker)
+    rows = []
+    for row in _read_csv(BRONZE_DIR / "newsapi_headlines_raw.csv"):
+        if not row.get("title"):
+            continue
+
+        row_ticker = str(row.get("ticker", "")).upper().strip()
+        headline_text = f"{row.get('title', '')} {row.get('description', '')}"
+        company_match = bool(_company_keywords(company_name) & _tokens(headline_text))
+        if row_ticker != ticker and not company_match:
+            continue
+
+        # Include the resolved alias when a source omitted or mislabeled the
+        # company column, then apply the normal finance-language relevance gate.
+        candidate = dict(row)
+        candidate["company"] = f"{row.get('company', '')} {company_name}".strip()
+        if _is_relevant_news(candidate, ticker):
+            rows.append(row)
     return sorted(rows, key=lambda row: str(row.get("published_at", "")), reverse=True)[:limit]
 
 

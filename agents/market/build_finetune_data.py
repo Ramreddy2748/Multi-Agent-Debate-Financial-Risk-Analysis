@@ -90,12 +90,10 @@ def build_example(row: dict[str, str], agent: MarketAgent) -> dict[str, Any] | N
 
     target_score, target_label = _target_from_gold(row)
     features = _rounded_features(analysis["features"])
-    features.update({
-        "sector": row.get("sector") or "Unknown sector",
-        "gold_volatility_risk": round(_safe_float(row.get("volatility_risk"), 5.0) or 5.0, 2),
-        "gold_composite_risk": round(_safe_float(row.get("composite_risk"), 5.0) or 5.0, 2),
-        "gold_risk_label": row.get("risk_label") or "MODERATE",
-    })
+    # Do not include Gold target columns in the input prompt. The target is
+    # derived from volatility_risk below; including any gold_* field would let
+    # the model copy the answer and would invalidate evaluation.
+    features["sector"] = row.get("sector") or "Unknown sector"
 
     prompt = {
         "ticker": ticker,

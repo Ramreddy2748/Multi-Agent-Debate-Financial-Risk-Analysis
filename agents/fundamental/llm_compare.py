@@ -37,6 +37,7 @@ load_dotenv()
 
 from agents.shared import llm_comparison
 from agents.orchestrator.critic_agent import SILVER_DIR, _latest_row, _read_csv, _safe_float, _usd_m
+from agents.shared.financial_rag import build_rag_context
 from agents.shared.retrieval import retrieve
 
 AGENT_LABEL = "fundamental"
@@ -93,13 +94,21 @@ def _format_chunks(chunks: list[dict[str, Any]]) -> str:
     return "\n".join(f"- {chunk['text']}" for chunk in chunks)
 
 
+def _format_terms(context: dict[str, Any]) -> str:
+    return context.get("financial_terms") or "(no curated financial rules available)"
+
+
 def context_loader(ticker: str) -> dict[str, Any]:
     edgar = _load_edgar_context(ticker)
-    chunks = retrieve(ticker, "leverage and profitability risk", k=5)
+    query = "leverage liquidity profitability valuation risk"
+    chunks = retrieve(ticker, query, k=5)
+    rag = build_rag_context("fundamental", query=query, limit=5)
     return {
         "company": edgar.get("company") or ticker,
         "edgar": edgar,
         "chunks": chunks,
+        "financial_terms": rag["context"],
+        "financial_terms_source": rag["source"],
     }
 
 
@@ -119,6 +128,10 @@ LATEST FILING DATA
 
 RETRIEVED EVIDENCE (top matches for "leverage and profitability risk")
 {_format_chunks(context['chunks'])}
+
+CURATED FINANCIAL RAG RULES (definitions, thresholds, and priority rules)
+Source: {context['financial_terms_source']}
+{_format_terms(context)}
 
 Return ONLY this exact JSON:
 {{
@@ -151,6 +164,9 @@ CANDIDATE ASSESSMENT
 
 RETRIEVED SOURCE EVIDENCE
 {_format_chunks(chunks)}
+
+CURATED FINANCIAL RAG RULES
+{_format_terms(context)}
 
 Return ONLY this exact JSON:
 {{
