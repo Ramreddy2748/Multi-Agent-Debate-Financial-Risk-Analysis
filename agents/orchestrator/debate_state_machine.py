@@ -225,7 +225,7 @@ def synthesize_verdict(state: DebateState) -> DebateState:
 def _run_fallback_state_machine(state: DebateState) -> DebateState:
     state.update(collect_agent_positions(state))
     state.update(critique_contradictions(state))
-    if state.get("contradictions") and state.get("revision_round", 0) < state.get("max_revision_rounds", 1):
+    while state.get("contradictions") and state.get("revision_round", 0) < state.get("max_revision_rounds", 1):
         state.update(revise_positions(state))
         state.update(critique_contradictions(state))
     state.update(synthesize_verdict(state))
