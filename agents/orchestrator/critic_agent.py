@@ -28,6 +28,7 @@ import statistics
 import sys
 import urllib.error
 import urllib.request
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Optional
 
@@ -241,12 +242,19 @@ def _run_market_lora_remote(features: dict[str, Any]) -> dict[str, Any] | None:
         with urllib.request.urlopen(request, timeout=MARKET_LORA_REMOTE_TIMEOUT) as response:
             body = response.read().decode("utf-8")
         parsed = json.loads(body)
+        candidate = None
         if isinstance(parsed, dict) and isinstance(parsed.get("prediction"), dict):
-            return parsed["prediction"]
-        if isinstance(parsed, dict) and isinstance(parsed.get("raw_output"), dict):
-            return parsed["raw_output"]
-        if isinstance(parsed, dict):
-            return parsed
+            candidate = parsed["prediction"]
+        elif isinstance(parsed, dict) and isinstance(parsed.get("raw_output"), dict):
+            candidate = parsed["raw_output"]
+        elif isinstance(parsed, dict):
+            candidate = parsed
+        if isinstance(candidate, dict):
+            candidate_text = json.dumps(candidate, default=str).lower()
+            if any(term in candidate_text for term in ("json parse error", "parse error", "invalid json")):
+                _MARKET_LORA_LAST_ERROR = "Remote LoRA returned an invalid or truncated JSON prediction."
+                return None
+            return candidate
         _MARKET_LORA_LAST_ERROR = "Remote LoRA response was not a JSON object."
         return None
     except urllib.error.HTTPError as exc:
@@ -371,28 +379,46 @@ def predict_market_lora_payload(features: dict[str, Any]) -> dict[str, Any]:
 
 
 def _normalize_market_lora_output(raw: dict[str, Any], features: dict[str, Any], fallback_score: float) -> dict[str, Any]:
-    score = _safe_float(
+    raw_score = _safe_float(
         raw.get("risk_score")
         or raw.get("market_risk_score")
         or raw.get("combined_risk")
         or raw.get("score"),
         fallback_score,
     )
-    score = _clamp_score(score or fallback_score)
-    label = str(raw.get("risk_label") or raw.get("market_risk_label") or _label_from_score(score)).upper()
+    raw_score = _clamp_score(raw_score or fallback_score)
+    feature_score = _clamp_score(fallback_score)
+    calibration_applied = abs(raw_score - feature_score) >= 2.0
+    score = _clamp_score((raw_score + feature_score) / 2.0 if calibration_applied else raw_score)
+    label = str(raw.get("risk_label") or raw.get("market_risk_label") or _label_from_score(raw_score)).upper()
     if label not in {"LOW", "MODERATE", "HIGH"}:
+        label = _label_from_score(raw_score)
+    if calibration_applied:
         label = _label_from_score(score)
     confidence = _safe_float(raw.get("confidence"), 0.65)
-    confidence = round(max(0.0, min(1.0, confidence or 0.65)), 2)
+    # Model-generated confidence is not calibrated probability. Keep it below
+    # certainty even when the adapter emits 1.0.
+    confidence = round(max(0.0, min(0.85, confidence or 0.65)), 2)
+    if calibration_applied:
+        confidence = min(confidence, 0.55)
     explanation = str(raw.get("explanation") or raw.get("justification") or "LoRA market volatility model generated the risk estimate.")
+    if calibration_applied:
+        explanation = (
+            f"Model score {raw_score:.2f} conflicted with the independent feature score "
+            f"{feature_score:.2f}; calibrated market score is {score:.2f}."
+        )
     return {
         "risk_score": score,
         "risk_label": label,
         "confidence": confidence,
         "explanation": explanation,
         "raw_output": raw,
+        "raw_model_score": raw_score,
+        "feature_rule_score": feature_score,
+        "calibration_applied": calibration_applied,
         "evidence": [
             f"LoRA adapter {MARKET_LORA_ADAPTER_DIR.name} produced market risk score {score:.2f}.",
+            *([f"Raw LoRA score was {raw_score:.2f}; independent feature score was {feature_score:.2f}."] if calibration_applied else []),
             f"Annualized volatility is {features['annualized_volatility']:.2%}; beta is {features['beta']:.2f}.",
             f"Max drawdown is {features['max_drawdown']:.2%}.",
             f"Price is {features['price_vs_52w_high_pct']:.2f}% versus its 52-week high.",
@@ -601,12 +627,18 @@ def run_market_sentiment_agent(ticker: str, company_name: Optional[str] = None) 
                 "price_vs_52w_high_pct": round(price_vs_high, 2),
                 "ytd_return_pct": round(ytd_return, 2),
                 "rule_fallback_score": score,
+                "raw_model_score": normalized_lora["raw_model_score"],
+                "feature_rule_score": normalized_lora["feature_rule_score"],
+                "calibration_applied": normalized_lora["calibration_applied"],
             },
             "evidence": normalized_lora["evidence"],
             "positive_signals": [
                 "Fine-tuned market volatility LoRA adapter was available and used for this specialist verdict."
             ],
-            "negative_signals": [],
+            "negative_signals": (
+                ["LoRA score conflicted with independent volatility/beta features; calibrated blend used."]
+                if normalized_lora["calibration_applied"] else []
+            ),
             "overall_assessment": normalized_lora["explanation"],
             "raw_model_output": normalized_lora["raw_output"],
         }
@@ -885,6 +917,86 @@ def _weighted_critic(agent_outputs: list[dict[str, Any]], query: str = "") -> di
     }
 
 
+def _quality_review_reasons(agent_outputs: list[dict[str, Any]]) -> list[str]:
+    """Return deterministic review triggers that an LLM cannot override."""
+    reasons: list[str] = []
+    labels = [str(o.get("risk_label")) for o in agent_outputs if o.get("risk_label")]
+    scores = [
+        value for value in (
+            _safe_float(o.get("risk_score", o.get("macro_risk_score")))
+            for o in agent_outputs
+        ) if value is not None
+    ]
+    if len(set(labels)) > 1:
+        reasons.append("specialist agents disagree on risk labels")
+    if len(scores) >= 2 and max(scores) - min(scores) >= 2.0:
+        reasons.append(f"specialist score spread is {max(scores) - min(scores):.2f} points")
+    for output in agent_outputs:
+        claim_type = str(output.get("claim_type", "")).upper()
+        evidence = " ".join(str(item) for item in output.get("evidence", []))
+        warnings = output.get("data_quality_warnings", [])
+        if "NO_NEWS" in claim_type or "NEWS COVERAGE IS UNAVAILABLE" in evidence.upper():
+            reasons.append("news evidence is unavailable")
+        if warnings:
+            reasons.append(f"{output.get('agent', 'Agent')} reported data-quality warnings")
+        if "FALLBACK" in claim_type or "RULE_BASED" in claim_type and output.get("fallback_reason"):
+            reasons.append(f"{output.get('agent', 'Agent')} used a fallback")
+    return list(dict.fromkeys(reasons))
+
+
+def _freshness_review_reasons(agent_outputs: list[dict[str, Any]]) -> list[str]:
+    """Flag specialist evidence that is missing, stale, or badly misaligned."""
+    dated: list[tuple[str, date]] = []
+    warnings: list[str] = []
+    today = date.today()
+    max_lag_days = int(os.getenv("MAX_EVIDENCE_AGE_DAYS", "90"))
+    for output in agent_outputs:
+        agent = str(output.get("agent", "Agent"))
+        raw_date = output.get("as_of_date")
+        if not raw_date:
+            if agent in {"Fundamental Agent", "Market + Volatility Agent", "Macro-Economic Agent"}:
+                warnings.append(f"{agent} has no as-of date")
+            continue
+        try:
+            parsed = datetime.fromisoformat(str(raw_date).replace("Z", "+00:00")).date()
+        except ValueError:
+            warnings.append(f"{agent} has an invalid as-of date: {raw_date}")
+            continue
+        dated.append((agent, parsed))
+        age = (today - parsed).days
+        if age > max_lag_days:
+            warnings.append(f"{agent} evidence is {age} days old (limit {max_lag_days})")
+        if parsed > today:
+            warnings.append(f"{agent} as-of date {parsed.isoformat()} is in the future")
+
+    if dated:
+        latest = max(parsed for _, parsed in dated)
+        for agent, parsed in dated:
+            lag = (latest - parsed).days
+            if lag > max_lag_days:
+                warnings.append(f"{agent} is {lag} days older than the newest specialist evidence")
+    return list(dict.fromkeys(warnings))
+
+
+def _enforce_review_guardrails(final: dict[str, Any], agent_outputs: list[dict[str, Any]]) -> dict[str, Any]:
+    freshness_warnings = _freshness_review_reasons(agent_outputs)
+    reasons = _quality_review_reasons(agent_outputs) + [f"freshness: {item}" for item in freshness_warnings]
+    if not reasons:
+        return final
+    final["requires_human_review"] = True
+    final["disagreement_detected"] = True if any("disagree" in reason or "spread" in reason for reason in reasons) else final.get("disagreement_detected", False)
+    try:
+        final["confidence"] = min(float(final.get("confidence", 0.60)), 0.55)
+    except (TypeError, ValueError):
+        final["confidence"] = 0.55
+    final["quality_review_reasons"] = reasons
+    final["freshness_warnings"] = freshness_warnings
+    decision = str(final.get("final_decision", "Final verdict generated."))
+    if "human review" not in decision.lower():
+        final["final_decision"] = decision.rstrip(".") + ". Human review is required because evidence quality or specialist agreement thresholds were not met."
+    return final
+
+
 def _critic_prompt(agent_outputs: list[dict[str, Any]], query: str) -> dict[str, Any]:
     return {
         "query": query,
@@ -1036,6 +1148,181 @@ def _llm_critic(agent_outputs: list[dict[str, Any]], query: str) -> Optional[dic
     return _openai_compatible_critic(agent_outputs, query)
 
 
+def _system_mode() -> str:
+    mode = os.getenv("SYSTEM_MODE", "baseline").strip().lower()
+    return "self_healing" if mode in {"self_healing", "self-healing", "healing"} else "baseline"
+
+
+def _valid_agent_output(output: Any) -> bool:
+    if not isinstance(output, dict) or not output.get("agent"):
+        return False
+    raw_score = output.get("risk_score", output.get("macro_risk_score"))
+    try:
+        score = float(raw_score)
+    except (TypeError, ValueError):
+        return False
+    return 0.0 <= score <= 10.0 and bool(output.get("risk_label"))
+
+
+def _confidence_value(output: dict[str, Any]) -> Optional[float]:
+    value = output.get("confidence")
+    if isinstance(value, str):
+        value = {"low": 0.33, "medium": 0.60, "high": 0.85}.get(value.strip().lower())
+    try:
+        return float(value) if value is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _self_healing_confidence_threshold() -> float:
+    try:
+        return max(0.0, min(1.0, float(os.getenv("SELF_HEALING_MIN_CONFIDENCE", "0.50"))))
+    except ValueError:
+        return 0.50
+
+
+def _low_confidence_reason(output: dict[str, Any], threshold: float) -> str:
+    """Explain low confidence using only fields returned by the specialist."""
+    confidence = _confidence_value(output)
+    if confidence is None:
+        return "The agent did not return a numeric confidence value."
+
+    reasons = [
+        f"Model confidence {confidence:.4f} is below the {threshold:.2f} threshold."
+    ]
+    probabilities = output.get("raw_probabilities")
+    if isinstance(probabilities, dict):
+        numeric = []
+        for label, value in probabilities.items():
+            try:
+                numeric.append((str(label).upper(), float(value)))
+            except (TypeError, ValueError):
+                continue
+        numeric.sort(key=lambda item: item[1], reverse=True)
+        if len(numeric) >= 2:
+            margin = numeric[0][1] - numeric[1][1]
+            if margin < 0.15:
+                reasons.append(
+                    f"The top two class probabilities are close "
+                    f"({numeric[0][0]} {numeric[0][1]:.4f} vs "
+                    f"{numeric[1][0]} {numeric[1][1]:.4f}; margin {margin:.4f})."
+                )
+
+    if not output.get("evidence"):
+        reasons.append("The agent returned limited supporting evidence.")
+    if str(output.get("claim_type", "")).upper().endswith("FALLBACK") or output.get("fallback_reason"):
+        reasons.append("The result depends on a fallback path.")
+    return " ".join(reasons)
+
+
+def _agent_execution_fallback(agent_name: str, error: str, mode: str) -> dict[str, Any]:
+    return {
+        "agent": agent_name,
+        "risk_score": 5.0,
+        "risk_label": "MODERATE",
+        "confidence": 0.20,
+        "claim_type": "AGENT_EXECUTION_FALLBACK",
+        "evidence": [f"{agent_name} did not return a valid result: {error}"],
+        "negative_signals": ["Agent output unavailable; human review is required."],
+        "execution_mode": mode,
+        "healing_actions": ["returned conservative fallback after failed validation"],
+    }
+
+
+def run_specialist_agents(
+    ticker: str,
+    company_name: str,
+    sector: str,
+) -> list[dict[str, Any]]:
+    """Run all specialists with optional reliability controls.
+
+    Baseline preserves one direct call per agent. Self-healing retries failed or
+    malformed calls, records the recovery action, and emits a conservative
+    structured fallback instead of allowing one agent to crash the debate.
+    """
+    mode = _system_mode()
+    confidence_threshold = _self_healing_confidence_threshold()
+    runners = [
+        ("Fundamental Agent", lambda: run_fundamental_agent(ticker, company_name=company_name)),
+        ("Market + Volatility Agent", lambda: run_market_sentiment_agent(ticker, company_name=company_name)),
+        ("Sentiment Agent", lambda: run_sentiment_agent(ticker, company_name=company_name)),
+        ("Macro-Economic Agent", lambda: run_macro_agent_safe(ticker, sector=sector, company_name=company_name)),
+    ]
+    outputs: list[dict[str, Any]] = []
+    for agent_name, runner in runners:
+        attempts = 2 if mode == "self_healing" else 1
+        last_error = "invalid agent output"
+        for attempt in range(1, attempts + 1):
+            try:
+                output = runner()
+                if not _valid_agent_output(output):
+                    raise ValueError("missing agent name, risk label, or numeric score")
+                output = dict(output)
+                output["execution_mode"] = mode
+                output["attempts"] = attempt
+                confidence = _confidence_value(output)
+                low_confidence = confidence is not None and confidence < confidence_threshold
+                if low_confidence and mode == "self_healing" and attempt < attempts:
+                    raise ValueError(
+                        f"confidence {confidence:.4f} is below self-healing threshold "
+                        f"{confidence_threshold:.4f}"
+                    )
+                serialized_output = json.dumps(output, default=str).lower()
+                failure_signal = any(term in serialized_output for term in (
+                    "json parse error",
+                    "parse error",
+                    "invalid json",
+                    "request failed",
+                    "timeout",
+                    "exception",
+                ))
+                if failure_signal and mode == "self_healing" and attempt < attempts:
+                    raise ValueError("agent returned an internal failure signal")
+
+                warnings = []
+                for evidence in [
+                    *output.get("evidence", []),
+                    *output.get("negative_signals", []),
+                ]:
+                    text = str(evidence).lower()
+                    if any(term in text for term in ("unavailable", "missing", "no news", "fallback")):
+                        warnings.append(str(evidence))
+                if failure_signal:
+                    warnings.append(str(output.get("overall_assessment", "Agent reported an internal failure signal.")))
+                if low_confidence:
+                    reason = _low_confidence_reason(output, confidence_threshold)
+                    output["low_confidence_reason"] = reason
+                    warnings.append(reason)
+                claim_type = str(output.get("claim_type", "")).upper()
+                is_fallback = claim_type.endswith("FALLBACK") or "RULE_BASED" in claim_type or bool(output.get("fallback_reason"))
+                if is_fallback:
+                    warnings.append(f"{agent_name} returned a fallback estimate.")
+                if warnings:
+                    output["data_quality_warnings"] = warnings
+                    if mode == "self_healing":
+                        action = (
+                            "retried agent after detecting an internal failure signal"
+                            if failure_signal
+                            else "retried agent after detecting low confidence"
+                            if low_confidence
+                            else "recorded fallback estimate and reduced confidence"
+                            if is_fallback
+                            else "flagged incomplete evidence and reduced confidence"
+                        )
+                        output["healing_actions"] = [action]
+                        try:
+                            output["confidence"] = round(min(float(output.get("confidence", 0.5)), 0.55), 4)
+                        except (TypeError, ValueError):
+                            output["confidence"] = 0.40
+                outputs.append(output)
+                break
+            except Exception as exc:
+                last_error = str(exc)
+                if attempt == attempts:
+                    outputs.append(_agent_execution_fallback(agent_name, last_error, mode))
+    return outputs
+
+
 def run_critic_agent(
     ticker: str,
     query: str = "",
@@ -1048,11 +1335,19 @@ def run_critic_agent(
     sector = sector or gold.get("sector") or "General"
     company_name = company_name or ticker
 
+    outputs = run_specialist_agents(ticker, company_name=company_name, sector=sector)
     outputs = [
-        run_fundamental_agent(ticker, company_name=company_name),
-        run_market_sentiment_agent(ticker, company_name=company_name),
-        run_sentiment_agent(ticker, company_name=company_name),
-        run_macro_agent_safe(ticker, sector=sector, company_name=company_name),
+        attach_rag_context(
+            output,
+            agent={
+                "Fundamental Agent": "fundamental",
+                "Market + Volatility Agent": "market",
+                "Sentiment Agent": "sentiment",
+                "Macro-Economic Agent": "macro",
+            }.get(str(output.get("agent")), "critic"),
+            query=f"{ticker} {sector} financial risk evidence",
+        )
+        for output in outputs
     ]
     outputs = [
         attach_rag_context(
@@ -1076,6 +1371,8 @@ def run_critic_agent(
         if llm_result and llm_result.get("error"):
             final["llm_error"] = llm_result["error"]
 
+    final = _enforce_review_guardrails(final, outputs)
+
     attach_rag_context(
         final,
         agent="critic",
@@ -1085,6 +1382,7 @@ def run_critic_agent(
     report = {
         "ticker": ticker,
         "query": query,
+        "execution_mode": _system_mode(),
         "agent_outputs": outputs,
         "final_output": final,
     }

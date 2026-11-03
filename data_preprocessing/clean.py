@@ -463,6 +463,31 @@ def clean_edgar(
 # MAIN ENTRY POINT
 # ─────────────────────────────────────────────────────────────────────────────
 
+def load_latest_bronze_prices() -> dict[str, pd.DataFrame]:
+    """Load the newest Yahoo Bronze file for each ticker.
+
+    Multiple ingestion runs intentionally remain in Bronze. Selecting by file
+    iteration order can silently send an older run into Silver, so compare the
+    actual maximum market date instead.
+    """
+    selected: dict[str, tuple[pd.Timestamp, pd.DataFrame]] = {}
+    for path in Path(config.LOCAL_BRONZE).glob("yahoo_*.csv"):
+        match = re.search(r"yahoo_([^_]+)_", path.name)
+        if not match:
+            continue
+        ticker = match.group(1).upper()
+        try:
+            frame = pd.read_csv(path, index_col=0, parse_dates=True)
+            date_series = frame["date"] if "date" in frame.columns else pd.Series(frame.index)
+            latest = pd.to_datetime(date_series, errors="coerce").max()
+            if pd.isna(latest):
+                continue
+            if ticker not in selected or latest > selected[ticker][0]:
+                selected[ticker] = (latest, frame)
+        except (OSError, ValueError, KeyError) as exc:
+            log.warning("Skipping Bronze price file %s: %s", path, exc)
+    return {ticker: value[1] for ticker, value in selected.items()}
+
 def run_cleaning(raw_data: dict, upload_gcs: bool = False) -> dict:
     """
     Run full cleaning pipeline on raw ingested data.
@@ -487,10 +512,6 @@ def run_cleaning(raw_data: dict, upload_gcs: bool = False) -> dict:
 
 
 if __name__ == "__main__":
-    # Quick test: load Bronze CSVs and clean them
-    import glob
-    price_dfs = {}
-    for f in glob.glob(f"{config.LOCAL_BRONZE}/yahoo_*.csv"):
-        ticker = f.split("yahoo_")[1].split("_")[0]
-        price_dfs[ticker] = pd.read_csv(f, index_col=0, parse_dates=True)
+    # Quick test: load the newest Bronze run for each ticker and clean it.
+    price_dfs = load_latest_bronze_prices()
     run_cleaning({"prices": price_dfs, "edgar": {}, "macro": pd.DataFrame(), "news": pd.DataFrame()})

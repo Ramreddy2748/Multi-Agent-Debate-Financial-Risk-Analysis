@@ -42,11 +42,15 @@ from pathlib import Path
 
 import pandas as pd
 
+# Support direct execution from the repository root and always use the
+# organized preprocessing package rather than legacy top-level modules.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import config
-import ingest
-import clean
-import eda
-from tickers import get_all_tickers, get_sector_batches
+from data_preprocessing import clean, eda, ingest
+from data_preprocessing.tickers import get_all_tickers, get_sector_batches
 
 logging.basicConfig(
     level=logging.INFO,
@@ -197,7 +201,11 @@ def merge_and_load_bigquery():
     Combine all sector Gold CSVs into one master table and load to BigQuery.
     """
     import glob
-    gold_files = glob.glob(os.path.join(config.LOCAL_GOLD, "gold_risk_*.csv"))
+    gold_files = [
+        path
+        for path in glob.glob(os.path.join(config.LOCAL_GOLD, "gold_risk_*.csv"))
+        if os.path.basename(path) != "gold_risk_scores_ALL.csv"
+    ]
 
     if not gold_files:
         log.warning("No Gold files found to merge")
@@ -207,15 +215,18 @@ def merge_and_load_bigquery():
     dfs = []
     for f in gold_files:
         try:
-            dfs.append(pd.read_csv(f, index_col=0))
+            dfs.append(pd.read_csv(f))
         except Exception as e:
             log.error(f"  Failed to read {f}: {e}")
 
     if not dfs:
         return
 
-    master = pd.concat(dfs, ignore_index=False)
-    master = master[~master.index.duplicated(keep="last")]  # deduplicate tickers
+    master = pd.concat(dfs, ignore_index=True)
+    if "ticker" in master.columns:
+        master["ticker"] = master["ticker"].astype(str).str.upper().str.strip()
+        master = master.drop_duplicates(subset=["ticker"], keep="last")
+        master = master.sort_values("ticker").reset_index(drop=True)
 
     master_path = os.path.join(config.LOCAL_GOLD, "gold_risk_scores_ALL.csv")
     master.to_csv(master_path)

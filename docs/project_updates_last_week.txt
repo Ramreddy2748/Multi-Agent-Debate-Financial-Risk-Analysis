@@ -1,0 +1,342 @@
+DATA 298A / 298B FINANCIAL RISK PROJECT
+PROJECT UPDATE LOG - LAST WEEK AND CURRENT VERIFIED STATUS
+Updated: 2026-11-02
+
+======================================================================
+1. PROJECT STATUS
+======================================================================
+
+The project is an auditable, multi-agent stock-risk application. It
+combines persisted financial data, specialist agents, retrieval-augmented
+evidence, a critic/orchestrator, self-healing execution, FastAPI routes, and
+an interactive frontend.
+
+The system currently has four specialist agents and one critic/orchestrator:
+
+1. Fundamental Agent
+   Uses SEC/EDGAR-derived financial data and the fine-tuned FinBERT model.
+   Main signals include cash, long-term debt, equity, net income,
+   operating income, leverage, liquidity, and profit margins.
+
+2. Market and Volatility Agent
+   Uses Yahoo Finance price history and calculated market features. The
+   primary experimental model is a Qwen LoRA adapter. A deterministic
+   volatility rule path remains available when the remote model is missing,
+   slow, malformed, or unavailable.
+
+3. Sentiment Agent
+   Uses NewsAPI headlines and ProsusAI/FinBERT sentiment inference. VADER
+   remains available as a baseline fallback. The agent reports sentiment
+   label, confidence, article count, and headline evidence.
+
+4. Macro-Economic Agent
+   Uses FRED macroeconomic series and the Macro v2 Phi-4-mini LoRA forecast.
+   The rule-based FRED path remains available as a fallback.
+
+5. Critic / Orchestrator Agent
+   Combines the four specialist outputs, checks disagreement and evidence
+   quality, produces the final risk verdict, and can use Claude when the
+   Claude API key is configured. A local weighted critic remains available.
+
+======================================================================
+2. DATA PIPELINE UPDATES
+======================================================================
+
+The project follows a Bronze -> Silver -> Gold data flow.
+
+Bronze:
+- Raw Yahoo Finance price files
+- Raw SEC/EDGAR filing data
+- Raw FRED macroeconomic observations
+- Raw NewsAPI headline data
+- Raw files are retained as received for traceability
+
+Silver:
+- Cleaned and standardized price files
+- Cleaned SEC financial records
+- Cleaned macroeconomic data
+- News sentiment aggregates and Parquet outputs
+- Invalid or incomplete rows are handled explicitly rather than silently
+  disappearing
+
+Gold:
+- Risk scores for the company universe
+- Feature-priority outputs
+- Freshness reports
+- Training JSONL files
+- Comparison reports and model outputs
+
+Recent data work:
+- Rebuilt Gold outputs from the complete Silver layer.
+- The consolidated Gold risk table contains approximately 519 company rows.
+- The market/news fine-tuning dataset contains 519 JSONL examples.
+- Added and used a complete ticker universe instead of the earlier small
+  40- or 123-company subsets.
+- Added news coverage summaries by company.
+- Added data freshness records for agent inputs.
+- Fixed Bronze price selection so the newest available Yahoo file is chosen
+  by actual date instead of filename order.
+- Fixed mixed NewsAPI date parsing using UTC-aware parsing and mixed-format
+  handling.
+- Added preprocessing modules under data_preprocessing/ for ingestion,
+  cleaning, EDA, ticker loading, Gold construction, news backfill, splitting,
+  and summary statistics.
+
+Important limitation:
+- NewsAPI coverage is still thinner than price and SEC coverage. A ticker
+  with zero or very few articles must be shown as low-confidence or
+  unavailable sentiment, not treated as reliable neutral sentiment.
+
+======================================================================
+3. RAG AND EVIDENCE UPDATES
+======================================================================
+
+The project now has two evidence retrieval layers.
+
+A. Ticker-specific vector RAG
+Files and index:
+- agents/shared/retrieval.py
+- data/gold/vector_store/
+
+The vector index stores chunks created from Silver EDGAR, price, and news
+data. Retrieval is filtered by ticker, so AAPL evidence cannot be returned
+for MSFT or another company.
+
+B. Curated financial-terms RAG
+Files:
+- data/rag/financial_terms.jsonl
+- data/rag/agent_retrieval_config.json
+- data/rag/README.md
+- agents/shared/financial_rag.py
+
+The curated RAG contains definitions, formulas, thresholds, priority rules,
+and required evidence fields for terms such as:
+- Debt-to-equity
+- Cash-to-debt coverage
+- Profit margin
+- Operating margin
+- Annualized volatility
+- Beta
+- Maximum drawdown
+- Price versus 52-week high
+- FinBERT sentiment
+- Article count
+- Agent disagreement
+- Confidence floor
+- Data provenance
+
+Current enhancement completed:
+- Fundamental LLM comparison prompts now receive both company evidence and
+  curated fundamental definitions/thresholds.
+- Market LLM comparison prompts now receive both company market/news evidence
+  and curated volatility, beta, drawdown, and sentiment rules.
+- Judge prompts also receive the curated rules when evaluating groundedness
+  and consistency.
+- The prompt records data/rag/financial_terms.jsonl as the curated source.
+
+To rebuild vector RAG after refreshing Silver data:
+
+    python3 agents/retrieval.py --build-all
+
+======================================================================
+4. MODEL AND LLM UPDATES
+======================================================================
+
+Fine-tuned or local model artifacts:
+
+Fundamental:
+- Fine-tuned FinBERT model is stored under models/fundamental_agent_finbert/.
+- Recorded evaluation metrics include approximately 0.573 accuracy and
+  0.405 macro F1 on the saved evaluation run.
+
+Market:
+- Qwen/Qwen2.5-1.5B-Instruct with a market_sentiment_lora adapter.
+- Mistral market LoRA artifacts are available as a candidate model.
+- The market evaluator parses generated JSON and compares predicted labels
+  against the test set.
+- Market output calibration was added when a generated score strongly
+  contradicts volatility/beta/drawdown features.
+
+Sentiment:
+- ProsusAI/finbert performs financial headline sentiment inference.
+- VADER remains the explicit fallback baseline.
+
+Macro:
+- Phi-4-mini Macro v2 LoRA artifacts are stored under
+  agents/macro/macro_v2/.
+- Macro metrics and forecast artifacts are saved with the model outputs.
+
+Remote comparison models:
+- Groq GPT-OSS 120B
+- Groq GPT-OSS 20B
+- OpenRouter Qwen free model with fallback
+- OpenRouter Nemotron free model with fallback
+
+Shared comparison files:
+- agents/shared/llm_comparison.py
+- agents/fundamental/llm_compare.py
+- agents/market/llm_compare.py
+- agents/market/evaluate_lora.py
+
+Existing comparison results cover AAPL, MSFT, and JPM. The comparison
+scripts can be rerun for AAPL, MSFT, AMZN, NVDA, GOOGL, and TSLA.
+
+Important interpretation:
+- Remote comparison scores are model estimates, not ground-truth labels.
+- The scripts use real local Silver data and retrieved evidence, but the
+  external LLM generates the risk score and explanation.
+- OpenRouter free model names may disappear or rotate, so fallback model
+  behavior is expected.
+
+======================================================================
+5. SELF-HEALING AND RELIABILITY UPDATES
+======================================================================
+
+Added baseline and self-healing execution modes:
+
+    SYSTEM_MODE=baseline
+    SYSTEM_MODE=self_healing
+
+Self-healing behavior:
+- Detects malformed or incomplete specialist output.
+- Detects internal JSON parse-error signals from the remote Market LoRA.
+- Retries the affected agent once.
+- Records attempt count and healing actions.
+- Records data-quality warnings.
+- Uses a conservative fallback if the retry still fails.
+- Exposes execution mode in the verdict and frontend scorecards.
+
+Market-specific reliability:
+- Detects truncated or invalid JSON from the remote Qwen endpoint.
+- Prevents an invalid response from being incorrectly labeled as a valid LoRA
+  inference.
+- Blends a remote model score with the feature-based score when the model
+  strongly contradicts its own volatility and beta evidence.
+- Caps confidence when calibration or fallback behavior is used.
+
+Critic guardrails:
+- Detects label disagreement.
+- Detects large score spreads.
+- Detects missing news coverage.
+- Detects fallback claims and data-quality warnings.
+- Detects stale, future, or mismatched as-of dates.
+- Forces human review when evidence quality or freshness is unsafe.
+- Caps final confidence when material review issues exist.
+
+======================================================================
+6. API AND FRONTEND UPDATES
+======================================================================
+
+FastAPI provides the application backend and exposes:
+- Company listing
+- Price history
+- Persisted verdict retrieval
+- Monitoring data
+- Feature-priority data
+- Company comparison
+- Debate review and agent execution routes
+- Model training dashboard data
+- Interactive API documentation at /docs
+
+The frontend now includes:
+- Search by ticker/company
+- Investment-question input
+- Direct Ask, full verdict, and debate-review actions
+- Specialist scorecards
+- Critic/orchestrator scorecard
+- Market price and risk trace
+- Company comparison
+- Policy A-H evidence trail
+- Feature priority and freshness visibility
+- Training curve dashboard support
+- Baseline/self-healing execution metadata
+- Retry and data-quality messages
+
+The ticker-resolution fixes ensure that typed questions such as "Can I invest
+in Apple?" resolve to AAPL instead of leaving the default ARES selection.
+Compare actions resolve both selected tickers independently before producing
+the comparison.
+
+======================================================================
+7. MONITORING AND ARTIFACTS
+======================================================================
+
+Monitoring and lineage artifacts include:
+- data/gold/monitoring_runs.jsonl
+- data/gold/_mlflow_artifacts/
+- data/gold/run_report.json
+- data/gold/agent_data_freshness.csv
+- data/gold/feature_priority_scores.csv
+- data/gold/feature_priority_summary.csv
+- data/gold/feature_freshness.csv
+
+Generated verdicts are saved under:
+
+    data/verdicts/
+
+The system produces JSON verdicts and PDF reports. They should be regenerated
+for the requested ticker and should not be treated as permanent source data.
+
+======================================================================
+8. TESTING AND VALIDATION
+======================================================================
+
+Current local validation:
+
+    python -m unittest discover -s tests -q
+
+Latest result:
+
+    Ran 13 tests
+    OK
+
+The tests cover:
+- Fundamental contract behavior
+- Sentiment no-news fallback
+- Macro fallback contract
+- Four-agent critic combination
+- Self-healing retry behavior
+- Market JSON parse-error detection
+- Market score calibration
+- Freshness mismatch review guardrails
+- Curated RAG presence in fundamental and market comparison prompts
+
+Additional checks:
+
+    python -m py_compile agents/fundamental/llm_compare.py agents/market/llm_compare.py
+    git diff --check
+
+======================================================================
+9. RECENT GIT WORK
+======================================================================
+
+Recent repository history included:
+- Organized preprocessing and agent support code.
+- Integrated curated RAG into live agent routes.
+- Rebuilt Gold from the complete Silver layer.
+- Resolved Macro v2 merge conflicts.
+- Merged Macro v2 into main.
+- Merged evidence-priority and freshness UI work into main.
+
+Recent merge-related files included Macro v2, preprocessing, RAG, agent
+orchestration, frontend, API, tests, and documentation changes.
+
+======================================================================
+10. REMAINING WORK
+======================================================================
+
+1. Rerun the expanded LLM comparison after API/network access is available.
+2. Add a dedicated sentiment LLM-comparison script for FinBERT versus VADER
+   if a formal sentiment model table is required.
+3. Restore or complete the runnable Macro comparison module; the compatibility
+   wrapper exists, but its underlying module must be present before rerunning.
+4. Fix the remote Colab Qwen endpoint JSON truncation by decoding only newly
+   generated tokens and using a sufficient max_new_tokens value.
+5. Rebuild Chroma RAG after every Silver refresh.
+6. Keep API keys, model weights, raw data, generated verdicts, and large
+   artifacts out of Git unless explicitly required.
+7. Regenerate the final PDF/report screenshots after the final data refresh.
+
+======================================================================
+END OF UPDATE LOG
+======================================================================
