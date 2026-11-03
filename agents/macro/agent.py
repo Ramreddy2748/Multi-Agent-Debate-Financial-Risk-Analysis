@@ -1,346 +1,430 @@
-"""Macro-Economic Agent wrapper.
-
-This keeps the orchestrator-facing `run_macro_agent()` interface stable while
-Macro v2 moves the heavy work into a point-in-time data pipeline.
+"""
+macro_agent.py
+─────────────────────────────────────────────────────────────────
+MACRO-ECONOMIC AGENT — Prompt-Based Version
+─────────────────────────────────────────────────────────────────
 """
 
-from __future__ import annotations
-
-import math
 import os
 import json
-from pathlib import Path
-from typing import Any
-
+import time
+import logging
 import pandas as pd
+import numpy as np
+from openai import OpenAI
+from dotenv import load_dotenv
 
+load_dotenv()
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_MACRO_V2_ROOT = PROJECT_ROOT / "data"
-MACRO_V2_MODEL_DIR = Path(__file__).resolve().parent / "macro_v2"
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] — %(message)s"
+)
+log = logging.getLogger("macro_agent")
 
-SECTOR_TO_ETF = {
-    "Communication Services": "XLC",
-    "Consumer Discretionary": "XLY",
-    "Consumer Staples": "XLP",
-    "Energy": "XLE",
-    "Financials": "XLF",
-    "Health Care": "XLV",
-    "Healthcare": "XLV",
-    "Industrials": "XLI",
-    "Information Technology": "XLK",
-    "Technology": "XLK",
-    "Materials": "XLB",
-    "Real Estate": "XLRE",
-    "Utilities": "XLU",
+# ── DeepSeek Client ───────────────────────────────────────────
+def get_client() -> OpenAI:
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        raise ValueError("DEEPSEEK_API_KEY not set in .env file")
+    return OpenAI(
+        api_key=api_key,
+        base_url="https://api.deepseek.com"
+    )
+
+# ── Load FRED Data ────────────────────────────────────────────
+def load_macro_data(path: str = "data/silver/silver_macro.csv") -> dict:
+    df = pd.read_csv(path, index_col=0, parse_dates=True)
+    df = df.sort_index().ffill(limit=5).dropna()
+
+    latest     = df.iloc[-1]
+    prev_year  = df.iloc[-252] if len(df) >= 252 else df.iloc[0]
+    prev_month = df.iloc[-22]  if len(df) >= 22  else df.iloc[0]
+
+    def safe_get(col, default=0.0):
+        try:
+            return float(latest[col])
+        except Exception:
+            return default
+
+    def yoy_change(col):
+        try:
+            curr = float(latest[col])
+            prev = float(prev_year[col])
+            return round((curr - prev) / abs(prev) * 100, 2)
+        except Exception:
+            return 0.0
+
+    def mom_change(col):
+        try:
+            return round(float(latest[col]) - float(prev_month[col]), 4)
+        except Exception:
+            return 0.0
+
+    fed        = safe_get("fed_funds_rate")
+    cpi        = safe_get("cpi")
+    t10y2y     = safe_get("yield_curve_10y2y")
+    vix        = safe_get("vix")
+    oil        = safe_get("wti_oil")
+    unemp      = safe_get("unemployment")
+    gdp        = safe_get("gdp_growth")
+    vix_30d    = float(df["vix"].tail(30).mean()) if "vix" in df.columns else vix
+    vix_90d    = float(df["vix"].tail(90).mean()) if "vix" in df.columns else vix
+    fed_6m_ago = float(df["fed_funds_rate"].iloc[-132]) if len(df) >= 132 and "fed_funds_rate" in df.columns else fed
+    fed_trend  = "rising" if fed > fed_6m_ago else "falling" if fed < fed_6m_ago else "stable"
+    yield_trend= "steepening" if mom_change("yield_curve_10y2y") > 0 else "flattening"
+
+    return {
+        "as_of_date":       str(df.index[-1].date()),
+        "fed_funds_rate":   fed,
+        "fed_trend":        fed_trend,
+        "fed_6m_change":    round(fed - fed_6m_ago, 2),
+        "cpi":              cpi,
+        "cpi_yoy_pct":      yoy_change("cpi"),
+        "t10y2y_spread":    t10y2y,
+        "yield_trend":      yield_trend,
+        "recession_signal": t10y2y < 0,
+        "vix":              vix,
+        "vix_30d_avg":      round(vix_30d, 2),
+        "vix_90d_avg":      round(vix_90d, 2),
+        "vix_vs_avg":       "elevated" if vix > vix_30d * 1.2 else "normal",
+        "oil_price":        oil,
+        "oil_yoy_pct":      yoy_change("wti_oil"),
+        "unemployment":     unemp,
+        "gdp":              gdp,
+        "gdp_yoy_pct":      yoy_change("gdp_growth"),
+    }
+
+# ── Sector Sensitivity ────────────────────────────────────────
+SECTOR_SENSITIVITY = {
+    "Real Estate":            {"rate_sensitivity": "VERY HIGH",     "reason": "REITs are heavily debt-financed. Rising rates increase refinancing costs and make bond yields competitive vs REIT dividends.", "oil_sensitivity": "LOW",       "vix_sensitivity": "MODERATE"},
+    "Utilities":              {"rate_sensitivity": "HIGH",          "reason": "Capital-intensive sector with high debt loads. Rising rates compress margins.", "oil_sensitivity": "MODERATE",  "vix_sensitivity": "LOW"},
+    "Financials":             {"rate_sensitivity": "MODERATE",      "reason": "Banks benefit from higher net interest margins but face credit risk if rates rise too fast.", "oil_sensitivity": "LOW",       "vix_sensitivity": "HIGH"},
+    "Information Technology": {"rate_sensitivity": "MODERATE",      "reason": "High-growth tech valuations are compressed by rising discount rates.", "oil_sensitivity": "LOW",       "vix_sensitivity": "HIGH"},
+    "Consumer Discretionary": {"rate_sensitivity": "MODERATE-HIGH", "reason": "Higher rates reduce consumer borrowing power. Unemployment directly affects spending.", "oil_sensitivity": "MODERATE",  "vix_sensitivity": "MODERATE"},
+    "Consumer Staples":       {"rate_sensitivity": "LOW",           "reason": "Defensive sector with inelastic demand.", "oil_sensitivity": "LOW",       "vix_sensitivity": "LOW"},
+    "Energy":                 {"rate_sensitivity": "LOW",           "reason": "Energy companies benefit from inflation. Oil price is the primary driver.", "oil_sensitivity": "VERY HIGH", "vix_sensitivity": "MODERATE"},
+    "Health Care":            {"rate_sensitivity": "LOW-MODERATE",  "reason": "Defensive sector. Demand is largely inelastic.", "oil_sensitivity": "LOW",       "vix_sensitivity": "LOW"},
+    "Industrials":            {"rate_sensitivity": "MODERATE",      "reason": "Sensitive to GDP growth. Higher rates slow capital investment.", "oil_sensitivity": "HIGH",      "vix_sensitivity": "MODERATE"},
+    "Materials":              {"rate_sensitivity": "MODERATE",      "reason": "Commodity prices driven more by global demand. Inflation can boost revenue.", "oil_sensitivity": "HIGH",      "vix_sensitivity": "MODERATE"},
+    "Communication Services": {"rate_sensitivity": "LOW-MODERATE",  "reason": "Mix of defensive telecom and growth media names. Relatively resilient.", "oil_sensitivity": "LOW",       "vix_sensitivity": "MODERATE"},
+    "General":                {"rate_sensitivity": "MODERATE",      "reason": "Standard sensitivity to macro conditions.", "oil_sensitivity": "MODERATE",  "vix_sensitivity": "MODERATE"},
 }
 
+def get_sector_context(sector: str) -> str:
+    info = SECTOR_SENSITIVITY.get(sector, SECTOR_SENSITIVITY["General"])
+    return (
+        f"Rate sensitivity  : {info['rate_sensitivity']}\n"
+        f"Why               : {info['reason']}\n"
+        f"Oil sensitivity   : {info['oil_sensitivity']}\n"
+        f"VIX sensitivity   : {info['vix_sensitivity']}"
+    )
 
-def _safe_float(value: Any, default: float | None = None) -> float | None:
+# ── System Prompt ─────────────────────────────────────────────
+SYSTEM_PROMPT = """
+You are the Macro-Economic Agent in a structured financial
+risk debate system. Assess how the current macroeconomic
+environment affects the investment risk of a specific company.
+
+Scoring guide:
+1.0 - 3.5  : LOW macro risk
+3.5 - 6.0  : MODERATE macro risk
+6.0 - 10.0 : HIGH macro risk
+
+Rules:
+- Every evidence point must cite a specific number
+- Be sector-specific
+- Return ONLY valid JSON — no extra text, no markdown
+"""
+
+# ── Build Prompt ──────────────────────────────────────────────
+def build_prompt(ticker: str, sector: str,
+                 company_name: str, macro: dict) -> str:
+
+    recession_note = (
+        "YIELD CURVE INVERTED — recession signal"
+        if macro["recession_signal"] else
+        "Yield curve positive — no inversion"
+    )
+    sector_context = get_sector_context(sector)
+
+    return f"""
+Analyse macroeconomic investment risk for:
+Company : {company_name} ({ticker})
+Sector  : {sector}
+
+MACRO ENVIRONMENT (as of {macro['as_of_date']})
+Fed Funds Rate  : {macro['fed_funds_rate']:.2f}% ({macro['fed_trend']}, {macro['fed_6m_change']:+.2f}% over 6 months)
+CPI Index       : {macro['cpi']:.3f} (YoY: {macro['cpi_yoy_pct']:+.2f}%)
+10Y-2Y Spread   : {macro['t10y2y_spread']:.3f}% — {recession_note}
+VIX             : {macro['vix']:.2f} (30d avg: {macro['vix_30d_avg']:.2f})
+WTI Oil         : ${macro['oil_price']:.2f}/barrel (YoY: {macro['oil_yoy_pct']:+.2f}%)
+Unemployment    : {macro['unemployment']:.1f}%
+GDP YoY         : {macro['gdp_yoy_pct']:+.2f}%
+
+SECTOR SENSITIVITY: {sector}
+{sector_context}
+
+Return ONLY this exact JSON:
+{{
+  "agent": "Macro-Economic Agent",
+  "ticker": "{ticker}",
+  "company": "{company_name}",
+  "sector": "{sector}",
+  "as_of_date": "{macro['as_of_date']}",
+  "macro_risk_score": <number 1.0 to 10.0>,
+  "risk_label": "<LOW or MODERATE or HIGH>",
+  "claim_type": "DERIVED_ESTIMATE",
+  "recession_signal": <true or false>,
+  "evidence": ["<fact with number>", "<fact with number>", "<fact with number>"],
+  "top_risk_factors": ["<factor 1>", "<factor 2>", "<factor 3>"],
+  "sector_sensitivity": "<one sentence>",
+  "indicator_interactions": "<one sentence>",
+  "justification": "<2 sentences maximum>",
+  "confidence": <0.0 to 1.0>
+}}
+"""
+
+# ── Parse Response ────────────────────────────────────────────
+def parse_response(raw: str, ticker: str, sector: str) -> dict:
     try:
-        if value is None or value == "":
-            return default
-        number = float(value)
-        if math.isnan(number) or math.isinf(number):
-            return default
-        return number
-    except Exception:
-        return default
+        cleaned = raw.strip()
+        if "```" in cleaned:
+            for part in cleaned.split("```"):
+                part = part.strip()
+                if part.startswith("json"):
+                    part = part[4:].strip()
+                if part.startswith("{"):
+                    cleaned = part
+                    break
+        return json.loads(cleaned)
+    except json.JSONDecodeError as e:
+        log.warning(f"  JSON parse failed: {e}")
+        return _fallback(ticker, sector, error=str(e))
 
-
-def _clamp_score(score: float) -> float:
-    return round(max(1.0, min(10.0, float(score))), 2)
-
-
-def _label_from_score(score: float) -> str:
-    if score <= 3.5:
-        return "LOW"
-    if score <= 6.0:
-        return "MODERATE"
-    return "HIGH"
-
-
-def _macro_v2_root() -> Path:
-    return Path(os.getenv("MACRO_V2_DATA_ROOT", str(DEFAULT_MACRO_V2_ROOT))).expanduser()
-
-
-def _latest_snapshot_path() -> Path:
-    return _macro_v2_root() / "gold" / "macro_v2" / "latest_snapshot.parquet"
-
-
-def _latest_forecast_path() -> Path:
-    return Path(os.getenv(
-        "MACRO_V2_FORECAST_PATH",
-        str(MACRO_V2_MODEL_DIR / "latest_forecast_per_sector.json"),
-    )).expanduser()
-
-
-def _load_latest_snapshot() -> pd.DataFrame:
-    path = _latest_snapshot_path()
-    if not path.exists():
-        raise FileNotFoundError(
-            f"Macro v2 latest snapshot not found at {path}. "
-            "Run: python3 agents/macro/run_macro_v2.py --out data"
-        )
-    return pd.read_parquet(path)
-
-
-def _load_latest_forecasts() -> list[dict[str, Any]]:
-    path = _latest_forecast_path()
-    if not path.exists():
-        raise FileNotFoundError(f"Macro v2 forecast artifact not found at {path}")
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, list) or not data:
-        raise ValueError(f"Macro v2 forecast artifact is empty or invalid: {path}")
-    return [row for row in data if isinstance(row, dict)]
-
-
-def _select_forecast_row(forecasts: list[dict[str, Any]], sector: str) -> dict[str, Any]:
-    etf = SECTOR_TO_ETF.get(sector, "")
-    if etf:
-        for row in forecasts:
-            if str(row.get("etf", "")).upper() == etf:
-                return row
-    for row in forecasts:
-        if str(row.get("sector", "")).lower() == sector.lower():
-            return row
-    return forecasts[-1]
-
-
-def _select_sector_row(snapshot: pd.DataFrame, sector: str) -> pd.Series:
-    etf = SECTOR_TO_ETF.get(sector, "")
-    if etf and "etf" in snapshot.columns:
-        match = snapshot[snapshot["etf"].astype(str).str.upper() == etf]
-        if not match.empty:
-            return match.iloc[-1]
-    if "sector" in snapshot.columns:
-        match = snapshot[snapshot["sector"].astype(str).str.lower() == sector.lower()]
-        if not match.empty:
-            return match.iloc[-1]
-    return snapshot.iloc[-1]
-
-
-def _macro_v2_forecast_result(
-    ticker: str,
-    sector: str,
-    company_name: str | None,
-    row: dict[str, Any],
-) -> dict[str, Any]:
-    score = _clamp_score(_safe_float(row.get("pred_macro_risk_score"), 5.0) or 5.0)
-    label = str(row.get("pred_risk_label") or _label_from_score(score)).upper()
-    if label not in {"LOW", "MODERATE", "HIGH"}:
-        label = _label_from_score(score)
-    expected_vol = _safe_float(row.get("pred_expected_vol_pct"))
-    as_of = row.get("as_of_date")
-
-    evidence = [
-        f"Macro v2 Phi-4-mini LoRA forecast maps {sector} to sector ETF {row.get('etf', 'N/A')}.",
-        f"Forecast as-of date is {as_of or 'N/A'}.",
-    ]
-    if expected_vol is not None:
-        evidence.append(f"Model forecasts next-60-trading-day annualized volatility at {expected_vol:.2f}%.")
-    evidence.append(f"Model predicted macro risk label {label} with score {score:.2f}/10.")
-
-    positive = []
-    negative = []
-    if score <= 3.5:
-        positive.append("Macro model forecast is in a low turbulence regime.")
-    elif score <= 6.0:
-        positive.append("Macro model forecast is not in the highest turbulence bucket.")
-        negative.append("Macro model forecast still indicates moderate systematic pressure.")
-    else:
-        negative.append("Macro model forecast indicates elevated systematic risk.")
-
+def _fallback(ticker: str, sector: str, error: str = "") -> dict:
     return {
-        "agent": "Macro-Economic Agent",
-        "ticker": ticker,
-        "company": company_name or ticker,
-        "sector": sector,
-        "as_of_date": as_of,
-        "risk_score": score,
-        "macro_risk_score": score,
-        "risk_label": label,
-        "confidence": 0.68,
-        "claim_type": "MACRO_V2_LORA_FORECAST",
-        "metrics": {
-            "etf": row.get("etf"),
-            "expected_vol_pct": expected_vol,
-            "forecast_split": row.get("split"),
-            "valid_json": row.get("valid_json"),
-            "has_actual_label": row.get("has_label"),
-        },
-        "evidence": evidence,
-        "positive_signals": positive,
-        "negative_signals": negative,
-        "sector_sensitivity": f"Macro v2 maps {sector} to sector ETF {row.get('etf', 'N/A')}.",
-        "overall_assessment": (
-            f"Macro v2 Phi-4-mini LoRA forecast is {label} for {sector}, "
-            f"with score {score:.2f}/10."
-        ),
+        "agent":                  "Macro-Economic Agent",
+        "ticker":                 ticker,
+        "sector":                 sector,
+        "macro_risk_score":       5.85,
+        "risk_label":             "MODERATE",
+        "claim_type":             "DERIVED_ESTIMATE",
+        "recession_signal":       False,
+        "evidence":               [f"Fallback: {error}"],
+        "top_risk_factors":       ["API unavailable"],
+        "sector_sensitivity":     "Unknown",
+        "indicator_interactions": "Not computed",
+        "justification":          "Fallback score used.",
+        "confidence":             0.0,
+        "error":                  error,
     }
 
-
-def _metric(row: pd.Series, *names: str, default: float | None = None) -> float | None:
-    for name in names:
-        if name in row.index:
-            value = _safe_float(row.get(name))
-            if value is not None:
-                return value
-    return default
-
-
-def _score_from_macro_v2(row: pd.Series, sector: str) -> tuple[float, list[str], list[str]]:
-    """Transparent score from Macro v2 features and sector sensitivities."""
-    fed = _metric(row, "DFF", "FEDFUNDS", default=0.0) or 0.0
-    ten_year = _metric(row, "DGS10", "GS10", default=0.0) or 0.0
-    yield_curve = _metric(row, "T10Y2Y")
-    vix = _metric(row, "VIXCLS")
-    credit = _metric(row, "BAMLH0A0HYM2", "BAA10Y")
-    unemployment = _metric(row, "UNRATE")
-    cpi_yoy = _metric(row, "CPIAUCSL_yoy")
-    oil_yoy = _metric(row, "DCOILWTICO_yoy")
-    beta_rate = abs(_metric(row, "beta_d_dgs10", default=0.0) or 0.0)
-    beta_vix = abs(_metric(row, "beta_d_vix", default=0.0) or 0.0)
-    beta_credit = abs(_metric(row, "beta_d_credit", default=0.0) or 0.0)
-
-    score = 2.7
-    score += min(max(fed - 2.5, 0.0) / 3.5, 1.0) * 1.3
-    score += min(max(ten_year - 4.0, 0.0) / 2.0, 1.0) * 0.9
-    score += 0.9 if yield_curve is not None and yield_curve < 0 else 0.0
-    score += min(max((vix or 0.0) - 18.0, 0.0) / 20.0, 1.0) * 1.2 if vix is not None else 0.0
-    score += min(max((credit or 0.0) - 4.0, 0.0) / 6.0, 1.0) * 1.1 if credit is not None else 0.0
-    score += min(max((unemployment or 0.0) - 4.2, 0.0) / 2.5, 1.0) * 0.8 if unemployment is not None else 0.0
-    score += min(max((cpi_yoy or 0.0) - 2.5, 0.0) / 3.0, 1.0) * 0.8 if cpi_yoy is not None else 0.0
-    score += min(beta_rate + beta_vix + beta_credit, 1.5) * 0.7
-
-    if sector in {"Real Estate", "Utilities"}:
-        score += 0.5
-    elif sector in {"Consumer Staples", "Health Care", "Healthcare"}:
-        score -= 0.3
-    elif sector in {"Information Technology", "Technology", "Consumer Discretionary"}:
-        score += 0.25
-
-    evidence = [
-        f"Macro v2 point-in-time snapshot uses sector ETF {row.get('etf', 'N/A')} for {sector}.",
-        f"Fed funds is {fed:.2f}%; 10Y Treasury is {ten_year:.2f}%.",
-    ]
-    if yield_curve is not None:
-        evidence.append(f"10Y-2Y yield spread is {yield_curve:.2f}%.")
-    if vix is not None:
-        evidence.append(f"VIX is {vix:.2f}.")
-    if credit is not None:
-        evidence.append(f"Credit spread proxy is {credit:.2f}.")
-    if cpi_yoy is not None:
-        evidence.append(f"CPI YoY is {cpi_yoy:.2f}%.")
-    if oil_yoy is not None:
-        evidence.append(f"WTI oil YoY is {oil_yoy:.2f}%.")
-
-    positive = []
-    negative = []
-    if yield_curve is not None and yield_curve >= 0:
-        positive.append("Yield curve is not inverted.")
-    if vix is not None and vix <= 20:
-        positive.append("VIX is not elevated versus common stress thresholds.")
-    if beta_rate + beta_vix + beta_credit > 0.8:
-        negative.append("Sector ETF sensitivities show elevated macro factor exposure.")
-    if credit is not None and credit > 4:
-        negative.append("Credit spreads indicate tighter financing conditions.")
-
-    return _clamp_score(score), evidence, positive + negative
-
-
-def _silver_macro_unavailable_fallback(
-    ticker: str,
-    sector: str,
-    company_name: str | None,
-    error: str,
-) -> dict[str, Any]:
-    return {
-        "agent": "Macro-Economic Agent",
-        "ticker": ticker,
-        "company": company_name or ticker,
-        "sector": sector,
-        "risk_score": 5.0,
-        "macro_risk_score": 5.0,
-        "risk_label": "MODERATE",
-        "confidence": 0.20,
-        "claim_type": "MACRO_V2_UNAVAILABLE",
-        "evidence": [
-            "Macro v2 agent is installed, but its latest snapshot artifact is not available yet.",
-            error,
-        ],
-        "positive_signals": [],
-        "negative_signals": ["Run the Macro v2 pipeline before expecting point-in-time macro agent inference."],
-        "overall_assessment": "Macro v2 data artifact is missing; no model-grade macro verdict was produced.",
-    }
-
-
+# ── Single Company Agent ──────────────────────────────────────
 def run_macro_agent(
-    ticker: str,
-    sector: str,
-    company_name: str | None = None,
-    macro_path: str | None = None,
-    max_retries: int = 1,
-) -> dict[str, Any]:
-    """Run Macro v2 sector-aware point-in-time inference.
+    ticker:       str,
+    sector:       str,
+    company_name: str = None,
+    macro_path:   str = "data/silver/silver_macro.csv",
+    max_retries:  int = 3
+) -> dict:
+    # Fix NaN sector
+    if not isinstance(sector, str) or sector != sector or sector == "nan":
+        sector = "General"
 
-    `macro_path` and `max_retries` are accepted for compatibility with the old
-    DeepSeek macro agent signature.
-    """
-    del macro_path, max_retries
-    ticker = ticker.upper()
-    sector = sector if isinstance(sector, str) and sector else "General"
-
-    forecast_error: Exception | None = None
-    if os.getenv("MACRO_V2_USE_LORA_FORECAST", "1") not in {"0", "false", "False"}:
-        try:
-            forecasts = _load_latest_forecasts()
-            forecast_row = _select_forecast_row(forecasts, sector)
-            return _macro_v2_forecast_result(ticker, sector, company_name, forecast_row)
-        except Exception as exc:
-            forecast_error = exc
+    name = company_name or ticker
+    log.info(f"[Macro Agent] Analysing {name} ({ticker}) | {sector}")
 
     try:
-        snapshot = _load_latest_snapshot()
-        row = _select_sector_row(snapshot, sector)
-        score, evidence, signals = _score_from_macro_v2(row, sector)
-    except Exception as exc:
-        if forecast_error:
-            exc = RuntimeError(f"{forecast_error}; snapshot fallback also failed: {exc}")
-        return _silver_macro_unavailable_fallback(ticker, sector, company_name, error=str(exc))
+        macro = load_macro_data(macro_path)
+        log.info(f"  Macro data loaded — as of {macro['as_of_date']}")
+    except Exception as e:
+        log.error(f"  Failed to load macro data: {e}")
+        return _fallback(ticker, sector, error=str(e))
 
-    as_of = row.get("as_of_date")
-    if pd.isna(as_of):
-        as_of = row.get("date")
-    as_of_text = str(pd.Timestamp(as_of).date()) if as_of is not None and not pd.isna(as_of) else None
+    prompt = build_prompt(ticker, sector, name, macro)
+    if not os.getenv("DEEPSEEK_API_KEY"):
+        result = _fallback(ticker, sector, error="DEEPSEEK_API_KEY not set")
+        result["claim_type"] = "MACRO_V2_UNAVAILABLE"
+        return result
 
-    return {
-        "agent": "Macro-Economic Agent",
-        "ticker": ticker,
-        "company": company_name or ticker,
-        "sector": sector,
-        "as_of_date": as_of_text,
-        "risk_score": score,
-        "macro_risk_score": score,
-        "risk_label": _label_from_score(score),
-        "confidence": 0.72,
-        "claim_type": "MACRO_V2_POINT_IN_TIME",
-        "metrics": {
-            "etf": row.get("etf"),
-            "fed_funds_rate": _metric(row, "DFF", "FEDFUNDS"),
-            "treasury_10y": _metric(row, "DGS10", "GS10"),
-            "yield_curve_10y2y": _metric(row, "T10Y2Y"),
-            "vix": _metric(row, "VIXCLS"),
-            "credit_spread": _metric(row, "BAMLH0A0HYM2", "BAA10Y"),
-            "unemployment": _metric(row, "UNRATE"),
-            "cpi_yoy": _metric(row, "CPIAUCSL_yoy"),
-            "beta_rate": _metric(row, "beta_d_dgs10"),
-            "beta_vix": _metric(row, "beta_d_vix"),
-            "beta_credit": _metric(row, "beta_d_credit"),
-        },
-        "evidence": evidence,
-        "positive_signals": [s for s in signals if s.startswith(("Yield", "VIX is not"))],
-        "negative_signals": [s for s in signals if not s.startswith(("Yield", "VIX is not"))],
-        "sector_sensitivity": f"Macro v2 maps {sector} to sector ETF {row.get('etf', 'N/A')}.",
-        "overall_assessment": f"Macro v2 risk is {_label_from_score(score)} for {sector}.",
-    }
+    client = get_client()
+
+    for attempt in range(1, max_retries + 1):
+        try:
+            log.info(f"  API call attempt {attempt}/{max_retries}...")
+            response = client.chat.completions.create(
+                model="deepseek-reasoner",
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user",   "content": prompt}
+                ],
+                temperature=0.1,
+                max_tokens=2000,
+            )
+            raw    = response.choices[0].message.content
+            result = parse_response(raw, ticker, sector)
+
+            # Clamp score
+            score = float(result.get("macro_risk_score", 5.0))
+            score = max(1.0, min(10.0, score))
+            result["macro_risk_score"] = round(score, 2)
+
+            # Fix label
+            result["risk_label"] = (
+                "HIGH"     if score > 6.0 else
+                "MODERATE" if score > 3.5 else
+                "LOW"
+            )
+
+            log.info(
+                f"  ✅ {ticker} → "
+                f"score={result['macro_risk_score']}/10 | "
+                f"label={result['risk_label']} | "
+                f"recession={result.get('recession_signal', False)} | "
+                f"confidence={result.get('confidence', 0):.2f}"
+            )
+            return result
+
+        except Exception as e:
+            log.warning(f"  Attempt {attempt} failed: {e}")
+            if attempt < max_retries:
+                time.sleep(2 ** attempt)
+
+    return _fallback(ticker, sector, error="Max retries exceeded")
+
+# ── Batch Runner ──────────────────────────────────────────────
+def run_macro_agent_batch(
+    companies:     list,
+    macro_path:    str   = "data/silver/silver_macro.csv",
+    delay_seconds: float = 1.5,
+    save_path:     str   = "data/gold/macro_agent_outputs.json"
+) -> list:
+
+    # Resume from checkpoint
+    existing_tickers = set()
+    if os.path.exists(save_path):
+        with open(save_path) as f:
+            existing = json.load(f)
+        existing_tickers = {r["ticker"] for r in existing}
+        results = existing
+        log.info(f"Resuming — {len(existing_tickers)} already done")
+    else:
+        results = []
+
+    remaining = [c for c in companies
+                 if c["ticker"] not in existing_tickers]
+    log.info(f"Remaining: {len(remaining)} companies")
+
+    if not remaining:
+        log.info("All companies already processed!")
+        return results
+
+    succeeded = 0
+    failed    = 0
+
+    log.info(f"[Macro Agent] Batch starting — {len(remaining)} companies")
+    log.info(f"  Estimated time: {len(remaining) * delay_seconds / 60:.1f} minutes")
+
+    for i, company in enumerate(remaining, 1):
+        ticker = company["ticker"]
+        sector = company["sector"]
+        name   = company.get("company_name", ticker)
+
+        log.info(f"\n  [{i}/{len(remaining)}] {ticker} — {sector}")
+
+        result = run_macro_agent(
+            ticker=ticker,
+            sector=sector,
+            company_name=name,
+            macro_path=macro_path
+        )
+        results.append(result)
+
+        if "error" not in result:
+            succeeded += 1
+        else:
+            failed += 1
+
+        # Save checkpoint every 10 companies
+        if i % 10 == 0:
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            with open(save_path, "w") as f:
+                json.dump(results, f, indent=2)
+            log.info(f"  Checkpoint saved — {len(results)} total")
+
+        if i < len(remaining):
+            time.sleep(delay_seconds)
+
+    # Final save
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    with open(save_path, "w") as f:
+        json.dump(results, f, indent=2)
+
+    scores = [r["macro_risk_score"] for r in results if "error" not in r]
+    labels = [r["risk_label"]       for r in results if "error" not in r]
+
+    log.info("\n" + "="*55)
+    log.info("  BATCH COMPLETE")
+    log.info("="*55)
+    log.info(f"  Total saved  : {len(results)}")
+    log.info(f"  Succeeded    : {succeeded}/{len(remaining)}")
+    log.info(f"  Failed       : {failed}/{len(remaining)}")
+    if scores:
+        log.info(f"  Avg score    : {np.mean(scores):.2f}/10")
+        log.info(f"  HIGH         : {labels.count('HIGH')}")
+        log.info(f"  MODERATE     : {labels.count('MODERATE')}")
+        log.info(f"  LOW          : {labels.count('LOW')}")
+    log.info(f"  Saved to     : {save_path}")
+
+    return results
+
+# ── Print Result ──────────────────────────────────────────────
+def print_result(result: dict):
+    print("\n" + "="*55)
+    print(f"  MACRO AGENT — {result.get('ticker')} ({result.get('sector')})")
+    print("="*55)
+    print(f"  Risk Score   : {result.get('macro_risk_score')}/10")
+    print(f"  Risk Label   : {result.get('risk_label')}")
+    print(f"  Recession    : {result.get('recession_signal')}")
+    print(f"  Confidence   : {result.get('confidence', 0):.2f}")
+    print(f"\n  Evidence:")
+    for ev in result.get("evidence", []):
+        print(f"    • {ev}")
+    print(f"\n  Justification:")
+    print(f"    {result.get('justification', '')}")
+    print("="*55)
+
+# ── Main ──────────────────────────────────────────────────────
+if __name__ == "__main__":
+
+    print("\n" + "="*55)
+    print("  MACRO AGENT — BATCH RUN")
+    print("="*55 + "\n")
+
+    gold_df = pd.read_csv(
+        "data/gold/gold_risk_scores_ALL.csv",
+        index_col=0
+    )
+    gold_df["sector"] = gold_df["sector"].replace(
+        "Technology", "Information Technology"
+    )
+
+    companies = [
+        {
+            "ticker":       ticker,
+            "sector":       str(row["sector"])
+                            if str(row["sector"]) != "nan"
+                            else "General",
+            "company_name": ticker
+        }
+        for ticker, row in gold_df.iterrows()
+    ]
+
+    print(f"Total companies : {len(companies)}")
+    print("Starting batch (resumes from checkpoint automatically)...\n")
+
+    results = run_macro_agent_batch(companies)
+
+    print(f"\nDone! {len(results)} results saved to "
+          f"data/gold/macro_agent_outputs.json")

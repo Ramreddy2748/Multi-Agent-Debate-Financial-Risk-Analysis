@@ -1,0 +1,2077 @@
+ticker,agent,latest_source_date,freshness_status,stale_or_expired_count,missing_value_count
+A,Fundamental Agent,2025-12-22,EXPIRED,6,0
+A,Macro-Economic Agent,2026-08-04,STALE,5,0
+A,Market + Volatility Agent,2026-10-03,STALE,5,0
+A,Sentiment Agent,,FRESH,0,2
+AAPL,Fundamental Agent,2025-10-31,EXPIRED,6,0
+AAPL,Macro-Economic Agent,2026-08-04,STALE,5,0
+AAPL,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AAPL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ABBV,Fundamental Agent,2026-02-20,STALE,6,0
+ABBV,Macro-Economic Agent,2026-08-04,STALE,5,0
+ABBV,Market + Volatility Agent,2026-10-03,STALE,5,0
+ABBV,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ABNB,Fundamental Agent,2026-02-12,EXPIRED,6,3
+ABNB,Macro-Economic Agent,2026-08-04,STALE,5,0
+ABNB,Market + Volatility Agent,2026-10-03,STALE,5,0
+ABNB,Sentiment Agent,,FRESH,0,2
+ABT,Fundamental Agent,2026-02-20,STALE,6,0
+ABT,Macro-Economic Agent,2026-08-04,STALE,5,0
+ABT,Market + Volatility Agent,2026-10-03,STALE,5,0
+ABT,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ACGL,Fundamental Agent,2026-02-26,STALE,6,4
+ACGL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ACGL,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ACGL,Sentiment Agent,,FRESH,0,2
+ACN,Fundamental Agent,2025-10-10,EXPIRED,6,3
+ACN,Macro-Economic Agent,2026-08-04,STALE,5,0
+ACN,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ACN,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ADBE,Fundamental Agent,2026-01-15,EXPIRED,6,0
+ADBE,Macro-Economic Agent,2026-08-04,STALE,5,0
+ADBE,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ADBE,Sentiment Agent,,FRESH,0,2
+ADI,Fundamental Agent,2025-11-25,EXPIRED,6,3
+ADI,Macro-Economic Agent,2026-08-04,STALE,5,0
+ADI,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ADI,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ADM,Fundamental Agent,2026-02-17,EXPIRED,6,1
+ADM,Macro-Economic Agent,2026-08-04,STALE,5,0
+ADM,Market + Volatility Agent,2026-10-03,STALE,5,0
+ADM,Sentiment Agent,,FRESH,0,2
+ADP,Fundamental Agent,2026-08-05,RECENT,0,4
+ADP,Macro-Economic Agent,2026-08-04,STALE,5,0
+ADP,Market + Volatility Agent,2026-10-03,STALE,5,0
+ADP,Sentiment Agent,,FRESH,0,2
+ADSK,Fundamental Agent,2026-03-03,STALE,6,0
+ADSK,Macro-Economic Agent,2026-08-04,STALE,5,0
+ADSK,Market + Volatility Agent,2026-10-03,STALE,5,0
+ADSK,Sentiment Agent,,FRESH,0,2
+AEE,Fundamental Agent,2026-02-18,EXPIRED,6,1
+AEE,Macro-Economic Agent,2026-08-04,STALE,5,0
+AEE,Market + Volatility Agent,2026-10-03,STALE,5,0
+AEE,Sentiment Agent,,FRESH,0,2
+AEP,Fundamental Agent,2026-02-12,EXPIRED,6,1
+AEP,Macro-Economic Agent,2026-08-04,STALE,5,0
+AEP,Market + Volatility Agent,2026-10-03,STALE,5,0
+AEP,Sentiment Agent,,FRESH,0,2
+AES,Fundamental Agent,2026-03-02,STALE,6,4
+AES,Macro-Economic Agent,2026-08-04,STALE,5,0
+AES,Market + Volatility Agent,2026-10-03,STALE,5,0
+AES,Sentiment Agent,,FRESH,0,2
+AFL,Fundamental Agent,2026-02-25,STALE,6,4
+AFL,Macro-Economic Agent,2026-08-04,STALE,5,0
+AFL,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AFL,Sentiment Agent,,FRESH,0,2
+AIG,Fundamental Agent,2026-02-12,EXPIRED,6,3
+AIG,Macro-Economic Agent,2026-08-04,STALE,5,0
+AIG,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AIG,Sentiment Agent,,FRESH,0,2
+AIZ,Fundamental Agent,2026-02-19,STALE,6,4
+AIZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+AIZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+AIZ,Sentiment Agent,,FRESH,0,2
+AJG,Fundamental Agent,2024-02-09,EXPIRED,6,1
+AJG,Macro-Economic Agent,2026-08-04,STALE,5,0
+AJG,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AJG,Sentiment Agent,2026-10-08,EXPIRED,3,0
+AKAM,Fundamental Agent,2026-02-20,STALE,6,5
+AKAM,Macro-Economic Agent,2026-08-04,STALE,5,0
+AKAM,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AKAM,Sentiment Agent,,FRESH,0,2
+ALB,Fundamental Agent,2026-02-11,EXPIRED,6,2
+ALB,Macro-Economic Agent,2026-08-04,STALE,5,0
+ALB,Market + Volatility Agent,2026-10-03,STALE,5,0
+ALB,Sentiment Agent,2026-10-08,EXPIRED,3,0
+ALGN,Fundamental Agent,2026-02-27,STALE,6,3
+ALGN,Macro-Economic Agent,2026-08-04,STALE,5,0
+ALGN,Market + Volatility Agent,2026-10-03,STALE,5,0
+ALGN,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ALL,Fundamental Agent,2026-02-20,STALE,6,3
+ALL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ALL,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ALL,Sentiment Agent,,FRESH,0,2
+ALLE,Fundamental Agent,2026-02-17,EXPIRED,6,0
+ALLE,Macro-Economic Agent,2026-08-04,STALE,5,0
+ALLE,Market + Volatility Agent,2026-10-03,STALE,5,0
+ALLE,Sentiment Agent,,FRESH,0,2
+AMAT,Fundamental Agent,2025-12-12,EXPIRED,6,3
+AMAT,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMAT,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AMAT,Sentiment Agent,2026-10-08,EXPIRED,3,0
+AMCR,Fundamental Agent,2025-08-15,EXPIRED,6,3
+AMCR,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMCR,Market + Volatility Agent,2026-10-03,STALE,5,0
+AMCR,Sentiment Agent,,FRESH,0,2
+AMD,Fundamental Agent,2026-02-04,EXPIRED,6,3
+AMD,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMD,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AMD,Sentiment Agent,2026-10-08,EXPIRED,3,0
+AME,Fundamental Agent,2026-02-17,EXPIRED,6,0
+AME,Macro-Economic Agent,2026-08-04,STALE,5,0
+AME,Market + Volatility Agent,2026-10-03,STALE,5,0
+AME,Sentiment Agent,,FRESH,0,2
+AMGN,Fundamental Agent,2026-02-13,EXPIRED,6,0
+AMGN,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMGN,Market + Volatility Agent,2026-10-03,STALE,5,0
+AMGN,Sentiment Agent,2026-10-09,EXPIRED,3,0
+AMP,Fundamental Agent,2017-02-23,EXPIRED,6,4
+AMP,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMP,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AMP,Sentiment Agent,,FRESH,0,2
+AMT,Fundamental Agent,2026-02-24,STALE,6,4
+AMT,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMT,Market + Volatility Agent,2026-10-03,STALE,5,0
+AMT,Sentiment Agent,,FRESH,0,2
+AMZN,Fundamental Agent,2026-02-06,EXPIRED,6,0
+AMZN,Macro-Economic Agent,2026-08-04,STALE,5,0
+AMZN,Market + Volatility Agent,2026-10-03,STALE,5,0
+AMZN,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ANET,Fundamental Agent,2026-02-17,EXPIRED,6,3
+ANET,Macro-Economic Agent,2026-08-04,STALE,5,0
+ANET,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ANET,Sentiment Agent,2026-10-09,EXPIRED,3,0
+AON,Fundamental Agent,2026-02-13,EXPIRED,6,0
+AON,Macro-Economic Agent,2026-08-04,STALE,5,0
+AON,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AON,Sentiment Agent,,FRESH,0,2
+AOS,Fundamental Agent,2026-02-10,EXPIRED,6,0
+AOS,Macro-Economic Agent,2026-08-04,STALE,5,0
+AOS,Market + Volatility Agent,2026-10-03,STALE,5,0
+AOS,Sentiment Agent,,FRESH,0,2
+APA,Fundamental Agent,2026-02-26,STALE,6,5
+APA,Macro-Economic Agent,2026-08-04,STALE,5,0
+APA,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+APA,Sentiment Agent,2026-10-08,EXPIRED,3,0
+APD,Fundamental Agent,2025-11-20,EXPIRED,6,3
+APD,Macro-Economic Agent,2026-08-04,STALE,5,0
+APD,Market + Volatility Agent,2026-10-03,STALE,5,0
+APD,Sentiment Agent,,FRESH,0,2
+APH,Fundamental Agent,2026-02-11,EXPIRED,6,3
+APH,Macro-Economic Agent,2026-08-04,STALE,5,0
+APH,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+APH,Sentiment Agent,2026-10-08,EXPIRED,3,0
+APO,Fundamental Agent,2026-02-25,STALE,6,3
+APO,Macro-Economic Agent,2026-08-04,STALE,5,0
+APO,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+APO,Sentiment Agent,2026-10-10,EXPIRED,3,0
+APP,Fundamental Agent,2026-02-19,STALE,6,0
+APP,Macro-Economic Agent,2026-08-04,STALE,5,0
+APP,Market + Volatility Agent,2026-10-03,STALE,5,0
+APP,Sentiment Agent,2026-10-06,EXPIRED,3,0
+APTV,Fundamental Agent,2026-02-06,EXPIRED,6,0
+APTV,Macro-Economic Agent,2026-08-04,STALE,5,0
+APTV,Market + Volatility Agent,2026-10-03,STALE,5,0
+APTV,Sentiment Agent,,FRESH,0,2
+ARE,Fundamental Agent,2026-01-26,EXPIRED,6,2
+ARE,Macro-Economic Agent,2026-08-04,STALE,5,0
+ARE,Market + Volatility Agent,2026-10-03,STALE,5,0
+ARE,Sentiment Agent,2026-10-02,EXPIRED,3,1
+ARES,Fundamental Agent,2026-02-25,STALE,6,5
+ARES,Macro-Economic Agent,2026-08-04,STALE,5,0
+ARES,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ARES,Sentiment Agent,2026-10-02,EXPIRED,3,0
+ARM,Fundamental Agent,2025-05-28,EXPIRED,6,3
+ARM,Macro-Economic Agent,2026-08-04,STALE,5,0
+ARM,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ARM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ASML,Fundamental Agent,2026-02-25,STALE,6,6
+ASML,Macro-Economic Agent,2026-08-04,STALE,5,0
+ASML,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ASML,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ATO,Fundamental Agent,2025-11-14,EXPIRED,6,3
+ATO,Macro-Economic Agent,2026-08-04,STALE,5,0
+ATO,Market + Volatility Agent,2026-10-03,STALE,5,0
+ATO,Sentiment Agent,,FRESH,0,2
+AVB,Fundamental Agent,2026-02-27,STALE,6,0
+AVB,Macro-Economic Agent,2026-08-04,STALE,5,0
+AVB,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AVB,Sentiment Agent,,FRESH,0,2
+AVGO,Fundamental Agent,2020-12-18,EXPIRED,6,1
+AVGO,Macro-Economic Agent,2026-08-04,STALE,5,0
+AVGO,Market + Volatility Agent,2026-10-03,STALE,5,0
+AVGO,Sentiment Agent,2026-10-09,EXPIRED,3,0
+AVY,Fundamental Agent,2026-02-25,STALE,6,1
+AVY,Macro-Economic Agent,2026-08-04,STALE,5,0
+AVY,Market + Volatility Agent,2026-10-03,STALE,5,0
+AVY,Sentiment Agent,,FRESH,0,2
+AWK,Fundamental Agent,2017-02-21,EXPIRED,6,0
+AWK,Macro-Economic Agent,2026-08-04,STALE,5,0
+AWK,Market + Volatility Agent,2026-10-03,STALE,5,0
+AWK,Sentiment Agent,,FRESH,0,2
+AXON,Fundamental Agent,2026-02-25,STALE,6,0
+AXON,Macro-Economic Agent,2026-08-04,STALE,5,0
+AXON,Market + Volatility Agent,2026-10-03,STALE,5,0
+AXON,Sentiment Agent,2026-10-09,EXPIRED,3,0
+AXP,Fundamental Agent,2012-02-24,EXPIRED,6,0
+AXP,Macro-Economic Agent,2026-08-04,STALE,5,0
+AXP,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+AXP,Sentiment Agent,2026-10-09,EXPIRED,3,0
+AZN,Fundamental Agent,,FRESH,0,6
+AZN,Macro-Economic Agent,2026-08-04,STALE,5,0
+AZN,Market + Volatility Agent,2026-10-03,STALE,5,0
+AZN,Sentiment Agent,2026-10-07,EXPIRED,3,0
+AZO,Fundamental Agent,2020-10-26,EXPIRED,6,3
+AZO,Macro-Economic Agent,2026-08-04,STALE,5,0
+AZO,Market + Volatility Agent,2026-10-03,STALE,5,0
+AZO,Sentiment Agent,,FRESH,0,2
+BA,Fundamental Agent,2026-01-30,EXPIRED,6,0
+BA,Macro-Economic Agent,2026-08-04,STALE,5,0
+BA,Market + Volatility Agent,2026-10-03,STALE,5,0
+BA,Sentiment Agent,2026-10-09,EXPIRED,3,0
+BAC,Fundamental Agent,2026-02-25,STALE,6,3
+BAC,Macro-Economic Agent,2026-08-04,STALE,5,0
+BAC,Market + Volatility Agent,2026-10-03,STALE,5,0
+BAC,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BALL,Fundamental Agent,2021-02-17,EXPIRED,6,2
+BALL,Macro-Economic Agent,2026-08-04,STALE,5,0
+BALL,Market + Volatility Agent,2026-10-03,STALE,5,0
+BALL,Sentiment Agent,,FRESH,0,2
+BAX,Fundamental Agent,2026-02-12,EXPIRED,6,0
+BAX,Macro-Economic Agent,2026-08-04,STALE,5,0
+BAX,Market + Volatility Agent,2026-10-03,STALE,5,0
+BAX,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BBY,Fundamental Agent,2026-03-18,STALE,6,0
+BBY,Macro-Economic Agent,2026-08-04,STALE,5,0
+BBY,Market + Volatility Agent,2026-10-03,STALE,5,0
+BBY,Sentiment Agent,,FRESH,0,2
+BDX,Fundamental Agent,2025-11-25,EXPIRED,6,3
+BDX,Macro-Economic Agent,2026-08-04,STALE,5,0
+BDX,Market + Volatility Agent,2026-10-03,STALE,5,0
+BDX,Sentiment Agent,,FRESH,0,2
+BE,Fundamental Agent,2026-02-09,EXPIRED,6,1
+BE,Macro-Economic Agent,2026-08-04,STALE,5,0
+BE,Market + Volatility Agent,2026-10-03,STALE,5,0
+BE,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BEN,Fundamental Agent,2025-11-10,EXPIRED,6,2
+BEN,Macro-Economic Agent,2026-08-04,STALE,5,0
+BEN,Market + Volatility Agent,2026-10-03,STALE,5,0
+BEN,Sentiment Agent,,FRESH,0,2
+BF-B,Fundamental Agent,2026-06-12,STALE,6,0
+BF-B,Macro-Economic Agent,2026-08-04,STALE,5,0
+BF-B,Market + Volatility Agent,2026-10-03,STALE,5,0
+BF-B,Sentiment Agent,2026-10-08,EXPIRED,3,0
+BG,Fundamental Agent,2026-02-19,STALE,6,1
+BG,Macro-Economic Agent,2026-08-04,STALE,5,0
+BG,Market + Volatility Agent,2026-10-03,STALE,5,0
+BG,Sentiment Agent,,FRESH,0,2
+BIIB,Fundamental Agent,2022-02-03,EXPIRED,6,2
+BIIB,Macro-Economic Agent,2026-08-04,STALE,5,0
+BIIB,Market + Volatility Agent,2026-10-03,STALE,5,0
+BIIB,Sentiment Agent,,FRESH,0,2
+BKNG,Fundamental Agent,2026-02-18,EXPIRED,6,1
+BKNG,Macro-Economic Agent,2026-08-04,STALE,5,0
+BKNG,Market + Volatility Agent,2026-10-03,STALE,5,0
+BKNG,Sentiment Agent,2026-10-07,EXPIRED,3,0
+BKR,Fundamental Agent,2026-02-05,EXPIRED,6,4
+BKR,Macro-Economic Agent,2026-08-04,STALE,5,0
+BKR,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+BKR,Sentiment Agent,,FRESH,0,2
+BLDR,Fundamental Agent,2026-02-17,EXPIRED,6,3
+BLDR,Macro-Economic Agent,2026-08-04,STALE,5,0
+BLDR,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+BLDR,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BLK,Fundamental Agent,2026-02-25,STALE,6,0
+BLK,Macro-Economic Agent,2026-08-04,STALE,5,0
+BLK,Market + Volatility Agent,2026-10-03,STALE,5,0
+BLK,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BMY,Fundamental Agent,2026-02-11,EXPIRED,6,1
+BMY,Macro-Economic Agent,2026-08-04,STALE,5,0
+BMY,Market + Volatility Agent,2026-10-03,STALE,5,0
+BMY,Sentiment Agent,2026-10-07,EXPIRED,3,0
+BNY,Fundamental Agent,2026-02-25,STALE,6,1
+BNY,Macro-Economic Agent,2026-08-04,STALE,5,0
+BNY,Market + Volatility Agent,2026-10-03,STALE,5,0
+BNY,Sentiment Agent,2026-10-08,EXPIRED,3,0
+BR,Fundamental Agent,2026-08-04,RECENT,0,0
+BR,Macro-Economic Agent,2026-08-04,STALE,5,0
+BR,Market + Volatility Agent,2026-10-03,STALE,5,0
+BR,Sentiment Agent,,FRESH,0,2
+BRK-B,Fundamental Agent,2014-03-03,EXPIRED,6,3
+BRK-B,Macro-Economic Agent,2026-08-04,STALE,5,0
+BRK-B,Market + Volatility Agent,2026-10-03,STALE,5,0
+BRK-B,Sentiment Agent,2026-10-10,EXPIRED,3,0
+BRO,Fundamental Agent,2025-02-13,EXPIRED,6,1
+BRO,Macro-Economic Agent,2026-08-04,STALE,5,0
+BRO,Market + Volatility Agent,2026-10-03,STALE,5,0
+BRO,Sentiment Agent,2026-10-09,EXPIRED,3,1
+BSX,Fundamental Agent,2017-02-23,EXPIRED,6,1
+BSX,Macro-Economic Agent,2026-08-04,STALE,5,0
+BSX,Market + Volatility Agent,2026-10-03,STALE,5,0
+BSX,Sentiment Agent,,FRESH,0,2
+BX,Fundamental Agent,2026-02-27,STALE,6,1
+BX,Macro-Economic Agent,2026-08-04,STALE,5,0
+BX,Market + Volatility Agent,2026-10-03,STALE,5,0
+BX,Sentiment Agent,2026-10-07,EXPIRED,3,0
+BXP,Fundamental Agent,2022-02-25,EXPIRED,6,1
+BXP,Macro-Economic Agent,2026-08-04,STALE,5,0
+BXP,Market + Volatility Agent,2026-10-03,STALE,5,0
+BXP,Sentiment Agent,,FRESH,0,2
+C,Fundamental Agent,2026-02-20,STALE,6,3
+C,Macro-Economic Agent,2026-08-04,STALE,5,0
+C,Market + Volatility Agent,2026-10-03,STALE,5,0
+C,Sentiment Agent,2026-10-06,EXPIRED,3,0
+CAG,Fundamental Agent,2025-07-10,EXPIRED,6,0
+CAG,Macro-Economic Agent,2026-08-04,STALE,5,0
+CAG,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+CAG,Sentiment Agent,,FRESH,0,2
+CAH,Fundamental Agent,2026-08-11,RECENT,0,3
+CAH,Macro-Economic Agent,2026-08-04,STALE,5,0
+CAH,Market + Volatility Agent,2026-10-03,STALE,5,0
+CAH,Sentiment Agent,,FRESH,0,2
+CARR,Fundamental Agent,2026-02-05,EXPIRED,6,3
+CARR,Macro-Economic Agent,2026-08-04,STALE,5,0
+CARR,Market + Volatility Agent,2026-10-03,STALE,5,0
+CARR,Sentiment Agent,,FRESH,0,2
+CASY,Fundamental Agent,2026-06-22,RECENT,0,1
+CASY,Macro-Economic Agent,2026-08-04,STALE,5,0
+CASY,Market + Volatility Agent,2026-10-03,STALE,5,0
+CASY,Sentiment Agent,,FRESH,0,2
+CAT,Fundamental Agent,2026-02-13,EXPIRED,6,4
+CAT,Macro-Economic Agent,2026-08-04,STALE,5,0
+CAT,Market + Volatility Agent,2026-10-03,STALE,5,0
+CAT,Sentiment Agent,2026-10-07,EXPIRED,3,0
+CB,Fundamental Agent,2026-02-27,STALE,6,3
+CB,Macro-Economic Agent,2026-08-04,STALE,5,0
+CB,Market + Volatility Agent,2026-10-03,STALE,5,0
+CB,Sentiment Agent,2026-10-08,EXPIRED,3,0
+CBOE,Fundamental Agent,2026-02-20,STALE,6,2
+CBOE,Macro-Economic Agent,2026-08-04,STALE,5,0
+CBOE,Market + Volatility Agent,2026-10-03,STALE,5,0
+CBOE,Sentiment Agent,2026-10-08,EXPIRED,3,1
+CBRE,Fundamental Agent,2026-02-12,EXPIRED,6,3
+CBRE,Macro-Economic Agent,2026-08-04,STALE,5,0
+CBRE,Market + Volatility Agent,2026-10-03,STALE,5,0
+CBRE,Sentiment Agent,,FRESH,0,2
+CCI,Fundamental Agent,2026-02-23,STALE,6,0
+CCI,Macro-Economic Agent,2026-08-04,STALE,5,0
+CCI,Market + Volatility Agent,2026-10-03,STALE,5,0
+CCI,Sentiment Agent,,FRESH,0,2
+CCL,Fundamental Agent,2026-01-27,EXPIRED,6,0
+CCL,Macro-Economic Agent,2026-08-04,STALE,5,0
+CCL,Market + Volatility Agent,2026-10-03,STALE,5,0
+CCL,Sentiment Agent,2026-10-08,EXPIRED,3,0
+CDNS,Fundamental Agent,2026-02-19,STALE,6,3
+CDNS,Macro-Economic Agent,2026-08-04,STALE,5,0
+CDNS,Market + Volatility Agent,2026-10-03,STALE,5,0
+CDNS,Sentiment Agent,,FRESH,0,2
+CDW,Fundamental Agent,2020-02-28,EXPIRED,6,3
+CDW,Macro-Economic Agent,2026-08-04,STALE,5,0
+CDW,Market + Volatility Agent,2026-10-03,STALE,5,0
+CDW,Sentiment Agent,,FRESH,0,2
+CEG,Fundamental Agent,2026-02-24,STALE,6,0
+CEG,Macro-Economic Agent,2026-08-04,STALE,5,0
+CEG,Market + Volatility Agent,2026-10-03,STALE,5,0
+CEG,Sentiment Agent,2026-10-08,EXPIRED,3,0
+CF,Fundamental Agent,2020-02-24,EXPIRED,6,1
+CF,Macro-Economic Agent,2026-08-04,STALE,5,0
+CF,Market + Volatility Agent,2026-10-03,STALE,5,0
+CF,Sentiment Agent,,FRESH,0,2
+CFG,Fundamental Agent,2026-02-12,EXPIRED,6,3
+CFG,Macro-Economic Agent,2026-08-04,STALE,5,0
+CFG,Market + Volatility Agent,2026-10-03,STALE,5,0
+CFG,Sentiment Agent,2026-10-07,EXPIRED,3,1
+CHD,Fundamental Agent,2026-02-12,EXPIRED,6,0
+CHD,Macro-Economic Agent,2026-08-04,STALE,5,0
+CHD,Market + Volatility Agent,2026-10-03,STALE,5,0
+CHD,Sentiment Agent,,FRESH,0,2
+CHRW,Fundamental Agent,2026-02-13,EXPIRED,6,0
+CHRW,Macro-Economic Agent,2026-08-04,STALE,5,0
+CHRW,Market + Volatility Agent,2026-10-03,STALE,5,0
+CHRW,Sentiment Agent,,FRESH,0,2
+CHTR,Fundamental Agent,2026-01-30,EXPIRED,6,0
+CHTR,Macro-Economic Agent,2026-08-04,STALE,5,0
+CHTR,Market + Volatility Agent,2026-10-03,STALE,5,0
+CHTR,Sentiment Agent,,FRESH,0,2
+CI,Fundamental Agent,2026-02-26,STALE,6,3
+CI,Macro-Economic Agent,2026-08-04,STALE,5,0
+CI,Market + Volatility Agent,2026-10-03,STALE,5,0
+CI,Sentiment Agent,,FRESH,0,2
+CIEN,Fundamental Agent,2025-12-12,EXPIRED,6,3
+CIEN,Macro-Economic Agent,2026-08-04,STALE,5,0
+CIEN,Market + Volatility Agent,2026-10-03,STALE,5,0
+CIEN,Sentiment Agent,2026-10-07,EXPIRED,3,0
+CINF,Fundamental Agent,2022-02-24,EXPIRED,6,1
+CINF,Macro-Economic Agent,2026-08-04,STALE,5,0
+CINF,Market + Volatility Agent,2026-10-03,STALE,5,0
+CINF,Sentiment Agent,2026-10-07,EXPIRED,3,0
+CL,Fundamental Agent,2026-02-23,STALE,6,3
+CL,Macro-Economic Agent,2026-08-04,STALE,5,0
+CL,Market + Volatility Agent,2026-10-03,STALE,5,0
+CL,Sentiment Agent,,FRESH,0,2
+CLX,Fundamental Agent,2025-08-08,EXPIRED,6,1
+CLX,Macro-Economic Agent,2026-08-04,STALE,5,0
+CLX,Market + Volatility Agent,2026-10-03,STALE,5,0
+CLX,Sentiment Agent,,FRESH,0,2
+CMCSA,Fundamental Agent,2026-02-03,EXPIRED,6,3
+CMCSA,Macro-Economic Agent,2026-08-04,STALE,5,0
+CMCSA,Market + Volatility Agent,2026-10-03,STALE,5,0
+CMCSA,Sentiment Agent,,FRESH,0,2
+CME,Fundamental Agent,2026-02-26,STALE,6,3
+CME,Macro-Economic Agent,2026-08-04,STALE,5,0
+CME,Market + Volatility Agent,2026-10-03,STALE,5,0
+CME,Sentiment Agent,,FRESH,0,2
+CMG,Fundamental Agent,2026-02-04,EXPIRED,6,1
+CMG,Macro-Economic Agent,2026-08-04,STALE,5,0
+CMG,Market + Volatility Agent,2026-10-03,STALE,5,0
+CMG,Sentiment Agent,,FRESH,0,2
+CMI,Fundamental Agent,2014-02-18,EXPIRED,6,2
+CMI,Macro-Economic Agent,2026-08-04,STALE,5,0
+CMI,Market + Volatility Agent,2026-10-03,STALE,5,0
+CMI,Sentiment Agent,,FRESH,0,2
+CMS,Fundamental Agent,2026-02-10,EXPIRED,6,3
+CMS,Macro-Economic Agent,2026-08-04,STALE,5,0
+CMS,Market + Volatility Agent,2026-10-03,STALE,5,0
+CMS,Sentiment Agent,,FRESH,0,2
+CNC,Fundamental Agent,2026-02-17,EXPIRED,6,0
+CNC,Macro-Economic Agent,2026-08-04,STALE,5,0
+CNC,Market + Volatility Agent,2026-10-03,STALE,5,0
+CNC,Sentiment Agent,2026-10-09,EXPIRED,3,0
+CNP,Fundamental Agent,2026-02-19,STALE,6,0
+CNP,Macro-Economic Agent,2026-08-04,STALE,5,0
+CNP,Market + Volatility Agent,2026-10-03,STALE,5,0
+CNP,Sentiment Agent,,FRESH,0,2
+COF,Fundamental Agent,2026-02-19,STALE,6,5
+COF,Macro-Economic Agent,2026-08-04,STALE,5,0
+COF,Market + Volatility Agent,2026-10-03,STALE,5,0
+COF,Sentiment Agent,,FRESH,0,2
+COHR,Fundamental Agent,2025-08-15,EXPIRED,6,0
+COHR,Macro-Economic Agent,2026-08-04,STALE,5,0
+COHR,Market + Volatility Agent,2026-10-03,STALE,5,0
+COHR,Sentiment Agent,2026-10-10,EXPIRED,3,0
+COIN,Fundamental Agent,2026-02-12,EXPIRED,6,0
+COIN,Macro-Economic Agent,2026-08-04,STALE,5,0
+COIN,Market + Volatility Agent,2026-10-03,STALE,5,0
+COIN,Sentiment Agent,2026-10-05,EXPIRED,3,0
+COO,Fundamental Agent,2025-12-05,EXPIRED,6,3
+COO,Macro-Economic Agent,2026-08-04,STALE,5,0
+COO,Market + Volatility Agent,2026-10-03,STALE,5,0
+COO,Sentiment Agent,,FRESH,0,2
+COP,Fundamental Agent,2026-02-17,EXPIRED,6,4
+COP,Macro-Economic Agent,2026-08-04,STALE,5,0
+COP,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+COP,Sentiment Agent,2026-10-08,EXPIRED,3,0
+COR,Fundamental Agent,2025-11-25,EXPIRED,6,0
+COR,Macro-Economic Agent,2026-08-04,STALE,5,0
+COR,Market + Volatility Agent,2026-10-03,STALE,5,0
+COR,Sentiment Agent,,FRESH,0,2
+COST,Fundamental Agent,2025-10-08,EXPIRED,6,3
+COST,Macro-Economic Agent,2026-08-04,STALE,5,0
+COST,Market + Volatility Agent,2026-10-03,STALE,5,0
+COST,Sentiment Agent,2026-10-09,EXPIRED,3,0
+CPAY,Fundamental Agent,2026-02-27,STALE,6,0
+CPAY,Macro-Economic Agent,2026-08-04,STALE,5,0
+CPAY,Market + Volatility Agent,2026-10-03,STALE,5,0
+CPAY,Sentiment Agent,,FRESH,0,2
+CPB,Fundamental Agent,2025-09-18,EXPIRED,6,3
+CPB,Macro-Economic Agent,2026-08-04,STALE,5,0
+CPB,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+CPB,Sentiment Agent,2026-10-05,EXPIRED,3,0
+CPRT,Fundamental Agent,2020-09-28,EXPIRED,6,2
+CPRT,Macro-Economic Agent,2026-08-04,STALE,5,0
+CPRT,Market + Volatility Agent,2026-10-03,STALE,5,0
+CPRT,Sentiment Agent,,FRESH,0,2
+CPT,Fundamental Agent,2026-02-12,EXPIRED,6,1
+CPT,Macro-Economic Agent,2026-08-04,STALE,5,0
+CPT,Market + Volatility Agent,2026-10-03,STALE,5,0
+CPT,Sentiment Agent,,FRESH,0,2
+CRH,Fundamental Agent,2026-02-18,EXPIRED,6,0
+CRH,Macro-Economic Agent,2026-08-04,STALE,5,0
+CRH,Market + Volatility Agent,2026-10-03,STALE,5,0
+CRH,Sentiment Agent,,FRESH,0,2
+CRL,Fundamental Agent,2026-02-18,EXPIRED,6,3
+CRL,Macro-Economic Agent,2026-08-04,STALE,5,0
+CRL,Market + Volatility Agent,2026-10-03,STALE,5,0
+CRL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+CRM,Fundamental Agent,2026-03-02,STALE,6,0
+CRM,Macro-Economic Agent,2026-08-04,STALE,5,0
+CRM,Market + Volatility Agent,2026-10-03,STALE,5,0
+CRM,Sentiment Agent,2026-10-07,EXPIRED,3,0
+CRWD,Fundamental Agent,2026-03-05,STALE,6,5
+CRWD,Macro-Economic Agent,2026-08-04,STALE,5,0
+CRWD,Market + Volatility Agent,2026-10-03,STALE,5,0
+CRWD,Sentiment Agent,2026-10-09,EXPIRED,3,0
+CSCO,Fundamental Agent,2026-09-02,FRESH,0,0
+CSCO,Macro-Economic Agent,2026-08-04,STALE,5,0
+CSCO,Market + Volatility Agent,2026-10-03,STALE,5,0
+CSCO,Sentiment Agent,2026-10-10,EXPIRED,3,0
+CSGP,Fundamental Agent,2026-02-26,STALE,6,0
+CSGP,Macro-Economic Agent,2026-08-04,STALE,5,0
+CSGP,Market + Volatility Agent,2026-10-03,STALE,5,0
+CSGP,Sentiment Agent,2026-10-09,EXPIRED,3,0
+CSX,Fundamental Agent,2013-02-19,EXPIRED,6,0
+CSX,Macro-Economic Agent,2026-08-04,STALE,5,0
+CSX,Market + Volatility Agent,2026-10-03,STALE,5,0
+CSX,Sentiment Agent,,FRESH,0,2
+CTAS,Fundamental Agent,2026-07-29,RECENT,0,0
+CTAS,Macro-Economic Agent,2026-08-04,STALE,5,0
+CTAS,Market + Volatility Agent,2026-10-03,STALE,5,0
+CTAS,Sentiment Agent,,FRESH,0,2
+CTRA,Fundamental Agent,2026-02-27,STALE,6,0
+CTRA,Macro-Economic Agent,2026-08-04,STALE,5,0
+CTRA,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+CTRA,Sentiment Agent,,FRESH,0,2
+CTSH,Fundamental Agent,2026-02-12,EXPIRED,6,3
+CTSH,Macro-Economic Agent,2026-08-04,STALE,5,0
+CTSH,Market + Volatility Agent,2026-10-03,STALE,5,0
+CTSH,Sentiment Agent,,FRESH,0,2
+CTVA,Fundamental Agent,2026-02-12,EXPIRED,6,4
+CTVA,Macro-Economic Agent,2026-08-04,STALE,5,0
+CTVA,Market + Volatility Agent,2026-10-03,STALE,5,1
+CTVA,Sentiment Agent,,FRESH,0,2
+CVNA,Fundamental Agent,2026-02-18,EXPIRED,6,0
+CVNA,Macro-Economic Agent,2026-08-04,STALE,5,0
+CVNA,Market + Volatility Agent,2026-10-03,STALE,5,0
+CVNA,Sentiment Agent,2026-09-30,EXPIRED,3,0
+CVS,Fundamental Agent,2026-02-10,EXPIRED,6,3
+CVS,Macro-Economic Agent,2026-08-04,STALE,5,0
+CVS,Market + Volatility Agent,2026-10-03,STALE,5,0
+CVS,Sentiment Agent,,FRESH,0,2
+CVX,Fundamental Agent,2025-02-21,EXPIRED,6,4
+CVX,Macro-Economic Agent,2026-08-04,STALE,5,0
+CVX,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+CVX,Sentiment Agent,2026-10-08,EXPIRED,3,0
+D,Fundamental Agent,2026-02-23,STALE,6,0
+D,Macro-Economic Agent,2026-08-04,STALE,5,0
+D,Market + Volatility Agent,2026-10-03,STALE,5,0
+D,Sentiment Agent,,FRESH,0,2
+DAL,Fundamental Agent,2026-02-11,EXPIRED,6,0
+DAL,Macro-Economic Agent,2026-08-04,STALE,5,0
+DAL,Market + Volatility Agent,2026-10-03,STALE,5,0
+DAL,Sentiment Agent,,FRESH,0,2
+DASH,Fundamental Agent,2026-02-18,EXPIRED,6,3
+DASH,Macro-Economic Agent,2026-08-04,STALE,5,0
+DASH,Market + Volatility Agent,2026-10-03,STALE,5,0
+DASH,Sentiment Agent,2026-10-08,EXPIRED,3,0
+DD,Fundamental Agent,2021-02-12,EXPIRED,6,1
+DD,Macro-Economic Agent,2026-08-04,STALE,5,0
+DD,Market + Volatility Agent,2026-10-03,STALE,5,0
+DD,Sentiment Agent,,FRESH,0,2
+DDOG,Fundamental Agent,2026-02-18,EXPIRED,6,3
+DDOG,Macro-Economic Agent,2026-08-04,STALE,5,0
+DDOG,Market + Volatility Agent,2026-10-03,STALE,5,0
+DDOG,Sentiment Agent,2026-10-07,EXPIRED,3,0
+DE,Fundamental Agent,2025-12-18,EXPIRED,6,3
+DE,Macro-Economic Agent,2026-08-04,STALE,5,0
+DE,Market + Volatility Agent,2026-10-03,STALE,5,0
+DE,Sentiment Agent,2026-10-03,EXPIRED,3,0
+DECK,Fundamental Agent,2026-05-22,STALE,6,3
+DECK,Macro-Economic Agent,2026-08-04,STALE,5,0
+DECK,Market + Volatility Agent,2026-10-03,STALE,5,0
+DECK,Sentiment Agent,,FRESH,0,2
+DELL,Fundamental Agent,2026-03-16,STALE,6,0
+DELL,Macro-Economic Agent,2026-08-04,STALE,5,0
+DELL,Market + Volatility Agent,2026-10-03,STALE,5,0
+DELL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+DG,Fundamental Agent,2026-03-20,STALE,6,3
+DG,Macro-Economic Agent,2026-08-04,STALE,5,0
+DG,Market + Volatility Agent,2026-10-03,STALE,5,0
+DG,Sentiment Agent,2026-10-06,EXPIRED,3,0
+DGX,Fundamental Agent,2026-02-26,STALE,6,0
+DGX,Macro-Economic Agent,2026-08-04,STALE,5,0
+DGX,Market + Volatility Agent,2026-10-03,STALE,5,0
+DGX,Sentiment Agent,,FRESH,0,2
+DHI,Fundamental Agent,2025-11-19,EXPIRED,6,4
+DHI,Macro-Economic Agent,2026-08-04,STALE,5,0
+DHI,Market + Volatility Agent,2026-10-03,STALE,5,0
+DHI,Sentiment Agent,,FRESH,0,2
+DHR,Fundamental Agent,2020-02-21,EXPIRED,6,0
+DHR,Macro-Economic Agent,2026-08-04,STALE,5,0
+DHR,Market + Volatility Agent,2026-10-03,STALE,5,0
+DHR,Sentiment Agent,2026-10-08,EXPIRED,3,0
+DIS,Fundamental Agent,2025-11-13,EXPIRED,6,0
+DIS,Macro-Economic Agent,2026-08-04,STALE,5,0
+DIS,Market + Volatility Agent,2026-10-03,STALE,5,0
+DIS,Sentiment Agent,2026-10-09,EXPIRED,3,0
+DLR,Fundamental Agent,2026-02-13,EXPIRED,6,3
+DLR,Macro-Economic Agent,2026-08-04,STALE,5,0
+DLR,Market + Volatility Agent,2026-10-03,STALE,5,0
+DLR,Sentiment Agent,,FRESH,0,2
+DLTR,Fundamental Agent,2026-03-16,STALE,6,0
+DLTR,Macro-Economic Agent,2026-08-04,STALE,5,0
+DLTR,Market + Volatility Agent,2026-10-03,STALE,5,0
+DLTR,Sentiment Agent,2026-10-09,EXPIRED,3,0
+DOC,Fundamental Agent,2026-02-03,EXPIRED,6,1
+DOC,Macro-Economic Agent,2026-08-04,STALE,5,0
+DOC,Market + Volatility Agent,2026-10-03,STALE,5,0
+DOC,Sentiment Agent,,FRESH,0,2
+DOV,Fundamental Agent,2023-02-10,EXPIRED,6,0
+DOV,Macro-Economic Agent,2026-08-04,STALE,5,0
+DOV,Market + Volatility Agent,2026-10-03,STALE,5,0
+DOV,Sentiment Agent,,FRESH,0,2
+DOW,Fundamental Agent,2026-02-03,EXPIRED,6,5
+DOW,Macro-Economic Agent,2026-08-04,STALE,5,0
+DOW,Market + Volatility Agent,2026-10-03,STALE,5,0
+DOW,Sentiment Agent,,FRESH,0,2
+DPZ,Fundamental Agent,2026-02-23,STALE,6,3
+DPZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+DPZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+DPZ,Sentiment Agent,,FRESH,0,2
+DRI,Fundamental Agent,2026-07-24,RECENT,0,0
+DRI,Macro-Economic Agent,2026-08-04,STALE,5,0
+DRI,Market + Volatility Agent,2026-10-03,STALE,5,0
+DRI,Sentiment Agent,,FRESH,0,2
+DTE,Fundamental Agent,2026-02-17,EXPIRED,6,2
+DTE,Macro-Economic Agent,2026-08-04,STALE,5,0
+DTE,Market + Volatility Agent,2026-10-03,STALE,5,0
+DTE,Sentiment Agent,,FRESH,0,2
+DUK,Fundamental Agent,2026-02-26,STALE,6,2
+DUK,Macro-Economic Agent,2026-08-04,STALE,5,0
+DUK,Market + Volatility Agent,2026-10-03,STALE,5,0
+DUK,Sentiment Agent,,FRESH,0,2
+DVA,Fundamental Agent,2026-02-11,EXPIRED,6,3
+DVA,Macro-Economic Agent,2026-08-04,STALE,5,0
+DVA,Market + Volatility Agent,2026-10-03,STALE,5,0
+DVA,Sentiment Agent,,FRESH,0,2
+DVN,Fundamental Agent,2026-02-18,EXPIRED,6,1
+DVN,Macro-Economic Agent,2026-08-04,STALE,5,0
+DVN,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+DVN,Sentiment Agent,,FRESH,0,2
+DXCM,Fundamental Agent,2026-02-12,EXPIRED,6,3
+DXCM,Macro-Economic Agent,2026-08-04,STALE,5,0
+DXCM,Market + Volatility Agent,2026-10-03,STALE,5,0
+DXCM,Sentiment Agent,2026-10-07,EXPIRED,3,0
+EA,Fundamental Agent,2025-05-13,EXPIRED,6,4
+EA,Macro-Economic Agent,2026-08-04,STALE,5,0
+EA,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+EA,Sentiment Agent,,FRESH,0,2
+EBAY,Fundamental Agent,2026-02-19,STALE,6,3
+EBAY,Macro-Economic Agent,2026-08-04,STALE,5,0
+EBAY,Market + Volatility Agent,2026-10-03,STALE,5,0
+EBAY,Sentiment Agent,,FRESH,0,2
+ECHO,Fundamental Agent,2026-03-02,STALE,6,3
+ECHO,Macro-Economic Agent,2026-08-04,STALE,5,0
+ECHO,Market + Volatility Agent,2026-10-03,STALE,5,0
+ECHO,Sentiment Agent,,FRESH,0,2
+ECL,Fundamental Agent,2026-02-23,STALE,6,3
+ECL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ECL,Market + Volatility Agent,2026-10-03,STALE,5,0
+ECL,Sentiment Agent,,FRESH,0,2
+ED,Fundamental Agent,2026-02-19,STALE,6,0
+ED,Macro-Economic Agent,2026-08-04,STALE,5,0
+ED,Market + Volatility Agent,2026-10-03,STALE,5,0
+ED,Sentiment Agent,,FRESH,0,2
+EFX,Fundamental Agent,2026-02-19,STALE,6,0
+EFX,Macro-Economic Agent,2026-08-04,STALE,5,0
+EFX,Market + Volatility Agent,2026-10-03,STALE,5,0
+EFX,Sentiment Agent,,FRESH,0,2
+EG,Fundamental Agent,2026-02-26,STALE,6,5
+EG,Macro-Economic Agent,2026-08-04,STALE,5,0
+EG,Market + Volatility Agent,2026-10-03,STALE,5,0
+EG,Sentiment Agent,,FRESH,0,2
+EIX,Fundamental Agent,2026-02-18,EXPIRED,6,0
+EIX,Macro-Economic Agent,2026-08-04,STALE,5,0
+EIX,Market + Volatility Agent,2026-10-03,STALE,5,0
+EIX,Sentiment Agent,,FRESH,0,2
+EL,Fundamental Agent,2019-08-23,EXPIRED,6,3
+EL,Macro-Economic Agent,2026-08-04,STALE,5,0
+EL,Market + Volatility Agent,2026-10-03,STALE,5,0
+EL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ELV,Fundamental Agent,2026-02-06,EXPIRED,6,0
+ELV,Macro-Economic Agent,2026-08-04,STALE,5,0
+ELV,Market + Volatility Agent,2026-10-03,STALE,5,0
+ELV,Sentiment Agent,,FRESH,0,2
+EME,Fundamental Agent,2026-02-26,STALE,6,3
+EME,Macro-Economic Agent,2026-08-04,STALE,5,0
+EME,Market + Volatility Agent,2026-10-03,STALE,5,0
+EME,Sentiment Agent,,FRESH,0,2
+EMR,Fundamental Agent,,FRESH,0,6
+EMR,Macro-Economic Agent,2026-08-04,STALE,5,0
+EMR,Market + Volatility Agent,2026-10-03,STALE,5,0
+EMR,Sentiment Agent,,FRESH,0,2
+EOG,Fundamental Agent,2026-02-24,STALE,6,3
+EOG,Macro-Economic Agent,2026-08-04,STALE,5,0
+EOG,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+EOG,Sentiment Agent,,FRESH,0,2
+EQIX,Fundamental Agent,2026-02-11,EXPIRED,6,0
+EQIX,Macro-Economic Agent,2026-08-04,STALE,5,0
+EQIX,Market + Volatility Agent,2026-10-03,STALE,5,0
+EQIX,Sentiment Agent,,FRESH,0,2
+EQT,Fundamental Agent,2026-02-18,EXPIRED,6,0
+EQT,Macro-Economic Agent,2026-08-04,STALE,5,0
+EQT,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+EQT,Sentiment Agent,,FRESH,0,2
+ERIE,Fundamental Agent,2020-02-27,EXPIRED,6,3
+ERIE,Macro-Economic Agent,2026-08-04,STALE,5,0
+ERIE,Market + Volatility Agent,2026-10-03,STALE,5,0
+ERIE,Sentiment Agent,,FRESH,0,2
+ES,Fundamental Agent,2026-02-17,EXPIRED,6,4
+ES,Macro-Economic Agent,2026-08-04,STALE,5,0
+ES,Market + Volatility Agent,2026-10-03,STALE,5,0
+ES,Sentiment Agent,,FRESH,0,2
+ESS,Fundamental Agent,2026-02-20,STALE,6,4
+ESS,Macro-Economic Agent,2026-08-04,STALE,5,0
+ESS,Market + Volatility Agent,2026-10-03,STALE,5,0
+ESS,Sentiment Agent,,FRESH,0,2
+ETN,Fundamental Agent,2020-02-26,EXPIRED,6,0
+ETN,Macro-Economic Agent,2026-08-04,STALE,5,0
+ETN,Market + Volatility Agent,2026-10-03,STALE,5,0
+ETN,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ETR,Fundamental Agent,2025-02-18,EXPIRED,6,0
+ETR,Macro-Economic Agent,2026-08-04,STALE,5,0
+ETR,Market + Volatility Agent,2026-10-03,STALE,5,0
+ETR,Sentiment Agent,,FRESH,0,2
+EVRG,Fundamental Agent,2026-02-19,STALE,6,3
+EVRG,Macro-Economic Agent,2026-08-04,STALE,5,0
+EVRG,Market + Volatility Agent,2026-10-03,STALE,5,0
+EVRG,Sentiment Agent,,FRESH,0,2
+EW,Fundamental Agent,2026-02-25,STALE,6,3
+EW,Macro-Economic Agent,2026-08-04,STALE,5,0
+EW,Market + Volatility Agent,2026-10-03,STALE,5,0
+EW,Sentiment Agent,,FRESH,0,2
+EXC,Fundamental Agent,2026-02-12,EXPIRED,6,1
+EXC,Macro-Economic Agent,2026-08-04,STALE,5,0
+EXC,Market + Volatility Agent,2026-10-03,STALE,5,0
+EXC,Sentiment Agent,,FRESH,0,2
+EXE,Fundamental Agent,2026-02-18,EXPIRED,6,0
+EXE,Macro-Economic Agent,2026-08-04,STALE,5,0
+EXE,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+EXE,Sentiment Agent,,FRESH,0,2
+EXPD,Fundamental Agent,2026-02-25,STALE,6,3
+EXPD,Macro-Economic Agent,2026-08-04,STALE,5,0
+EXPD,Market + Volatility Agent,2026-10-03,STALE,5,0
+EXPD,Sentiment Agent,,FRESH,0,2
+EXPE,Fundamental Agent,2026-02-13,EXPIRED,6,0
+EXPE,Macro-Economic Agent,2026-08-04,STALE,5,0
+EXPE,Market + Volatility Agent,2026-10-03,STALE,5,0
+EXPE,Sentiment Agent,,FRESH,0,2
+EXR,Fundamental Agent,2026-02-20,STALE,6,3
+EXR,Macro-Economic Agent,2026-08-04,STALE,5,0
+EXR,Market + Volatility Agent,2026-10-03,STALE,5,0
+EXR,Sentiment Agent,,FRESH,0,2
+F,Fundamental Agent,2026-02-11,EXPIRED,6,3
+F,Macro-Economic Agent,2026-08-04,STALE,5,0
+F,Market + Volatility Agent,2026-10-03,STALE,5,0
+F,Sentiment Agent,,FRESH,0,2
+FANG,Fundamental Agent,2026-02-25,STALE,6,0
+FANG,Macro-Economic Agent,2026-08-04,STALE,5,0
+FANG,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+FANG,Sentiment Agent,2026-10-09,EXPIRED,3,0
+FAST,Fundamental Agent,2026-02-05,EXPIRED,6,0
+FAST,Macro-Economic Agent,2026-08-04,STALE,5,0
+FAST,Market + Volatility Agent,2026-10-03,STALE,5,0
+FAST,Sentiment Agent,,FRESH,0,2
+FCX,Fundamental Agent,2026-02-13,EXPIRED,6,1
+FCX,Macro-Economic Agent,2026-08-04,STALE,5,0
+FCX,Market + Volatility Agent,2026-10-03,STALE,5,0
+FCX,Sentiment Agent,2026-10-08,EXPIRED,3,0
+FDS,Fundamental Agent,2025-10-22,EXPIRED,6,0
+FDS,Macro-Economic Agent,2026-08-04,STALE,5,0
+FDS,Market + Volatility Agent,2026-10-03,STALE,5,0
+FDS,Sentiment Agent,,FRESH,0,2
+FDX,Fundamental Agent,2021-07-19,EXPIRED,6,0
+FDX,Macro-Economic Agent,2026-08-04,STALE,5,0
+FDX,Market + Volatility Agent,2026-10-03,STALE,5,0
+FDX,Sentiment Agent,,FRESH,0,2
+FDXF,Fundamental Agent,2026-08-05,RECENT,0,2
+FDXF,Macro-Economic Agent,2026-08-04,STALE,5,0
+FDXF,Market + Volatility Agent,2026-10-03,STALE,5,1
+FDXF,Sentiment Agent,2026-10-09,EXPIRED,3,0
+FE,Fundamental Agent,2026-02-18,EXPIRED,6,3
+FE,Macro-Economic Agent,2026-08-04,STALE,5,0
+FE,Market + Volatility Agent,2026-10-03,STALE,5,0
+FE,Sentiment Agent,,FRESH,0,2
+FERG,Fundamental Agent,2025-09-26,EXPIRED,6,3
+FERG,Macro-Economic Agent,2026-08-04,STALE,5,0
+FERG,Market + Volatility Agent,2026-10-03,STALE,5,0
+FERG,Sentiment Agent,,FRESH,0,2
+FFIV,Fundamental Agent,2025-11-25,EXPIRED,6,3
+FFIV,Macro-Economic Agent,2026-08-04,STALE,5,0
+FFIV,Market + Volatility Agent,2026-10-03,STALE,5,0
+FFIV,Sentiment Agent,,FRESH,0,2
+FICO,Fundamental Agent,2025-11-07,EXPIRED,6,3
+FICO,Macro-Economic Agent,2026-08-04,STALE,5,0
+FICO,Market + Volatility Agent,2026-10-03,STALE,5,0
+FICO,Sentiment Agent,,FRESH,0,2
+FIS,Fundamental Agent,2026-02-24,STALE,6,0
+FIS,Macro-Economic Agent,2026-08-04,STALE,5,0
+FIS,Market + Volatility Agent,2026-10-03,STALE,5,0
+FIS,Sentiment Agent,,FRESH,0,2
+FISV,Fundamental Agent,2022-02-24,EXPIRED,6,3
+FISV,Macro-Economic Agent,2026-08-04,STALE,5,0
+FISV,Market + Volatility Agent,2026-10-03,STALE,5,1
+FISV,Sentiment Agent,,FRESH,0,2
+FITB,Fundamental Agent,2026-02-24,STALE,6,4
+FITB,Macro-Economic Agent,2026-08-04,STALE,5,0
+FITB,Market + Volatility Agent,2026-10-03,STALE,5,0
+FITB,Sentiment Agent,,FRESH,0,2
+FIX,Fundamental Agent,2026-02-19,STALE,6,0
+FIX,Macro-Economic Agent,2026-08-04,STALE,5,0
+FIX,Market + Volatility Agent,2026-10-03,STALE,5,0
+FIX,Sentiment Agent,,FRESH,0,2
+FLEX,Fundamental Agent,2026-05-20,STALE,6,0
+FLEX,Macro-Economic Agent,2026-08-04,STALE,5,0
+FLEX,Market + Volatility Agent,2026-10-03,STALE,5,0
+FLEX,Sentiment Agent,,FRESH,0,2
+FOX,Fundamental Agent,2026-08-06,RECENT,0,4
+FOX,Macro-Economic Agent,2026-08-04,STALE,5,0
+FOX,Market + Volatility Agent,2026-10-03,STALE,5,0
+FOX,Sentiment Agent,,FRESH,0,2
+FOXA,Fundamental Agent,2026-08-06,RECENT,0,4
+FOXA,Macro-Economic Agent,2026-08-04,STALE,5,0
+FOXA,Market + Volatility Agent,2026-10-03,STALE,5,0
+FOXA,Sentiment Agent,,FRESH,0,2
+FRT,Fundamental Agent,2026-02-12,EXPIRED,6,0
+FRT,Macro-Economic Agent,2026-08-04,STALE,5,0
+FRT,Market + Volatility Agent,2026-10-03,STALE,5,0
+FRT,Sentiment Agent,,FRESH,0,2
+FSLR,Fundamental Agent,2026-02-24,STALE,6,3
+FSLR,Macro-Economic Agent,2026-08-04,STALE,5,0
+FSLR,Market + Volatility Agent,2026-10-03,STALE,5,0
+FSLR,Sentiment Agent,,FRESH,0,2
+FTNT,Fundamental Agent,2026-02-25,STALE,6,3
+FTNT,Macro-Economic Agent,2026-08-04,STALE,5,0
+FTNT,Market + Volatility Agent,2026-10-03,STALE,5,0
+FTNT,Sentiment Agent,2026-10-09,EXPIRED,3,0
+FTV,Fundamental Agent,2026-02-25,STALE,6,0
+FTV,Macro-Economic Agent,2026-08-04,STALE,5,0
+FTV,Market + Volatility Agent,2026-10-03,STALE,5,0
+FTV,Sentiment Agent,,FRESH,0,2
+GD,Fundamental Agent,2026-01-30,EXPIRED,6,0
+GD,Macro-Economic Agent,2026-08-04,STALE,5,0
+GD,Market + Volatility Agent,2026-10-03,STALE,5,0
+GD,Sentiment Agent,,FRESH,0,2
+GDDY,Fundamental Agent,2026-02-25,STALE,6,4
+GDDY,Macro-Economic Agent,2026-08-04,STALE,5,0
+GDDY,Market + Volatility Agent,2026-10-03,STALE,5,0
+GDDY,Sentiment Agent,,FRESH,0,2
+GE,Fundamental Agent,2025-02-03,EXPIRED,6,3
+GE,Macro-Economic Agent,2026-08-04,STALE,5,0
+GE,Market + Volatility Agent,2026-10-03,STALE,5,0
+GE,Sentiment Agent,2026-10-05,EXPIRED,3,0
+GEHC,Fundamental Agent,2026-02-04,EXPIRED,6,0
+GEHC,Macro-Economic Agent,2026-08-04,STALE,5,0
+GEHC,Market + Volatility Agent,2026-10-03,STALE,5,0
+GEHC,Sentiment Agent,,FRESH,0,2
+GEN,Fundamental Agent,2026-05-21,STALE,6,0
+GEN,Macro-Economic Agent,2026-08-04,STALE,5,0
+GEN,Market + Volatility Agent,2026-10-03,STALE,5,0
+GEN,Sentiment Agent,,FRESH,0,2
+GEV,Fundamental Agent,2026-01-29,EXPIRED,6,4
+GEV,Macro-Economic Agent,2026-08-04,STALE,5,0
+GEV,Market + Volatility Agent,2026-10-03,STALE,5,0
+GEV,Sentiment Agent,2026-10-08,EXPIRED,3,0
+GILD,Fundamental Agent,2024-02-23,EXPIRED,6,0
+GILD,Macro-Economic Agent,2026-08-04,STALE,5,0
+GILD,Market + Volatility Agent,2026-10-03,STALE,5,0
+GILD,Sentiment Agent,2026-10-07,EXPIRED,3,0
+GIS,Fundamental Agent,2026-07-01,RECENT,0,0
+GIS,Macro-Economic Agent,2026-08-04,STALE,5,0
+GIS,Market + Volatility Agent,2026-10-03,STALE,5,0
+GIS,Sentiment Agent,,FRESH,0,2
+GL,Fundamental Agent,2024-02-28,EXPIRED,6,2
+GL,Macro-Economic Agent,2026-08-04,STALE,5,0
+GL,Market + Volatility Agent,2026-10-03,STALE,5,0
+GL,Sentiment Agent,,FRESH,0,2
+GLW,Fundamental Agent,2026-02-12,EXPIRED,6,3
+GLW,Macro-Economic Agent,2026-08-04,STALE,5,0
+GLW,Market + Volatility Agent,2026-10-03,STALE,5,0
+GLW,Sentiment Agent,2026-10-08,EXPIRED,3,0
+GM,Fundamental Agent,2026-01-27,EXPIRED,6,3
+GM,Macro-Economic Agent,2026-08-04,STALE,5,0
+GM,Market + Volatility Agent,2026-10-03,STALE,5,0
+GM,Sentiment Agent,,FRESH,0,2
+GNRC,Fundamental Agent,2017-02-24,EXPIRED,6,0
+GNRC,Macro-Economic Agent,2026-08-04,STALE,5,0
+GNRC,Market + Volatility Agent,2026-10-03,STALE,5,0
+GNRC,Sentiment Agent,2026-10-09,EXPIRED,3,0
+GOOG,Fundamental Agent,2026-02-05,EXPIRED,6,0
+GOOG,Macro-Economic Agent,2026-08-04,STALE,5,0
+GOOG,Market + Volatility Agent,2026-10-03,STALE,5,0
+GOOG,Sentiment Agent,2026-10-07,EXPIRED,3,0
+GOOGL,Fundamental Agent,2026-02-05,EXPIRED,6,0
+GOOGL,Macro-Economic Agent,2026-08-04,STALE,5,0
+GOOGL,Market + Volatility Agent,2026-10-03,STALE,5,0
+GOOGL,Sentiment Agent,2026-10-07,EXPIRED,3,0
+GPC,Fundamental Agent,2019-02-25,EXPIRED,6,0
+GPC,Macro-Economic Agent,2026-08-04,STALE,5,0
+GPC,Market + Volatility Agent,2026-10-03,STALE,5,0
+GPC,Sentiment Agent,,FRESH,0,2
+GPN,Fundamental Agent,2026-02-20,STALE,6,0
+GPN,Macro-Economic Agent,2026-08-04,STALE,5,0
+GPN,Market + Volatility Agent,2026-10-03,STALE,5,0
+GPN,Sentiment Agent,2026-10-10,EXPIRED,3,0
+GRMN,Fundamental Agent,2026-02-18,EXPIRED,6,3
+GRMN,Macro-Economic Agent,2026-08-04,STALE,5,0
+GRMN,Market + Volatility Agent,2026-10-03,STALE,5,0
+GRMN,Sentiment Agent,,FRESH,0,2
+GS,Fundamental Agent,2026-02-25,STALE,6,5
+GS,Macro-Economic Agent,2026-08-04,STALE,5,0
+GS,Market + Volatility Agent,2026-10-03,STALE,5,0
+GS,Sentiment Agent,2026-10-10,EXPIRED,3,0
+GWW,Fundamental Agent,2026-02-19,STALE,6,0
+GWW,Macro-Economic Agent,2026-08-04,STALE,5,0
+GWW,Market + Volatility Agent,2026-10-03,STALE,5,0
+GWW,Sentiment Agent,,FRESH,0,2
+HAL,Fundamental Agent,2026-02-06,EXPIRED,6,2
+HAL,Macro-Economic Agent,2026-08-04,STALE,5,0
+HAL,Market + Volatility Agent,2026-10-03,STALE,5,0
+HAL,Sentiment Agent,2026-10-10,EXPIRED,3,0
+HAS,Fundamental Agent,2021-02-24,EXPIRED,6,0
+HAS,Macro-Economic Agent,2026-08-04,STALE,5,0
+HAS,Market + Volatility Agent,2026-10-03,STALE,5,0
+HAS,Sentiment Agent,,FRESH,0,2
+HBAN,Fundamental Agent,2026-02-13,EXPIRED,6,3
+HBAN,Macro-Economic Agent,2026-08-04,STALE,5,0
+HBAN,Market + Volatility Agent,2026-10-03,STALE,5,0
+HBAN,Sentiment Agent,,FRESH,0,2
+HCA,Fundamental Agent,2026-02-10,EXPIRED,6,1
+HCA,Macro-Economic Agent,2026-08-04,STALE,5,0
+HCA,Market + Volatility Agent,2026-10-03,STALE,5,0
+HCA,Sentiment Agent,,FRESH,0,2
+HD,Fundamental Agent,2026-03-18,STALE,6,0
+HD,Macro-Economic Agent,2026-08-04,STALE,5,0
+HD,Market + Volatility Agent,2026-10-03,STALE,5,0
+HD,Sentiment Agent,2026-10-09,EXPIRED,3,0
+HIG,Fundamental Agent,2026-02-20,STALE,6,3
+HIG,Macro-Economic Agent,2026-08-04,STALE,5,0
+HIG,Market + Volatility Agent,2026-10-03,STALE,5,0
+HIG,Sentiment Agent,,FRESH,0,2
+HII,Fundamental Agent,2024-02-01,EXPIRED,6,0
+HII,Macro-Economic Agent,2026-08-04,STALE,5,0
+HII,Market + Volatility Agent,2026-10-03,STALE,5,0
+HII,Sentiment Agent,,FRESH,0,2
+HLT,Fundamental Agent,2026-02-11,EXPIRED,6,3
+HLT,Macro-Economic Agent,2026-08-04,STALE,5,0
+HLT,Market + Volatility Agent,2026-10-03,STALE,5,0
+HLT,Sentiment Agent,,FRESH,0,2
+HON,Fundamental Agent,2026-02-17,EXPIRED,6,0
+HON,Macro-Economic Agent,2026-08-04,STALE,5,0
+HON,Market + Volatility Agent,2026-10-03,STALE,5,0
+HON,Sentiment Agent,,FRESH,0,2
+HONA,Fundamental Agent,,FRESH,0,6
+HONA,Macro-Economic Agent,2026-08-04,STALE,5,0
+HONA,Market + Volatility Agent,2026-10-03,STALE,5,1
+HONA,Sentiment Agent,2026-10-10,EXPIRED,3,0
+HOOD,Fundamental Agent,2025-02-18,EXPIRED,6,4
+HOOD,Macro-Economic Agent,2026-08-04,STALE,5,0
+HOOD,Market + Volatility Agent,2026-10-03,STALE,5,0
+HOOD,Sentiment Agent,2026-10-10,EXPIRED,3,0
+HPE,Fundamental Agent,2025-12-18,EXPIRED,6,0
+HPE,Macro-Economic Agent,2026-08-04,STALE,5,0
+HPE,Market + Volatility Agent,2026-10-03,STALE,5,0
+HPE,Sentiment Agent,,FRESH,0,2
+HPQ,Fundamental Agent,2025-12-10,EXPIRED,6,0
+HPQ,Macro-Economic Agent,2026-08-04,STALE,5,0
+HPQ,Market + Volatility Agent,2026-10-03,STALE,5,0
+HPQ,Sentiment Agent,,FRESH,0,2
+HRL,Fundamental Agent,2025-12-05,EXPIRED,6,5
+HRL,Macro-Economic Agent,2026-08-04,STALE,5,0
+HRL,Market + Volatility Agent,2026-10-03,STALE,5,0
+HRL,Sentiment Agent,,FRESH,0,2
+HSIC,Fundamental Agent,2024-02-28,EXPIRED,6,2
+HSIC,Macro-Economic Agent,2026-08-04,STALE,5,0
+HSIC,Market + Volatility Agent,2026-10-03,STALE,5,0
+HSIC,Sentiment Agent,,FRESH,0,2
+HST,Fundamental Agent,2026-02-25,STALE,6,0
+HST,Macro-Economic Agent,2026-08-04,STALE,5,0
+HST,Market + Volatility Agent,2026-10-03,STALE,5,0
+HST,Sentiment Agent,,FRESH,0,2
+HSY,Fundamental Agent,2021-02-17,EXPIRED,6,2
+HSY,Macro-Economic Agent,2026-08-04,STALE,5,0
+HSY,Market + Volatility Agent,2026-10-03,STALE,5,0
+HSY,Sentiment Agent,,FRESH,0,2
+HUBB,Fundamental Agent,2026-02-12,EXPIRED,6,0
+HUBB,Macro-Economic Agent,2026-08-04,STALE,5,0
+HUBB,Market + Volatility Agent,2026-10-03,STALE,5,0
+HUBB,Sentiment Agent,,FRESH,0,2
+HUM,Fundamental Agent,2026-02-19,STALE,6,3
+HUM,Macro-Economic Agent,2026-08-04,STALE,5,0
+HUM,Market + Volatility Agent,2026-10-03,STALE,5,0
+HUM,Sentiment Agent,,FRESH,0,2
+HWM,Fundamental Agent,2026-02-12,EXPIRED,6,0
+HWM,Macro-Economic Agent,2026-08-04,STALE,5,0
+HWM,Market + Volatility Agent,2026-10-03,STALE,5,0
+HWM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+IBKR,Fundamental Agent,2016-02-29,EXPIRED,6,4
+IBKR,Macro-Economic Agent,2026-08-04,STALE,5,0
+IBKR,Market + Volatility Agent,2026-10-03,STALE,5,0
+IBKR,Sentiment Agent,2026-10-10,EXPIRED,3,0
+IBM,Fundamental Agent,2026-02-24,STALE,6,4
+IBM,Macro-Economic Agent,2026-08-04,STALE,5,0
+IBM,Market + Volatility Agent,2026-10-03,STALE,5,0
+IBM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ICE,Fundamental Agent,2026-02-05,EXPIRED,6,3
+ICE,Macro-Economic Agent,2026-08-04,STALE,5,0
+ICE,Market + Volatility Agent,2026-10-03,STALE,5,0
+ICE,Sentiment Agent,,FRESH,0,2
+IDXX,Fundamental Agent,2026-02-20,STALE,6,0
+IDXX,Macro-Economic Agent,2026-08-04,STALE,5,0
+IDXX,Market + Volatility Agent,2026-10-03,STALE,5,0
+IDXX,Sentiment Agent,,FRESH,0,2
+IEX,Fundamental Agent,2026-02-19,STALE,6,0
+IEX,Macro-Economic Agent,2026-08-04,STALE,5,0
+IEX,Market + Volatility Agent,2026-10-03,STALE,5,0
+IEX,Sentiment Agent,,FRESH,0,2
+IFF,Fundamental Agent,2026-02-27,STALE,6,1
+IFF,Macro-Economic Agent,2026-08-04,STALE,5,0
+IFF,Market + Volatility Agent,2026-10-03,STALE,5,0
+IFF,Sentiment Agent,,FRESH,0,2
+ILMN,Fundamental Agent,2026-02-12,EXPIRED,6,4
+ILMN,Macro-Economic Agent,2026-08-04,STALE,5,0
+ILMN,Market + Volatility Agent,2026-10-03,STALE,5,0
+ILMN,Sentiment Agent,,FRESH,0,2
+INCY,Fundamental Agent,2026-02-10,EXPIRED,6,3
+INCY,Macro-Economic Agent,2026-08-04,STALE,5,0
+INCY,Market + Volatility Agent,2026-10-03,STALE,5,0
+INCY,Sentiment Agent,,FRESH,0,2
+INTC,Fundamental Agent,2026-01-23,EXPIRED,6,0
+INTC,Macro-Economic Agent,2026-08-04,STALE,5,0
+INTC,Market + Volatility Agent,2026-10-03,STALE,5,0
+INTC,Sentiment Agent,2026-10-09,EXPIRED,3,0
+INTU,Fundamental Agent,2026-09-09,FRESH,0,0
+INTU,Macro-Economic Agent,2026-08-04,STALE,5,0
+INTU,Market + Volatility Agent,2026-10-03,STALE,5,0
+INTU,Sentiment Agent,,FRESH,0,2
+INVH,Fundamental Agent,2026-02-19,STALE,6,1
+INVH,Macro-Economic Agent,2026-08-04,STALE,5,0
+INVH,Market + Volatility Agent,2026-10-03,STALE,5,0
+INVH,Sentiment Agent,,FRESH,0,2
+IP,Fundamental Agent,2012-02-27,EXPIRED,6,2
+IP,Macro-Economic Agent,2026-08-04,STALE,5,0
+IP,Market + Volatility Agent,2026-10-03,STALE,5,0
+IP,Sentiment Agent,,FRESH,0,2
+IQV,Fundamental Agent,2026-02-17,EXPIRED,6,3
+IQV,Macro-Economic Agent,2026-08-04,STALE,5,0
+IQV,Market + Volatility Agent,2026-10-03,STALE,5,0
+IQV,Sentiment Agent,,FRESH,0,2
+IR,Fundamental Agent,2026-02-17,EXPIRED,6,3
+IR,Macro-Economic Agent,2026-08-04,STALE,5,0
+IR,Market + Volatility Agent,2026-10-03,STALE,5,0
+IR,Sentiment Agent,2026-10-08,EXPIRED,3,0
+IRM,Fundamental Agent,2023-02-23,EXPIRED,6,1
+IRM,Macro-Economic Agent,2026-08-04,STALE,5,0
+IRM,Market + Volatility Agent,2026-10-03,STALE,5,0
+IRM,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ISRG,Fundamental Agent,2026-02-03,EXPIRED,6,3
+ISRG,Macro-Economic Agent,2026-08-04,STALE,5,0
+ISRG,Market + Volatility Agent,2026-10-03,STALE,5,0
+ISRG,Sentiment Agent,2026-10-07,EXPIRED,3,0
+IT,Fundamental Agent,2017-02-22,EXPIRED,6,0
+IT,Macro-Economic Agent,2026-08-04,STALE,5,0
+IT,Market + Volatility Agent,2026-10-03,STALE,5,0
+IT,Sentiment Agent,,FRESH,0,2
+ITW,Fundamental Agent,2026-02-13,EXPIRED,6,1
+ITW,Macro-Economic Agent,2026-08-04,STALE,5,0
+ITW,Market + Volatility Agent,2026-10-03,STALE,5,0
+ITW,Sentiment Agent,,FRESH,0,2
+IVZ,Fundamental Agent,2026-02-24,STALE,6,0
+IVZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+IVZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+IVZ,Sentiment Agent,,FRESH,0,2
+J,Fundamental Agent,2025-11-20,EXPIRED,6,5
+J,Macro-Economic Agent,2026-08-04,STALE,5,0
+J,Market + Volatility Agent,2026-10-03,STALE,5,0
+J,Sentiment Agent,2026-10-08,EXPIRED,3,0
+JBHT,Fundamental Agent,2026-02-24,STALE,6,2
+JBHT,Macro-Economic Agent,2026-08-04,STALE,5,0
+JBHT,Market + Volatility Agent,2026-10-03,STALE,5,0
+JBHT,Sentiment Agent,,FRESH,0,2
+JBL,Fundamental Agent,2025-10-17,EXPIRED,6,0
+JBL,Macro-Economic Agent,2026-08-04,STALE,5,0
+JBL,Market + Volatility Agent,2026-10-03,STALE,5,0
+JBL,Sentiment Agent,,FRESH,0,2
+JCI,Fundamental Agent,2017-11-21,EXPIRED,6,0
+JCI,Macro-Economic Agent,2026-08-04,STALE,5,0
+JCI,Market + Volatility Agent,2026-10-03,STALE,5,0
+JCI,Sentiment Agent,,FRESH,0,2
+JKHY,Fundamental Agent,2020-08-25,EXPIRED,6,1
+JKHY,Macro-Economic Agent,2026-08-04,STALE,5,0
+JKHY,Market + Volatility Agent,2026-10-03,STALE,5,0
+JKHY,Sentiment Agent,,FRESH,0,2
+JNJ,Fundamental Agent,2026-02-11,EXPIRED,6,1
+JNJ,Macro-Economic Agent,2026-08-04,STALE,5,0
+JNJ,Market + Volatility Agent,2026-10-03,STALE,5,0
+JNJ,Sentiment Agent,2026-10-06,EXPIRED,3,0
+JPM,Fundamental Agent,2020-02-25,EXPIRED,6,4
+JPM,Macro-Economic Agent,2026-08-04,STALE,5,0
+JPM,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+JPM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+KDP,Fundamental Agent,2026-02-24,STALE,6,3
+KDP,Macro-Economic Agent,2026-08-04,STALE,5,0
+KDP,Market + Volatility Agent,2026-10-03,STALE,5,0
+KDP,Sentiment Agent,,FRESH,0,2
+KEY,Fundamental Agent,2026-02-23,STALE,6,3
+KEY,Macro-Economic Agent,2026-08-04,STALE,5,0
+KEY,Market + Volatility Agent,2026-10-03,STALE,5,0
+KEY,Sentiment Agent,,FRESH,0,2
+KEYS,Fundamental Agent,2025-12-17,EXPIRED,6,0
+KEYS,Macro-Economic Agent,2026-08-04,STALE,5,0
+KEYS,Market + Volatility Agent,2026-10-03,STALE,5,0
+KEYS,Sentiment Agent,,FRESH,0,2
+KHC,Fundamental Agent,2026-02-12,EXPIRED,6,5
+KHC,Macro-Economic Agent,2026-08-04,STALE,5,0
+KHC,Market + Volatility Agent,2026-10-03,STALE,5,0
+KHC,Sentiment Agent,,FRESH,0,2
+KIM,Fundamental Agent,2026-02-20,STALE,6,0
+KIM,Macro-Economic Agent,2026-08-04,STALE,5,0
+KIM,Market + Volatility Agent,2026-10-03,STALE,5,0
+KIM,Sentiment Agent,,FRESH,0,2
+KKR,Fundamental Agent,2021-02-19,EXPIRED,6,1
+KKR,Macro-Economic Agent,2026-08-04,STALE,5,0
+KKR,Market + Volatility Agent,2026-10-03,STALE,5,0
+KKR,Sentiment Agent,2026-10-08,EXPIRED,3,1
+KLAC,Fundamental Agent,2026-08-06,RECENT,0,1
+KLAC,Macro-Economic Agent,2026-08-04,STALE,5,0
+KLAC,Market + Volatility Agent,2026-10-03,STALE,5,0
+KLAC,Sentiment Agent,2026-10-10,EXPIRED,3,0
+KMB,Fundamental Agent,2026-02-12,EXPIRED,6,3
+KMB,Macro-Economic Agent,2026-08-04,STALE,5,0
+KMB,Market + Volatility Agent,2026-10-03,STALE,5,0
+KMB,Sentiment Agent,,FRESH,0,2
+KMI,Fundamental Agent,2026-02-13,EXPIRED,6,3
+KMI,Macro-Economic Agent,2026-08-04,STALE,5,0
+KMI,Market + Volatility Agent,2026-10-03,STALE,5,0
+KMI,Sentiment Agent,2026-10-07,EXPIRED,3,1
+KO,Fundamental Agent,2026-02-20,STALE,6,3
+KO,Macro-Economic Agent,2026-08-04,STALE,5,0
+KO,Market + Volatility Agent,2026-10-03,STALE,5,0
+KO,Sentiment Agent,2026-10-08,EXPIRED,3,0
+KR,Fundamental Agent,2026-03-31,STALE,6,0
+KR,Macro-Economic Agent,2026-08-04,STALE,5,0
+KR,Market + Volatility Agent,2026-10-03,STALE,5,0
+KR,Sentiment Agent,,FRESH,0,2
+KVUE,Fundamental Agent,2026-02-20,STALE,6,3
+KVUE,Macro-Economic Agent,2026-08-04,STALE,5,0
+KVUE,Market + Volatility Agent,2026-10-03,STALE,5,0
+KVUE,Sentiment Agent,,FRESH,0,2
+L,Fundamental Agent,2018-02-15,EXPIRED,6,3
+L,Macro-Economic Agent,2026-08-04,STALE,5,0
+L,Market + Volatility Agent,2026-10-03,STALE,5,0
+L,Sentiment Agent,,FRESH,0,2
+LDOS,Fundamental Agent,2026-02-17,EXPIRED,6,3
+LDOS,Macro-Economic Agent,2026-08-04,STALE,5,0
+LDOS,Market + Volatility Agent,2026-10-03,STALE,5,0
+LDOS,Sentiment Agent,,FRESH,0,2
+LEN,Fundamental Agent,2026-01-28,EXPIRED,6,1
+LEN,Macro-Economic Agent,2026-08-04,STALE,5,0
+LEN,Market + Volatility Agent,2026-10-03,STALE,5,0
+LEN,Sentiment Agent,,FRESH,0,2
+LH,Fundamental Agent,2026-02-24,STALE,6,3
+LH,Macro-Economic Agent,2026-08-04,STALE,5,0
+LH,Market + Volatility Agent,2026-10-03,STALE,5,0
+LH,Sentiment Agent,,FRESH,0,2
+LHX,Fundamental Agent,2026-02-12,EXPIRED,6,3
+LHX,Macro-Economic Agent,2026-08-04,STALE,5,0
+LHX,Market + Volatility Agent,2026-10-03,STALE,5,0
+LHX,Sentiment Agent,,FRESH,0,2
+LII,Fundamental Agent,2026-02-17,EXPIRED,6,3
+LII,Macro-Economic Agent,2026-08-04,STALE,5,0
+LII,Market + Volatility Agent,2026-10-03,STALE,5,0
+LII,Sentiment Agent,,FRESH,0,2
+LIN,Fundamental Agent,2026-02-25,STALE,6,0
+LIN,Macro-Economic Agent,2026-08-04,STALE,5,0
+LIN,Market + Volatility Agent,2026-10-03,STALE,5,0
+LIN,Sentiment Agent,2026-10-10,EXPIRED,3,0
+LITE,Fundamental Agent,2026-08-17,RECENT,0,3
+LITE,Macro-Economic Agent,2026-08-04,STALE,5,0
+LITE,Market + Volatility Agent,2026-10-03,STALE,5,0
+LITE,Sentiment Agent,2026-10-09,EXPIRED,3,0
+LLY,Fundamental Agent,2026-02-12,EXPIRED,6,1
+LLY,Macro-Economic Agent,2026-08-04,STALE,5,0
+LLY,Market + Volatility Agent,2026-10-03,STALE,5,0
+LLY,Sentiment Agent,2026-10-10,EXPIRED,3,0
+LMT,Fundamental Agent,2026-01-29,EXPIRED,6,0
+LMT,Macro-Economic Agent,2026-08-04,STALE,5,0
+LMT,Market + Volatility Agent,2026-10-03,STALE,5,0
+LMT,Sentiment Agent,,FRESH,0,2
+LNT,Fundamental Agent,2026-02-20,STALE,6,3
+LNT,Macro-Economic Agent,2026-08-04,STALE,5,0
+LNT,Market + Volatility Agent,2026-10-03,STALE,5,0
+LNT,Sentiment Agent,,FRESH,0,2
+LOW,Fundamental Agent,2026-03-23,STALE,6,0
+LOW,Macro-Economic Agent,2026-08-04,STALE,5,0
+LOW,Market + Volatility Agent,2026-10-03,STALE,5,0
+LOW,Sentiment Agent,,FRESH,0,2
+LRCX,Fundamental Agent,2026-08-07,RECENT,0,0
+LRCX,Macro-Economic Agent,2026-08-04,STALE,5,0
+LRCX,Market + Volatility Agent,2026-10-03,STALE,5,0
+LRCX,Sentiment Agent,2026-10-09,EXPIRED,3,0
+LULU,Fundamental Agent,2026-03-17,STALE,6,4
+LULU,Macro-Economic Agent,2026-08-04,STALE,5,0
+LULU,Market + Volatility Agent,2026-10-03,STALE,5,0
+LULU,Sentiment Agent,2026-10-09,EXPIRED,3,0
+LUV,Fundamental Agent,2026-02-05,EXPIRED,6,0
+LUV,Macro-Economic Agent,2026-08-04,STALE,5,0
+LUV,Market + Volatility Agent,2026-10-03,STALE,5,0
+LUV,Sentiment Agent,2026-10-09,EXPIRED,3,0
+LVS,Fundamental Agent,2026-02-06,EXPIRED,6,3
+LVS,Macro-Economic Agent,2026-08-04,STALE,5,0
+LVS,Market + Volatility Agent,2026-10-03,STALE,5,0
+LVS,Sentiment Agent,,FRESH,0,2
+LYB,Fundamental Agent,2020-02-20,EXPIRED,6,3
+LYB,Macro-Economic Agent,2026-08-04,STALE,5,0
+LYB,Market + Volatility Agent,2026-10-03,STALE,5,0
+LYB,Sentiment Agent,,FRESH,0,2
+LYV,Fundamental Agent,2026-02-19,STALE,6,3
+LYV,Macro-Economic Agent,2026-08-04,STALE,5,0
+LYV,Market + Volatility Agent,2026-10-03,STALE,5,0
+LYV,Sentiment Agent,,FRESH,0,2
+MA,Fundamental Agent,2011-02-24,EXPIRED,6,0
+MA,Macro-Economic Agent,2026-08-04,STALE,5,0
+MA,Market + Volatility Agent,2026-10-03,STALE,5,0
+MA,Sentiment Agent,2026-10-08,EXPIRED,3,0
+MAA,Fundamental Agent,2026-02-06,EXPIRED,6,4
+MAA,Macro-Economic Agent,2026-08-04,STALE,5,0
+MAA,Market + Volatility Agent,2026-10-03,STALE,5,0
+MAA,Sentiment Agent,,FRESH,0,2
+MAR,Fundamental Agent,2026-02-10,EXPIRED,6,0
+MAR,Macro-Economic Agent,2026-08-04,STALE,5,0
+MAR,Market + Volatility Agent,2026-10-03,STALE,5,0
+MAR,Sentiment Agent,,FRESH,0,2
+MAS,Fundamental Agent,2026-02-10,EXPIRED,6,0
+MAS,Macro-Economic Agent,2026-08-04,STALE,5,0
+MAS,Market + Volatility Agent,2026-10-03,STALE,5,0
+MAS,Sentiment Agent,2026-10-07,EXPIRED,3,0
+MCD,Fundamental Agent,2026-02-24,STALE,6,0
+MCD,Macro-Economic Agent,2026-08-04,STALE,5,0
+MCD,Market + Volatility Agent,2026-10-03,STALE,5,0
+MCD,Sentiment Agent,2026-10-09,EXPIRED,3,0
+MCHP,Fundamental Agent,2026-05-21,STALE,6,0
+MCHP,Macro-Economic Agent,2026-08-04,STALE,5,0
+MCHP,Market + Volatility Agent,2026-10-03,STALE,5,0
+MCHP,Sentiment Agent,2026-10-07,EXPIRED,3,0
+MCK,Fundamental Agent,2026-05-08,STALE,6,0
+MCK,Macro-Economic Agent,2026-08-04,STALE,5,0
+MCK,Market + Volatility Agent,2026-10-03,STALE,5,0
+MCK,Sentiment Agent,,FRESH,0,2
+MCO,Fundamental Agent,2026-02-18,EXPIRED,6,0
+MCO,Macro-Economic Agent,2026-08-04,STALE,5,0
+MCO,Market + Volatility Agent,2026-10-03,STALE,5,0
+MCO,Sentiment Agent,,FRESH,0,2
+MDLZ,Fundamental Agent,2021-02-05,EXPIRED,6,2
+MDLZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+MDLZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+MDLZ,Sentiment Agent,,FRESH,0,2
+MDT,Fundamental Agent,2026-06-18,STALE,6,3
+MDT,Macro-Economic Agent,2026-08-04,STALE,5,0
+MDT,Market + Volatility Agent,2026-10-03,STALE,5,0
+MDT,Sentiment Agent,,FRESH,0,2
+MET,Fundamental Agent,2026-02-19,STALE,6,3
+MET,Macro-Economic Agent,2026-08-04,STALE,5,0
+MET,Market + Volatility Agent,2026-10-03,STALE,5,0
+MET,Sentiment Agent,,FRESH,0,2
+META,Fundamental Agent,2026-01-29,EXPIRED,6,0
+META,Macro-Economic Agent,2026-08-04,STALE,5,0
+META,Market + Volatility Agent,2026-10-03,STALE,5,0
+META,Sentiment Agent,2026-10-09,EXPIRED,3,0
+MGM,Fundamental Agent,2026-02-11,EXPIRED,6,0
+MGM,Macro-Economic Agent,2026-08-04,STALE,5,0
+MGM,Market + Volatility Agent,2026-10-03,STALE,5,0
+MGM,Sentiment Agent,,FRESH,0,2
+MKC,Fundamental Agent,2026-01-22,EXPIRED,6,0
+MKC,Macro-Economic Agent,2026-08-04,STALE,5,0
+MKC,Market + Volatility Agent,2026-10-03,STALE,5,0
+MKC,Sentiment Agent,,FRESH,0,2
+MLM,Fundamental Agent,2026-02-19,STALE,6,0
+MLM,Macro-Economic Agent,2026-08-04,STALE,5,0
+MLM,Market + Volatility Agent,2026-10-03,STALE,5,0
+MLM,Sentiment Agent,,FRESH,0,2
+MMM,Fundamental Agent,2026-02-03,EXPIRED,6,2
+MMM,Macro-Economic Agent,2026-08-04,STALE,5,0
+MMM,Market + Volatility Agent,2026-10-03,STALE,5,0
+MMM,Sentiment Agent,,FRESH,0,2
+MNST,Fundamental Agent,2026-02-27,STALE,6,1
+MNST,Macro-Economic Agent,2026-08-04,STALE,5,0
+MNST,Market + Volatility Agent,2026-10-03,STALE,5,0
+MNST,Sentiment Agent,,FRESH,0,2
+MO,Fundamental Agent,2026-02-25,STALE,6,0
+MO,Macro-Economic Agent,2026-08-04,STALE,5,0
+MO,Market + Volatility Agent,2026-10-03,STALE,5,0
+MO,Sentiment Agent,,FRESH,0,2
+MOS,Fundamental Agent,2026-02-27,STALE,6,3
+MOS,Macro-Economic Agent,2026-08-04,STALE,5,0
+MOS,Market + Volatility Agent,2026-10-03,STALE,5,0
+MOS,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MPC,Fundamental Agent,2020-02-28,EXPIRED,6,3
+MPC,Macro-Economic Agent,2026-08-04,STALE,5,0
+MPC,Market + Volatility Agent,2026-10-03,STALE,5,0
+MPC,Sentiment Agent,2026-10-06,EXPIRED,3,0
+MPWR,Fundamental Agent,2026-02-27,STALE,6,3
+MPWR,Macro-Economic Agent,2026-08-04,STALE,5,0
+MPWR,Market + Volatility Agent,2026-10-03,STALE,5,0
+MPWR,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MRK,Fundamental Agent,2026-02-24,STALE,6,4
+MRK,Macro-Economic Agent,2026-08-04,STALE,5,0
+MRK,Market + Volatility Agent,2026-10-03,STALE,5,0
+MRK,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MRNA,Fundamental Agent,2026-02-20,STALE,6,3
+MRNA,Macro-Economic Agent,2026-08-04,STALE,5,0
+MRNA,Market + Volatility Agent,2026-10-03,STALE,5,0
+MRNA,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MRSH,Fundamental Agent,2026-02-09,EXPIRED,6,0
+MRSH,Macro-Economic Agent,2026-08-04,STALE,5,0
+MRSH,Market + Volatility Agent,2026-10-03,STALE,5,0
+MRSH,Sentiment Agent,,FRESH,0,2
+MRVL,Fundamental Agent,2026-03-11,STALE,6,0
+MRVL,Macro-Economic Agent,2026-08-04,STALE,5,0
+MRVL,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+MRVL,Sentiment Agent,,FRESH,0,2
+MS,Fundamental Agent,2026-02-19,STALE,6,2
+MS,Macro-Economic Agent,2026-08-04,STALE,5,0
+MS,Market + Volatility Agent,2026-10-03,STALE,5,0
+MS,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MSCI,Fundamental Agent,2026-02-06,EXPIRED,6,0
+MSCI,Macro-Economic Agent,2026-08-04,STALE,5,0
+MSCI,Market + Volatility Agent,2026-10-03,STALE,5,0
+MSCI,Sentiment Agent,2026-10-09,EXPIRED,3,1
+MSFT,Fundamental Agent,2026-07-29,RECENT,0,0
+MSFT,Macro-Economic Agent,2026-08-04,STALE,5,0
+MSFT,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+MSFT,Sentiment Agent,2026-10-08,EXPIRED,3,0
+MSI,Fundamental Agent,2019-02-15,EXPIRED,6,3
+MSI,Macro-Economic Agent,2026-08-04,STALE,5,0
+MSI,Market + Volatility Agent,2026-10-03,STALE,5,0
+MSI,Sentiment Agent,,FRESH,0,2
+MSTR,Fundamental Agent,2026-02-19,STALE,6,0
+MSTR,Macro-Economic Agent,2026-08-04,STALE,5,0
+MSTR,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+MSTR,Sentiment Agent,2026-10-09,EXPIRED,3,0
+MTB,Fundamental Agent,2026-02-18,EXPIRED,6,3
+MTB,Macro-Economic Agent,2026-08-04,STALE,5,0
+MTB,Market + Volatility Agent,2026-10-03,STALE,5,0
+MTB,Sentiment Agent,,FRESH,0,2
+MTCH,Fundamental Agent,2026-02-26,STALE,6,1
+MTCH,Macro-Economic Agent,2026-08-04,STALE,5,0
+MTCH,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+MTCH,Sentiment Agent,2026-10-10,EXPIRED,3,0
+MTD,Fundamental Agent,2026-02-06,EXPIRED,6,3
+MTD,Macro-Economic Agent,2026-08-04,STALE,5,0
+MTD,Market + Volatility Agent,2026-10-03,STALE,5,0
+MTD,Sentiment Agent,,FRESH,0,2
+MU,Fundamental Agent,2025-10-03,EXPIRED,6,0
+MU,Macro-Economic Agent,2026-08-04,STALE,5,0
+MU,Market + Volatility Agent,2026-10-03,STALE,5,0
+MU,Sentiment Agent,2026-10-09,EXPIRED,3,0
+NCLH,Fundamental Agent,2022-03-01,EXPIRED,6,2
+NCLH,Macro-Economic Agent,2026-08-04,STALE,5,0
+NCLH,Market + Volatility Agent,2026-10-03,STALE,5,0
+NCLH,Sentiment Agent,2026-10-07,EXPIRED,3,0
+NDAQ,Fundamental Agent,2026-02-12,EXPIRED,6,0
+NDAQ,Macro-Economic Agent,2026-08-04,STALE,5,0
+NDAQ,Market + Volatility Agent,2026-10-03,STALE,5,0
+NDAQ,Sentiment Agent,,FRESH,0,2
+NDSN,Fundamental Agent,2025-12-17,EXPIRED,6,0
+NDSN,Macro-Economic Agent,2026-08-04,STALE,5,0
+NDSN,Market + Volatility Agent,2026-10-03,STALE,5,0
+NDSN,Sentiment Agent,,FRESH,0,2
+NEE,Fundamental Agent,2026-02-13,EXPIRED,6,5
+NEE,Macro-Economic Agent,2026-08-04,STALE,5,0
+NEE,Market + Volatility Agent,2026-10-03,STALE,5,0
+NEE,Sentiment Agent,2026-10-09,EXPIRED,3,0
+NEM,Fundamental Agent,2026-02-19,STALE,6,1
+NEM,Macro-Economic Agent,2026-08-04,STALE,5,0
+NEM,Market + Volatility Agent,2026-10-03,STALE,5,0
+NEM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+NFLX,Fundamental Agent,2026-01-23,EXPIRED,6,3
+NFLX,Macro-Economic Agent,2026-08-04,STALE,5,0
+NFLX,Market + Volatility Agent,2026-10-03,STALE,5,0
+NFLX,Sentiment Agent,2026-10-10,EXPIRED,3,0
+NI,Fundamental Agent,2019-02-20,EXPIRED,6,3
+NI,Macro-Economic Agent,2026-08-04,STALE,5,0
+NI,Market + Volatility Agent,2026-10-03,STALE,5,0
+NI,Sentiment Agent,,FRESH,0,2
+NKE,Fundamental Agent,2026-07-15,RECENT,0,1
+NKE,Macro-Economic Agent,2026-08-04,STALE,5,0
+NKE,Market + Volatility Agent,2026-10-03,STALE,5,0
+NKE,Sentiment Agent,,FRESH,0,2
+NOC,Fundamental Agent,2026-01-27,EXPIRED,6,0
+NOC,Macro-Economic Agent,2026-08-04,STALE,5,0
+NOC,Market + Volatility Agent,2026-10-03,STALE,5,0
+NOC,Sentiment Agent,2026-10-02,EXPIRED,3,1
+NOW,Fundamental Agent,2026-01-29,EXPIRED,6,3
+NOW,Macro-Economic Agent,2026-08-04,STALE,5,0
+NOW,Market + Volatility Agent,2026-10-03,STALE,5,0
+NOW,Sentiment Agent,2026-10-01,EXPIRED,3,0
+NRG,Fundamental Agent,2026-02-24,STALE,6,0
+NRG,Macro-Economic Agent,2026-08-04,STALE,5,0
+NRG,Market + Volatility Agent,2026-10-03,STALE,5,0
+NRG,Sentiment Agent,2026-10-09,EXPIRED,3,0
+NSC,Fundamental Agent,2026-02-09,EXPIRED,6,3
+NSC,Macro-Economic Agent,2026-08-04,STALE,5,0
+NSC,Market + Volatility Agent,2026-10-03,STALE,5,0
+NSC,Sentiment Agent,,FRESH,0,2
+NTAP,Fundamental Agent,2026-06-05,STALE,6,0
+NTAP,Macro-Economic Agent,2026-08-04,STALE,5,0
+NTAP,Market + Volatility Agent,2026-10-03,STALE,5,0
+NTAP,Sentiment Agent,,FRESH,0,2
+NTRS,Fundamental Agent,2026-02-24,STALE,6,5
+NTRS,Macro-Economic Agent,2026-08-04,STALE,5,0
+NTRS,Market + Volatility Agent,2026-10-03,STALE,5,0
+NTRS,Sentiment Agent,,FRESH,0,2
+NUE,Fundamental Agent,2021-02-26,EXPIRED,6,4
+NUE,Macro-Economic Agent,2026-08-04,STALE,5,0
+NUE,Market + Volatility Agent,2026-10-03,STALE,5,0
+NUE,Sentiment Agent,,FRESH,0,2
+NVDA,Fundamental Agent,2026-02-25,STALE,6,0
+NVDA,Macro-Economic Agent,2026-08-04,STALE,5,0
+NVDA,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+NVDA,Sentiment Agent,2026-10-09,EXPIRED,3,0
+NVR,Fundamental Agent,2021-02-12,EXPIRED,6,4
+NVR,Macro-Economic Agent,2026-08-04,STALE,5,0
+NVR,Market + Volatility Agent,2026-10-03,STALE,5,0
+NVR,Sentiment Agent,,FRESH,0,2
+NWS,Fundamental Agent,2026-08-07,RECENT,0,1
+NWS,Macro-Economic Agent,2026-08-04,STALE,5,0
+NWS,Market + Volatility Agent,2026-10-03,STALE,5,0
+NWS,Sentiment Agent,,FRESH,0,2
+NWSA,Fundamental Agent,2026-08-07,RECENT,0,1
+NWSA,Macro-Economic Agent,2026-08-04,STALE,5,0
+NWSA,Market + Volatility Agent,2026-10-03,STALE,5,0
+NWSA,Sentiment Agent,,FRESH,0,2
+NXPI,Fundamental Agent,2026-02-19,STALE,6,0
+NXPI,Macro-Economic Agent,2026-08-04,STALE,5,0
+NXPI,Market + Volatility Agent,2026-10-03,STALE,5,0
+NXPI,Sentiment Agent,,FRESH,0,2
+O,Fundamental Agent,2020-02-24,EXPIRED,6,4
+O,Macro-Economic Agent,2026-08-04,STALE,5,0
+O,Market + Volatility Agent,2026-10-03,STALE,5,0
+O,Sentiment Agent,,FRESH,0,2
+ODFL,Fundamental Agent,2026-02-24,STALE,6,5
+ODFL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ODFL,Market + Volatility Agent,2026-10-03,STALE,5,0
+ODFL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+OKE,Fundamental Agent,2026-02-24,STALE,6,0
+OKE,Macro-Economic Agent,2026-08-04,STALE,5,0
+OKE,Market + Volatility Agent,2026-10-03,STALE,5,0
+OKE,Sentiment Agent,,FRESH,0,2
+OMC,Fundamental Agent,2026-02-20,STALE,6,2
+OMC,Macro-Economic Agent,2026-08-04,STALE,5,0
+OMC,Market + Volatility Agent,2026-10-03,STALE,5,0
+OMC,Sentiment Agent,,FRESH,0,2
+ON,Fundamental Agent,2026-02-09,EXPIRED,6,0
+ON,Macro-Economic Agent,2026-08-04,STALE,5,0
+ON,Market + Volatility Agent,2026-10-03,STALE,5,0
+ON,Sentiment Agent,2026-10-02,EXPIRED,3,1
+ORCL,Fundamental Agent,2026-06-22,RECENT,0,3
+ORCL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ORCL,Market + Volatility Agent,2026-10-03,STALE,5,0
+ORCL,Sentiment Agent,2026-10-10,EXPIRED,3,0
+ORLY,Fundamental Agent,2026-02-27,STALE,6,3
+ORLY,Macro-Economic Agent,2026-08-04,STALE,5,0
+ORLY,Market + Volatility Agent,2026-10-03,STALE,5,0
+ORLY,Sentiment Agent,,FRESH,0,2
+OTIS,Fundamental Agent,2026-02-05,EXPIRED,6,0
+OTIS,Macro-Economic Agent,2026-08-04,STALE,5,0
+OTIS,Market + Volatility Agent,2026-10-03,STALE,5,0
+OTIS,Sentiment Agent,2026-10-02,EXPIRED,3,1
+OXY,Fundamental Agent,2026-02-18,EXPIRED,6,2
+OXY,Macro-Economic Agent,2026-08-04,STALE,5,0
+OXY,Market + Volatility Agent,2026-10-03,STALE,5,0
+OXY,Sentiment Agent,,FRESH,0,2
+P,Fundamental Agent,2026-03-25,STALE,6,3
+P,Macro-Economic Agent,2026-08-04,STALE,5,0
+P,Market + Volatility Agent,2026-10-03,STALE,5,0
+P,Sentiment Agent,,FRESH,0,2
+PANW,Fundamental Agent,2026-09-10,FRESH,0,3
+PANW,Macro-Economic Agent,2026-08-04,STALE,5,0
+PANW,Market + Volatility Agent,2026-10-03,STALE,5,0
+PANW,Sentiment Agent,2026-10-09,EXPIRED,3,0
+PAYX,Fundamental Agent,2026-07-17,RECENT,0,1
+PAYX,Macro-Economic Agent,2026-08-04,STALE,5,0
+PAYX,Market + Volatility Agent,2026-10-03,STALE,5,0
+PAYX,Sentiment Agent,2026-10-02,EXPIRED,3,1
+PCAR,Fundamental Agent,2026-02-18,EXPIRED,6,5
+PCAR,Macro-Economic Agent,2026-08-04,STALE,5,0
+PCAR,Market + Volatility Agent,2026-10-03,STALE,5,0
+PCAR,Sentiment Agent,2026-10-01,EXPIRED,3,1
+PCG,Fundamental Agent,2018-02-09,EXPIRED,6,1
+PCG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PCG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PCG,Sentiment Agent,,FRESH,0,2
+PDD,Fundamental Agent,2025-04-28,EXPIRED,6,3
+PDD,Macro-Economic Agent,2026-08-04,STALE,5,0
+PDD,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+PDD,Sentiment Agent,2026-10-01,EXPIRED,3,0
+PEG,Fundamental Agent,2026-02-26,STALE,6,0
+PEG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PEG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PEG,Sentiment Agent,,FRESH,0,2
+PEP,Fundamental Agent,2026-02-03,EXPIRED,6,0
+PEP,Macro-Economic Agent,2026-08-04,STALE,5,0
+PEP,Market + Volatility Agent,2026-10-03,STALE,5,0
+PEP,Sentiment Agent,2026-10-09,EXPIRED,3,0
+PFE,Fundamental Agent,2024-02-22,EXPIRED,6,4
+PFE,Macro-Economic Agent,2026-08-04,STALE,5,0
+PFE,Market + Volatility Agent,2026-10-03,STALE,5,0
+PFE,Sentiment Agent,2026-10-09,EXPIRED,3,0
+PFG,Fundamental Agent,2026-02-18,EXPIRED,6,1
+PFG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PFG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PFG,Sentiment Agent,,FRESH,0,2
+PG,Fundamental Agent,2020-08-06,EXPIRED,6,3
+PG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PG,Sentiment Agent,2026-10-08,EXPIRED,3,0
+PGR,Fundamental Agent,2026-03-02,STALE,6,5
+PGR,Macro-Economic Agent,2026-08-04,STALE,5,0
+PGR,Market + Volatility Agent,2026-10-03,STALE,5,0
+PGR,Sentiment Agent,,FRESH,0,2
+PH,Fundamental Agent,2025-08-22,EXPIRED,6,0
+PH,Macro-Economic Agent,2026-08-04,STALE,5,0
+PH,Market + Volatility Agent,2026-10-03,STALE,5,0
+PH,Sentiment Agent,,FRESH,0,2
+PHM,Fundamental Agent,2026-02-04,EXPIRED,6,1
+PHM,Macro-Economic Agent,2026-08-04,STALE,5,0
+PHM,Market + Volatility Agent,2026-10-03,STALE,5,0
+PHM,Sentiment Agent,,FRESH,0,2
+PKG,Fundamental Agent,2026-02-26,STALE,6,0
+PKG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PKG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PKG,Sentiment Agent,,FRESH,0,2
+PLD,Fundamental Agent,2026-02-13,EXPIRED,6,0
+PLD,Macro-Economic Agent,2026-08-04,STALE,5,0
+PLD,Market + Volatility Agent,2026-10-03,STALE,5,0
+PLD,Sentiment Agent,2026-10-10,EXPIRED,3,0
+PLTR,Fundamental Agent,2026-02-17,EXPIRED,6,3
+PLTR,Macro-Economic Agent,2026-08-04,STALE,5,0
+PLTR,Market + Volatility Agent,2026-10-03,STALE,5,0
+PLTR,Sentiment Agent,2026-10-09,EXPIRED,3,0
+PM,Fundamental Agent,2011-02-25,EXPIRED,6,2
+PM,Macro-Economic Agent,2026-08-04,STALE,5,0
+PM,Market + Volatility Agent,2026-10-03,STALE,5,0
+PM,Sentiment Agent,2026-10-08,EXPIRED,3,0
+PNC,Fundamental Agent,2022-02-25,EXPIRED,6,4
+PNC,Macro-Economic Agent,2026-08-04,STALE,5,0
+PNC,Market + Volatility Agent,2026-10-03,STALE,5,0
+PNC,Sentiment Agent,,FRESH,0,2
+PNR,Fundamental Agent,2021-02-16,EXPIRED,6,0
+PNR,Macro-Economic Agent,2026-08-04,STALE,5,0
+PNR,Market + Volatility Agent,2026-10-03,STALE,5,0
+PNR,Sentiment Agent,2026-09-28,EXPIRED,3,0
+PNW,Fundamental Agent,,FRESH,0,6
+PNW,Macro-Economic Agent,2026-08-04,STALE,5,0
+PNW,Market + Volatility Agent,2026-10-03,STALE,5,0
+PNW,Sentiment Agent,,FRESH,0,2
+PODD,Fundamental Agent,2024-02-23,EXPIRED,6,2
+PODD,Macro-Economic Agent,2026-08-04,STALE,5,0
+PODD,Market + Volatility Agent,2026-10-03,STALE,5,0
+PODD,Sentiment Agent,,FRESH,0,2
+PPG,Fundamental Agent,2026-02-19,STALE,6,0
+PPG,Macro-Economic Agent,2026-08-04,STALE,5,0
+PPG,Market + Volatility Agent,2026-10-03,STALE,5,0
+PPG,Sentiment Agent,,FRESH,0,2
+PPL,Fundamental Agent,2026-02-20,STALE,6,0
+PPL,Macro-Economic Agent,2026-08-04,STALE,5,0
+PPL,Market + Volatility Agent,2026-10-03,STALE,5,0
+PPL,Sentiment Agent,,FRESH,0,2
+PRU,Fundamental Agent,2026-02-12,EXPIRED,6,4
+PRU,Macro-Economic Agent,2026-08-04,STALE,5,0
+PRU,Market + Volatility Agent,2026-10-03,STALE,5,0
+PRU,Sentiment Agent,,FRESH,0,2
+PSA,Fundamental Agent,2026-02-12,EXPIRED,6,1
+PSA,Macro-Economic Agent,2026-08-04,STALE,5,0
+PSA,Market + Volatility Agent,2026-10-03,STALE,5,0
+PSA,Sentiment Agent,,FRESH,0,2
+PSKY,Fundamental Agent,2026-02-25,STALE,6,3
+PSKY,Macro-Economic Agent,2026-08-04,STALE,5,0
+PSKY,Market + Volatility Agent,2026-10-03,STALE,5,0
+PSKY,Sentiment Agent,2026-10-09,EXPIRED,3,0
+PSX,Fundamental Agent,2026-02-20,STALE,6,4
+PSX,Macro-Economic Agent,2026-08-04,STALE,5,0
+PSX,Market + Volatility Agent,2026-10-03,STALE,5,0
+PSX,Sentiment Agent,2026-10-09,EXPIRED,3,1
+PTC,Fundamental Agent,2025-11-21,EXPIRED,6,0
+PTC,Macro-Economic Agent,2026-08-04,STALE,5,0
+PTC,Market + Volatility Agent,2026-10-03,STALE,5,0
+PTC,Sentiment Agent,,FRESH,0,2
+PWR,Fundamental Agent,2026-02-19,STALE,6,3
+PWR,Macro-Economic Agent,2026-08-04,STALE,5,0
+PWR,Market + Volatility Agent,2026-10-03,STALE,5,0
+PWR,Sentiment Agent,2026-10-07,EXPIRED,3,0
+PYPL,Fundamental Agent,2026-02-03,EXPIRED,6,3
+PYPL,Macro-Economic Agent,2026-08-04,STALE,5,0
+PYPL,Market + Volatility Agent,2026-10-03,STALE,5,0
+PYPL,Sentiment Agent,,FRESH,0,2
+Q,Fundamental Agent,2026-02-26,STALE,6,2
+Q,Macro-Economic Agent,2026-08-04,STALE,5,0
+Q,Market + Volatility Agent,2026-10-03,STALE,5,1
+Q,Sentiment Agent,,FRESH,0,2
+QCOM,Fundamental Agent,2025-11-05,EXPIRED,6,0
+QCOM,Macro-Economic Agent,2026-08-04,STALE,5,0
+QCOM,Market + Volatility Agent,2026-10-03,STALE,5,0
+QCOM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+RCL,Fundamental Agent,2022-03-01,EXPIRED,6,3
+RCL,Macro-Economic Agent,2026-08-04,STALE,5,0
+RCL,Market + Volatility Agent,2026-10-03,STALE,5,0
+RCL,Sentiment Agent,2026-10-10,EXPIRED,3,0
+RDDT,Fundamental Agent,2026-02-06,EXPIRED,6,3
+RDDT,Macro-Economic Agent,2026-08-04,STALE,5,0
+RDDT,Market + Volatility Agent,2026-10-03,STALE,5,0
+RDDT,Sentiment Agent,2026-10-09,EXPIRED,3,0
+REG,Fundamental Agent,2026-02-13,EXPIRED,6,2
+REG,Macro-Economic Agent,2026-08-04,STALE,5,0
+REG,Market + Volatility Agent,2026-10-03,STALE,5,0
+REG,Sentiment Agent,,FRESH,0,2
+REGN,Fundamental Agent,2018-02-08,EXPIRED,6,3
+REGN,Macro-Economic Agent,2026-08-04,STALE,5,0
+REGN,Market + Volatility Agent,2026-10-03,STALE,5,0
+REGN,Sentiment Agent,,FRESH,0,2
+RF,Fundamental Agent,2026-02-24,STALE,6,4
+RF,Macro-Economic Agent,2026-08-04,STALE,5,0
+RF,Market + Volatility Agent,2026-10-03,STALE,5,0
+RF,Sentiment Agent,2026-10-07,EXPIRED,3,1
+RJF,Fundamental Agent,2025-11-25,EXPIRED,6,4
+RJF,Macro-Economic Agent,2026-08-04,STALE,5,0
+RJF,Market + Volatility Agent,2026-10-03,STALE,5,0
+RJF,Sentiment Agent,,FRESH,0,2
+RL,Fundamental Agent,2026-05-21,STALE,6,3
+RL,Macro-Economic Agent,2026-08-04,STALE,5,0
+RL,Market + Volatility Agent,2026-10-03,STALE,5,0
+RL,Sentiment Agent,,FRESH,0,2
+RMD,Fundamental Agent,2026-08-13,RECENT,0,0
+RMD,Macro-Economic Agent,2026-08-04,STALE,5,0
+RMD,Market + Volatility Agent,2026-10-03,STALE,5,0
+RMD,Sentiment Agent,,FRESH,0,2
+ROK,Fundamental Agent,2021-11-09,EXPIRED,6,1
+ROK,Macro-Economic Agent,2026-08-04,STALE,5,0
+ROK,Market + Volatility Agent,2026-10-03,STALE,5,0
+ROK,Sentiment Agent,2026-10-08,EXPIRED,3,0
+ROL,Fundamental Agent,2026-02-12,EXPIRED,6,0
+ROL,Macro-Economic Agent,2026-08-04,STALE,5,0
+ROL,Market + Volatility Agent,2026-10-03,STALE,5,0
+ROL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+ROP,Fundamental Agent,2026-02-24,STALE,6,0
+ROP,Macro-Economic Agent,2026-08-04,STALE,5,0
+ROP,Market + Volatility Agent,2026-10-03,STALE,5,0
+ROP,Sentiment Agent,,FRESH,0,2
+ROST,Fundamental Agent,2026-03-31,STALE,6,0
+ROST,Macro-Economic Agent,2026-08-04,STALE,5,0
+ROST,Market + Volatility Agent,2026-10-03,STALE,5,0
+ROST,Sentiment Agent,,FRESH,0,2
+RSG,Fundamental Agent,2026-02-18,EXPIRED,6,0
+RSG,Macro-Economic Agent,2026-08-04,STALE,5,0
+RSG,Market + Volatility Agent,2026-10-03,STALE,5,0
+RSG,Sentiment Agent,,FRESH,0,2
+RTX,Fundamental Agent,2026-02-06,EXPIRED,6,0
+RTX,Macro-Economic Agent,2026-08-04,STALE,5,0
+RTX,Market + Volatility Agent,2026-10-03,STALE,5,0
+RTX,Sentiment Agent,2026-10-07,EXPIRED,3,0
+RVTY,Fundamental Agent,2026-02-24,STALE,6,0
+RVTY,Macro-Economic Agent,2026-08-04,STALE,5,0
+RVTY,Market + Volatility Agent,2026-10-03,STALE,5,0
+RVTY,Sentiment Agent,,FRESH,0,2
+SBAC,Fundamental Agent,2026-02-27,STALE,6,0
+SBAC,Macro-Economic Agent,2026-08-04,STALE,5,0
+SBAC,Market + Volatility Agent,2026-10-03,STALE,5,0
+SBAC,Sentiment Agent,,FRESH,0,2
+SBUX,Fundamental Agent,2025-11-14,EXPIRED,6,2
+SBUX,Macro-Economic Agent,2026-08-04,STALE,5,0
+SBUX,Market + Volatility Agent,2026-10-03,STALE,5,0
+SBUX,Sentiment Agent,,FRESH,0,2
+SCHW,Fundamental Agent,2026-02-25,STALE,6,4
+SCHW,Macro-Economic Agent,2026-08-04,STALE,5,0
+SCHW,Market + Volatility Agent,2026-10-03,STALE,5,0
+SCHW,Sentiment Agent,2026-10-08,EXPIRED,3,0
+SHOP,Fundamental Agent,2026-02-11,EXPIRED,6,3
+SHOP,Macro-Economic Agent,2026-08-04,STALE,5,0
+SHOP,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+SHOP,Sentiment Agent,2026-10-09,EXPIRED,3,0
+SHW,Fundamental Agent,2026-02-19,STALE,6,0
+SHW,Macro-Economic Agent,2026-08-04,STALE,5,0
+SHW,Market + Volatility Agent,2026-10-03,STALE,5,0
+SHW,Sentiment Agent,,FRESH,0,2
+SJM,Fundamental Agent,2026-06-09,STALE,6,4
+SJM,Macro-Economic Agent,2026-08-04,STALE,5,0
+SJM,Market + Volatility Agent,2026-10-03,STALE,5,0
+SJM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+SLB,Fundamental Agent,2018-01-24,EXPIRED,6,4
+SLB,Macro-Economic Agent,2026-08-04,STALE,5,0
+SLB,Market + Volatility Agent,2026-10-03,STALE,5,0
+SLB,Sentiment Agent,2026-10-07,EXPIRED,3,0
+SMCI,Fundamental Agent,2026-08-31,FRESH,0,3
+SMCI,Macro-Economic Agent,2026-08-04,STALE,5,0
+SMCI,Market + Volatility Agent,2026-10-03,STALE,5,0
+SMCI,Sentiment Agent,2026-10-09,EXPIRED,3,0
+SNA,Fundamental Agent,2026-02-12,EXPIRED,6,0
+SNA,Macro-Economic Agent,2026-08-04,STALE,5,0
+SNA,Market + Volatility Agent,2026-10-03,STALE,5,0
+SNA,Sentiment Agent,,FRESH,0,2
+SNDK,Fundamental Agent,2026-08-17,RECENT,0,1
+SNDK,Macro-Economic Agent,2026-08-04,STALE,5,0
+SNDK,Market + Volatility Agent,2026-10-03,STALE,5,1
+SNDK,Sentiment Agent,2026-10-09,EXPIRED,3,0
+SNPS,Fundamental Agent,2025-12-22,EXPIRED,6,3
+SNPS,Macro-Economic Agent,2026-08-04,STALE,5,0
+SNPS,Market + Volatility Agent,2026-10-03,STALE,5,0
+SNPS,Sentiment Agent,,FRESH,0,2
+SO,Fundamental Agent,2026-02-19,STALE,6,3
+SO,Macro-Economic Agent,2026-08-04,STALE,5,0
+SO,Market + Volatility Agent,2026-10-03,STALE,5,0
+SO,Sentiment Agent,,FRESH,0,2
+SOLV,Fundamental Agent,2026-02-27,STALE,6,1
+SOLV,Macro-Economic Agent,2026-08-04,STALE,5,0
+SOLV,Market + Volatility Agent,2026-10-03,STALE,5,0
+SOLV,Sentiment Agent,,FRESH,0,2
+SPG,Fundamental Agent,2026-02-25,STALE,6,1
+SPG,Macro-Economic Agent,2026-08-04,STALE,5,0
+SPG,Market + Volatility Agent,2026-10-03,STALE,5,0
+SPG,Sentiment Agent,,FRESH,0,2
+SPGI,Fundamental Agent,2026-02-11,EXPIRED,6,0
+SPGI,Macro-Economic Agent,2026-08-04,STALE,5,0
+SPGI,Market + Volatility Agent,2026-10-03,STALE,5,0
+SPGI,Sentiment Agent,2026-10-06,EXPIRED,3,1
+SRE,Fundamental Agent,2026-02-26,STALE,6,4
+SRE,Macro-Economic Agent,2026-08-04,STALE,5,0
+SRE,Market + Volatility Agent,2026-10-03,STALE,5,0
+SRE,Sentiment Agent,,FRESH,0,2
+STE,Fundamental Agent,2026-05-29,STALE,6,2
+STE,Macro-Economic Agent,2026-08-04,STALE,5,0
+STE,Market + Volatility Agent,2026-10-03,STALE,5,0
+STE,Sentiment Agent,,FRESH,0,2
+STLD,Fundamental Agent,2026-02-27,STALE,6,0
+STLD,Macro-Economic Agent,2026-08-04,STALE,5,0
+STLD,Market + Volatility Agent,2026-10-03,STALE,5,0
+STLD,Sentiment Agent,,FRESH,0,2
+STT,Fundamental Agent,2026-02-19,STALE,6,5
+STT,Macro-Economic Agent,2026-08-04,STALE,5,0
+STT,Market + Volatility Agent,2026-10-03,STALE,5,0
+STT,Sentiment Agent,,FRESH,0,2
+STX,Fundamental Agent,2026-08-04,RECENT,0,3
+STX,Macro-Economic Agent,2026-08-04,STALE,5,0
+STX,Market + Volatility Agent,2026-10-03,STALE,5,0
+STX,Sentiment Agent,2026-10-09,EXPIRED,3,0
+STZ,Fundamental Agent,2026-04-22,STALE,6,0
+STZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+STZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+STZ,Sentiment Agent,,FRESH,0,2
+SW,Fundamental Agent,2026-02-27,STALE,6,3
+SW,Macro-Economic Agent,2026-08-04,STALE,5,0
+SW,Market + Volatility Agent,2026-10-03,STALE,5,0
+SW,Sentiment Agent,,FRESH,0,2
+SWK,Fundamental Agent,2026-02-24,STALE,6,1
+SWK,Macro-Economic Agent,2026-08-04,STALE,5,0
+SWK,Market + Volatility Agent,2026-10-03,STALE,5,0
+SWK,Sentiment Agent,2026-10-10,EXPIRED,3,0
+SWKS,Fundamental Agent,2025-11-07,EXPIRED,6,0
+SWKS,Macro-Economic Agent,2026-08-04,STALE,5,0
+SWKS,Market + Volatility Agent,2026-10-03,STALE,5,0
+SWKS,Sentiment Agent,,FRESH,0,2
+SYF,Fundamental Agent,2026-02-06,EXPIRED,6,2
+SYF,Macro-Economic Agent,2026-08-04,STALE,5,0
+SYF,Market + Volatility Agent,2026-10-03,STALE,5,0
+SYF,Sentiment Agent,2026-10-08,EXPIRED,3,1
+SYK,Fundamental Agent,2018-02-08,EXPIRED,6,3
+SYK,Macro-Economic Agent,2026-08-04,STALE,5,0
+SYK,Market + Volatility Agent,2026-10-03,STALE,5,0
+SYK,Sentiment Agent,,FRESH,0,2
+SYY,Fundamental Agent,2026-08-21,FRESH,0,3
+SYY,Macro-Economic Agent,2026-08-04,STALE,5,0
+SYY,Market + Volatility Agent,2026-10-03,STALE,5,0
+SYY,Sentiment Agent,,FRESH,0,2
+T,Fundamental Agent,2026-02-09,EXPIRED,6,0
+T,Macro-Economic Agent,2026-08-04,STALE,5,0
+T,Market + Volatility Agent,2026-10-03,STALE,5,0
+T,Sentiment Agent,2026-10-07,EXPIRED,3,0
+TDG,Fundamental Agent,2025-11-12,EXPIRED,6,0
+TDG,Macro-Economic Agent,2026-08-04,STALE,5,0
+TDG,Market + Volatility Agent,2026-10-03,STALE,5,0
+TDG,Sentiment Agent,,FRESH,0,2
+TDY,Fundamental Agent,2026-02-20,STALE,6,0
+TDY,Macro-Economic Agent,2026-08-04,STALE,5,0
+TDY,Market + Volatility Agent,2026-10-03,STALE,5,0
+TDY,Sentiment Agent,,FRESH,0,2
+TEAM,Fundamental Agent,2025-08-15,EXPIRED,6,3
+TEAM,Macro-Economic Agent,2026-08-04,STALE,5,0
+TEAM,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+TEAM,Sentiment Agent,,FRESH,0,2
+TECH,Fundamental Agent,2026-08-24,FRESH,0,3
+TECH,Macro-Economic Agent,2026-08-04,STALE,5,0
+TECH,Market + Volatility Agent,2026-10-03,STALE,5,0
+TECH,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TEL,Fundamental Agent,2018-11-13,EXPIRED,6,0
+TEL,Macro-Economic Agent,2026-08-04,STALE,5,0
+TEL,Market + Volatility Agent,2026-10-03,STALE,5,0
+TEL,Sentiment Agent,,FRESH,0,2
+TER,Fundamental Agent,2026-02-19,STALE,6,3
+TER,Macro-Economic Agent,2026-08-04,STALE,5,0
+TER,Market + Volatility Agent,2026-10-03,STALE,5,0
+TER,Sentiment Agent,,FRESH,0,2
+TFC,Fundamental Agent,2026-02-24,STALE,6,4
+TFC,Macro-Economic Agent,2026-08-04,STALE,5,0
+TFC,Market + Volatility Agent,2026-10-03,STALE,5,0
+TFC,Sentiment Agent,,FRESH,0,2
+TGT,Fundamental Agent,2026-03-11,STALE,6,2
+TGT,Macro-Economic Agent,2026-08-04,STALE,5,0
+TGT,Market + Volatility Agent,2026-10-03,STALE,5,0
+TGT,Sentiment Agent,2026-10-08,EXPIRED,3,0
+TJX,Fundamental Agent,2019-04-03,EXPIRED,6,5
+TJX,Macro-Economic Agent,2026-08-04,STALE,5,0
+TJX,Market + Volatility Agent,2026-10-03,STALE,5,0
+TJX,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TKO,Fundamental Agent,2026-02-25,STALE,6,0
+TKO,Macro-Economic Agent,2026-08-04,STALE,5,0
+TKO,Market + Volatility Agent,2026-10-03,STALE,5,0
+TKO,Sentiment Agent,,FRESH,0,2
+TMO,Fundamental Agent,2026-02-26,STALE,6,0
+TMO,Macro-Economic Agent,2026-08-04,STALE,5,0
+TMO,Market + Volatility Agent,2026-10-03,STALE,5,0
+TMO,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TMUS,Fundamental Agent,2026-02-11,EXPIRED,6,0
+TMUS,Macro-Economic Agent,2026-08-04,STALE,5,0
+TMUS,Market + Volatility Agent,2026-10-03,STALE,5,0
+TMUS,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TPL,Fundamental Agent,2026-02-18,EXPIRED,6,3
+TPL,Macro-Economic Agent,2026-08-04,STALE,5,0
+TPL,Market + Volatility Agent,2026-10-03,STALE,5,0
+TPL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TPR,Fundamental Agent,2026-08-13,RECENT,0,0
+TPR,Macro-Economic Agent,2026-08-04,STALE,5,0
+TPR,Market + Volatility Agent,2026-10-03,STALE,5,0
+TPR,Sentiment Agent,,FRESH,0,2
+TRGP,Fundamental Agent,2026-02-19,STALE,6,0
+TRGP,Macro-Economic Agent,2026-08-04,STALE,5,0
+TRGP,Market + Volatility Agent,2026-10-03,STALE,5,0
+TRGP,Sentiment Agent,,FRESH,0,2
+TRI,Fundamental Agent,,FRESH,0,6
+TRI,Macro-Economic Agent,2026-08-04,STALE,5,0
+TRI,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+TRI,Sentiment Agent,,FRESH,0,2
+TRMB,Fundamental Agent,2026-02-25,STALE,6,0
+TRMB,Macro-Economic Agent,2026-08-04,STALE,5,0
+TRMB,Market + Volatility Agent,2026-10-03,STALE,5,0
+TRMB,Sentiment Agent,,FRESH,0,2
+TROW,Fundamental Agent,2026-02-13,EXPIRED,6,3
+TROW,Macro-Economic Agent,2026-08-04,STALE,5,0
+TROW,Market + Volatility Agent,2026-10-03,STALE,5,0
+TROW,Sentiment Agent,,FRESH,0,2
+TRV,Fundamental Agent,2026-02-12,EXPIRED,6,5
+TRV,Macro-Economic Agent,2026-08-04,STALE,5,0
+TRV,Market + Volatility Agent,2026-10-03,STALE,5,0
+TRV,Sentiment Agent,,FRESH,0,2
+TSCO,Fundamental Agent,2026-02-19,STALE,6,0
+TSCO,Macro-Economic Agent,2026-08-04,STALE,5,0
+TSCO,Market + Volatility Agent,2026-10-03,STALE,5,0
+TSCO,Sentiment Agent,,FRESH,0,2
+TSLA,Fundamental Agent,2026-01-29,EXPIRED,6,0
+TSLA,Macro-Economic Agent,2026-08-04,STALE,5,0
+TSLA,Market + Volatility Agent,2026-10-03,STALE,5,0
+TSLA,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TSN,Fundamental Agent,2025-11-10,EXPIRED,6,3
+TSN,Macro-Economic Agent,2026-08-04,STALE,5,0
+TSN,Market + Volatility Agent,2026-10-03,STALE,5,0
+TSN,Sentiment Agent,,FRESH,0,2
+TT,Fundamental Agent,2026-02-05,EXPIRED,6,0
+TT,Macro-Economic Agent,2026-08-04,STALE,5,0
+TT,Market + Volatility Agent,2026-10-03,STALE,5,0
+TT,Sentiment Agent,,FRESH,0,2
+TTWO,Fundamental Agent,2026-05-22,STALE,6,3
+TTWO,Macro-Economic Agent,2026-08-04,STALE,5,0
+TTWO,Market + Volatility Agent,2026-10-03,STALE,5,0
+TTWO,Sentiment Agent,,FRESH,0,2
+TXN,Fundamental Agent,2026-02-06,EXPIRED,6,0
+TXN,Macro-Economic Agent,2026-08-04,STALE,5,0
+TXN,Market + Volatility Agent,2026-10-03,STALE,5,0
+TXN,Sentiment Agent,2026-10-09,EXPIRED,3,0
+TXT,Fundamental Agent,2021-02-19,EXPIRED,6,4
+TXT,Macro-Economic Agent,2026-08-04,STALE,5,0
+TXT,Market + Volatility Agent,2026-10-03,STALE,5,0
+TXT,Sentiment Agent,,FRESH,0,2
+TYL,Fundamental Agent,2026-02-18,EXPIRED,6,0
+TYL,Macro-Economic Agent,2026-08-04,STALE,5,0
+TYL,Market + Volatility Agent,2026-10-03,STALE,5,0
+TYL,Sentiment Agent,,FRESH,0,2
+UAL,Fundamental Agent,2020-02-25,EXPIRED,6,3
+UAL,Macro-Economic Agent,2026-08-04,STALE,5,0
+UAL,Market + Volatility Agent,2026-10-03,STALE,5,0
+UAL,Sentiment Agent,2026-10-08,EXPIRED,3,0
+UBER,Fundamental Agent,2026-02-13,EXPIRED,6,0
+UBER,Macro-Economic Agent,2026-08-04,STALE,5,0
+UBER,Market + Volatility Agent,2026-10-03,STALE,5,0
+UBER,Sentiment Agent,2026-10-10,EXPIRED,3,0
+UDR,Fundamental Agent,2026-02-17,EXPIRED,6,0
+UDR,Macro-Economic Agent,2026-08-04,STALE,5,0
+UDR,Market + Volatility Agent,2026-10-03,STALE,5,0
+UDR,Sentiment Agent,,FRESH,0,2
+UHS,Fundamental Agent,2026-02-25,STALE,6,0
+UHS,Macro-Economic Agent,2026-08-04,STALE,5,0
+UHS,Market + Volatility Agent,2026-10-03,STALE,5,0
+UHS,Sentiment Agent,,FRESH,0,2
+ULTA,Fundamental Agent,2026-03-26,STALE,6,3
+ULTA,Macro-Economic Agent,2026-08-04,STALE,5,0
+ULTA,Market + Volatility Agent,2026-10-03,STALE,5,0
+ULTA,Sentiment Agent,,FRESH,0,2
+UNH,Fundamental Agent,2026-03-02,STALE,6,3
+UNH,Macro-Economic Agent,2026-08-04,STALE,5,0
+UNH,Market + Volatility Agent,2026-10-03,STALE,5,0
+UNH,Sentiment Agent,2026-10-09,EXPIRED,3,0
+UNP,Fundamental Agent,2026-02-06,EXPIRED,6,0
+UNP,Macro-Economic Agent,2026-08-04,STALE,5,0
+UNP,Market + Volatility Agent,2026-10-03,STALE,5,0
+UNP,Sentiment Agent,2026-10-10,EXPIRED,3,0
+UPS,Fundamental Agent,2026-02-17,EXPIRED,6,0
+UPS,Macro-Economic Agent,2026-08-04,STALE,5,0
+UPS,Market + Volatility Agent,2026-10-03,STALE,5,0
+UPS,Sentiment Agent,,FRESH,0,2
+URI,Fundamental Agent,2026-01-28,EXPIRED,6,0
+URI,Macro-Economic Agent,2026-08-04,STALE,5,0
+URI,Market + Volatility Agent,2026-10-03,STALE,5,0
+URI,Sentiment Agent,,FRESH,0,2
+USB,Fundamental Agent,2024-02-20,EXPIRED,6,3
+USB,Macro-Economic Agent,2026-08-04,STALE,5,0
+USB,Market + Volatility Agent,2026-10-03,STALE,5,0
+USB,Sentiment Agent,,FRESH,0,2
+V,Fundamental Agent,2021-11-18,EXPIRED,6,0
+V,Macro-Economic Agent,2026-08-04,STALE,5,0
+V,Market + Volatility Agent,2026-10-03,STALE,5,0
+V,Sentiment Agent,2026-10-09,EXPIRED,3,0
+VEEV,Fundamental Agent,2026-03-20,STALE,6,3
+VEEV,Macro-Economic Agent,2026-08-04,STALE,5,0
+VEEV,Market + Volatility Agent,2026-10-03,STALE,5,0
+VEEV,Sentiment Agent,2026-10-09,EXPIRED,3,0
+VICI,Fundamental Agent,2026-02-25,STALE,6,1
+VICI,Macro-Economic Agent,2026-08-04,STALE,5,0
+VICI,Market + Volatility Agent,2026-10-03,STALE,5,0
+VICI,Sentiment Agent,,FRESH,0,2
+VLO,Fundamental Agent,2026-02-25,STALE,6,2
+VLO,Macro-Economic Agent,2026-08-04,STALE,5,0
+VLO,Market + Volatility Agent,2026-10-03,STALE,5,0
+VLO,Sentiment Agent,,FRESH,0,2
+VLTO,Fundamental Agent,2026-02-20,STALE,6,0
+VLTO,Macro-Economic Agent,2026-08-04,STALE,5,0
+VLTO,Market + Volatility Agent,2026-10-03,STALE,5,0
+VLTO,Sentiment Agent,,FRESH,0,2
+VMC,Fundamental Agent,2026-02-19,STALE,6,0
+VMC,Macro-Economic Agent,2026-08-04,STALE,5,0
+VMC,Market + Volatility Agent,2026-10-03,STALE,5,0
+VMC,Sentiment Agent,,FRESH,0,2
+VMRK,Fundamental Agent,2025-02-13,EXPIRED,6,2
+VMRK,Macro-Economic Agent,2026-08-04,STALE,5,0
+VMRK,Market + Volatility Agent,2026-10-03,STALE,5,0
+VMRK,Sentiment Agent,,FRESH,0,2
+VRSK,Fundamental Agent,2026-02-18,EXPIRED,6,0
+VRSK,Macro-Economic Agent,2026-08-04,STALE,5,0
+VRSK,Market + Volatility Agent,2026-10-03,STALE,5,0
+VRSK,Sentiment Agent,,FRESH,0,2
+VRSN,Fundamental Agent,2016-02-19,EXPIRED,6,2
+VRSN,Macro-Economic Agent,2026-08-04,STALE,5,0
+VRSN,Market + Volatility Agent,2026-10-03,STALE,5,0
+VRSN,Sentiment Agent,,FRESH,0,2
+VRT,Fundamental Agent,2026-02-13,EXPIRED,6,0
+VRT,Macro-Economic Agent,2026-08-04,STALE,5,0
+VRT,Market + Volatility Agent,2026-10-03,STALE,5,0
+VRT,Sentiment Agent,2026-10-07,EXPIRED,3,0
+VRTX,Fundamental Agent,2026-02-13,EXPIRED,6,3
+VRTX,Macro-Economic Agent,2026-08-04,STALE,5,0
+VRTX,Market + Volatility Agent,2026-10-03,STALE,5,0
+VRTX,Sentiment Agent,2026-10-09,EXPIRED,3,0
+VST,Fundamental Agent,2026-02-27,STALE,6,0
+VST,Macro-Economic Agent,2026-08-04,STALE,5,0
+VST,Market + Volatility Agent,2026-10-03,STALE,5,0
+VST,Sentiment Agent,2026-10-08,EXPIRED,3,0
+VTR,Fundamental Agent,2026-02-06,EXPIRED,6,2
+VTR,Macro-Economic Agent,2026-08-04,STALE,5,0
+VTR,Market + Volatility Agent,2026-10-03,STALE,5,0
+VTR,Sentiment Agent,,FRESH,0,2
+VTRS,Fundamental Agent,2021-03-01,EXPIRED,6,3
+VTRS,Macro-Economic Agent,2026-08-04,STALE,5,0
+VTRS,Market + Volatility Agent,2026-10-03,STALE,5,0
+VTRS,Sentiment Agent,,FRESH,0,2
+VZ,Fundamental Agent,2026-02-17,EXPIRED,6,3
+VZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+VZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+VZ,Sentiment Agent,2026-10-10,EXPIRED,3,0
+WAB,Fundamental Agent,2026-02-13,EXPIRED,6,2
+WAB,Macro-Economic Agent,2026-08-04,STALE,5,0
+WAB,Market + Volatility Agent,2026-10-03,STALE,5,0
+WAB,Sentiment Agent,,FRESH,0,2
+WAT,Fundamental Agent,2026-02-23,STALE,6,0
+WAT,Macro-Economic Agent,2026-08-04,STALE,5,0
+WAT,Market + Volatility Agent,2026-10-03,STALE,5,0
+WAT,Sentiment Agent,2026-10-08,EXPIRED,3,0
+WBD,Fundamental Agent,2026-02-27,STALE,6,0
+WBD,Macro-Economic Agent,2026-08-04,STALE,5,0
+WBD,Market + Volatility Agent,2026-10-03,STALE,5,0
+WBD,Sentiment Agent,,FRESH,0,2
+WDAY,Fundamental Agent,2025-03-11,EXPIRED,6,0
+WDAY,Macro-Economic Agent,2026-08-04,STALE,5,0
+WDAY,Market + Volatility Agent,2026-10-03,STALE,5,0
+WDAY,Sentiment Agent,,FRESH,0,2
+WDC,Fundamental Agent,2026-08-14,RECENT,0,0
+WDC,Macro-Economic Agent,2026-08-04,STALE,5,0
+WDC,Market + Volatility Agent,2026-10-03,STALE,5,0
+WDC,Sentiment Agent,2026-10-09,EXPIRED,3,0
+WEC,Fundamental Agent,2019-02-26,EXPIRED,6,1
+WEC,Macro-Economic Agent,2026-08-04,STALE,5,0
+WEC,Market + Volatility Agent,2026-10-03,STALE,5,0
+WEC,Sentiment Agent,,FRESH,0,2
+WELL,Fundamental Agent,2026-02-12,EXPIRED,6,2
+WELL,Macro-Economic Agent,2026-08-04,STALE,5,0
+WELL,Market + Volatility Agent,2026-10-03,STALE,5,0
+WELL,Sentiment Agent,2026-10-09,EXPIRED,3,0
+WFC,Fundamental Agent,2026-02-24,STALE,6,4
+WFC,Macro-Economic Agent,2026-08-04,STALE,5,0
+WFC,Market + Volatility Agent,2026-10-03,STALE,5,0
+WFC,Sentiment Agent,2026-10-09,EXPIRED,3,0
+WM,Fundamental Agent,2026-02-09,EXPIRED,6,3
+WM,Macro-Economic Agent,2026-08-04,STALE,5,0
+WM,Market + Volatility Agent,2026-10-03,STALE,5,0
+WM,Sentiment Agent,,FRESH,0,2
+WMB,Fundamental Agent,2026-02-24,STALE,6,4
+WMB,Macro-Economic Agent,2026-08-04,STALE,5,0
+WMB,Market + Volatility Agent,2026-10-03,STALE,5,0
+WMB,Sentiment Agent,,FRESH,0,2
+WMT,Fundamental Agent,2026-03-13,STALE,6,0
+WMT,Macro-Economic Agent,2026-08-04,STALE,5,0
+WMT,Market + Volatility Agent,2026-10-03,STALE,5,0
+WMT,Sentiment Agent,2026-10-09,EXPIRED,3,0
+WRB,Fundamental Agent,2026-02-27,STALE,6,4
+WRB,Macro-Economic Agent,2026-08-04,STALE,5,0
+WRB,Market + Volatility Agent,2026-10-03,STALE,5,0
+WRB,Sentiment Agent,,FRESH,0,2
+WSM,Fundamental Agent,2026-03-26,STALE,6,3
+WSM,Macro-Economic Agent,2026-08-04,STALE,5,0
+WSM,Market + Volatility Agent,2026-10-03,STALE,5,0
+WSM,Sentiment Agent,,FRESH,0,2
+WST,Fundamental Agent,2026-02-17,EXPIRED,6,0
+WST,Macro-Economic Agent,2026-08-04,STALE,5,0
+WST,Market + Volatility Agent,2026-10-03,STALE,5,0
+WST,Sentiment Agent,,FRESH,0,2
+WTW,Fundamental Agent,2026-02-25,STALE,6,0
+WTW,Macro-Economic Agent,2026-08-04,STALE,5,0
+WTW,Market + Volatility Agent,2026-10-03,STALE,5,0
+WTW,Sentiment Agent,,FRESH,0,2
+WY,Fundamental Agent,2026-02-13,EXPIRED,6,0
+WY,Macro-Economic Agent,2026-08-04,STALE,5,0
+WY,Market + Volatility Agent,2026-10-03,STALE,5,0
+WY,Sentiment Agent,2026-10-10,EXPIRED,3,0
+WYNN,Fundamental Agent,2026-03-02,STALE,6,2
+WYNN,Macro-Economic Agent,2026-08-04,STALE,5,0
+WYNN,Market + Volatility Agent,2026-10-03,STALE,5,0
+WYNN,Sentiment Agent,,FRESH,0,2
+XEL,Fundamental Agent,2021-02-17,EXPIRED,6,3
+XEL,Macro-Economic Agent,2026-08-04,STALE,5,0
+XEL,Market + Volatility Agent,2026-10-03,STALE,5,0
+XEL,Sentiment Agent,,FRESH,0,2
+XOM,Fundamental Agent,,FRESH,0,6
+XOM,Macro-Economic Agent,2026-08-04,STALE,5,0
+XOM,Market + Volatility Agent,2026-10-03,STALE,5,0
+XOM,Sentiment Agent,2026-10-09,EXPIRED,3,0
+XYL,Fundamental Agent,2026-02-25,STALE,6,0
+XYL,Macro-Economic Agent,2026-08-04,STALE,5,0
+XYL,Market + Volatility Agent,2026-10-03,STALE,5,0
+XYL,Sentiment Agent,,FRESH,0,2
+XYZ,Fundamental Agent,2026-02-26,STALE,6,3
+XYZ,Macro-Economic Agent,2026-08-04,STALE,5,0
+XYZ,Market + Volatility Agent,2026-10-03,STALE,5,0
+XYZ,Sentiment Agent,2026-10-08,EXPIRED,3,0
+YUM,Fundamental Agent,2017-02-22,EXPIRED,6,0
+YUM,Macro-Economic Agent,2026-08-04,STALE,5,0
+YUM,Market + Volatility Agent,2026-10-03,STALE,5,0
+YUM,Sentiment Agent,,FRESH,0,2
+ZBH,Fundamental Agent,2026-02-20,STALE,6,0
+ZBH,Macro-Economic Agent,2026-08-04,STALE,5,0
+ZBH,Market + Volatility Agent,2026-10-03,STALE,5,0
+ZBH,Sentiment Agent,,FRESH,0,2
+ZBRA,Fundamental Agent,2023-02-16,EXPIRED,6,0
+ZBRA,Macro-Economic Agent,2026-08-04,STALE,5,0
+ZBRA,Market + Volatility Agent,2026-10-03,STALE,5,0
+ZBRA,Sentiment Agent,,FRESH,0,2
+ZS,Fundamental Agent,2025-09-11,EXPIRED,6,0
+ZS,Macro-Economic Agent,2026-08-04,STALE,5,0
+ZS,Market + Volatility Agent,2026-03-04,EXPIRED,5,0
+ZS,Sentiment Agent,,FRESH,0,2
+ZTS,Fundamental Agent,2026-02-12,EXPIRED,6,5
+ZTS,Macro-Economic Agent,2026-08-04,STALE,5,0
+ZTS,Market + Volatility Agent,2026-10-03,STALE,5,0
+ZTS,Sentiment Agent,,FRESH,0,2

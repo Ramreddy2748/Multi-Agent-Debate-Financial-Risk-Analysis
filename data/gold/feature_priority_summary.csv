@@ -1,0 +1,2077 @@
+ticker,agent,top_feature_1,top_feature_1_score,top_feature_2,top_feature_2_score,top_feature_3,top_feature_3_score,high_priority_count,stale_or_expired_count
+A,Fundamental Agent,cash_to_debt,0.0792,debt_to_assets,0.0719,cash_usd_m,0.03,0,6
+A,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+A,Market + Volatility Agent,max_drawdown_pct,0.357,annualized_volatility_pct,0.3406,beta,0.3162,0,5
+A,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AAPL,Fundamental Agent,long_term_debt_usd_m,0.2755,cash_usd_m,0.0898,debt_to_assets,0.0794,0,6
+AAPL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AAPL,Market + Volatility Agent,annualized_volatility_pct,0.1682,max_drawdown_pct,0.1462,beta,0.1428,0,5
+AAPL,Sentiment Agent,article_count,0.285,sentiment_std,0.079,sentiment_mean,0.0464,0,3
+ABBV,Fundamental Agent,long_term_debt_usd_m,0.381,debt_to_assets,0.2967,cash_usd_m,0.06,0,6
+ABBV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ABBV,Market + Volatility Agent,annualized_volatility_pct,0.2999,ytd_return_pct,0.2038,max_drawdown_pct,0.1838,0,5
+ABBV,Sentiment Agent,article_count,0.285,sentiment_std,0.0737,sentiment_mean,0.0354,0,3
+ABNB,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ABNB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ABNB,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3826,beta,0.2958,1,5
+ABNB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ABT,Fundamental Agent,cash_to_debt,0.1456,debt_to_assets,0.1041,long_term_debt_usd_m,0.0805,0,6
+ABT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ABT,Market + Volatility Agent,max_drawdown_pct,0.4037,ytd_return_pct,0.3327,annualized_volatility_pct,0.283,0,5
+ABT,Sentiment Agent,article_count,0.285,sentiment_std,0.093,sentiment_mean,0.0637,0,3
+ACGL,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+ACGL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ACGL,Market + Volatility Agent,annualized_volatility_pct,0.1352,max_drawdown_pct,0.072,sharpe_ratio,0.0714,0,5
+ACGL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ACN,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ACN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ACN,Market + Volatility Agent,max_drawdown_pct,0.2526,ytd_return_pct,0.225,annualized_volatility_pct,0.1921,0,5
+ACN,Sentiment Agent,article_count,0.285,sentiment_std,0.1043,sentiment_mean,0.03,0,3
+ADBE,Fundamental Agent,cash_to_debt,0.2653,debt_to_assets,0.0366,cash_usd_m,0.03,0,6
+ADBE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ADBE,Market + Volatility Agent,max_drawdown_pct,0.2449,ytd_return_pct,0.225,beta,0.1951,0,5
+ADBE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ADI,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ADI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ADI,Market + Volatility Agent,ytd_return_pct,0.225,annualized_volatility_pct,0.1964,max_drawdown_pct,0.1541,0,5
+ADI,Sentiment Agent,article_count,0.285,sentiment_std,0.0949,sentiment_mean,0.0345,0,3
+ADM,Fundamental Agent,debt_to_assets,0.0465,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+ADM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ADM,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3247,sharpe_ratio,0.278,1,5
+ADM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ADP,Fundamental Agent,cash_usd_m,0.085,profit_margin,0.0723,long_term_debt_usd_m,0.0,0,0
+ADP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ADP,Market + Volatility Agent,max_drawdown_pct,0.4042,annualized_volatility_pct,0.321,beta,0.2116,0,5
+ADP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ADSK,Fundamental Agent,cash_to_debt,0.2221,debt_to_assets,0.1392,cash_usd_m,0.06,0,6
+ADSK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ADSK,Market + Volatility Agent,max_drawdown_pct,0.5047,annualized_volatility_pct,0.4537,ytd_return_pct,0.431,2,5
+ADSK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AEE,Fundamental Agent,debt_to_assets,0.1183,long_term_debt_usd_m,0.0459,cash_usd_m,0.03,0,6
+AEE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AEE,Market + Volatility Agent,annualized_volatility_pct,0.2056,max_drawdown_pct,0.1867,beta,0.1198,0,5
+AEE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AEP,Fundamental Agent,debt_to_assets,0.1241,long_term_debt_usd_m,0.1215,cash_usd_m,0.03,0,6
+AEP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AEP,Market + Volatility Agent,annualized_volatility_pct,0.2195,max_drawdown_pct,0.1724,beta,0.1275,0,5
+AEP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AES,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+AES,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AES,Market + Volatility Agent,beta,0.2422,annualized_volatility_pct,0.2257,sharpe_ratio,0.1984,0,5
+AES,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AFL,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+AFL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AFL,Market + Volatility Agent,annualized_volatility_pct,0.1095,beta,0.0829,sharpe_ratio,0.0742,0,5
+AFL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AIG,Fundamental Agent,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+AIG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AIG,Market + Volatility Agent,annualized_volatility_pct,0.1376,max_drawdown_pct,0.0875,beta,0.0739,0,5
+AIG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AIZ,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+AIZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AIZ,Market + Volatility Agent,ytd_return_pct,0.2993,sharpe_ratio,0.2627,annualized_volatility_pct,0.242,0,5
+AIZ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AJG,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+AJG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AJG,Market + Volatility Agent,max_drawdown_pct,0.2227,ytd_return_pct,0.2098,annualized_volatility_pct,0.1558,0,5
+AJG,Sentiment Agent,article_count,0.285,sentiment_std,0.1006,sentiment_mean,0.0419,0,3
+AKAM,Fundamental Agent,cash_usd_m,0.06,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+AKAM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AKAM,Market + Volatility Agent,annualized_volatility_pct,0.2173,ytd_return_pct,0.1557,max_drawdown_pct,0.1324,0,5
+AKAM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ALB,Fundamental Agent,debt_to_assets,0.0577,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+ALB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ALB,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.3392,2,5
+ALB,Sentiment Agent,article_count,0.285,sentiment_std,0.099,sentiment_mean,0.03,0,3
+ALGN,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+ALGN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ALGN,Market + Volatility Agent,annualized_volatility_pct,0.4708,beta,0.4182,max_drawdown_pct,0.3272,1,5
+ALGN,Sentiment Agent,article_count,0.285,sentiment_std,0.0621,sentiment_mean,0.03,0,3
+ALL,Fundamental Agent,debt_to_assets,0.06,long_term_debt_usd_m,0.057,profit_margin,0.051,0,6
+ALL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ALL,Market + Volatility Agent,annualized_volatility_pct,0.147,sharpe_ratio,0.0717,max_drawdown_pct,0.0689,0,5
+ALL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ALLE,Fundamental Agent,debt_to_assets,0.1391,cash_to_debt,0.034,cash_usd_m,0.03,0,6
+ALLE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ALLE,Market + Volatility Agent,max_drawdown_pct,0.3013,annualized_volatility_pct,0.2885,beta,0.2142,0,5
+ALLE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AMAT,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+AMAT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMAT,Market + Volatility Agent,annualized_volatility_pct,0.2657,ytd_return_pct,0.225,sharpe_ratio,0.21,0,5
+AMAT,Sentiment Agent,article_count,0.285,sentiment_std,0.0922,sentiment_mean,0.03,0,3
+AMCR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+AMCR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMCR,Market + Volatility Agent,annualized_volatility_pct,0.358,max_drawdown_pct,0.3455,beta,0.153,0,5
+AMCR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AMD,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+AMD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMD,Market + Volatility Agent,annualized_volatility_pct,0.3,beta,0.255,ytd_return_pct,0.225,0,5
+AMD,Sentiment Agent,article_count,0.285,sentiment_std,0.0934,sentiment_mean,0.0528,0,3
+AME,Fundamental Agent,debt_to_assets,0.0426,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+AME,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AME,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.2864,annualized_volatility_pct,0.272,1,5
+AME,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AMGN,Fundamental Agent,debt_to_assets,0.1995,long_term_debt_usd_m,0.1841,cash_usd_m,0.0328,0,6
+AMGN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMGN,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3203,sharpe_ratio,0.2955,1,5
+AMGN,Sentiment Agent,article_count,0.285,sentiment_std,0.0827,sentiment_mean,0.0463,0,3
+AMP,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+AMP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMP,Market + Volatility Agent,annualized_volatility_pct,0.1652,beta,0.1619,max_drawdown_pct,0.1111,0,5
+AMP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AMT,Fundamental Agent,cash_usd_m,0.06,operating_margin,0.048,long_term_debt_usd_m,0.0,0,6
+AMT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMT,Market + Volatility Agent,annualized_volatility_pct,0.3122,beta,0.2295,max_drawdown_pct,0.1883,0,5
+AMT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AMZN,Fundamental Agent,cash_usd_m,0.2202,long_term_debt_usd_m,0.1915,cash_to_debt,0.1475,0,6
+AMZN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AMZN,Market + Volatility Agent,annualized_volatility_pct,0.3691,beta,0.3672,max_drawdown_pct,0.2609,0,5
+AMZN,Sentiment Agent,article_count,0.285,sentiment_std,0.0869,sentiment_mean,0.0658,0,3
+ANET,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ANET,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ANET,Market + Volatility Agent,annualized_volatility_pct,0.3,ytd_return_pct,0.225,beta,0.1861,0,5
+ANET,Sentiment Agent,article_count,0.285,sentiment_std,0.0932,sentiment_mean,0.0497,0,3
+AON,Fundamental Agent,debt_to_assets,0.1042,long_term_debt_usd_m,0.0485,cash_usd_m,0.03,0,6
+AON,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AON,Market + Volatility Agent,annualized_volatility_pct,0.1331,beta,0.1058,ytd_return_pct,0.1019,0,5
+AON,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AOS,Fundamental Agent,cash_to_debt,0.1674,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+AOS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AOS,Market + Volatility Agent,max_drawdown_pct,0.3623,annualized_volatility_pct,0.3235,beta,0.2932,0,5
+AOS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+APA,Fundamental Agent,cash_usd_m,0.06,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+APA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APA,Market + Volatility Agent,annualized_volatility_pct,0.2901,ytd_return_pct,0.225,sharpe_ratio,0.1725,0,5
+APA,Sentiment Agent,article_count,0.285,sentiment_std,0.0818,sentiment_mean,0.055,0,3
+APD,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+APD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APD,Market + Volatility Agent,annualized_volatility_pct,0.2768,beta,0.1912,max_drawdown_pct,0.1658,0,5
+APD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+APH,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+APH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APH,Market + Volatility Agent,ytd_return_pct,0.225,annualized_volatility_pct,0.2241,sharpe_ratio,0.21,0,5
+APH,Sentiment Agent,article_count,0.285,sentiment_std,0.1028,sentiment_mean,0.0659,0,3
+APO,Fundamental Agent,debt_to_assets,0.06,long_term_debt_usd_m,0.057,profit_margin,0.051,0,6
+APO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APO,Market + Volatility Agent,annualized_volatility_pct,0.2371,beta,0.2091,max_drawdown_pct,0.1922,0,5
+APO,Sentiment Agent,article_count,0.285,sentiment_std,0.0938,sentiment_mean,0.0353,0,3
+APP,Fundamental Agent,debt_to_assets,0.3587,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+APP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APP,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,4,5
+APP,Sentiment Agent,article_count,0.285,sentiment_std,0.0803,sentiment_mean,0.0377,0,3
+APTV,Fundamental Agent,debt_to_assets,0.1083,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+APTV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+APTV,Market + Volatility Agent,max_drawdown_pct,0.5461,annualized_volatility_pct,0.4897,ytd_return_pct,0.45,3,5
+APTV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ARE,Fundamental Agent,debt_to_assets,0.0979,long_term_debt_usd_m,0.0349,cash_usd_m,0.03,0,6
+ARE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ARE,Market + Volatility Agent,annualized_volatility_pct,0.5255,max_drawdown_pct,0.4745,ytd_return_pct,0.45,3,5
+ARE,Sentiment Agent,article_count,0.057,sentiment_mean,0.03,sentiment_std,0.0,0,3
+ARES,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+ARES,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ARES,Market + Volatility Agent,annualized_volatility_pct,0.2492,max_drawdown_pct,0.2323,beta,0.1989,0,5
+ARES,Sentiment Agent,article_count,0.285,sentiment_std,0.132,sentiment_mean,0.0422,0,3
+ARM,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ARM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ARM,Market + Volatility Agent,annualized_volatility_pct,0.3,beta,0.255,max_drawdown_pct,0.2488,0,5
+ARM,Sentiment Agent,article_count,0.285,sentiment_std,0.1049,sentiment_mean,0.0441,0,3
+ASML,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+ASML,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ASML,Market + Volatility Agent,annualized_volatility_pct,0.2325,ytd_return_pct,0.225,sharpe_ratio,0.184,0,5
+ASML,Sentiment Agent,article_count,0.285,sentiment_std,0.0946,sentiment_mean,0.03,0,3
+ATO,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ATO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ATO,Market + Volatility Agent,max_drawdown_pct,0.2136,annualized_volatility_pct,0.1861,beta,0.1504,0,5
+ATO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AVB,Fundamental Agent,debt_to_assets,0.2316,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+AVB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AVB,Market + Volatility Agent,annualized_volatility_pct,0.1281,max_drawdown_pct,0.125,ytd_return_pct,0.1132,0,5
+AVB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AVGO,Fundamental Agent,debt_to_assets,0.1458,long_term_debt_usd_m,0.0935,cash_usd_m,0.03,0,6
+AVGO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AVGO,Market + Volatility Agent,annualized_volatility_pct,0.535,beta,0.3723,max_drawdown_pct,0.3184,1,5
+AVGO,Sentiment Agent,article_count,0.285,sentiment_std,0.1157,sentiment_mean,0.03,0,3
+AVY,Fundamental Agent,debt_to_assets,0.1911,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+AVY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AVY,Market + Volatility Agent,annualized_volatility_pct,0.2911,max_drawdown_pct,0.2594,beta,0.2065,0,5
+AVY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AWK,Fundamental Agent,debt_to_assets,0.1044,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+AWK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AWK,Market + Volatility Agent,annualized_volatility_pct,0.2694,max_drawdown_pct,0.18,beta,0.1479,0,5
+AWK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+AXON,Fundamental Agent,cash_to_debt,0.1805,debt_to_assets,0.0912,cash_usd_m,0.06,0,6
+AXON,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AXON,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.45,3,5
+AXON,Sentiment Agent,article_count,0.285,sentiment_std,0.0856,sentiment_mean,0.0437,0,3
+AXP,Fundamental Agent,long_term_debt_usd_m,0.1711,debt_to_assets,0.1429,cash_usd_m,0.0616,0,6
+AXP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AXP,Market + Volatility Agent,annualized_volatility_pct,0.1771,beta,0.1466,max_drawdown_pct,0.1063,0,5
+AXP,Sentiment Agent,article_count,0.285,sentiment_std,0.0694,sentiment_mean,0.0539,0,3
+AZN,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+AZN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AZN,Market + Volatility Agent,annualized_volatility_pct,0.3084,max_drawdown_pct,0.2908,ytd_return_pct,0.091,0,5
+AZN,Sentiment Agent,article_count,0.285,sentiment_std,0.1315,sentiment_mean,0.03,0,3
+AZO,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+AZO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+AZO,Market + Volatility Agent,ytd_return_pct,0.4341,max_drawdown_pct,0.3449,annualized_volatility_pct,0.3386,0,5
+AZO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BA,Fundamental Agent,long_term_debt_usd_m,0.1483,debt_to_assets,0.114,cash_usd_m,0.0381,0,6
+BA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BA,Market + Volatility Agent,annualized_volatility_pct,0.3985,max_drawdown_pct,0.3314,beta,0.3085,0,5
+BA,Sentiment Agent,article_count,0.285,sentiment_std,0.0944,sentiment_mean,0.0465,0,3
+BAC,Fundamental Agent,long_term_debt_usd_m,0.57,debt_to_assets,0.06,profit_margin,0.051,1,6
+BAC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BAC,Market + Volatility Agent,beta,0.2958,annualized_volatility_pct,0.2628,max_drawdown_pct,0.2094,0,5
+BAC,Sentiment Agent,article_count,0.285,sentiment_std,0.0821,sentiment_mean,0.0531,0,3
+BALL,Fundamental Agent,debt_to_assets,0.1346,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+BALL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BALL,Market + Volatility Agent,annualized_volatility_pct,0.2935,max_drawdown_pct,0.2477,beta,0.2422,0,5
+BALL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BAX,Fundamental Agent,debt_to_assets,0.1098,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+BAX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BAX,Market + Volatility Agent,annualized_volatility_pct,0.4668,max_drawdown_pct,0.3326,beta,0.153,1,5
+BAX,Sentiment Agent,article_count,0.285,sentiment_std,0.1001,sentiment_mean,0.0441,0,3
+BBY,Fundamental Agent,cash_to_debt,0.3385,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+BBY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BBY,Market + Volatility Agent,annualized_volatility_pct,0.4261,max_drawdown_pct,0.3841,beta,0.3315,0,5
+BBY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BDX,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+BDX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BDX,Market + Volatility Agent,annualized_volatility_pct,0.3074,max_drawdown_pct,0.2846,ytd_return_pct,0.2451,0,5
+BDX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BE,Fundamental Agent,debt_to_assets,0.1274,cash_to_debt,0.096,cash_usd_m,0.03,0,6
+BE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BE,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,4,5
+BE,Sentiment Agent,article_count,0.285,sentiment_mean,0.0838,sentiment_std,0.0701,0,3
+BEN,Fundamental Agent,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+BEN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BEN,Market + Volatility Agent,ytd_return_pct,0.45,beta,0.4003,annualized_volatility_pct,0.3302,1,5
+BEN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BF-B,Fundamental Agent,debt_to_assets,0.1963,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+BF-B,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BF-B,Market + Volatility Agent,annualized_volatility_pct,0.4288,max_drawdown_pct,0.3024,beta,0.0842,0,5
+BF-B,Sentiment Agent,article_count,0.285,sentiment_std,0.0542,sentiment_mean,0.0361,0,3
+BG,Fundamental Agent,debt_to_assets,0.137,cash_usd_m,0.06,long_term_debt_usd_m,0.058,0,6
+BG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BG,Market + Volatility Agent,ytd_return_pct,0.3902,annualized_volatility_pct,0.3479,max_drawdown_pct,0.2422,0,5
+BG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BIIB,Fundamental Agent,debt_to_assets,0.0905,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+BIIB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BIIB,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3916,sharpe_ratio,0.2411,1,5
+BIIB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BKNG,Fundamental Agent,debt_to_assets,0.1748,cash_to_debt,0.1152,long_term_debt_usd_m,0.0404,0,6
+BKNG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BKNG,Market + Volatility Agent,annualized_volatility_pct,0.4468,max_drawdown_pct,0.348,ytd_return_pct,0.3336,0,5
+BKNG,Sentiment Agent,article_count,0.285,sentiment_std,0.0694,sentiment_mean,0.0456,0,3
+BKR,Fundamental Agent,profit_margin,0.0255,operating_margin,0.024,cash_usd_m,0.0,0,6
+BKR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BKR,Market + Volatility Agent,ytd_return_pct,0.225,annualized_volatility_pct,0.1904,sharpe_ratio,0.1574,0,5
+BKR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BLDR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+BLDR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BLDR,Market + Volatility Agent,annualized_volatility_pct,0.2876,max_drawdown_pct,0.2186,beta,0.1989,0,5
+BLDR,Sentiment Agent,article_count,0.285,sentiment_std,0.0823,sentiment_mean,0.03,0,3
+BLK,Fundamental Agent,cash_to_debt,0.2979,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+BLK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BLK,Market + Volatility Agent,beta,0.3646,annualized_volatility_pct,0.3173,max_drawdown_pct,0.2566,0,5
+BLK,Sentiment Agent,article_count,0.285,sentiment_std,0.0926,sentiment_mean,0.0408,0,3
+BMY,Fundamental Agent,debt_to_assets,0.1601,long_term_debt_usd_m,0.1409,cash_usd_m,0.031,0,6
+BMY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BMY,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3174,sharpe_ratio,0.2833,1,5
+BMY,Sentiment Agent,article_count,0.285,sentiment_std,0.0872,sentiment_mean,0.0443,0,3
+BNY,Fundamental Agent,long_term_debt_usd_m,0.1758,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+BNY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BNY,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3601,beta,0.2677,1,5
+BNY,Sentiment Agent,sentiment_std,0.1835,sentiment_mean,0.1746,article_count,0.0285,0,3
+BR,Fundamental Agent,debt_to_assets,0.346,cash_usd_m,0.085,long_term_debt_usd_m,0.0808,0,0
+BR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BR,Market + Volatility Agent,max_drawdown_pct,0.4955,ytd_return_pct,0.4063,annualized_volatility_pct,0.3436,1,5
+BR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BRK-B,Fundamental Agent,cash_usd_m,0.1119,profit_margin,0.0255,operating_margin,0.024,0,6
+BRK-B,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BRK-B,Market + Volatility Agent,annualized_volatility_pct,0.1681,beta,0.153,max_drawdown_pct,0.0942,0,5
+BRK-B,Sentiment Agent,article_count,0.285,sentiment_std,0.0385,sentiment_mean,0.0379,0,3
+BRO,Fundamental Agent,debt_to_assets,0.0765,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+BRO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BRO,Market + Volatility Agent,max_drawdown_pct,0.4958,ytd_return_pct,0.45,annualized_volatility_pct,0.3701,2,5
+BRO,Sentiment Agent,sentiment_mean,0.0888,article_count,0.0285,sentiment_std,0.0,0,3
+BSX,Fundamental Agent,debt_to_assets,0.0895,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+BSX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BSX,Market + Volatility Agent,max_drawdown_pct,0.6,ytd_return_pct,0.45,annualized_volatility_pct,0.3931,2,5
+BSX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+BX,Fundamental Agent,debt_to_assets,0.1582,long_term_debt_usd_m,0.0653,cash_usd_m,0.06,0,6
+BX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BX,Market + Volatility Agent,max_drawdown_pct,0.4506,annualized_volatility_pct,0.44,ytd_return_pct,0.3982,1,5
+BX,Sentiment Agent,article_count,0.285,sentiment_std,0.071,sentiment_mean,0.0478,0,3
+BXP,Fundamental Agent,cash_to_debt,0.0683,debt_to_assets,0.0433,cash_usd_m,0.03,0,6
+BXP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+BXP,Market + Volatility Agent,max_drawdown_pct,0.3467,annualized_volatility_pct,0.3227,beta,0.2626,0,5
+BXP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+C,Fundamental Agent,long_term_debt_usd_m,0.57,debt_to_assets,0.0715,profit_margin,0.051,1,6
+C,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+C,Market + Volatility Agent,ytd_return_pct,0.4404,annualized_volatility_pct,0.3528,beta,0.2805,0,5
+C,Sentiment Agent,article_count,0.285,sentiment_std,0.0678,sentiment_mean,0.03,0,3
+CAG,Fundamental Agent,debt_to_assets,0.117,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CAG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CAG,Market + Volatility Agent,max_drawdown_pct,0.2335,annualized_volatility_pct,0.1571,ytd_return_pct,0.1283,0,5
+CAG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CAH,Fundamental Agent,cash_usd_m,0.085,profit_margin,0.0723,operating_margin,0.068,0,0
+CAH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CAH,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.2942,sharpe_ratio,0.2629,1,5
+CAH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CARR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CARR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CARR,Market + Volatility Agent,annualized_volatility_pct,0.4075,beta,0.3315,max_drawdown_pct,0.3262,0,5
+CARR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CASY,Fundamental Agent,debt_to_assets,0.2056,cash_usd_m,0.085,long_term_debt_usd_m,0.0808,0,0
+CASY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CASY,Market + Volatility Agent,max_drawdown_pct,0.4366,annualized_volatility_pct,0.3588,beta,0.1504,0,5
+CASY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CAT,Fundamental Agent,cash_usd_m,0.03,operating_margin,0.024,long_term_debt_usd_m,0.0,0,6
+CAT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CAT,Market + Volatility Agent,annualized_volatility_pct,0.4633,ytd_return_pct,0.45,beta,0.4054,2,5
+CAT,Sentiment Agent,article_count,0.285,sentiment_std,0.0584,sentiment_mean,0.03,0,3
+CB,Fundamental Agent,long_term_debt_usd_m,0.082,debt_to_assets,0.06,profit_margin,0.051,0,6
+CB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CB,Market + Volatility Agent,annualized_volatility_pct,0.2321,ytd_return_pct,0.2262,sharpe_ratio,0.1835,0,5
+CB,Sentiment Agent,article_count,0.285,sentiment_std,0.1089,sentiment_mean,0.03,0,3
+CBOE,Fundamental Agent,cash_to_debt,0.1724,debt_to_assets,0.111,cash_usd_m,0.06,0,6
+CBOE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CBOE,Market + Volatility Agent,annualized_volatility_pct,0.3859,max_drawdown_pct,0.37,ytd_return_pct,0.181,0,5
+CBOE,Sentiment Agent,sentiment_mean,0.1636,article_count,0.0285,sentiment_std,0.0,0,3
+CBRE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CBRE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CBRE,Market + Volatility Agent,annualized_volatility_pct,0.3636,beta,0.3034,max_drawdown_pct,0.2562,0,5
+CBRE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CCI,Fundamental Agent,debt_to_assets,0.4414,long_term_debt_usd_m,0.1373,cash_usd_m,0.06,0,6
+CCI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CCI,Market + Volatility Agent,annualized_volatility_pct,0.3505,ytd_return_pct,0.3447,max_drawdown_pct,0.3382,0,5
+CCI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CCL,Fundamental Agent,debt_to_assets,0.1723,long_term_debt_usd_m,0.0804,cash_usd_m,0.03,0,6
+CCL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CCL,Market + Volatility Agent,annualized_volatility_pct,0.5786,beta,0.51,max_drawdown_pct,0.4313,2,5
+CCL,Sentiment Agent,article_count,0.285,sentiment_std,0.0831,sentiment_mean,0.03,0,3
+CDNS,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+CDNS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CDNS,Market + Volatility Agent,annualized_volatility_pct,0.4732,max_drawdown_pct,0.3864,beta,0.2907,1,5
+CDNS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CDW,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CDW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CDW,Market + Volatility Agent,annualized_volatility_pct,0.4998,max_drawdown_pct,0.3427,beta,0.2397,1,5
+CDW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CEG,Fundamental Agent,debt_to_assets,0.0907,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+CEG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CEG,Market + Volatility Agent,annualized_volatility_pct,0.5556,max_drawdown_pct,0.4723,ytd_return_pct,0.361,2,5
+CEG,Sentiment Agent,article_count,0.285,sentiment_mean,0.0771,sentiment_std,0.0668,0,3
+CF,Fundamental Agent,debt_to_assets,0.1045,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CF,Market + Volatility Agent,annualized_volatility_pct,0.4944,ytd_return_pct,0.3896,max_drawdown_pct,0.2888,1,5
+CF,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CFG,Fundamental Agent,long_term_debt_usd_m,0.0353,debt_to_assets,0.03,profit_margin,0.0255,0,6
+CFG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CFG,Market + Volatility Agent,annualized_volatility_pct,0.3126,ytd_return_pct,0.2973,beta,0.255,0,5
+CFG,Sentiment Agent,sentiment_mean,0.2205,article_count,0.0285,sentiment_std,0.0,0,3
+CHD,Fundamental Agent,debt_to_assets,0.0745,cash_to_debt,0.059,cash_usd_m,0.03,0,6
+CHD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CHD,Market + Volatility Agent,annualized_volatility_pct,0.2623,max_drawdown_pct,0.1657,beta,0.1198,0,5
+CHD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CHRW,Fundamental Agent,debt_to_assets,0.0907,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CHRW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CHRW,Market + Volatility Agent,annualized_volatility_pct,0.4405,max_drawdown_pct,0.312,beta,0.2397,0,5
+CHRW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CHTR,Fundamental Agent,long_term_debt_usd_m,0.2677,debt_to_assets,0.1878,cash_usd_m,0.03,0,6
+CHTR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CHTR,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.5606,ytd_return_pct,0.45,3,5
+CHTR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CI,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+CI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CI,Market + Volatility Agent,annualized_volatility_pct,0.3386,max_drawdown_pct,0.1478,ytd_return_pct,0.1419,0,5
+CI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CIEN,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CIEN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CIEN,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5902,ytd_return_pct,0.45,3,5
+CIEN,Sentiment Agent,article_count,0.285,sentiment_std,0.0594,sentiment_mean,0.0398,0,3
+CINF,Fundamental Agent,cash_to_debt,0.1343,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+CINF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CINF,Market + Volatility Agent,annualized_volatility_pct,0.248,max_drawdown_pct,0.1945,beta,0.1403,0,5
+CINF,Sentiment Agent,sentiment_mean,0.03,article_count,0.0285,sentiment_std,0.021,0,3
+CL,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+CL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CL,Market + Volatility Agent,annualized_volatility_pct,0.2635,max_drawdown_pct,0.2036,ytd_return_pct,0.138,0,5
+CL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CLX,Fundamental Agent,debt_to_assets,0.1294,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CLX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CLX,Market + Volatility Agent,ytd_return_pct,0.4073,max_drawdown_pct,0.3941,annualized_volatility_pct,0.3634,0,5
+CLX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CMCSA,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CMCSA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CMCSA,Market + Volatility Agent,annualized_volatility_pct,0.3534,max_drawdown_pct,0.3245,ytd_return_pct,0.2922,0,5
+CMCSA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CME,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+CME,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CME,Market + Volatility Agent,max_drawdown_pct,0.3622,annualized_volatility_pct,0.284,beta,0.0714,0,5
+CME,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CMG,Fundamental Agent,cash_usd_m,0.03,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,0,6
+CMG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CMG,Market + Volatility Agent,annualized_volatility_pct,0.4465,max_drawdown_pct,0.3726,ytd_return_pct,0.2894,0,5
+CMG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CMI,Fundamental Agent,cash_to_debt,0.2171,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+CMI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CMI,Market + Volatility Agent,annualized_volatility_pct,0.4298,max_drawdown_pct,0.3449,beta,0.3136,0,5
+CMI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CMS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CMS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CMS,Market + Volatility Agent,max_drawdown_pct,0.2454,annualized_volatility_pct,0.2033,ytd_return_pct,0.1175,0,5
+CMS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CNC,Fundamental Agent,cash_to_debt,0.1245,debt_to_assets,0.0678,long_term_debt_usd_m,0.0531,0,6
+CNC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CNC,Market + Volatility Agent,annualized_volatility_pct,0.5207,ytd_return_pct,0.45,max_drawdown_pct,0.309,2,5
+CNC,Sentiment Agent,article_count,0.285,sentiment_std,0.1176,sentiment_mean,0.0425,0,3
+CNP,Fundamental Agent,debt_to_assets,0.2796,long_term_debt_usd_m,0.1163,cash_usd_m,0.06,0,6
+CNP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CNP,Market + Volatility Agent,max_drawdown_pct,0.2153,annualized_volatility_pct,0.2054,beta,0.1147,0,5
+CNP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+COF,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+COF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COF,Market + Volatility Agent,annualized_volatility_pct,0.371,max_drawdown_pct,0.3348,beta,0.2601,0,5
+COF,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+COHR,Fundamental Agent,debt_to_assets,0.0897,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+COHR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COHR,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5758,beta,0.51,4,5
+COHR,Sentiment Agent,article_count,0.285,sentiment_mean,0.0505,sentiment_std,0.0502,0,3
+COIN,Fundamental Agent,cash_to_debt,0.2114,debt_to_assets,0.0729,cash_usd_m,0.0339,0,6
+COIN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COIN,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,4,5
+COIN,Sentiment Agent,sentiment_mean,0.2027,article_count,0.0427,sentiment_std,0.0332,0,3
+COO,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+COO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COO,Market + Volatility Agent,max_drawdown_pct,0.385,annualized_volatility_pct,0.3409,ytd_return_pct,0.2472,0,5
+COO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+COP,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+COP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COP,Market + Volatility Agent,ytd_return_pct,0.225,annualized_volatility_pct,0.1856,sharpe_ratio,0.1423,0,5
+COP,Sentiment Agent,article_count,0.285,sentiment_std,0.0713,sentiment_mean,0.0491,0,3
+COR,Fundamental Agent,cash_to_debt,0.0956,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+COR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COR,Market + Volatility Agent,annualized_volatility_pct,0.3044,max_drawdown_pct,0.2726,sharpe_ratio,0.1795,0,5
+COR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+COST,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+COST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+COST,Market + Volatility Agent,annualized_volatility_pct,0.2381,beta,0.2193,max_drawdown_pct,0.2123,0,5
+COST,Sentiment Agent,article_count,0.285,sentiment_std,0.105,sentiment_mean,0.03,0,3
+CPAY,Fundamental Agent,debt_to_assets,0.2672,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+CPAY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CPAY,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4098,max_drawdown_pct,0.2375,1,5
+CPAY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CPB,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CPB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CPB,Market + Volatility Agent,max_drawdown_pct,0.2192,ytd_return_pct,0.2065,annualized_volatility_pct,0.1675,0,5
+CPB,Sentiment Agent,article_count,0.285,sentiment_std,0.0886,sentiment_mean,0.03,0,3
+CPRT,Fundamental Agent,debt_to_assets,0.0347,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+CPRT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CPRT,Market + Volatility Agent,max_drawdown_pct,0.4973,ytd_return_pct,0.45,annualized_volatility_pct,0.3535,2,5
+CPRT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CPT,Fundamental Agent,debt_to_assets,0.1181,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CPT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CPT,Market + Volatility Agent,annualized_volatility_pct,0.2328,max_drawdown_pct,0.21,beta,0.1989,0,5
+CPT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CRH,Fundamental Agent,cash_to_debt,0.0742,debt_to_assets,0.0729,long_term_debt_usd_m,0.0329,0,6
+CRH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CRH,Market + Volatility Agent,max_drawdown_pct,0.4565,ytd_return_pct,0.3977,annualized_volatility_pct,0.38,1,5
+CRH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CRL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CRL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CRL,Market + Volatility Agent,annualized_volatility_pct,0.5171,ytd_return_pct,0.45,max_drawdown_pct,0.3773,2,5
+CRL,Sentiment Agent,article_count,0.285,sentiment_std,0.1064,sentiment_mean,0.0398,0,3
+CRM,Fundamental Agent,cash_to_debt,0.2427,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+CRM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CRM,Market + Volatility Agent,max_drawdown_pct,0.5237,annualized_volatility_pct,0.5144,beta,0.306,2,5
+CRM,Sentiment Agent,article_count,0.285,sentiment_std,0.0755,sentiment_mean,0.03,0,3
+CRWD,Fundamental Agent,cash_usd_m,0.06,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+CRWD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CRWD,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.4462,2,5
+CRWD,Sentiment Agent,article_count,0.285,sentiment_std,0.0791,sentiment_mean,0.0334,0,3
+CSCO,Fundamental Agent,long_term_debt_usd_m,0.191,cash_to_debt,0.168,debt_to_assets,0.1616,0,0
+CSCO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CSCO,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.4148,annualized_volatility_pct,0.3652,1,5
+CSCO,Sentiment Agent,article_count,0.285,sentiment_std,0.0622,sentiment_mean,0.03,0,3
+CSGP,Fundamental Agent,cash_to_debt,0.54,debt_to_assets,0.0648,cash_usd_m,0.06,1,6
+CSGP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CSGP,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.5108,ytd_return_pct,0.45,3,5
+CSGP,Sentiment Agent,article_count,0.285,sentiment_std,0.0726,sentiment_mean,0.03,0,3
+CSX,Fundamental Agent,debt_to_assets,0.0924,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CSX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CSX,Market + Volatility Agent,ytd_return_pct,0.4296,beta,0.3085,sharpe_ratio,0.2766,0,5
+CSX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CTAS,Fundamental Agent,debt_to_assets,0.2248,cash_usd_m,0.085,long_term_debt_usd_m,0.0808,0,0
+CTAS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CTAS,Market + Volatility Agent,annualized_volatility_pct,0.2747,max_drawdown_pct,0.2399,beta,0.232,0,5
+CTAS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CTRA,Fundamental Agent,cash_to_debt,0.0833,debt_to_assets,0.0649,cash_usd_m,0.06,0,6
+CTRA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CTRA,Market + Volatility Agent,annualized_volatility_pct,0.1778,ytd_return_pct,0.134,max_drawdown_pct,0.1079,0,5
+CTRA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CTSH,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CTSH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CTSH,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.4745,beta,0.2116,2,5
+CTSH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CTVA,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+CTVA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CTVA,Market + Volatility Agent,ytd_return_pct,0.45,max_drawdown_pct,0.387,annualized_volatility_pct,0.3709,1,5
+CTVA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CVNA,Fundamental Agent,debt_to_assets,0.1873,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+CVNA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CVNA,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.51,max_drawdown_pct,0.4747,3,5
+CVNA,Sentiment Agent,article_count,0.285,sentiment_std,0.0942,sentiment_mean,0.03,0,3
+CVS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+CVS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CVS,Market + Volatility Agent,annualized_volatility_pct,0.3352,max_drawdown_pct,0.2716,ytd_return_pct,0.1944,0,5
+CVS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+CVX,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+CVX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+CVX,Market + Volatility Agent,ytd_return_pct,0.1915,sharpe_ratio,0.1684,annualized_volatility_pct,0.1332,0,5
+CVX,Sentiment Agent,article_count,0.285,sentiment_std,0.0774,sentiment_mean,0.0423,0,3
+D,Fundamental Agent,debt_to_assets,0.2303,long_term_debt_usd_m,0.2241,cash_usd_m,0.06,0,6
+D,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+D,Market + Volatility Agent,annualized_volatility_pct,0.2196,max_drawdown_pct,0.1808,beta,0.1581,0,5
+D,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DAL,Fundamental Agent,debt_to_assets,0.0758,long_term_debt_usd_m,0.053,cash_usd_m,0.03,0,6
+DAL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DAL,Market + Volatility Agent,annualized_volatility_pct,0.4668,ytd_return_pct,0.45,beta,0.329,2,5
+DAL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DASH,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DASH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DASH,Market + Volatility Agent,annualized_volatility_pct,0.5458,max_drawdown_pct,0.5137,beta,0.4565,3,5
+DASH,Sentiment Agent,article_count,0.285,sentiment_std,0.0884,sentiment_mean,0.0456,0,3
+DD,Fundamental Agent,debt_to_assets,0.0923,long_term_debt_usd_m,0.0622,cash_usd_m,0.03,0,6
+DD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DD,Market + Volatility Agent,ytd_return_pct,0.4137,annualized_volatility_pct,0.3524,beta,0.2754,0,5
+DD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DDOG,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DDOG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DDOG,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5846,ytd_return_pct,0.45,3,5
+DDOG,Sentiment Agent,article_count,0.285,sentiment_std,0.0717,sentiment_mean,0.0458,0,3
+DE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DE,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.368,sharpe_ratio,0.2717,1,5
+DE,Sentiment Agent,article_count,0.285,sentiment_std,0.0596,sentiment_mean,0.0423,0,3
+DECK,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+DECK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DECK,Market + Volatility Agent,annualized_volatility_pct,0.4708,max_drawdown_pct,0.4309,ytd_return_pct,0.2985,1,5
+DECK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DELL,Fundamental Agent,debt_to_assets,0.1899,long_term_debt_usd_m,0.1481,cash_to_debt,0.0765,0,6
+DELL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DELL,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,sharpe_ratio,0.42,2,5
+DELL,Sentiment Agent,article_count,0.285,sentiment_std,0.0655,sentiment_mean,0.0402,0,3
+DG,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+DG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DG,Market + Volatility Agent,annualized_volatility_pct,0.4232,max_drawdown_pct,0.4091,ytd_return_pct,0.2713,0,5
+DG,Sentiment Agent,article_count,0.285,sentiment_std,0.0713,sentiment_mean,0.03,0,3
+DGX,Fundamental Agent,debt_to_assets,0.2309,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+DGX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DGX,Market + Volatility Agent,ytd_return_pct,0.409,annualized_volatility_pct,0.2671,sharpe_ratio,0.2266,0,5
+DGX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DHI,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+DHI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DHI,Market + Volatility Agent,annualized_volatility_pct,0.4235,beta,0.3493,ytd_return_pct,0.2817,0,5
+DHI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DHR,Fundamental Agent,debt_to_assets,0.0611,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+DHR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DHR,Market + Volatility Agent,max_drawdown_pct,0.3956,annualized_volatility_pct,0.3379,beta,0.2065,0,5
+DHR,Sentiment Agent,article_count,0.285,sentiment_std,0.0811,sentiment_mean,0.0518,0,3
+DIS,Fundamental Agent,long_term_debt_usd_m,0.1306,debt_to_assets,0.0701,cash_usd_m,0.0425,0,6
+DIS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DIS,Market + Volatility Agent,beta,0.3595,annualized_volatility_pct,0.3004,max_drawdown_pct,0.228,0,5
+DIS,Sentiment Agent,article_count,0.285,sentiment_std,0.0852,sentiment_mean,0.0366,0,3
+DLR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DLR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DLR,Market + Volatility Agent,annualized_volatility_pct,0.303,beta,0.2652,max_drawdown_pct,0.202,0,5
+DLR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DLTR,Fundamental Agent,debt_to_assets,0.1104,cash_to_debt,0.0989,cash_usd_m,0.06,0,6
+DLTR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DLTR,Market + Volatility Agent,annualized_volatility_pct,0.4636,max_drawdown_pct,0.4624,ytd_return_pct,0.3169,2,5
+DLTR,Sentiment Agent,article_count,0.285,sentiment_std,0.0891,sentiment_mean,0.0324,0,3
+DOC,Fundamental Agent,debt_to_assets,0.1312,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+DOC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DOC,Market + Volatility Agent,annualized_volatility_pct,0.284,beta,0.2525,max_drawdown_pct,0.1984,0,5
+DOC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DOV,Fundamental Agent,debt_to_assets,0.1019,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+DOV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DOV,Market + Volatility Agent,annualized_volatility_pct,0.2946,beta,0.2932,max_drawdown_pct,0.2102,0,5
+DOV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DOW,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+DOW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DOW,Market + Volatility Agent,annualized_volatility_pct,0.5087,max_drawdown_pct,0.3972,ytd_return_pct,0.2985,1,5
+DOW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DPZ,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+DPZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DPZ,Market + Volatility Agent,max_drawdown_pct,0.3917,ytd_return_pct,0.3695,annualized_volatility_pct,0.361,0,5
+DPZ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DRI,Fundamental Agent,debt_to_assets,0.1028,cash_usd_m,0.085,long_term_debt_usd_m,0.0808,0,0
+DRI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DRI,Market + Volatility Agent,annualized_volatility_pct,0.3275,max_drawdown_pct,0.1814,beta,0.1504,0,5
+DRI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DTE,Fundamental Agent,debt_to_assets,0.1484,long_term_debt_usd_m,0.0631,cash_usd_m,0.03,0,6
+DTE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DTE,Market + Volatility Agent,max_drawdown_pct,0.2525,annualized_volatility_pct,0.2059,ytd_return_pct,0.1035,0,5
+DTE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DUK,Fundamental Agent,long_term_debt_usd_m,0.4599,debt_to_assets,0.2737,cash_usd_m,0.06,1,6
+DUK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DUK,Market + Volatility Agent,annualized_volatility_pct,0.1912,max_drawdown_pct,0.1645,beta,0.0918,0,5
+DUK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DVA,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DVA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DVA,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3847,max_drawdown_pct,0.2488,1,5
+DVA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DVN,Fundamental Agent,debt_to_assets,0.0796,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+DVN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DVN,Market + Volatility Agent,annualized_volatility_pct,0.2171,ytd_return_pct,0.206,max_drawdown_pct,0.1343,0,5
+DVN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+DXCM,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+DXCM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+DXCM,Market + Volatility Agent,annualized_volatility_pct,0.4361,beta,0.3621,ytd_return_pct,0.3511,0,5
+DXCM,Sentiment Agent,article_count,0.285,sentiment_std,0.0994,sentiment_mean,0.06,0,3
+EA,Fundamental Agent,profit_margin,0.0255,operating_margin,0.024,cash_usd_m,0.0,0,6
+EA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EA,Market + Volatility Agent,ytd_return_pct,0.225,sharpe_ratio,0.1934,annualized_volatility_pct,0.1215,0,5
+EA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EBAY,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EBAY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EBAY,Market + Volatility Agent,annualized_volatility_pct,0.3882,beta,0.3417,ytd_return_pct,0.2174,0,5
+EBAY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ECHO,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+ECHO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ECHO,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.488,ytd_return_pct,0.2856,2,5
+ECHO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ECL,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+ECL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ECL,Market + Volatility Agent,annualized_volatility_pct,0.2638,max_drawdown_pct,0.2423,beta,0.2269,0,5
+ECL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ED,Fundamental Agent,debt_to_assets,0.2235,long_term_debt_usd_m,0.1408,cash_usd_m,0.06,0,6
+ED,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ED,Market + Volatility Agent,annualized_volatility_pct,0.204,max_drawdown_pct,0.12,sharpe_ratio,0.1149,0,5
+ED,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EFX,Fundamental Agent,debt_to_assets,0.257,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+EFX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EFX,Market + Volatility Agent,max_drawdown_pct,0.4679,ytd_return_pct,0.45,annualized_volatility_pct,0.4451,2,5
+EFX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EG,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+EG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EG,Market + Volatility Agent,annualized_volatility_pct,0.2585,sharpe_ratio,0.1451,max_drawdown_pct,0.1349,0,5
+EG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EIX,Fundamental Agent,debt_to_assets,0.1247,long_term_debt_usd_m,0.1014,cash_usd_m,0.03,0,6
+EIX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EIX,Market + Volatility Agent,annualized_volatility_pct,0.346,max_drawdown_pct,0.2867,sharpe_ratio,0.1777,0,5
+EIX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+EL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EL,Market + Volatility Agent,annualized_volatility_pct,0.5122,max_drawdown_pct,0.4924,beta,0.3238,2,5
+EL,Sentiment Agent,article_count,0.285,sentiment_std,0.0641,sentiment_mean,0.0387,0,3
+ELV,Fundamental Agent,long_term_debt_usd_m,0.088,debt_to_assets,0.0792,cash_to_debt,0.0363,0,6
+ELV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ELV,Market + Volatility Agent,annualized_volatility_pct,0.3755,max_drawdown_pct,0.2208,sharpe_ratio,0.1915,0,5
+ELV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EME,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EME,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EME,Market + Volatility Agent,annualized_volatility_pct,0.4716,max_drawdown_pct,0.355,beta,0.2881,1,5
+EME,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EMR,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+EMR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EMR,Market + Volatility Agent,annualized_volatility_pct,0.3823,beta,0.3136,ytd_return_pct,0.2804,0,5
+EMR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EOG,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EOG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EOG,Market + Volatility Agent,annualized_volatility_pct,0.1615,max_drawdown_pct,0.1111,sharpe_ratio,0.0665,0,5
+EOG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EQIX,Fundamental Agent,debt_to_assets,0.1311,long_term_debt_usd_m,0.0437,cash_usd_m,0.03,0,6
+EQIX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EQIX,Market + Volatility Agent,ytd_return_pct,0.444,annualized_volatility_pct,0.2816,beta,0.2473,0,5
+EQIX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EQT,Fundamental Agent,debt_to_assets,0.1106,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+EQT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EQT,Market + Volatility Agent,annualized_volatility_pct,0.2085,ytd_return_pct,0.1586,sharpe_ratio,0.1135,0,5
+EQT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ERIE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ERIE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ERIE,Market + Volatility Agent,max_drawdown_pct,0.438,annualized_volatility_pct,0.4355,ytd_return_pct,0.3762,0,5
+ERIE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ES,Fundamental Agent,cash_usd_m,0.03,operating_margin,0.024,long_term_debt_usd_m,0.0,0,6
+ES,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ES,Market + Volatility Agent,annualized_volatility_pct,0.2527,max_drawdown_pct,0.1808,beta,0.1785,0,5
+ES,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ESS,Fundamental Agent,cash_usd_m,0.06,operating_margin,0.048,long_term_debt_usd_m,0.0,0,6
+ESS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ESS,Market + Volatility Agent,annualized_volatility_pct,0.2267,beta,0.181,max_drawdown_pct,0.1056,0,5
+ESS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ETN,Fundamental Agent,debt_to_assets,0.0738,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+ETN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ETN,Market + Volatility Agent,annualized_volatility_pct,0.4727,beta,0.2983,ytd_return_pct,0.2325,1,5
+ETN,Sentiment Agent,article_count,0.285,sentiment_std,0.0501,sentiment_mean,0.0327,0,3
+ETR,Fundamental Agent,debt_to_assets,0.1285,long_term_debt_usd_m,0.0716,cash_usd_m,0.03,0,6
+ETR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ETR,Market + Volatility Agent,annualized_volatility_pct,0.2342,max_drawdown_pct,0.1886,beta,0.1224,0,5
+ETR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EVRG,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EVRG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EVRG,Market + Volatility Agent,annualized_volatility_pct,0.1943,max_drawdown_pct,0.1337,beta,0.13,0,5
+EVRG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EW,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EW,Market + Volatility Agent,annualized_volatility_pct,0.2987,beta,0.2167,max_drawdown_pct,0.1583,0,5
+EW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EXC,Fundamental Agent,debt_to_assets,0.1219,long_term_debt_usd_m,0.1176,cash_usd_m,0.03,0,6
+EXC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EXC,Market + Volatility Agent,max_drawdown_pct,0.2225,annualized_volatility_pct,0.221,beta,0.0994,0,5
+EXC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EXE,Fundamental Agent,debt_to_assets,0.0582,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+EXE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EXE,Market + Volatility Agent,annualized_volatility_pct,0.1932,max_drawdown_pct,0.1262,sharpe_ratio,0.0697,0,5
+EXE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EXPD,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EXPD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EXPD,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.4133,annualized_volatility_pct,0.3124,1,5
+EXPD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EXPE,Fundamental Agent,cash_to_debt,0.0901,debt_to_assets,0.084,cash_usd_m,0.03,0,6
+EXPE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EXPE,Market + Volatility Agent,annualized_volatility_pct,0.5528,max_drawdown_pct,0.3979,beta,0.3187,1,5
+EXPE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+EXR,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+EXR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+EXR,Market + Volatility Agent,beta,0.3009,annualized_volatility_pct,0.2713,max_drawdown_pct,0.194,0,5
+EXR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+F,Fundamental Agent,cash_usd_m,0.0688,profit_margin,0.0255,operating_margin,0.024,0,6
+F,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+F,Market + Volatility Agent,beta,0.4692,annualized_volatility_pct,0.4266,max_drawdown_pct,0.3612,1,5
+F,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FANG,Fundamental Agent,debt_to_assets,0.1076,long_term_debt_usd_m,0.0688,cash_usd_m,0.06,0,6
+FANG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FANG,Market + Volatility Agent,annualized_volatility_pct,0.2051,ytd_return_pct,0.1664,sharpe_ratio,0.115,0,5
+FANG,Sentiment Agent,article_count,0.285,sentiment_mean,0.086,sentiment_std,0.0717,0,3
+FAST,Fundamental Agent,cash_to_debt,0.1727,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+FAST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FAST,Market + Volatility Agent,annualized_volatility_pct,0.288,max_drawdown_pct,0.1818,beta,0.181,0,5
+FAST,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FCX,Fundamental Agent,cash_to_debt,0.0592,debt_to_assets,0.0511,cash_usd_m,0.03,0,6
+FCX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FCX,Market + Volatility Agent,annualized_volatility_pct,0.5634,ytd_return_pct,0.45,beta,0.357,2,5
+FCX,Sentiment Agent,article_count,0.285,sentiment_std,0.0906,sentiment_mean,0.0342,0,3
+FDS,Fundamental Agent,debt_to_assets,0.1221,cash_to_debt,0.0356,cash_usd_m,0.03,0,6
+FDS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FDS,Market + Volatility Agent,annualized_volatility_pct,0.5546,max_drawdown_pct,0.4181,beta,0.181,1,5
+FDS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FDX,Fundamental Agent,debt_to_assets,0.0946,long_term_debt_usd_m,0.0471,cash_usd_m,0.03,0,6
+FDX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FDX,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3656,beta,0.3468,1,5
+FDX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FDXF,Fundamental Agent,debt_to_assets,0.7217,long_term_debt_usd_m,0.0808,profit_margin,0.0723,1,0
+FDXF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FDXF,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5035,sharpe_ratio,0.3259,2,5
+FDXF,Sentiment Agent,article_count,0.285,sentiment_std,0.0691,sentiment_mean,0.0394,0,3
+FE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+FE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FE,Market + Volatility Agent,annualized_volatility_pct,0.1928,max_drawdown_pct,0.1835,beta,0.1122,0,5
+FE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FERG,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+FERG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FERG,Market + Volatility Agent,annualized_volatility_pct,0.3475,beta,0.283,max_drawdown_pct,0.2422,0,5
+FERG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FFIV,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+FFIV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FFIV,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4193,max_drawdown_pct,0.3726,1,5
+FFIV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FICO,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+FICO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FICO,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.45,3,5
+FICO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FIS,Fundamental Agent,debt_to_assets,0.1892,long_term_debt_usd_m,0.0607,cash_usd_m,0.06,0,6
+FIS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FIS,Market + Volatility Agent,max_drawdown_pct,0.5888,ytd_return_pct,0.45,sharpe_ratio,0.3929,2,5
+FIS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FISV,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+FISV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FISV,Market + Volatility Agent,max_drawdown_pct,0.5342,annualized_volatility_pct,0.4751,ytd_return_pct,0.45,3,5
+FISV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FITB,Fundamental Agent,long_term_debt_usd_m,0.0934,debt_to_assets,0.06,cash_usd_m,0.0,0,6
+FITB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FITB,Market + Volatility Agent,annualized_volatility_pct,0.3134,max_drawdown_pct,0.2496,ytd_return_pct,0.2361,0,5
+FITB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FIX,Fundamental Agent,cash_to_debt,0.54,cash_usd_m,0.06,debt_to_assets,0.06,1,6
+FIX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FIX,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,beta,0.4284,2,5
+FIX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FLEX,Fundamental Agent,cash_to_debt,0.1674,debt_to_assets,0.1205,cash_usd_m,0.06,0,6
+FLEX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FLEX,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.4372,2,5
+FLEX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FOX,Fundamental Agent,debt_to_assets,0.2419,long_term_debt_usd_m,0.0808,cash_usd_m,0.0,0,0
+FOX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FOX,Market + Volatility Agent,annualized_volatility_pct,0.3583,max_drawdown_pct,0.3319,beta,0.1428,0,5
+FOX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FOXA,Fundamental Agent,debt_to_assets,0.2419,long_term_debt_usd_m,0.0808,cash_usd_m,0.0,0,0
+FOXA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FOXA,Market + Volatility Agent,annualized_volatility_pct,0.369,max_drawdown_pct,0.337,beta,0.1428,0,5
+FOXA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FRT,Fundamental Agent,debt_to_assets,0.1582,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+FRT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FRT,Market + Volatility Agent,beta,0.2346,annualized_volatility_pct,0.1936,max_drawdown_pct,0.1802,0,5
+FRT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FSLR,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+FSLR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FSLR,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.544,beta,0.4411,2,5
+FSLR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+FTNT,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+FTNT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FTNT,Market + Volatility Agent,annualized_volatility_pct,0.4558,ytd_return_pct,0.45,sharpe_ratio,0.3887,2,5
+FTNT,Sentiment Agent,article_count,0.285,sentiment_std,0.0911,sentiment_mean,0.0534,0,3
+FTV,Fundamental Agent,debt_to_assets,0.1307,cash_usd_m,0.06,cash_to_debt,0.0592,0,6
+FTV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+FTV,Market + Volatility Agent,annualized_volatility_pct,0.2965,beta,0.2473,ytd_return_pct,0.1866,0,5
+FTV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GD,Fundamental Agent,debt_to_assets,0.0511,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+GD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GD,Market + Volatility Agent,annualized_volatility_pct,0.2539,max_drawdown_pct,0.1997,beta,0.0816,0,5
+GD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GDDY,Fundamental Agent,profit_margin,0.051,operating_margin,0.048,cash_usd_m,0.0,0,6
+GDDY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GDDY,Market + Volatility Agent,annualized_volatility_pct,0.5452,max_drawdown_pct,0.506,ytd_return_pct,0.3599,2,5
+GDDY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GE,Fundamental Agent,long_term_debt_usd_m,0.0595,debt_to_assets,0.0384,profit_margin,0.0255,0,6
+GE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GE,Market + Volatility Agent,annualized_volatility_pct,0.3931,beta,0.3443,max_drawdown_pct,0.2502,0,5
+GE,Sentiment Agent,article_count,0.285,sentiment_std,0.0712,sentiment_mean,0.03,0,3
+GEHC,Fundamental Agent,debt_to_assets,0.0873,cash_to_debt,0.0357,cash_usd_m,0.03,0,6
+GEHC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GEHC,Market + Volatility Agent,annualized_volatility_pct,0.371,max_drawdown_pct,0.3282,beta,0.2091,0,5
+GEHC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GEN,Fundamental Agent,debt_to_assets,0.3273,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+GEN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GEN,Market + Volatility Agent,annualized_volatility_pct,0.4415,max_drawdown_pct,0.4315,beta,0.3111,0,5
+GEN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GEV,Fundamental Agent,profit_margin,0.0255,operating_margin,0.024,cash_usd_m,0.0,0,6
+GEV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GEV,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.3065,2,5
+GEV,Sentiment Agent,article_count,0.285,sentiment_std,0.0451,sentiment_mean,0.0352,0,3
+GILD,Fundamental Agent,debt_to_assets,0.1198,long_term_debt_usd_m,0.0719,cash_usd_m,0.03,0,6
+GILD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GILD,Market + Volatility Agent,ytd_return_pct,0.4065,annualized_volatility_pct,0.3164,max_drawdown_pct,0.2591,0,5
+GILD,Sentiment Agent,article_count,0.285,sentiment_std,0.0722,sentiment_mean,0.0542,0,3
+GIS,Fundamental Agent,debt_to_assets,0.365,long_term_debt_usd_m,0.1147,cash_usd_m,0.085,0,0
+GIS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GIS,Market + Volatility Agent,max_drawdown_pct,0.4194,ytd_return_pct,0.4176,annualized_volatility_pct,0.3331,0,5
+GIS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GL,Fundamental Agent,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+GL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GL,Market + Volatility Agent,sharpe_ratio,0.2892,ytd_return_pct,0.2722,annualized_volatility_pct,0.2251,0,5
+GL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GLW,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+GLW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GLW,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.45,3,5
+GLW,Sentiment Agent,article_count,0.285,sentiment_std,0.0806,sentiment_mean,0.03,0,3
+GM,Fundamental Agent,cash_usd_m,0.0596,profit_margin,0.0255,operating_margin,0.024,0,6
+GM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GM,Market + Volatility Agent,ytd_return_pct,0.4023,annualized_volatility_pct,0.3914,beta,0.3366,0,5
+GM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GNRC,Fundamental Agent,debt_to_assets,0.1456,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+GNRC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GNRC,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.4894,beta,0.487,3,5
+GNRC,Sentiment Agent,article_count,0.285,sentiment_std,0.0864,sentiment_mean,0.0441,0,3
+GOOG,Fundamental Agent,cash_to_debt,0.264,cash_usd_m,0.0704,long_term_debt_usd_m,0.0342,0,6
+GOOG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GOOG,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3584,beta,0.3136,1,5
+GOOG,Sentiment Agent,article_count,0.285,sentiment_std,0.1528,sentiment_mean,0.03,0,3
+GOOGL,Fundamental Agent,cash_to_debt,0.264,cash_usd_m,0.0704,long_term_debt_usd_m,0.0342,0,6
+GOOGL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GOOGL,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3654,beta,0.3136,1,5
+GOOGL,Sentiment Agent,article_count,0.285,sentiment_std,0.1051,sentiment_mean,0.03,0,3
+GPC,Fundamental Agent,cash_to_debt,0.0375,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+GPC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GPC,Market + Volatility Agent,max_drawdown_pct,0.3769,annualized_volatility_pct,0.3373,beta,0.1683,0,5
+GPC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GPN,Fundamental Agent,debt_to_assets,0.2089,long_term_debt_usd_m,0.0931,cash_usd_m,0.06,0,6
+GPN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GPN,Market + Volatility Agent,annualized_volatility_pct,0.4516,max_drawdown_pct,0.4094,beta,0.1989,1,5
+GPN,Sentiment Agent,article_count,0.285,sentiment_std,0.0859,sentiment_mean,0.0361,0,3
+GRMN,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+GRMN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GRMN,Market + Volatility Agent,annualized_volatility_pct,0.3427,max_drawdown_pct,0.2863,beta,0.2218,0,5
+GRMN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+GS,Fundamental Agent,cash_usd_m,0.6,long_term_debt_usd_m,0.0,debt_to_assets,0.0,1,6
+GS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GS,Market + Volatility Agent,annualized_volatility_pct,0.3751,beta,0.3264,max_drawdown_pct,0.2615,0,5
+GS,Sentiment Agent,article_count,0.285,sentiment_std,0.0503,sentiment_mean,0.0452,0,3
+GWW,Fundamental Agent,debt_to_assets,0.1888,cash_to_debt,0.1007,cash_usd_m,0.06,0,6
+GWW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+GWW,Market + Volatility Agent,ytd_return_pct,0.4494,sharpe_ratio,0.3289,annualized_volatility_pct,0.2681,0,5
+GWW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HAL,Fundamental Agent,debt_to_assets,0.0839,cash_to_debt,0.0494,cash_usd_m,0.03,0,6
+HAL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HAL,Market + Volatility Agent,ytd_return_pct,0.4329,annualized_volatility_pct,0.4062,max_drawdown_pct,0.3254,0,5
+HAL,Sentiment Agent,article_count,0.285,sentiment_std,0.0889,sentiment_mean,0.03,0,3
+HAS,Fundamental Agent,cash_to_debt,0.1528,debt_to_assets,0.1371,cash_usd_m,0.03,0,6
+HAS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HAS,Market + Volatility Agent,annualized_volatility_pct,0.3397,max_drawdown_pct,0.3036,ytd_return_pct,0.2802,0,5
+HAS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HBAN,Fundamental Agent,long_term_debt_usd_m,0.0467,debt_to_assets,0.03,profit_margin,0.0255,0,6
+HBAN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HBAN,Market + Volatility Agent,annualized_volatility_pct,0.3229,max_drawdown_pct,0.255,beta,0.2397,0,5
+HBAN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HCA,Fundamental Agent,debt_to_assets,0.2296,long_term_debt_usd_m,0.1226,cash_usd_m,0.03,0,6
+HCA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HCA,Market + Volatility Agent,max_drawdown_pct,0.3781,annualized_volatility_pct,0.3557,beta,0.283,0,5
+HCA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HD,Fundamental Agent,debt_to_assets,0.3206,long_term_debt_usd_m,0.2928,cash_usd_m,0.06,0,6
+HD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HD,Market + Volatility Agent,ytd_return_pct,0.3392,max_drawdown_pct,0.3282,annualized_volatility_pct,0.3012,0,5
+HD,Sentiment Agent,article_count,0.285,sentiment_std,0.0876,sentiment_mean,0.03,0,3
+HIG,Fundamental Agent,debt_to_assets,0.06,long_term_debt_usd_m,0.057,profit_margin,0.051,0,6
+HIG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HIG,Market + Volatility Agent,annualized_volatility_pct,0.2396,max_drawdown_pct,0.1877,beta,0.1147,0,5
+HIG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HII,Fundamental Agent,debt_to_assets,0.0931,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+HII,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HII,Market + Volatility Agent,max_drawdown_pct,0.5335,annualized_volatility_pct,0.4187,beta,0.0561,1,5
+HII,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HLT,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+HLT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HLT,Market + Volatility Agent,ytd_return_pct,0.3063,annualized_volatility_pct,0.283,beta,0.2703,0,5
+HLT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HON,Fundamental Agent,debt_to_assets,0.1088,long_term_debt_usd_m,0.0777,cash_to_debt,0.0523,0,6
+HON,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HON,Market + Volatility Agent,annualized_volatility_pct,0.315,max_drawdown_pct,0.2638,beta,0.2295,0,5
+HON,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HONA,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+HONA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HONA,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.4778,ytd_return_pct,0.2916,2,5
+HONA,Sentiment Agent,article_count,0.285,sentiment_std,0.0653,sentiment_mean,0.03,0,3
+HOOD,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+HOOD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HOOD,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,3,5
+HOOD,Sentiment Agent,article_count,0.285,sentiment_std,0.0982,sentiment_mean,0.0363,0,3
+HPE,Fundamental Agent,cash_to_debt,0.1135,debt_to_assets,0.0743,long_term_debt_usd_m,0.0503,0,6
+HPE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HPE,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,sharpe_ratio,0.42,2,5
+HPE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HPQ,Fundamental Agent,debt_to_assets,0.0779,cash_to_debt,0.0436,cash_usd_m,0.03,0,6
+HPQ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HPQ,Market + Volatility Agent,annualized_volatility_pct,0.5314,max_drawdown_pct,0.4276,ytd_return_pct,0.3435,1,5
+HPQ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HRL,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+HRL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HRL,Market + Volatility Agent,annualized_volatility_pct,0.2947,max_drawdown_pct,0.2713,ytd_return_pct,0.1736,0,5
+HRL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HSIC,Fundamental Agent,debt_to_assets,0.037,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+HSIC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HSIC,Market + Volatility Agent,ytd_return_pct,0.3424,annualized_volatility_pct,0.2846,max_drawdown_pct,0.2068,0,5
+HSIC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HST,Fundamental Agent,cash_to_debt,0.3447,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+HST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HST,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3576,annualized_volatility_pct,0.2839,1,5
+HST,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HSY,Fundamental Agent,debt_to_assets,0.156,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+HSY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HSY,Market + Volatility Agent,max_drawdown_pct,0.387,annualized_volatility_pct,0.3101,ytd_return_pct,0.1984,0,5
+HSY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HUBB,Fundamental Agent,debt_to_assets,0.0648,cash_to_debt,0.0308,cash_usd_m,0.03,0,6
+HUBB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HUBB,Market + Volatility Agent,annualized_volatility_pct,0.3817,max_drawdown_pct,0.2378,beta,0.2269,0,5
+HUBB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HUM,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+HUM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HUM,Market + Volatility Agent,annualized_volatility_pct,0.4894,ytd_return_pct,0.45,max_drawdown_pct,0.4327,2,5
+HUM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+HWM,Fundamental Agent,debt_to_assets,0.0945,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+HWM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+HWM,Market + Volatility Agent,annualized_volatility_pct,0.3904,beta,0.3034,ytd_return_pct,0.2888,0,5
+HWM,Sentiment Agent,article_count,0.285,sentiment_std,0.0984,sentiment_mean,0.0446,0,3
+IBKR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+IBKR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IBKR,Market + Volatility Agent,annualized_volatility_pct,0.4738,beta,0.3443,ytd_return_pct,0.3347,1,5
+IBKR,Sentiment Agent,article_count,0.285,sentiment_std,0.1064,sentiment_mean,0.0504,0,3
+IBM,Fundamental Agent,cash_usd_m,0.0837,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+IBM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IBM,Market + Volatility Agent,annualized_volatility_pct,0.4808,max_drawdown_pct,0.3348,ytd_return_pct,0.2673,1,5
+IBM,Sentiment Agent,article_count,0.285,sentiment_std,0.0859,sentiment_mean,0.03,0,3
+ICE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ICE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ICE,Market + Volatility Agent,max_drawdown_pct,0.3178,annualized_volatility_pct,0.288,beta,0.2371,0,5
+ICE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IDXX,Fundamental Agent,cash_to_debt,0.1756,debt_to_assets,0.1285,cash_usd_m,0.06,0,6
+IDXX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IDXX,Market + Volatility Agent,max_drawdown_pct,0.41,beta,0.3927,annualized_volatility_pct,0.3458,0,5
+IDXX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IEX,Fundamental Agent,debt_to_assets,0.1753,cash_to_debt,0.0851,cash_usd_m,0.06,0,6
+IEX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IEX,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3412,annualized_volatility_pct,0.2585,1,5
+IEX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IFF,Fundamental Agent,debt_to_assets,0.1861,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+IFF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IFF,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3767,max_drawdown_pct,0.2452,1,5
+IFF,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ILMN,Fundamental Agent,profit_margin,0.0255,operating_margin,0.024,cash_usd_m,0.0,0,6
+ILMN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ILMN,Market + Volatility Agent,annualized_volatility_pct,0.5137,ytd_return_pct,0.45,sharpe_ratio,0.42,2,5
+ILMN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+INCY,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+INCY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+INCY,Market + Volatility Agent,ytd_return_pct,0.4212,annualized_volatility_pct,0.381,sharpe_ratio,0.2056,0,5
+INCY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+INTC,Fundamental Agent,long_term_debt_usd_m,0.1425,debt_to_assets,0.0764,cash_usd_m,0.03,0,6
+INTC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+INTC,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.51,max_drawdown_pct,0.5028,4,5
+INTC,Sentiment Agent,article_count,0.285,sentiment_std,0.083,sentiment_mean,0.0343,0,3
+INTU,Fundamental Agent,cash_to_debt,0.2719,debt_to_assets,0.1616,cash_usd_m,0.1,0,0
+INTU,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+INTU,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.5544,ytd_return_pct,0.45,3,5
+INTU,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+INVH,Fundamental Agent,debt_to_assets,0.2632,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+INVH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+INVH,Market + Volatility Agent,annualized_volatility_pct,0.243,beta,0.2116,max_drawdown_pct,0.167,0,5
+INVH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IP,Fundamental Agent,debt_to_assets,0.1025,cash_to_debt,0.0323,cash_usd_m,0.03,0,6
+IP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IP,Market + Volatility Agent,annualized_volatility_pct,0.5069,max_drawdown_pct,0.4688,ytd_return_pct,0.3712,2,5
+IP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IQV,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+IQV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IQV,Market + Volatility Agent,annualized_volatility_pct,0.4265,max_drawdown_pct,0.3565,ytd_return_pct,0.3209,0,5
+IQV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+IR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IR,Market + Volatility Agent,annualized_volatility_pct,0.3914,max_drawdown_pct,0.3686,beta,0.2932,0,5
+IR,Sentiment Agent,article_count,0.285,sentiment_std,0.0671,sentiment_mean,0.03,0,3
+IRM,Fundamental Agent,debt_to_assets,0.1845,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+IRM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IRM,Market + Volatility Agent,annualized_volatility_pct,0.3751,beta,0.306,max_drawdown_pct,0.2947,0,5
+IRM,Sentiment Agent,article_count,0.285,sentiment_mean,0.0638,sentiment_std,0.0539,0,3
+ISRG,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+ISRG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ISRG,Market + Volatility Agent,max_drawdown_pct,0.4735,annualized_volatility_pct,0.3896,beta,0.3723,1,5
+ISRG,Sentiment Agent,article_count,0.285,sentiment_std,0.0791,sentiment_mean,0.0389,0,3
+IT,Fundamental Agent,cash_to_debt,0.0922,debt_to_assets,0.088,cash_usd_m,0.03,0,6
+IT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IT,Market + Volatility Agent,annualized_volatility_pct,0.5981,max_drawdown_pct,0.5416,ytd_return_pct,0.3619,2,5
+IT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ITW,Fundamental Agent,debt_to_assets,0.1411,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+ITW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ITW,Market + Volatility Agent,annualized_volatility_pct,0.2574,beta,0.255,max_drawdown_pct,0.2093,0,5
+ITW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+IVZ,Fundamental Agent,cash_to_debt,0.4454,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+IVZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+IVZ,Market + Volatility Agent,annualized_volatility_pct,0.411,beta,0.408,ytd_return_pct,0.4062,0,5
+IVZ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+J,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+J,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+J,Market + Volatility Agent,annualized_volatility_pct,0.3762,max_drawdown_pct,0.3647,beta,0.1734,0,5
+J,Sentiment Agent,article_count,0.285,sentiment_mean,0.0627,sentiment_std,0.021,0,3
+JBHT,Fundamental Agent,debt_to_assets,0.0932,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+JBHT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JBHT,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4036,sharpe_ratio,0.3368,1,5
+JBHT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+JBL,Fundamental Agent,cash_to_debt,0.1032,debt_to_assets,0.0498,cash_usd_m,0.03,0,6
+JBL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JBL,Market + Volatility Agent,annualized_volatility_pct,0.5519,ytd_return_pct,0.45,beta,0.329,2,5
+JBL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+JCI,Fundamental Agent,debt_to_assets,0.0766,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+JCI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JCI,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3558,beta,0.3315,1,5
+JCI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+JKHY,Fundamental Agent,cash_usd_m,0.03,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,0,6
+JKHY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JKHY,Market + Volatility Agent,max_drawdown_pct,0.4099,annualized_volatility_pct,0.3402,beta,0.1428,0,5
+JKHY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+JNJ,Fundamental Agent,cash_to_debt,0.1004,long_term_debt_usd_m,0.0923,cash_usd_m,0.0723,0,6
+JNJ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JNJ,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3841,annualized_volatility_pct,0.2284,1,5
+JNJ,Sentiment Agent,article_count,0.285,sentiment_std,0.069,sentiment_mean,0.0524,0,3
+JPM,Fundamental Agent,cash_usd_m,0.3,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+JPM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+JPM,Market + Volatility Agent,ytd_return_pct,0.1442,annualized_volatility_pct,0.1423,beta,0.1351,0,5
+JPM,Sentiment Agent,article_count,0.285,sentiment_std,0.0756,sentiment_mean,0.0473,0,3
+KDP,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+KDP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KDP,Market + Volatility Agent,annualized_volatility_pct,0.3116,ytd_return_pct,0.2736,max_drawdown_pct,0.2125,0,5
+KDP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KEY,Fundamental Agent,long_term_debt_usd_m,0.069,debt_to_assets,0.06,profit_margin,0.051,0,6
+KEY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KEY,Market + Volatility Agent,annualized_volatility_pct,0.279,beta,0.2601,max_drawdown_pct,0.197,0,5
+KEY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KEYS,Fundamental Agent,cash_to_debt,0.0998,debt_to_assets,0.0673,cash_usd_m,0.03,0,6
+KEYS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KEYS,Market + Volatility Agent,annualized_volatility_pct,0.4702,ytd_return_pct,0.45,sharpe_ratio,0.4036,2,5
+KEYS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KHC,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+KHC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KHC,Market + Volatility Agent,annualized_volatility_pct,0.3176,max_drawdown_pct,0.2206,ytd_return_pct,0.116,0,5
+KHC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KIM,Fundamental Agent,debt_to_assets,0.2353,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+KIM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KIM,Market + Volatility Agent,beta,0.2448,annualized_volatility_pct,0.2107,max_drawdown_pct,0.1777,0,5
+KIM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KKR,Fundamental Agent,debt_to_assets,0.1259,long_term_debt_usd_m,0.0955,cash_usd_m,0.03,0,6
+KKR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KKR,Market + Volatility Agent,max_drawdown_pct,0.4632,beta,0.4565,annualized_volatility_pct,0.4488,2,5
+KKR,Sentiment Agent,sentiment_mean,0.2422,article_count,0.0285,sentiment_std,0.0,0,3
+KLAC,Fundamental Agent,debt_to_assets,0.3113,cash_to_debt,0.1352,cash_usd_m,0.085,0,0
+KLAC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KLAC,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5261,ytd_return_pct,0.45,3,5
+KLAC,Sentiment Agent,article_count,0.285,sentiment_std,0.0986,sentiment_mean,0.0326,0,3
+KMB,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+KMB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KMB,Market + Volatility Agent,annualized_volatility_pct,0.288,ytd_return_pct,0.2453,max_drawdown_pct,0.2015,0,5
+KMB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KMI,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+KMI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KMI,Market + Volatility Agent,annualized_volatility_pct,0.2488,ytd_return_pct,0.1743,sharpe_ratio,0.1606,0,5
+KMI,Sentiment Agent,sentiment_mean,0.1949,article_count,0.0285,sentiment_std,0.0,0,3
+KO,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+KO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KO,Market + Volatility Agent,ytd_return_pct,0.4104,sharpe_ratio,0.3253,annualized_volatility_pct,0.2192,0,5
+KO,Sentiment Agent,article_count,0.285,sentiment_std,0.0645,sentiment_mean,0.03,0,3
+KR,Fundamental Agent,debt_to_assets,0.1814,long_term_debt_usd_m,0.0907,cash_to_debt,0.0672,0,6
+KR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KR,Market + Volatility Agent,annualized_volatility_pct,0.3416,max_drawdown_pct,0.286,ytd_return_pct,0.1151,0,5
+KR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+KVUE,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+KVUE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+KVUE,Market + Volatility Agent,annualized_volatility_pct,0.2839,ytd_return_pct,0.1979,sharpe_ratio,0.1514,0,5
+KVUE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+L,Fundamental Agent,debt_to_assets,0.0435,long_term_debt_usd_m,0.0329,profit_margin,0.0255,0,6
+L,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+L,Market + Volatility Agent,annualized_volatility_pct,0.184,max_drawdown_pct,0.1499,beta,0.13,0,5
+L,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LDOS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+LDOS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LDOS,Market + Volatility Agent,max_drawdown_pct,0.5453,ytd_return_pct,0.45,annualized_volatility_pct,0.382,2,5
+LDOS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LEN,Fundamental Agent,cash_to_debt,0.1582,debt_to_assets,0.0304,cash_usd_m,0.03,0,6
+LEN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LEN,Market + Volatility Agent,max_drawdown_pct,0.5126,ytd_return_pct,0.45,annualized_volatility_pct,0.4444,2,5
+LEN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LH,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+LH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LH,Market + Volatility Agent,annualized_volatility_pct,0.2837,beta,0.2167,max_drawdown_pct,0.1684,0,5
+LH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LHX,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+LHX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LHX,Market + Volatility Agent,max_drawdown_pct,0.4112,annualized_volatility_pct,0.3307,ytd_return_pct,0.2458,0,5
+LHX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LII,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+LII,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LII,Market + Volatility Agent,ytd_return_pct,0.444,annualized_volatility_pct,0.4194,max_drawdown_pct,0.3296,0,5
+LII,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LIN,Fundamental Agent,debt_to_assets,0.1303,long_term_debt_usd_m,0.0992,cash_to_debt,0.0753,0,6
+LIN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LIN,Market + Volatility Agent,annualized_volatility_pct,0.2224,max_drawdown_pct,0.2029,beta,0.1861,0,5
+LIN,Sentiment Agent,article_count,0.285,sentiment_std,0.1543,sentiment_mean,0.0512,0,3
+LITE,Fundamental Agent,cash_usd_m,0.085,profit_margin,0.0723,operating_margin,0.068,0,0
+LITE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LITE,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5136,ytd_return_pct,0.45,3,5
+LITE,Sentiment Agent,article_count,0.285,sentiment_std,0.0756,sentiment_mean,0.0354,0,3
+LLY,Fundamental Agent,debt_to_assets,0.1123,long_term_debt_usd_m,0.084,cash_usd_m,0.03,0,6
+LLY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LLY,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3892,max_drawdown_pct,0.2951,1,5
+LLY,Sentiment Agent,article_count,0.285,sentiment_std,0.1039,sentiment_mean,0.0444,0,3
+LMT,Fundamental Agent,debt_to_assets,0.0998,long_term_debt_usd_m,0.0498,cash_usd_m,0.03,0,6
+LMT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LMT,Market + Volatility Agent,max_drawdown_pct,0.3347,annualized_volatility_pct,0.3222,beta,0.051,0,5
+LMT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LNT,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+LNT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LNT,Market + Volatility Agent,max_drawdown_pct,0.2206,annualized_volatility_pct,0.1982,beta,0.1351,0,5
+LNT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LOW,Fundamental Agent,debt_to_assets,0.5135,long_term_debt_usd_m,0.2039,cash_usd_m,0.06,1,6
+LOW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LOW,Market + Volatility Agent,max_drawdown_pct,0.4351,annualized_volatility_pct,0.3268,ytd_return_pct,0.3227,0,5
+LOW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LRCX,Fundamental Agent,cash_to_debt,0.4503,debt_to_assets,0.2253,cash_usd_m,0.085,1,0
+LRCX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LRCX,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5011,beta,0.4743,4,5
+LRCX,Sentiment Agent,article_count,0.285,sentiment_std,0.0962,sentiment_mean,0.0331,0,3
+LULU,Fundamental Agent,profit_margin,0.051,operating_margin,0.048,cash_usd_m,0.0,0,6
+LULU,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LULU,Market + Volatility Agent,max_drawdown_pct,0.5891,annualized_volatility_pct,0.4916,ytd_return_pct,0.45,3,5
+LULU,Sentiment Agent,article_count,0.285,sentiment_std,0.0932,sentiment_mean,0.03,0,3
+LUV,Fundamental Agent,cash_to_debt,0.1565,debt_to_assets,0.0659,cash_usd_m,0.03,0,6
+LUV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LUV,Market + Volatility Agent,annualized_volatility_pct,0.4913,ytd_return_pct,0.4234,max_drawdown_pct,0.4019,1,5
+LUV,Sentiment Agent,article_count,0.285,sentiment_std,0.0908,sentiment_mean,0.0579,0,3
+LVS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+LVS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LVS,Market + Volatility Agent,max_drawdown_pct,0.4932,annualized_volatility_pct,0.3539,ytd_return_pct,0.352,1,5
+LVS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LYB,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+LYB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LYB,Market + Volatility Agent,annualized_volatility_pct,0.5027,max_drawdown_pct,0.3916,ytd_return_pct,0.3327,1,5
+LYB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+LYV,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+LYV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+LYV,Market + Volatility Agent,annualized_volatility_pct,0.3523,beta,0.2856,max_drawdown_pct,0.1903,0,5
+LYV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MA,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+MA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MA,Market + Volatility Agent,annualized_volatility_pct,0.2644,max_drawdown_pct,0.2074,beta,0.1887,0,5
+MA,Sentiment Agent,article_count,0.285,sentiment_std,0.0633,sentiment_mean,0.0541,0,3
+MAA,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+MAA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MAA,Market + Volatility Agent,annualized_volatility_pct,0.2246,max_drawdown_pct,0.2159,beta,0.1836,0,5
+MAA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MAR,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+MAR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MAR,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.3121,beta,0.2805,1,5
+MAR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MAS,Fundamental Agent,debt_to_assets,0.1649,cash_usd_m,0.03,cash_to_debt,0.029,0,6
+MAS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MAS,Market + Volatility Agent,annualized_volatility_pct,0.3929,beta,0.329,max_drawdown_pct,0.2926,0,5
+MAS,Sentiment Agent,article_count,0.285,sentiment_std,0.0751,sentiment_mean,0.032,0,3
+MCD,Fundamental Agent,debt_to_assets,0.4106,long_term_debt_usd_m,0.219,cash_usd_m,0.06,0,6
+MCD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MCD,Market + Volatility Agent,max_drawdown_pct,0.367,ytd_return_pct,0.2696,sharpe_ratio,0.2386,0,5
+MCD,Sentiment Agent,article_count,0.285,sentiment_std,0.132,sentiment_mean,0.03,0,3
+MCHP,Fundamental Agent,debt_to_assets,0.2268,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+MCHP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MCHP,Market + Volatility Agent,annualized_volatility_pct,0.5827,beta,0.4437,max_drawdown_pct,0.4122,1,5
+MCHP,Sentiment Agent,article_count,0.285,sentiment_std,0.0735,sentiment_mean,0.0587,0,3
+MCK,Fundamental Agent,cash_to_debt,0.2189,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+MCK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MCK,Market + Volatility Agent,annualized_volatility_pct,0.3158,max_drawdown_pct,0.3126,ytd_return_pct,0.2922,0,5
+MCK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MCO,Fundamental Agent,debt_to_assets,0.1437,cash_to_debt,0.0438,cash_usd_m,0.03,0,6
+MCO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MCO,Market + Volatility Agent,beta,0.3392,annualized_volatility_pct,0.316,max_drawdown_pct,0.2318,0,5
+MCO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MDLZ,Fundamental Agent,debt_to_assets,0.0738,long_term_debt_usd_m,0.0453,profit_margin,0.0255,0,6
+MDLZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MDLZ,Market + Volatility Agent,annualized_volatility_pct,0.2768,max_drawdown_pct,0.2069,beta,0.102,0,5
+MDLZ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MDT,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+MDT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MDT,Market + Volatility Agent,max_drawdown_pct,0.3468,annualized_volatility_pct,0.2758,beta,0.1453,0,5
+MDT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MET,Fundamental Agent,cash_usd_m,0.1204,profit_margin,0.051,operating_margin,0.048,0,6
+MET,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MET,Market + Volatility Agent,annualized_volatility_pct,0.2801,ytd_return_pct,0.2303,max_drawdown_pct,0.197,0,5
+MET,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+META,Fundamental Agent,long_term_debt_usd_m,0.1674,cash_usd_m,0.1076,cash_to_debt,0.0824,0,6
+META,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+META,Market + Volatility Agent,annualized_volatility_pct,0.4717,max_drawdown_pct,0.345,beta,0.3162,1,5
+META,Sentiment Agent,article_count,0.285,sentiment_std,0.1082,sentiment_mean,0.0324,0,3
+MGM,Fundamental Agent,cash_to_debt,0.0512,debt_to_assets,0.0452,cash_usd_m,0.03,0,6
+MGM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MGM,Market + Volatility Agent,max_drawdown_pct,0.4498,annualized_volatility_pct,0.4171,beta,0.3264,0,5
+MGM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MKC,Fundamental Agent,debt_to_assets,0.09,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+MKC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MKC,Market + Volatility Agent,max_drawdown_pct,0.4457,ytd_return_pct,0.4253,annualized_volatility_pct,0.3592,0,5
+MKC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MLM,Fundamental Agent,debt_to_assets,0.1787,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+MLM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MLM,Market + Volatility Agent,max_drawdown_pct,0.3731,annualized_volatility_pct,0.3368,ytd_return_pct,0.3034,0,5
+MLM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MMM,Fundamental Agent,debt_to_assets,0.0982,long_term_debt_usd_m,0.0372,profit_margin,0.0255,0,6
+MMM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MMM,Market + Volatility Agent,annualized_volatility_pct,0.2966,beta,0.2728,max_drawdown_pct,0.2252,0,5
+MMM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MNST,Fundamental Agent,cash_to_debt,0.54,cash_usd_m,0.06,debt_to_assets,0.06,1,6
+MNST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MNST,Market + Volatility Agent,ytd_return_pct,0.3581,annualized_volatility_pct,0.2828,max_drawdown_pct,0.212,0,5
+MNST,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MO,Fundamental Agent,debt_to_assets,0.4081,long_term_debt_usd_m,0.1495,cash_usd_m,0.06,0,6
+MO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MO,Market + Volatility Agent,annualized_volatility_pct,0.2809,sharpe_ratio,0.1688,max_drawdown_pct,0.1646,0,5
+MO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MOS,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+MOS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MOS,Market + Volatility Agent,annualized_volatility_pct,0.5317,max_drawdown_pct,0.5059,ytd_return_pct,0.45,3,5
+MOS,Sentiment Agent,article_count,0.285,sentiment_std,0.0941,sentiment_mean,0.03,0,3
+MPC,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+MPC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MPC,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4247,sharpe_ratio,0.42,1,5
+MPC,Sentiment Agent,article_count,0.285,sentiment_std,0.0954,sentiment_mean,0.0481,0,3
+MPWR,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+MPWR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MPWR,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,beta,0.4233,2,5
+MPWR,Sentiment Agent,article_count,0.285,sentiment_std,0.0836,sentiment_mean,0.0508,0,3
+MRK,Fundamental Agent,cash_usd_m,0.0794,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+MRK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MRK,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.382,annualized_volatility_pct,0.3206,1,5
+MRK,Sentiment Agent,article_count,0.285,sentiment_std,0.0755,sentiment_mean,0.0364,0,3
+MRNA,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+MRNA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MRNA,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.4099,2,5
+MRNA,Sentiment Agent,article_count,0.285,sentiment_std,0.1287,sentiment_mean,0.03,0,3
+MRSH,Fundamental Agent,debt_to_assets,0.106,long_term_debt_usd_m,0.0569,cash_usd_m,0.03,0,6
+MRSH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MRSH,Market + Volatility Agent,annualized_volatility_pct,0.2959,max_drawdown_pct,0.2279,ytd_return_pct,0.1749,0,5
+MRSH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MRVL,Fundamental Agent,debt_to_assets,0.1207,cash_to_debt,0.063,cash_usd_m,0.06,0,6
+MRVL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MRVL,Market + Volatility Agent,annualized_volatility_pct,0.3,max_drawdown_pct,0.263,beta,0.2537,0,5
+MRVL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MS,Fundamental Agent,cash_usd_m,0.6,long_term_debt_usd_m,0.57,debt_to_assets,0.1404,2,6
+MS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MS,Market + Volatility Agent,annualized_volatility_pct,0.3397,beta,0.3085,ytd_return_pct,0.3021,0,5
+MS,Sentiment Agent,article_count,0.285,sentiment_std,0.123,sentiment_mean,0.0446,0,3
+MSCI,Fundamental Agent,debt_to_assets,0.2451,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+MSCI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MSCI,Market + Volatility Agent,annualized_volatility_pct,0.3263,beta,0.3111,max_drawdown_pct,0.1849,0,5
+MSCI,Sentiment Agent,article_count,0.0427,sentiment_mean,0.03,sentiment_std,0.0,0,3
+MSFT,Fundamental Agent,long_term_debt_usd_m,0.3629,cash_to_debt,0.1559,cash_usd_m,0.1557,0,0
+MSFT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MSFT,Market + Volatility Agent,max_drawdown_pct,0.149,beta,0.1415,annualized_volatility_pct,0.1376,0,5
+MSFT,Sentiment Agent,article_count,0.285,sentiment_std,0.1004,sentiment_mean,0.03,0,3
+MSI,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+MSI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MSI,Market + Volatility Agent,annualized_volatility_pct,0.2639,max_drawdown_pct,0.2438,beta,0.2244,0,5
+MSI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MSTR,Fundamental Agent,debt_to_assets,0.5921,cash_usd_m,0.06,long_term_debt_usd_m,0.057,1,6
+MSTR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MSTR,Market + Volatility Agent,annualized_volatility_pct,0.3,max_drawdown_pct,0.3,beta,0.255,0,5
+MSTR,Sentiment Agent,article_count,0.285,sentiment_std,0.0737,sentiment_mean,0.03,0,3
+MTB,Fundamental Agent,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+MTB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MTB,Market + Volatility Agent,annualized_volatility_pct,0.262,ytd_return_pct,0.2039,max_drawdown_pct,0.1996,0,5
+MTB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MTCH,Fundamental Agent,debt_to_assets,0.5502,cash_usd_m,0.06,long_term_debt_usd_m,0.057,1,6
+MTCH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MTCH,Market + Volatility Agent,annualized_volatility_pct,0.1892,beta,0.1709,max_drawdown_pct,0.138,0,5
+MTCH,Sentiment Agent,article_count,0.285,sentiment_std,0.0507,sentiment_mean,0.03,0,3
+MTD,Fundamental Agent,debt_to_assets,0.1637,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+MTD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MTD,Market + Volatility Agent,annualized_volatility_pct,0.347,beta,0.3111,max_drawdown_pct,0.2987,0,5
+MTD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+MU,Fundamental Agent,cash_to_debt,0.0838,debt_to_assets,0.049,long_term_debt_usd_m,0.0323,0,6
+MU,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+MU,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.51,max_drawdown_pct,0.4692,4,5
+MU,Sentiment Agent,article_count,0.285,sentiment_std,0.0948,sentiment_mean,0.0327,0,3
+NCLH,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+NCLH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NCLH,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5218,beta,0.4794,4,5
+NCLH,Sentiment Agent,article_count,0.285,sentiment_std,0.0596,sentiment_mean,0.03,0,3
+NDAQ,Fundamental Agent,debt_to_assets,0.0896,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+NDAQ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NDAQ,Market + Volatility Agent,annualized_volatility_pct,0.3144,beta,0.2473,max_drawdown_pct,0.2237,0,5
+NDAQ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NDSN,Fundamental Agent,debt_to_assets,0.1093,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+NDSN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NDSN,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3593,annualized_volatility_pct,0.252,1,5
+NDSN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NEE,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+NEE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NEE,Market + Volatility Agent,max_drawdown_pct,0.2539,annualized_volatility_pct,0.2383,beta,0.1632,0,5
+NEE,Sentiment Agent,article_count,0.285,sentiment_mean,0.1195,sentiment_std,0.0636,0,3
+NEM,Fundamental Agent,cash_to_debt,0.0956,debt_to_assets,0.0916,cash_usd_m,0.06,0,6
+NEM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NEM,Market + Volatility Agent,annualized_volatility_pct,0.5977,ytd_return_pct,0.4409,max_drawdown_pct,0.3731,1,5
+NEM,Sentiment Agent,article_count,0.285,sentiment_std,0.1296,sentiment_mean,0.0389,0,3
+NFLX,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+NFLX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NFLX,Market + Volatility Agent,max_drawdown_pct,0.5526,ytd_return_pct,0.45,annualized_volatility_pct,0.397,2,5
+NFLX,Sentiment Agent,article_count,0.285,sentiment_std,0.0932,sentiment_mean,0.03,0,3
+NI,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+NI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NI,Market + Volatility Agent,max_drawdown_pct,0.2372,annualized_volatility_pct,0.2098,beta,0.1377,0,5
+NI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NKE,Fundamental Agent,cash_to_debt,0.4236,debt_to_assets,0.1986,cash_usd_m,0.085,0,0
+NKE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NKE,Market + Volatility Agent,max_drawdown_pct,0.5254,ytd_return_pct,0.45,annualized_volatility_pct,0.3852,2,5
+NKE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NOC,Fundamental Agent,debt_to_assets,0.0989,long_term_debt_usd_m,0.0464,cash_to_debt,0.0361,0,6
+NOC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NOC,Market + Volatility Agent,max_drawdown_pct,0.4361,annualized_volatility_pct,0.3212,ytd_return_pct,0.261,0,5
+NOC,Sentiment Agent,sentiment_mean,0.0895,article_count,0.0427,sentiment_std,0.0,0,3
+NOW,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+NOW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NOW,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.3389,2,5
+NOW,Sentiment Agent,article_count,0.285,sentiment_std,0.1181,sentiment_mean,0.0318,0,3
+NRG,Fundamental Agent,debt_to_assets,0.2521,long_term_debt_usd_m,0.0624,cash_usd_m,0.06,0,6
+NRG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NRG,Market + Volatility Agent,annualized_volatility_pct,0.5617,max_drawdown_pct,0.527,ytd_return_pct,0.45,3,5
+NRG,Sentiment Agent,article_count,0.285,sentiment_mean,0.0959,sentiment_std,0.0848,0,3
+NSC,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+NSC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NSC,Market + Volatility Agent,beta,0.3238,annualized_volatility_pct,0.2274,max_drawdown_pct,0.1496,0,5
+NSC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NTAP,Fundamental Agent,cash_to_debt,0.2289,debt_to_assets,0.1793,cash_usd_m,0.06,0,6
+NTAP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NTAP,Market + Volatility Agent,annualized_volatility_pct,0.4638,ytd_return_pct,0.45,beta,0.3646,2,5
+NTAP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NTRS,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+NTRS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NTRS,Market + Volatility Agent,ytd_return_pct,0.414,beta,0.3213,annualized_volatility_pct,0.2876,0,5
+NTRS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NUE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+NUE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NUE,Market + Volatility Agent,beta,0.4794,ytd_return_pct,0.45,sharpe_ratio,0.4093,2,5
+NUE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NVDA,Fundamental Agent,cash_to_debt,0.2024,debt_to_assets,0.0886,cash_usd_m,0.06,0,6
+NVDA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NVDA,Market + Volatility Agent,beta,0.255,annualized_volatility_pct,0.2365,ytd_return_pct,0.225,0,5
+NVDA,Sentiment Agent,article_count,0.285,sentiment_std,0.0869,sentiment_mean,0.0395,0,3
+NVR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+NVR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NVR,Market + Volatility Agent,max_drawdown_pct,0.3577,ytd_return_pct,0.3434,annualized_volatility_pct,0.3204,0,5
+NVR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NWS,Fundamental Agent,cash_to_debt,0.4685,debt_to_assets,0.1075,cash_usd_m,0.085,1,0
+NWS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NWS,Market + Volatility Agent,annualized_volatility_pct,0.3132,beta,0.2346,max_drawdown_pct,0.215,0,5
+NWS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NWSA,Fundamental Agent,cash_to_debt,0.4685,debt_to_assets,0.1075,cash_usd_m,0.085,1,0
+NWSA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NWSA,Market + Volatility Agent,annualized_volatility_pct,0.3019,beta,0.2346,max_drawdown_pct,0.2178,0,5
+NWSA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+NXPI,Fundamental Agent,debt_to_assets,0.2564,cash_to_debt,0.0853,cash_usd_m,0.06,0,6
+NXPI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+NXPI,Market + Volatility Agent,annualized_volatility_pct,0.5248,beta,0.4641,max_drawdown_pct,0.4038,2,5
+NXPI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+O,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+O,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+O,Market + Volatility Agent,max_drawdown_pct,0.2251,annualized_volatility_pct,0.1956,beta,0.181,0,5
+O,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ODFL,Fundamental Agent,cash_usd_m,0.06,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+ODFL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ODFL,Market + Volatility Agent,annualized_volatility_pct,0.4484,ytd_return_pct,0.3663,max_drawdown_pct,0.3641,0,5
+ODFL,Sentiment Agent,article_count,0.285,sentiment_std,0.0788,sentiment_mean,0.03,0,3
+OKE,Fundamental Agent,debt_to_assets,0.4351,long_term_debt_usd_m,0.183,cash_usd_m,0.06,0,6
+OKE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+OKE,Market + Volatility Agent,ytd_return_pct,0.3486,annualized_volatility_pct,0.3248,sharpe_ratio,0.2167,0,5
+OKE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+OMC,Fundamental Agent,debt_to_assets,0.123,long_term_debt_usd_m,0.057,profit_margin,0.051,0,6
+OMC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+OMC,Market + Volatility Agent,annualized_volatility_pct,0.3818,max_drawdown_pct,0.1994,beta,0.1709,0,5
+OMC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ON,Fundamental Agent,cash_to_debt,0.0992,debt_to_assets,0.072,cash_usd_m,0.03,0,6
+ON,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ON,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5102,beta,0.51,4,5
+ON,Sentiment Agent,article_count,0.1283,sentiment_mean,0.03,sentiment_std,0.0,0,3
+ORCL,Fundamental Agent,cash_usd_m,0.0917,profit_margin,0.0723,operating_margin,0.068,0,0
+ORCL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ORCL,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.45,3,5
+ORCL,Sentiment Agent,article_count,0.285,sentiment_std,0.0974,sentiment_mean,0.03,0,3
+ORLY,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+ORLY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ORLY,Market + Volatility Agent,annualized_volatility_pct,0.2956,max_drawdown_pct,0.2539,ytd_return_pct,0.244,0,5
+ORLY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+OTIS,Fundamental Agent,debt_to_assets,0.2193,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+OTIS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+OTIS,Market + Volatility Agent,ytd_return_pct,0.3667,max_drawdown_pct,0.3475,sharpe_ratio,0.2866,0,5
+OTIS,Sentiment Agent,sentiment_mean,0.03,article_count,0.0285,sentiment_std,0.0,0,3
+OXY,Fundamental Agent,debt_to_assets,0.0889,long_term_debt_usd_m,0.0722,cash_usd_m,0.03,0,6
+OXY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+OXY,Market + Volatility Agent,annualized_volatility_pct,0.4146,ytd_return_pct,0.4125,max_drawdown_pct,0.3221,0,5
+OXY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+P,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+P,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+P,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.368,2,5
+P,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PANW,Fundamental Agent,cash_usd_m,0.1,profit_margin,0.085,operating_margin,0.08,0,0
+PANW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PANW,Market + Volatility Agent,annualized_volatility_pct,0.553,ytd_return_pct,0.45,max_drawdown_pct,0.4321,2,5
+PANW,Sentiment Agent,article_count,0.285,sentiment_std,0.0881,sentiment_mean,0.03,0,3
+PAYX,Fundamental Agent,cash_to_debt,0.7036,cash_usd_m,0.085,debt_to_assets,0.085,1,0
+PAYX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PAYX,Market + Volatility Agent,max_drawdown_pct,0.3853,annualized_volatility_pct,0.348,ytd_return_pct,0.2199,0,5
+PAYX,Sentiment Agent,sentiment_mean,0.0358,article_count,0.0285,sentiment_std,0.0,0,3
+PCAR,Fundamental Agent,profit_margin,0.0255,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+PCAR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PCAR,Market + Volatility Agent,annualized_volatility_pct,0.3187,beta,0.2473,max_drawdown_pct,0.2452,0,5
+PCAR,Sentiment Agent,sentiment_mean,0.2573,article_count,0.0285,sentiment_std,0.0,0,3
+PCG,Fundamental Agent,cash_to_debt,0.1732,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+PCG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PCG,Market + Volatility Agent,annualized_volatility_pct,0.3491,max_drawdown_pct,0.3108,ytd_return_pct,0.2764,0,5
+PCG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PDD,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+PDD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PDD,Market + Volatility Agent,annualized_volatility_pct,0.2071,max_drawdown_pct,0.1892,ytd_return_pct,0.072,0,5
+PDD,Sentiment Agent,article_count,0.285,sentiment_std,0.1096,sentiment_mean,0.0564,0,3
+PEG,Fundamental Agent,debt_to_assets,0.2497,long_term_debt_usd_m,0.1203,cash_usd_m,0.06,0,6
+PEG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PEG,Market + Volatility Agent,max_drawdown_pct,0.2526,annualized_volatility_pct,0.2203,ytd_return_pct,0.1818,0,5
+PEG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PEP,Fundamental Agent,debt_to_assets,0.1243,long_term_debt_usd_m,0.1175,cash_usd_m,0.03,0,6
+PEP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PEP,Market + Volatility Agent,max_drawdown_pct,0.2915,annualized_volatility_pct,0.2498,ytd_return_pct,0.0995,0,5
+PEP,Sentiment Agent,article_count,0.285,sentiment_std,0.0869,sentiment_mean,0.03,0,3
+PFE,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+PFE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PFE,Market + Volatility Agent,annualized_volatility_pct,0.2537,max_drawdown_pct,0.1886,ytd_return_pct,0.1117,0,5
+PFE,Sentiment Agent,article_count,0.285,sentiment_std,0.105,sentiment_mean,0.03,0,3
+PFG,Fundamental Agent,cash_to_debt,0.1437,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+PFG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PFG,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3121,annualized_volatility_pct,0.2645,1,5
+PFG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PG,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+PG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PG,Market + Volatility Agent,annualized_volatility_pct,0.238,max_drawdown_pct,0.1862,beta,0.0969,0,5
+PG,Sentiment Agent,article_count,0.285,sentiment_std,0.0647,sentiment_mean,0.03,0,3
+PGR,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+PGR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PGR,Market + Volatility Agent,annualized_volatility_pct,0.305,max_drawdown_pct,0.1938,ytd_return_pct,0.1137,0,5
+PGR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PH,Fundamental Agent,debt_to_assets,0.0842,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+PH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PH,Market + Volatility Agent,ytd_return_pct,0.3663,annualized_volatility_pct,0.303,beta,0.2856,0,5
+PH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PHM,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+PHM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PHM,Market + Volatility Agent,annualized_volatility_pct,0.3907,beta,0.306,max_drawdown_pct,0.2712,0,5
+PHM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PKG,Fundamental Agent,debt_to_assets,0.1723,cash_to_debt,0.0742,cash_usd_m,0.06,0,6
+PKG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PKG,Market + Volatility Agent,annualized_volatility_pct,0.3284,max_drawdown_pct,0.2065,beta,0.204,0,5
+PKG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PLD,Fundamental Agent,debt_to_assets,0.0972,long_term_debt_usd_m,0.088,cash_usd_m,0.03,0,6
+PLD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PLD,Market + Volatility Agent,beta,0.3366,annualized_volatility_pct,0.2486,ytd_return_pct,0.1746,0,5
+PLD,Sentiment Agent,article_count,0.285,sentiment_std,0.1015,sentiment_mean,0.0542,0,3
+PLTR,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+PLTR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PLTR,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5764,beta,0.4131,2,5
+PLTR,Sentiment Agent,article_count,0.285,sentiment_std,0.1103,sentiment_mean,0.0508,0,3
+PM,Fundamental Agent,debt_to_assets,0.1194,long_term_debt_usd_m,0.0392,cash_usd_m,0.03,0,6
+PM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PM,Market + Volatility Agent,ytd_return_pct,0.3424,annualized_volatility_pct,0.3275,max_drawdown_pct,0.2219,0,5
+PM,Sentiment Agent,article_count,0.285,sentiment_std,0.0936,sentiment_mean,0.0413,0,3
+PNC,Fundamental Agent,long_term_debt_usd_m,0.1674,debt_to_assets,0.0316,cash_usd_m,0.0,0,6
+PNC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PNC,Market + Volatility Agent,annualized_volatility_pct,0.2597,beta,0.2269,ytd_return_pct,0.1934,0,5
+PNC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PNR,Fundamental Agent,debt_to_assets,0.0621,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+PNR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PNR,Market + Volatility Agent,max_drawdown_pct,0.5155,ytd_return_pct,0.45,sharpe_ratio,0.3998,2,5
+PNR,Sentiment Agent,sentiment_std,0.169,article_count,0.0997,sentiment_mean,0.0883,0,3
+PNW,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+PNW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PNW,Market + Volatility Agent,annualized_volatility_pct,0.1973,max_drawdown_pct,0.1916,sharpe_ratio,0.1455,0,5
+PNW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PODD,Fundamental Agent,debt_to_assets,0.1865,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+PODD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PODD,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.4728,ytd_return_pct,0.45,3,5
+PODD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PPG,Fundamental Agent,debt_to_assets,0.1675,cash_to_debt,0.0677,cash_usd_m,0.06,0,6
+PPG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PPG,Market + Volatility Agent,annualized_volatility_pct,0.3588,max_drawdown_pct,0.3082,beta,0.2703,0,5
+PPG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PPL,Fundamental Agent,debt_to_assets,0.2411,long_term_debt_usd_m,0.094,cash_usd_m,0.06,0,6
+PPL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PPL,Market + Volatility Agent,max_drawdown_pct,0.2225,annualized_volatility_pct,0.214,beta,0.1479,0,5
+PPL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PRU,Fundamental Agent,cash_usd_m,0.0583,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+PRU,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PRU,Market + Volatility Agent,annualized_volatility_pct,0.264,max_drawdown_pct,0.2527,beta,0.2091,0,5
+PRU,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PSA,Fundamental Agent,debt_to_assets,0.1379,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+PSA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PSA,Market + Volatility Agent,annualized_volatility_pct,0.2768,beta,0.2397,max_drawdown_pct,0.1944,0,5
+PSA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PSKY,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+PSKY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PSKY,Market + Volatility Agent,max_drawdown_pct,0.6,annualized_volatility_pct,0.5624,ytd_return_pct,0.45,3,5
+PSKY,Sentiment Agent,article_count,0.285,sentiment_std,0.0676,sentiment_mean,0.03,0,3
+PSX,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+PSX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PSX,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.42,annualized_volatility_pct,0.3714,1,5
+PSX,Sentiment Agent,sentiment_mean,0.075,article_count,0.0285,sentiment_std,0.0,0,3
+PTC,Fundamental Agent,debt_to_assets,0.0805,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+PTC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PTC,Market + Volatility Agent,max_drawdown_pct,0.5018,annualized_volatility_pct,0.4118,ytd_return_pct,0.3735,1,5
+PTC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+PWR,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+PWR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PWR,Market + Volatility Agent,annualized_volatility_pct,0.4782,ytd_return_pct,0.45,max_drawdown_pct,0.3464,2,5
+PWR,Sentiment Agent,article_count,0.285,sentiment_std,0.0932,sentiment_mean,0.0459,0,3
+PYPL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+PYPL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+PYPL,Market + Volatility Agent,max_drawdown_pct,0.4902,annualized_volatility_pct,0.428,beta,0.329,1,5
+PYPL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+Q,Fundamental Agent,debt_to_assets,0.2005,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+Q,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+Q,Market + Volatility Agent,annualized_volatility_pct,0.6,ytd_return_pct,0.45,max_drawdown_pct,0.4166,2,5
+Q,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+QCOM,Fundamental Agent,cash_to_debt,0.0798,debt_to_assets,0.0722,long_term_debt_usd_m,0.0378,0,6
+QCOM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+QCOM,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.4856,beta,0.4284,2,5
+QCOM,Sentiment Agent,article_count,0.285,sentiment_std,0.0691,sentiment_mean,0.03,0,3
+RCL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+RCL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RCL,Market + Volatility Agent,annualized_volatility_pct,0.5418,beta,0.4462,max_drawdown_pct,0.3928,1,5
+RCL,Sentiment Agent,article_count,0.285,sentiment_std,0.0899,sentiment_mean,0.03,0,3
+RDDT,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+RDDT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RDDT,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,3,5
+RDDT,Sentiment Agent,article_count,0.285,sentiment_std,0.0882,sentiment_mean,0.0344,0,3
+REG,Fundamental Agent,debt_to_assets,0.1093,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+REG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+REG,Market + Volatility Agent,beta,0.2065,annualized_volatility_pct,0.1885,max_drawdown_pct,0.1502,0,5
+REG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+REGN,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+REGN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+REGN,Market + Volatility Agent,annualized_volatility_pct,0.3649,ytd_return_pct,0.2978,max_drawdown_pct,0.2729,0,5
+REGN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+RF,Fundamental Agent,debt_to_assets,0.06,long_term_debt_usd_m,0.057,cash_usd_m,0.0,0,6
+RF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RF,Market + Volatility Agent,annualized_volatility_pct,0.2888,beta,0.255,max_drawdown_pct,0.2148,0,5
+RF,Sentiment Agent,sentiment_mean,0.1145,article_count,0.0285,sentiment_std,0.0,0,3
+RJF,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+RJF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RJF,Market + Volatility Agent,annualized_volatility_pct,0.2873,beta,0.2346,max_drawdown_pct,0.1837,0,5
+RJF,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+RL,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+RL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RL,Market + Volatility Agent,annualized_volatility_pct,0.3923,beta,0.3443,max_drawdown_pct,0.2362,0,5
+RL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+RMD,Fundamental Agent,cash_to_debt,0.1307,debt_to_assets,0.0863,cash_usd_m,0.085,0,0
+RMD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RMD,Market + Volatility Agent,max_drawdown_pct,0.4123,annualized_volatility_pct,0.3365,ytd_return_pct,0.2649,0,5
+RMD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ROK,Fundamental Agent,cash_to_debt,0.0682,debt_to_assets,0.0587,cash_usd_m,0.03,0,6
+ROK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ROK,Market + Volatility Agent,ytd_return_pct,0.4086,beta,0.3876,annualized_volatility_pct,0.3587,0,5
+ROK,Sentiment Agent,article_count,0.285,sentiment_std,0.0609,sentiment_mean,0.0529,0,3
+ROL,Fundamental Agent,debt_to_assets,0.0421,cash_to_debt,0.0306,cash_usd_m,0.03,0,6
+ROL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ROL,Market + Volatility Agent,max_drawdown_pct,0.5826,ytd_return_pct,0.45,sharpe_ratio,0.42,2,5
+ROL,Sentiment Agent,article_count,0.285,sentiment_std,0.0802,sentiment_mean,0.0394,0,3
+ROP,Fundamental Agent,debt_to_assets,0.1481,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+ROP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ROP,Market + Volatility Agent,max_drawdown_pct,0.4336,ytd_return_pct,0.3657,annualized_volatility_pct,0.3421,0,5
+ROP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ROST,Fundamental Agent,cash_to_debt,0.5346,debt_to_assets,0.1033,cash_usd_m,0.06,1,6
+ROST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ROST,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.3276,annualized_volatility_pct,0.2856,1,5
+ROST,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+RSG,Fundamental Agent,debt_to_assets,0.1226,long_term_debt_usd_m,0.0366,cash_usd_m,0.03,0,6
+RSG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RSG,Market + Volatility Agent,annualized_volatility_pct,0.2303,max_drawdown_pct,0.1817,beta,0.102,0,5
+RSG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+RTX,Fundamental Agent,long_term_debt_usd_m,0.1171,debt_to_assets,0.0757,cash_usd_m,0.03,0,6
+RTX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RTX,Market + Volatility Agent,annualized_volatility_pct,0.2989,max_drawdown_pct,0.2318,ytd_return_pct,0.1608,0,5
+RTX,Sentiment Agent,article_count,0.285,sentiment_std,0.0933,sentiment_mean,0.0452,0,3
+RVTY,Fundamental Agent,debt_to_assets,0.1725,cash_to_debt,0.0632,cash_usd_m,0.06,0,6
+RVTY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+RVTY,Market + Volatility Agent,annualized_volatility_pct,0.4618,ytd_return_pct,0.45,max_drawdown_pct,0.3571,2,5
+RVTY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SBAC,Fundamental Agent,debt_to_assets,0.6,long_term_debt_usd_m,0.0775,cash_usd_m,0.06,1,6
+SBAC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SBAC,Market + Volatility Agent,annualized_volatility_pct,0.3529,max_drawdown_pct,0.3479,beta,0.2499,0,5
+SBAC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SBUX,Fundamental Agent,debt_to_assets,0.149,long_term_debt_usd_m,0.0444,profit_margin,0.0255,0,6
+SBUX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SBUX,Market + Volatility Agent,annualized_volatility_pct,0.3217,beta,0.2448,max_drawdown_pct,0.1741,0,5
+SBUX,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SCHW,Fundamental Agent,cash_usd_m,0.26,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+SCHW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SCHW,Market + Volatility Agent,annualized_volatility_pct,0.2798,beta,0.1912,max_drawdown_pct,0.1786,0,5
+SCHW,Sentiment Agent,article_count,0.285,sentiment_std,0.1389,sentiment_mean,0.0649,0,3
+SHOP,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+SHOP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SHOP,Market + Volatility Agent,annualized_volatility_pct,0.3,beta,0.255,max_drawdown_pct,0.2291,0,5
+SHOP,Sentiment Agent,article_count,0.285,sentiment_std,0.0748,sentiment_mean,0.0455,0,3
+SHW,Fundamental Agent,debt_to_assets,0.2477,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+SHW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SHW,Market + Volatility Agent,annualized_volatility_pct,0.3163,beta,0.2779,max_drawdown_pct,0.267,0,5
+SHW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SJM,Fundamental Agent,debt_to_assets,0.2083,long_term_debt_usd_m,0.057,cash_usd_m,0.0,0,6
+SJM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SJM,Market + Volatility Agent,annualized_volatility_pct,0.3138,max_drawdown_pct,0.2738,ytd_return_pct,0.1628,0,5
+SJM,Sentiment Agent,article_count,0.285,sentiment_std,0.0713,sentiment_mean,0.03,0,3
+SLB,Fundamental Agent,profit_margin,0.0255,operating_margin,0.024,cash_usd_m,0.0,0,6
+SLB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SLB,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.419,max_drawdown_pct,0.2672,1,5
+SLB,Sentiment Agent,article_count,0.285,sentiment_std,0.1322,sentiment_mean,0.0527,0,3
+SMCI,Fundamental Agent,cash_usd_m,0.1,profit_margin,0.085,operating_margin,0.08,0,0
+SMCI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SMCI,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.51,3,5
+SMCI,Sentiment Agent,article_count,0.285,sentiment_mean,0.1516,sentiment_std,0.1065,0,3
+SNA,Fundamental Agent,cash_to_debt,0.1532,debt_to_assets,0.0456,cash_usd_m,0.03,0,6
+SNA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SNA,Market + Volatility Agent,annualized_volatility_pct,0.2335,beta,0.181,max_drawdown_pct,0.1537,0,5
+SNA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SNDK,Fundamental Agent,cash_usd_m,0.085,debt_to_assets,0.085,long_term_debt_usd_m,0.0808,0,0
+SNDK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SNDK,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,ytd_return_pct,0.45,3,5
+SNDK,Sentiment Agent,article_count,0.285,sentiment_std,0.0949,sentiment_mean,0.03,0,3
+SNPS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+SNPS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SNPS,Market + Volatility Agent,annualized_volatility_pct,0.5053,max_drawdown_pct,0.4141,beta,0.3136,1,5
+SNPS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SO,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+SO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SO,Market + Volatility Agent,annualized_volatility_pct,0.2041,max_drawdown_pct,0.1894,ytd_return_pct,0.1095,0,5
+SO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SOLV,Fundamental Agent,cash_usd_m,0.06,debt_to_assets,0.06,long_term_debt_usd_m,0.057,0,6
+SOLV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SOLV,Market + Volatility Agent,annualized_volatility_pct,0.339,max_drawdown_pct,0.3071,ytd_return_pct,0.2407,0,5
+SOLV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SPG,Fundamental Agent,debt_to_assets,0.4493,long_term_debt_usd_m,0.1383,cash_usd_m,0.06,0,6
+SPG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SPG,Market + Volatility Agent,beta,0.334,annualized_volatility_pct,0.2284,ytd_return_pct,0.1737,0,5
+SPG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SPGI,Fundamental Agent,debt_to_assets,0.0568,long_term_debt_usd_m,0.0325,cash_usd_m,0.03,0,6
+SPGI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SPGI,Market + Volatility Agent,annualized_volatility_pct,0.3328,beta,0.2754,max_drawdown_pct,0.2509,0,5
+SPGI,Sentiment Agent,sentiment_mean,0.1145,article_count,0.0285,sentiment_std,0.0,0,3
+SRE,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+SRE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SRE,Market + Volatility Agent,max_drawdown_pct,0.2479,annualized_volatility_pct,0.2378,ytd_return_pct,0.1504,0,5
+SRE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+STE,Fundamental Agent,debt_to_assets,0.1135,long_term_debt_usd_m,0.057,profit_margin,0.051,0,6
+STE,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+STE,Market + Volatility Agent,annualized_volatility_pct,0.2848,max_drawdown_pct,0.2759,beta,0.232,0,5
+STE,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+STLD,Fundamental Agent,debt_to_assets,0.1298,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+STLD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+STLD,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4346,beta,0.3876,1,5
+STLD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+STT,Fundamental Agent,profit_margin,0.051,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+STT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+STT,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.42,beta,0.3621,1,5
+STT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+STX,Fundamental Agent,cash_usd_m,0.085,profit_margin,0.0723,operating_margin,0.068,0,0
+STX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+STX,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.51,ytd_return_pct,0.45,3,5
+STX,Sentiment Agent,article_count,0.285,sentiment_std,0.0789,sentiment_mean,0.0452,0,3
+STZ,Fundamental Agent,debt_to_assets,0.2963,long_term_debt_usd_m,0.0609,cash_usd_m,0.06,0,6
+STZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+STZ,Market + Volatility Agent,max_drawdown_pct,0.3743,annualized_volatility_pct,0.3439,ytd_return_pct,0.2354,0,5
+STZ,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SW,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+SW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SW,Market + Volatility Agent,annualized_volatility_pct,0.513,max_drawdown_pct,0.366,beta,0.2371,1,5
+SW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SWK,Fundamental Agent,debt_to_assets,0.1547,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+SWK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SWK,Market + Volatility Agent,annualized_volatility_pct,0.4486,ytd_return_pct,0.3381,max_drawdown_pct,0.3137,0,5
+SWK,Sentiment Agent,article_count,0.285,sentiment_std,0.0882,sentiment_mean,0.0309,0,3
+SWKS,Fundamental Agent,cash_to_debt,0.0977,debt_to_assets,0.0353,cash_usd_m,0.03,0,6
+SWKS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SWKS,Market + Volatility Agent,annualized_volatility_pct,0.5942,max_drawdown_pct,0.3959,beta,0.3876,1,5
+SWKS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SYF,Fundamental Agent,cash_to_debt,0.1245,long_term_debt_usd_m,0.0441,cash_usd_m,0.0428,0,6
+SYF,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SYF,Market + Volatility Agent,annualized_volatility_pct,0.3613,beta,0.334,max_drawdown_pct,0.3016,0,5
+SYF,Sentiment Agent,sentiment_mean,0.2453,article_count,0.0285,sentiment_std,0.0,0,3
+SYK,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+SYK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SYK,Market + Volatility Agent,annualized_volatility_pct,0.3422,ytd_return_pct,0.3194,max_drawdown_pct,0.3152,0,5
+SYK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+SYY,Fundamental Agent,cash_usd_m,0.1,profit_margin,0.085,operating_margin,0.08,0,0
+SYY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+SYY,Market + Volatility Agent,annualized_volatility_pct,0.2525,max_drawdown_pct,0.1788,beta,0.1606,0,5
+SYY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+T,Fundamental Agent,long_term_debt_usd_m,0.285,debt_to_assets,0.0928,cash_usd_m,0.03,0,6
+T,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+T,Market + Volatility Agent,max_drawdown_pct,0.3437,annualized_volatility_pct,0.3029,beta,0.1096,0,5
+T,Sentiment Agent,article_count,0.285,sentiment_std,0.0875,sentiment_mean,0.03,0,3
+TDG,Fundamental Agent,debt_to_assets,0.3,long_term_debt_usd_m,0.0695,cash_to_debt,0.0346,0,6
+TDG,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TDG,Market + Volatility Agent,annualized_volatility_pct,0.3149,max_drawdown_pct,0.2681,beta,0.2269,0,5
+TDG,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TDY,Fundamental Agent,debt_to_assets,0.134,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+TDY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TDY,Market + Volatility Agent,annualized_volatility_pct,0.2939,beta,0.232,max_drawdown_pct,0.217,0,5
+TDY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TEAM,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+TEAM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TEAM,Market + Volatility Agent,annualized_volatility_pct,0.3,max_drawdown_pct,0.3,ytd_return_pct,0.225,0,5
+TEAM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TECH,Fundamental Agent,cash_usd_m,0.1,profit_margin,0.085,operating_margin,0.08,0,0
+TECH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TECH,Market + Volatility Agent,annualized_volatility_pct,0.4459,max_drawdown_pct,0.3784,beta,0.3238,0,5
+TECH,Sentiment Agent,article_count,0.285,sentiment_std,0.0999,sentiment_mean,0.0453,0,3
+TEL,Fundamental Agent,debt_to_assets,0.0589,cash_usd_m,0.03,cash_to_debt,0.0286,0,6
+TEL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TEL,Market + Volatility Agent,annualized_volatility_pct,0.4128,beta,0.2958,max_drawdown_pct,0.2274,0,5
+TEL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TER,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+TER,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TER,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.4539,ytd_return_pct,0.45,3,5
+TER,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TFC,Fundamental Agent,long_term_debt_usd_m,0.1993,debt_to_assets,0.06,cash_usd_m,0.0,0,6
+TFC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TFC,Market + Volatility Agent,annualized_volatility_pct,0.2886,max_drawdown_pct,0.248,beta,0.2193,0,5
+TFC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TGT,Fundamental Agent,debt_to_assets,0.1452,long_term_debt_usd_m,0.0821,profit_margin,0.051,0,6
+TGT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TGT,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.42,annualized_volatility_pct,0.3682,1,5
+TGT,Sentiment Agent,article_count,0.285,sentiment_std,0.1297,sentiment_mean,0.0576,0,3
+TJX,Fundamental Agent,cash_usd_m,0.03,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,6
+TJX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TJX,Market + Volatility Agent,max_drawdown_pct,0.3011,annualized_volatility_pct,0.2426,beta,0.1504,0,5
+TJX,Sentiment Agent,article_count,0.285,sentiment_std,0.0731,sentiment_mean,0.0545,0,3
+TKO,Fundamental Agent,debt_to_assets,0.1294,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+TKO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TKO,Market + Volatility Agent,annualized_volatility_pct,0.3709,max_drawdown_pct,0.2603,beta,0.1632,0,5
+TKO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TMO,Fundamental Agent,long_term_debt_usd_m,0.2233,debt_to_assets,0.213,cash_to_debt,0.0679,0,6
+TMO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TMO,Market + Volatility Agent,max_drawdown_pct,0.3415,annualized_volatility_pct,0.319,ytd_return_pct,0.2692,0,5
+TMO,Sentiment Agent,article_count,0.285,sentiment_std,0.0578,sentiment_mean,0.03,0,3
+TMUS,Fundamental Agent,long_term_debt_usd_m,0.223,debt_to_assets,0.1129,cash_usd_m,0.03,0,6
+TMUS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TMUS,Market + Volatility Agent,ytd_return_pct,0.3527,annualized_volatility_pct,0.3461,max_drawdown_pct,0.3162,0,5
+TMUS,Sentiment Agent,article_count,0.285,sentiment_std,0.0724,sentiment_mean,0.03,0,3
+TPL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+TPL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TPL,Market + Volatility Agent,annualized_volatility_pct,0.555,max_drawdown_pct,0.4198,beta,0.1581,1,5
+TPL,Sentiment Agent,article_count,0.285,sentiment_std,0.0793,sentiment_mean,0.0428,0,3
+TPR,Fundamental Agent,debt_to_assets,0.3072,cash_to_debt,0.1769,cash_usd_m,0.085,0,0
+TPR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TPR,Market + Volatility Agent,annualized_volatility_pct,0.4328,beta,0.3646,max_drawdown_pct,0.3073,0,5
+TPR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TRGP,Fundamental Agent,debt_to_assets,0.4114,long_term_debt_usd_m,0.0808,cash_usd_m,0.06,0,6
+TRGP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TRGP,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.42,annualized_volatility_pct,0.3444,1,5
+TRGP,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TRI,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+TRI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TRI,Market + Volatility Agent,max_drawdown_pct,0.3,ytd_return_pct,0.225,annualized_volatility_pct,0.1805,0,5
+TRI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TRMB,Fundamental Agent,cash_to_debt,0.1434,debt_to_assets,0.088,cash_usd_m,0.06,0,6
+TRMB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TRMB,Market + Volatility Agent,max_drawdown_pct,0.4894,annualized_volatility_pct,0.3782,ytd_return_pct,0.3695,1,5
+TRMB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TROW,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+TROW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TROW,Market + Volatility Agent,beta,0.3774,annualized_volatility_pct,0.2815,max_drawdown_pct,0.221,0,5
+TROW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TRV,Fundamental Agent,profit_margin,0.0255,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+TRV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TRV,Market + Volatility Agent,ytd_return_pct,0.3675,sharpe_ratio,0.2434,annualized_volatility_pct,0.2311,0,5
+TRV,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TSCO,Fundamental Agent,cash_to_debt,0.54,cash_usd_m,0.06,debt_to_assets,0.06,1,6
+TSCO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TSCO,Market + Volatility Agent,max_drawdown_pct,0.5249,ytd_return_pct,0.45,annualized_volatility_pct,0.3706,2,5
+TSCO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TSLA,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.0484,debt_to_assets,0.03,0,6
+TSLA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TSLA,Market + Volatility Agent,annualized_volatility_pct,0.5332,beta,0.4692,max_drawdown_pct,0.4194,2,5
+TSLA,Sentiment Agent,article_count,0.285,sentiment_std,0.1062,sentiment_mean,0.0344,0,3
+TSN,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+TSN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TSN,Market + Volatility Agent,annualized_volatility_pct,0.2981,max_drawdown_pct,0.2773,beta,0.0944,0,5
+TSN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TT,Fundamental Agent,debt_to_assets,0.071,cash_to_debt,0.045,cash_usd_m,0.03,0,6
+TT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TT,Market + Volatility Agent,annualized_volatility_pct,0.3349,beta,0.306,max_drawdown_pct,0.1932,0,5
+TT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TTWO,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+TTWO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TTWO,Market + Volatility Agent,annualized_volatility_pct,0.3818,max_drawdown_pct,0.2984,ytd_return_pct,0.2741,0,5
+TTWO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TXN,Fundamental Agent,debt_to_assets,0.1149,long_term_debt_usd_m,0.0388,cash_to_debt,0.0318,0,6
+TXN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TXN,Market + Volatility Agent,annualized_volatility_pct,0.4606,ytd_return_pct,0.45,beta,0.334,2,5
+TXN,Sentiment Agent,article_count,0.285,sentiment_std,0.0846,sentiment_mean,0.03,0,3
+TXT,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,long_term_debt_usd_m,0.0,0,6
+TXT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TXT,Market + Volatility Agent,annualized_volatility_pct,0.304,max_drawdown_pct,0.2972,beta,0.2295,0,5
+TXT,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+TYL,Fundamental Agent,cash_to_debt,0.2286,debt_to_assets,0.0319,cash_usd_m,0.03,0,6
+TYL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+TYL,Market + Volatility Agent,max_drawdown_pct,0.4948,annualized_volatility_pct,0.4724,ytd_return_pct,0.45,3,5
+TYL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+UAL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+UAL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UAL,Market + Volatility Agent,annualized_volatility_pct,0.5778,max_drawdown_pct,0.33,beta,0.3238,1,5
+UAL,Sentiment Agent,article_count,0.285,sentiment_mean,0.1359,sentiment_std,0.0504,0,3
+UBER,Fundamental Agent,cash_to_debt,0.066,debt_to_assets,0.0561,cash_usd_m,0.03,0,6
+UBER,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UBER,Market + Volatility Agent,max_drawdown_pct,0.423,annualized_volatility_pct,0.419,ytd_return_pct,0.3792,0,5
+UBER,Sentiment Agent,article_count,0.285,sentiment_std,0.0564,sentiment_mean,0.035,0,3
+UDR,Fundamental Agent,debt_to_assets,0.153,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+UDR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UDR,Market + Volatility Agent,annualized_volatility_pct,0.2358,max_drawdown_pct,0.2207,beta,0.1734,0,5
+UDR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+UHS,Fundamental Agent,debt_to_assets,0.1868,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+UHS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UHS,Market + Volatility Agent,max_drawdown_pct,0.4541,annualized_volatility_pct,0.3506,beta,0.2703,1,5
+UHS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ULTA,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+ULTA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ULTA,Market + Volatility Agent,annualized_volatility_pct,0.3688,max_drawdown_pct,0.3665,beta,0.2167,0,5
+ULTA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+UNH,Fundamental Agent,cash_usd_m,0.1519,profit_margin,0.051,operating_margin,0.048,0,6
+UNH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UNH,Market + Volatility Agent,annualized_volatility_pct,0.3376,max_drawdown_pct,0.2082,sharpe_ratio,0.1646,0,5
+UNH,Sentiment Agent,article_count,0.285,sentiment_std,0.0455,sentiment_mean,0.03,0,3
+UNP,Fundamental Agent,debt_to_assets,0.1456,long_term_debt_usd_m,0.0929,cash_usd_m,0.03,0,6
+UNP,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UNP,Market + Volatility Agent,ytd_return_pct,0.257,annualized_volatility_pct,0.2556,beta,0.2473,0,5
+UNP,Sentiment Agent,article_count,0.285,sentiment_std,0.0577,sentiment_mean,0.0461,0,3
+UPS,Fundamental Agent,debt_to_assets,0.09,long_term_debt_usd_m,0.0599,cash_to_debt,0.0392,0,6
+UPS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+UPS,Market + Volatility Agent,annualized_volatility_pct,0.3354,beta,0.2652,max_drawdown_pct,0.237,0,5
+UPS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+URI,Fundamental Agent,debt_to_assets,0.1435,long_term_debt_usd_m,0.0384,cash_usd_m,0.03,0,6
+URI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+URI,Market + Volatility Agent,beta,0.4565,annualized_volatility_pct,0.435,max_drawdown_pct,0.3154,1,5
+URI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+USB,Fundamental Agent,long_term_debt_usd_m,0.1135,debt_to_assets,0.03,profit_margin,0.0255,0,6
+USB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+USB,Market + Volatility Agent,ytd_return_pct,0.3117,annualized_volatility_pct,0.2676,beta,0.2473,0,5
+USB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+V,Fundamental Agent,debt_to_assets,0.0692,cash_to_debt,0.0633,long_term_debt_usd_m,0.0477,0,6
+V,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+V,Market + Volatility Agent,annualized_volatility_pct,0.2428,max_drawdown_pct,0.2009,beta,0.1938,0,5
+V,Sentiment Agent,article_count,0.285,sentiment_std,0.104,sentiment_mean,0.0469,0,3
+VEEV,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+VEEV,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VEEV,Market + Volatility Agent,max_drawdown_pct,0.5999,annualized_volatility_pct,0.4796,beta,0.2473,2,5
+VEEV,Sentiment Agent,article_count,0.285,sentiment_std,0.1101,sentiment_mean,0.0444,0,3
+VICI,Fundamental Agent,debt_to_assets,0.2213,long_term_debt_usd_m,0.0954,cash_usd_m,0.06,0,6
+VICI,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VICI,Market + Volatility Agent,ytd_return_pct,0.3307,sharpe_ratio,0.32,max_drawdown_pct,0.2941,0,5
+VICI,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VLO,Fundamental Agent,cash_to_debt,0.1555,debt_to_assets,0.0806,cash_usd_m,0.06,0,6
+VLO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VLO,Market + Volatility Agent,ytd_return_pct,0.45,annualized_volatility_pct,0.4369,sharpe_ratio,0.42,1,5
+VLO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VLTO,Fundamental Agent,debt_to_assets,0.2771,cash_to_debt,0.0782,cash_usd_m,0.06,0,6
+VLTO,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VLTO,Market + Volatility Agent,annualized_volatility_pct,0.267,max_drawdown_pct,0.2656,beta,0.1938,0,5
+VLTO,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VMC,Fundamental Agent,debt_to_assets,0.2189,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+VMC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VMC,Market + Volatility Agent,annualized_volatility_pct,0.3323,max_drawdown_pct,0.3007,beta,0.2677,0,5
+VMC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VMRK,Fundamental Agent,debt_to_assets,0.1112,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+VMRK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VMRK,Market + Volatility Agent,annualized_volatility_pct,0.2476,max_drawdown_pct,0.1763,beta,0.1377,0,5
+VMRK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VRSK,Fundamental Agent,debt_to_assets,0.2175,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+VRSK,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VRSK,Market + Volatility Agent,ytd_return_pct,0.4311,annualized_volatility_pct,0.4128,max_drawdown_pct,0.3739,0,5
+VRSK,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VRSN,Fundamental Agent,cash_usd_m,0.03,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,0,6
+VRSN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VRSN,Market + Volatility Agent,annualized_volatility_pct,0.3391,max_drawdown_pct,0.2347,beta,0.1785,0,5
+VRSN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VRT,Fundamental Agent,debt_to_assets,0.0962,cash_to_debt,0.036,cash_usd_m,0.03,0,6
+VRT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VRT,Market + Volatility Agent,annualized_volatility_pct,0.6,beta,0.51,ytd_return_pct,0.45,3,5
+VRT,Sentiment Agent,article_count,0.285,sentiment_std,0.1042,sentiment_mean,0.0377,0,3
+VRTX,Fundamental Agent,cash_usd_m,0.0315,profit_margin,0.0255,operating_margin,0.024,0,6
+VRTX,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VRTX,Market + Volatility Agent,annualized_volatility_pct,0.3298,ytd_return_pct,0.3234,max_drawdown_pct,0.2041,0,5
+VRTX,Sentiment Agent,article_count,0.285,sentiment_std,0.0967,sentiment_mean,0.042,0,3
+VST,Fundamental Agent,debt_to_assets,0.2589,long_term_debt_usd_m,0.0929,cash_usd_m,0.06,0,6
+VST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VST,Market + Volatility Agent,annualized_volatility_pct,0.5688,max_drawdown_pct,0.4116,ytd_return_pct,0.3893,1,5
+VST,Sentiment Agent,article_count,0.285,sentiment_std,0.0645,sentiment_mean,0.0434,0,3
+VTR,Fundamental Agent,debt_to_assets,0.1549,long_term_debt_usd_m,0.0385,cash_usd_m,0.03,0,6
+VTR,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VTR,Market + Volatility Agent,ytd_return_pct,0.3007,annualized_volatility_pct,0.2516,sharpe_ratio,0.2459,0,5
+VTR,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VTRS,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+VTRS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VTRS,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.4137,annualized_volatility_pct,0.3581,1,5
+VTRS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+VZ,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+VZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+VZ,Market + Volatility Agent,annualized_volatility_pct,0.2734,max_drawdown_pct,0.1997,ytd_return_pct,0.1587,0,5
+VZ,Sentiment Agent,article_count,0.285,sentiment_std,0.0906,sentiment_mean,0.0307,0,3
+WAB,Fundamental Agent,debt_to_assets,0.0638,long_term_debt_usd_m,0.0285,profit_margin,0.0255,0,6
+WAB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WAB,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.2992,annualized_volatility_pct,0.2948,1,5
+WAB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WAT,Fundamental Agent,debt_to_assets,0.2147,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+WAT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WAT,Market + Volatility Agent,ytd_return_pct,0.379,annualized_volatility_pct,0.3676,max_drawdown_pct,0.3049,0,5
+WAT,Sentiment Agent,article_count,0.285,sentiment_std,0.0733,sentiment_mean,0.0482,0,3
+WBD,Fundamental Agent,debt_to_assets,0.2267,long_term_debt_usd_m,0.2252,cash_usd_m,0.06,0,6
+WBD,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WBD,Market + Volatility Agent,ytd_return_pct,0.45,beta,0.4003,sharpe_ratio,0.365,1,5
+WBD,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WDAY,Fundamental Agent,cash_to_debt,0.0854,debt_to_assets,0.0543,cash_usd_m,0.03,0,6
+WDAY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WDAY,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.6,beta,0.2754,2,5
+WDAY,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WDC,Fundamental Agent,debt_to_assets,0.286,cash_to_debt,0.1717,cash_usd_m,0.085,0,0
+WDC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WDC,Market + Volatility Agent,annualized_volatility_pct,0.6,max_drawdown_pct,0.5374,beta,0.51,4,5
+WDC,Sentiment Agent,article_count,0.285,sentiment_std,0.0806,sentiment_mean,0.03,0,3
+WEC,Fundamental Agent,debt_to_assets,0.0831,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+WEC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WEC,Market + Volatility Agent,annualized_volatility_pct,0.1925,max_drawdown_pct,0.1735,beta,0.1173,0,5
+WEC,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WELL,Fundamental Agent,debt_to_assets,0.0856,long_term_debt_usd_m,0.0547,cash_to_debt,0.0354,0,6
+WELL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WELL,Market + Volatility Agent,ytd_return_pct,0.4116,sharpe_ratio,0.2915,annualized_volatility_pct,0.271,0,5
+WELL,Sentiment Agent,article_count,0.285,sentiment_mean,0.1207,sentiment_std,0.0752,0,3
+WFC,Fundamental Agent,long_term_debt_usd_m,0.57,debt_to_assets,0.06,cash_usd_m,0.0,1,6
+WFC,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WFC,Market + Volatility Agent,annualized_volatility_pct,0.3114,max_drawdown_pct,0.2671,beta,0.2346,0,5
+WFC,Sentiment Agent,article_count,0.285,sentiment_mean,0.1086,sentiment_std,0.0584,0,3
+WM,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+WM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WM,Market + Volatility Agent,annualized_volatility_pct,0.2392,max_drawdown_pct,0.1969,beta,0.1096,0,5
+WM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WMB,Fundamental Agent,profit_margin,0.051,operating_margin,0.048,cash_usd_m,0.0,0,6
+WMB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WMB,Market + Volatility Agent,annualized_volatility_pct,0.29,ytd_return_pct,0.1637,beta,0.1581,0,5
+WMB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WMT,Fundamental Agent,long_term_debt_usd_m,0.2052,debt_to_assets,0.0856,cash_to_debt,0.0678,0,6
+WMT,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WMT,Market + Volatility Agent,annualized_volatility_pct,0.2916,max_drawdown_pct,0.2137,beta,0.153,0,5
+WMT,Sentiment Agent,article_count,0.285,sentiment_std,0.0812,sentiment_mean,0.0323,0,3
+WRB,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,long_term_debt_usd_m,0.0,0,6
+WRB,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WRB,Market + Volatility Agent,annualized_volatility_pct,0.2576,max_drawdown_pct,0.1748,ytd_return_pct,0.0996,0,5
+WRB,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WSM,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+WSM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WSM,Market + Volatility Agent,annualized_volatility_pct,0.4021,beta,0.3723,max_drawdown_pct,0.2792,0,5
+WSM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WST,Fundamental Agent,cash_to_debt,0.27,cash_usd_m,0.03,debt_to_assets,0.03,0,6
+WST,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WST,Market + Volatility Agent,ytd_return_pct,0.4414,annualized_volatility_pct,0.3534,max_drawdown_pct,0.2964,0,5
+WST,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WTW,Fundamental Agent,debt_to_assets,0.1867,cash_usd_m,0.06,long_term_debt_usd_m,0.057,0,6
+WTW,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WTW,Market + Volatility Agent,annualized_volatility_pct,0.3185,max_drawdown_pct,0.2465,ytd_return_pct,0.2028,0,5
+WTW,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+WY,Fundamental Agent,debt_to_assets,0.0895,cash_to_debt,0.031,cash_usd_m,0.03,0,6
+WY,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WY,Market + Volatility Agent,max_drawdown_pct,0.3724,annualized_volatility_pct,0.3122,ytd_return_pct,0.3059,0,5
+WY,Sentiment Agent,article_count,0.285,sentiment_std,0.0983,sentiment_mean,0.0378,0,3
+WYNN,Fundamental Agent,debt_to_assets,0.4519,cash_to_debt,0.0622,long_term_debt_usd_m,0.0601,1,6
+WYNN,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+WYNN,Market + Volatility Agent,max_drawdown_pct,0.5078,ytd_return_pct,0.45,annualized_volatility_pct,0.3899,2,5
+WYNN,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+XEL,Fundamental Agent,cash_usd_m,0.03,profit_margin,0.0255,operating_margin,0.024,0,6
+XEL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+XEL,Market + Volatility Agent,annualized_volatility_pct,0.2203,max_drawdown_pct,0.198,ytd_return_pct,0.1065,0,5
+XEL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+XOM,Fundamental Agent,cash_usd_m,0.0,long_term_debt_usd_m,0.0,debt_to_assets,0.0,0,0
+XOM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+XOM,Market + Volatility Agent,ytd_return_pct,0.45,sharpe_ratio,0.358,annualized_volatility_pct,0.3103,1,5
+XOM,Sentiment Agent,article_count,0.285,sentiment_std,0.087,sentiment_mean,0.0342,0,3
+XYL,Fundamental Agent,cash_to_debt,0.149,debt_to_assets,0.0739,cash_usd_m,0.06,0,6
+XYL,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+XYL,Market + Volatility Agent,ytd_return_pct,0.4001,max_drawdown_pct,0.3636,annualized_volatility_pct,0.2903,0,5
+XYL,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+XYZ,Fundamental Agent,cash_usd_m,0.06,profit_margin,0.051,operating_margin,0.048,0,6
+XYZ,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+XYZ,Market + Volatility Agent,annualized_volatility_pct,0.5352,beta,0.51,max_drawdown_pct,0.4738,3,5
+XYZ,Sentiment Agent,article_count,0.285,sentiment_std,0.0903,sentiment_mean,0.0443,0,3
+YUM,Fundamental Agent,debt_to_assets,0.1412,cash_usd_m,0.03,long_term_debt_usd_m,0.0285,0,6
+YUM,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+YUM,Market + Volatility Agent,annualized_volatility_pct,0.286,max_drawdown_pct,0.2225,beta,0.1403,0,5
+YUM,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ZBH,Fundamental Agent,cash_to_debt,0.1014,cash_usd_m,0.06,debt_to_assets,0.06,0,6
+ZBH,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ZBH,Market + Volatility Agent,annualized_volatility_pct,0.3354,max_drawdown_pct,0.205,ytd_return_pct,0.1473,0,5
+ZBH,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ZBRA,Fundamental Agent,cash_usd_m,0.03,debt_to_assets,0.03,long_term_debt_usd_m,0.0285,0,6
+ZBRA,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ZBRA,Market + Volatility Agent,annualized_volatility_pct,0.5018,max_drawdown_pct,0.4154,beta,0.4106,1,5
+ZBRA,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ZS,Fundamental Agent,cash_to_debt,0.1412,debt_to_assets,0.1026,cash_usd_m,0.03,0,6
+ZS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ZS,Market + Volatility Agent,max_drawdown_pct,0.3,annualized_volatility_pct,0.2525,beta,0.1428,0,5
+ZS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
+ZTS,Fundamental Agent,profit_margin,0.0255,cash_usd_m,0.0,long_term_debt_usd_m,0.0,0,6
+ZTS,Macro-Economic Agent,vix,0.33,fed_funds_rate,0.2904,wti_oil,0.2127,0,5
+ZTS,Market + Volatility Agent,max_drawdown_pct,0.4744,ytd_return_pct,0.45,annualized_volatility_pct,0.3589,2,5
+ZTS,Sentiment Agent,article_count,0.0332,sentiment_mean,0.0,sentiment_std,0.0,0,0
