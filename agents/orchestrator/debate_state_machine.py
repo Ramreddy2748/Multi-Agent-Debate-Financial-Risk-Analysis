@@ -25,16 +25,13 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from agents.orchestrator.critic_agent import (
     _label_from_score,
     _llm_critic,
+    _enforce_review_guardrails,
+    _system_mode,
     _weighted_critic,
-    run_fundamental_agent,
-    run_macro_agent_safe,
-    run_market_sentiment_agent,
+    run_specialist_agents,
 )
 from agents.orchestrator.monitoring import log_verdict_run
 from agents.orchestrator.policy_evidence import build_policy_evidence_trail
-from agents.sentiment.finbert import run_sentiment_agent
-
-
 class DebateState(TypedDict, total=False):
     ticker: str
     company_name: str | None
@@ -51,12 +48,7 @@ def collect_agent_positions(state: DebateState) -> DebateState:
     ticker = state["ticker"].upper()
     company_name = state.get("company_name") or ticker
     sector = state.get("sector") or "General"
-    outputs = [
-        run_fundamental_agent(ticker, company_name=company_name),
-        run_market_sentiment_agent(ticker, company_name=company_name),
-        run_sentiment_agent(ticker, company_name=company_name),
-        run_macro_agent_safe(ticker, sector=sector, company_name=company_name),
-    ]
+    outputs = run_specialist_agents(ticker, company_name=company_name, sector=sector)
     return {"agent_outputs": outputs, "revision_round": 0}
 
 
@@ -106,6 +98,20 @@ def critique_contradictions(state: DebateState) -> DebateState:
     return {"contradictions": contradictions}
 
 
+def _revision_request(output: dict[str, Any], contradictions: list[dict[str, Any]]) -> str:
+    """Build an auditable reassessment request from the current debate state."""
+    agent_name = str(output.get("agent") or "This agent")
+    evidence = output.get("evidence") or ["No supporting evidence was returned."]
+    contradiction_text = " ".join(str(item.get("detail", "")) for item in contradictions).strip()
+    targeted = any(agent_name.lower() in str(item.get("detail", "")).lower() for item in contradictions)
+    target = agent_name if targeted else "the full specialist panel"
+    return (
+        f"Revision target: {target}. {agent_name}: reassess the current risk label and score using only the supplied evidence. "
+        f"Peer contradiction: {contradiction_text or 'none recorded'}. "
+        f"Current evidence: {' | '.join(map(str, evidence))}"
+    )
+
+
 def revise_positions(state: DebateState) -> DebateState:
     outputs = [dict(output) for output in state.get("agent_outputs", [])]
     contradictions = state.get("contradictions", [])
@@ -122,6 +128,7 @@ def revise_positions(state: DebateState) -> DebateState:
     median_score = statistics.median(scores) if scores else 5.0
 
     for output in outputs:
+        agent_name = str(output.get("agent") or "This agent")
         score_key = "risk_score" if "risk_score" in output else "macro_risk_score"
         raw_score = output.get(score_key)
         try:
@@ -144,12 +151,25 @@ def revise_positions(state: DebateState) -> DebateState:
             revised_score = score
 
         output["pre_revision_score"] = round(score, 2)
+        request = _revision_request(output, contradictions)
+        output["revision_request"] = request
+        output["revision_target"] = (
+            agent_name
+            if any(agent_name.lower() in str(item.get("detail", "")).lower() for item in contradictions)
+            else "full specialist panel"
+        )
+        output.setdefault("revision_history", []).append({
+            "round": revision_round,
+            "method": "evidence_weighted_reassessment",
+            "request": request,
+            "pre_revision_score": round(score, 2),
+        })
         output[score_key] = round(max(1.0, min(10.0, revised_score)), 2)
         if score_key == "macro_risk_score":
             output["risk_score"] = output[score_key]
         output["risk_label"] = _label_from_score(float(output[score_key]))
         output["revision_note"] = (
-            "Contradiction pass reviewed this agent against peer outputs; "
+            "Agent was reassessed against peer contradictions using its supplied evidence; "
             f"support_strength={support_strength:.2f}, median_peer_score={median_score:.2f}."
         )
 
@@ -175,11 +195,11 @@ def synthesize_verdict(state: DebateState) -> DebateState:
         if llm_result and llm_result.get("error"):
             final["llm_error"] = llm_result["error"]
             final.setdefault("agent_scorecard", []).append(llm_result["error"])
+    final = _enforce_review_guardrails(final, outputs)
     final["contradictions"] = contradictions
     final["revision_rounds"] = state.get("revision_round", 0)
 
-    high_contradictions = [c for c in contradictions if c.get("severity") == "HIGH"]
-    if high_contradictions:
+    if contradictions:
         try:
             current_confidence = float(final.get("confidence", 0.60))
         except (TypeError, ValueError):
@@ -188,7 +208,7 @@ def synthesize_verdict(state: DebateState) -> DebateState:
         final["requires_human_review"] = True
         final["final_decision"] = (
             final.get("final_decision") or weighted.get("final_decision") or "Final debate verdict generated."
-        ) + " Contradictions remain material, so this verdict requires human review."
+        ) + " Contradictions remain after the revision pass, so this verdict requires human review."
     else:
         final["requires_human_review"] = False
 
@@ -241,7 +261,7 @@ def run_debate_state_machine(
     query: str = "",
     company_name: str | None = None,
     sector: str | None = None,
-    max_revision_rounds: int = 1,
+    max_revision_rounds: int = 2,
 ) -> dict[str, Any]:
     state: DebateState = {
         "ticker": ticker.upper(),
@@ -260,6 +280,7 @@ def run_debate_state_machine(
     return {
         "ticker": final_state["ticker"],
         "query": final_state.get("query", ""),
+        "execution_mode": _system_mode(),
         "agent_outputs": final_state.get("agent_outputs", []),
         "contradictions": final_state.get("contradictions", []),
         "final_output": final_state.get("final_output", {}),
@@ -273,6 +294,7 @@ def main() -> None:
     parser.add_argument("--company", default=None)
     parser.add_argument("--sector", default=None)
     parser.add_argument("--out", default=None)
+    parser.add_argument("--max-revision-rounds", type=int, default=2)
     parser.add_argument("--log-monitoring", action="store_true")
     args = parser.parse_args()
 
@@ -281,6 +303,7 @@ def main() -> None:
         query=args.query,
         company_name=args.company,
         sector=args.sector,
+        max_revision_rounds=max(0, min(args.max_revision_rounds, 2)),
     )
     payload = json.dumps(report, indent=2)
     print(payload)
