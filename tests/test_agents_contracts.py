@@ -181,6 +181,19 @@ class AgentContractTests(unittest.TestCase):
         self.assertTrue(any("reassess" in output.get("revision_request", "") for output in report["agent_outputs"]))
         self.assertTrue(all(output.get("revision_history") for output in report["agent_outputs"]))
 
+    def test_fallback_debate_revises_up_to_configured_limit(self):
+        contradictory = [
+            {"agent": "Fundamental Agent", "risk_score": 5.0, "risk_label": "MODERATE", "confidence": 0.40, "evidence": ["Debt is elevated."]},
+            {"agent": "Market + Volatility Agent", "risk_score": 2.0, "risk_label": "LOW", "confidence": 0.80, "evidence": ["Beta is 2.2."]},
+            {"agent": "Sentiment Agent", "risk_score": 8.0, "risk_label": "HIGH", "confidence": 0.90, "evidence": ["Negative headline."]},
+            {"agent": "Macro-Economic Agent", "risk_score": 5.0, "risk_label": "MODERATE", "confidence": 0.70, "evidence": ["Mixed conditions."]},
+        ]
+        with patch("agents.orchestrator.debate_state_machine.build_debate_graph", return_value=None), \
+             patch("agents.orchestrator.debate_state_machine.run_specialist_agents", return_value=contradictory):
+            report = run_debate_state_machine("TEST", max_revision_rounds=2)
+
+        self.assertEqual(report["final_output"]["revision_rounds"], 2)
+
     def test_market_lora_conflict_is_calibrated(self):
         result = _normalize_market_lora_output(
             {"risk_score": 2.58, "risk_label": "LOW", "confidence": 1.0},
