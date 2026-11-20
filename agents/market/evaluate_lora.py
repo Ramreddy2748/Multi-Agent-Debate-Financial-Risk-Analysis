@@ -90,6 +90,12 @@ def _load_examples(path: Path) -> list[dict[str, Any]]:
             if user_payload:
                 ticker = str(user_payload.get("ticker") or "")
                 features = user_payload.get("features") or {}
+                leaked_fields = [key for key in features if str(key).lower().startswith("gold_")]
+                if leaked_fields:
+                    raise ValueError(
+                        f"Target leakage detected on line {line_no}: {', '.join(leaked_fields)}. "
+                        "Rebuild the dataset without Gold target fields before evaluation."
+                    )
             examples.append({
                 "line_no": line_no,
                 "ticker": ticker,

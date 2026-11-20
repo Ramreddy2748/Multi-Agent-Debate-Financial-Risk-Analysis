@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -24,12 +25,17 @@ from typing import Any
 import pandas as pd
 import requests
 
+# Make direct execution work from the repository root:
+# `python3 data_preprocessing/newsapi_only.py ...`.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import config
 from data_preprocessing import clean
 from data_preprocessing.ingest import _load_api_key
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 GOLD_PATH = PROJECT_ROOT / config.LOCAL_GOLD / "gold_risk_scores_ALL.csv"
 BRONZE_NEWS_PATH = PROJECT_ROOT / config.LOCAL_BRONZE / "newsapi_headlines_raw.csv"
 PROGRESS_PATH = PROJECT_ROOT / config.LOCAL_BRONZE / "newsapi_progress.json"

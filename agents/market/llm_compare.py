@@ -35,6 +35,7 @@ load_dotenv()
 
 from agents.shared import llm_comparison
 from agents.market.rule_based import MarketSentimentAgent
+from agents.shared.financial_rag import build_rag_context
 from agents.shared.retrieval import retrieve
 
 AGENT_LABEL = "market_sentiment"
@@ -77,7 +78,9 @@ def context_loader(ticker: str) -> dict[str, Any]:
     price_rows = agent.load_prices(ticker)
     market_score, market_features, market_evidence = agent._market_score(price_rows)
     sentiment_score, sentiment_features, sentiment_evidence, sentiment_confidence = agent._sentiment_score(ticker)
-    chunks = retrieve(ticker, "volatility and sentiment risk", k=5)
+    query = "volatility beta drawdown price momentum news sentiment risk"
+    chunks = retrieve(ticker, query, k=5)
+    rag = build_rag_context("market", query=query, limit=5)
 
     return {
         "company": _company_name(price_rows, ticker),
@@ -85,6 +88,8 @@ def context_loader(ticker: str) -> dict[str, Any]:
         "sentiment_features": sentiment_features,
         "sentiment_confidence": sentiment_confidence,
         "chunks": chunks,
+        "financial_terms": rag["context"],
+        "financial_terms_source": rag["source"],
     }
 
 
@@ -96,6 +101,10 @@ def _format_chunks(chunks: list[dict[str, Any]]) -> str:
     if not chunks:
         return "(no retrieved evidence available)"
     return "\n".join(f"- {chunk['text']}" for chunk in chunks)
+
+
+def _format_terms(context: dict[str, Any]) -> str:
+    return context.get("financial_terms") or "(no curated financial rules available)"
 
 
 def prompt_builder(ticker: str, context: dict[str, Any]) -> str:
@@ -111,6 +120,10 @@ NEWS SENTIMENT FEATURES (confidence: {context['sentiment_confidence']})
 
 RETRIEVED EVIDENCE (top matches for "volatility and sentiment risk")
 {_format_chunks(context['chunks'])}
+
+CURATED FINANCIAL RAG RULES (definitions, thresholds, and priority rules)
+Source: {context['financial_terms_source']}
+{_format_terms(context)}
 
 Return ONLY this exact JSON:
 {{
@@ -143,6 +156,9 @@ CANDIDATE ASSESSMENT
 
 RETRIEVED SOURCE EVIDENCE
 {_format_chunks(chunks)}
+
+CURATED FINANCIAL RAG RULES
+{_format_terms(context)}
 
 Return ONLY this exact JSON:
 {{

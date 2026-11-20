@@ -776,10 +776,14 @@ def run_eda(clean_data: dict, upload_gcs: bool = False) -> dict:
 
 
 if __name__ == "__main__":
-    # Standalone test using Silver CSVs
+    # Standalone analytics run using every persisted Silver CSV.
     import glob
     price_dfs = {}
     for f in glob.glob(f"{config.LOCAL_SILVER}/silver_prices_*.csv"):
         ticker = f.split("silver_prices_")[1].replace(".csv", "")
         price_dfs[ticker] = pd.read_csv(f, index_col=0, parse_dates=True)
-    run_eda({"prices": price_dfs, "macro": pd.DataFrame(), "news": pd.DataFrame()})
+    macro_path = Path(config.LOCAL_SILVER) / "silver_macro.csv"
+    news_path = Path(config.LOCAL_SILVER) / "silver_news_sentiment.csv"
+    macro_df = pd.read_csv(macro_path, index_col=0, parse_dates=True) if macro_path.exists() else pd.DataFrame()
+    news_df = pd.read_csv(news_path) if news_path.exists() else pd.DataFrame()
+    run_eda({"prices": price_dfs, "macro": macro_df, "news": news_df})
