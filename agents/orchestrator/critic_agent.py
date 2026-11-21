@@ -1349,6 +1349,19 @@ def run_critic_agent(
         )
         for output in outputs
     ]
+    outputs = [
+        attach_rag_context(
+            output,
+            agent={
+                "Fundamental Agent": "fundamental",
+                "Market + Volatility Agent": "market",
+                "Sentiment Agent": "sentiment",
+                "Macro-Economic Agent": "macro",
+            }.get(str(output.get("agent")), "critic"),
+            query=f"{ticker} {sector} financial risk evidence",
+        )
+        for output in outputs
+    ]
 
     llm_result = _llm_critic(outputs, query) if use_llm else None
     if llm_result and llm_result.get("critic_type") != "llm_failed_fallback_needed":
